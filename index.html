@@ -469,9 +469,15 @@
 
       <!-- Modal Body -->
       <div class="modal-body">
-        <div class="modal-tags-row">
-          <span class="modal-type-tag" id="modal-project-type">Engineering</span>
-          <span class="modal-date-tag" id="modal-project-date">Created Date</span>
+        <div class="modal-tags-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <span class="modal-type-tag" id="modal-project-type">Engineering</span>
+            <span class="modal-date-tag" id="modal-project-date">Created Date</span>
+          </div>
+          <button id="modal-edit-project-btn" class="modal-edit-action-btn" type="button" title="Edit project details & photos (Requires Admin Password)">
+            <span aria-hidden="true">✏️</span>
+            <span>Edit Project</span>
+          </button>
         </div>
 
         <h2 class="modal-title" id="modal-project-title">Project Title</h2>
@@ -591,6 +597,7 @@
         </p>
 
         <form id="admin-add-project-form">
+          <input type="hidden" id="editing-project-id" value="">
           <!-- SECTION 1: PHOTO GALLERY -->
           <div class="form-section-card">
             <div class="form-section-header">
@@ -798,13 +805,18 @@
 
           <!-- FORM ACTIONS -->
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-gold);">
-            <button type="button" id="export-projects-json-btn" class="btn-secondary-outline" title="Download updated projects.json file for permanent repository update">
-              <span>💾</span> <span>Export Updated projects.json</span>
-            </button>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+              <button type="button" id="delete-project-btn" class="btn-danger-outline" style="display: none;" title="Permanently delete this project from the archive">
+                <span>🗑️</span> <span>Delete Project</span>
+              </button>
+              <button type="button" id="export-projects-json-btn" class="btn-secondary-outline" title="Download updated projects.json file for permanent repository update">
+                <span>💾</span> <span>Export Updated projects.json</span>
+              </button>
+            </div>
 
             <div style="display: flex; gap: 14px;">
               <button type="button" class="btn-secondary-outline" id="cancel-add-btn">Cancel</button>
-              <button type="submit" class="btn-primary-gold">
+              <button type="submit" id="save-project-submit-btn" class="btn-primary-gold">
                 <span>✦</span> <span>Save & Publish Project</span>
               </button>
             </div>
