@@ -87,17 +87,15 @@ Clicking on any project card opens a rich full-screen modal featuring:
 ## 📁 Repository Structure
 
 ```
-├── index.html              # Main single-page web application & accessible markup
+├── index.html              # Main web portal, animated hero & interactive modals
 ├── assets/
-│   ├── css/
-│   │   └── style.css       # Complete Vedic manuscript & modern responsive CSS
-│   ├── js/
-│   │   └── app.js          # Particles, procedural audio, modal, QR code & routing
-│   └── images/             # Visual assets & vector diagrams
+│   ├── app.js              # Application logic, audio synthesizer & photo manager
+│   └── styles.css          # Antique Vedic parchment & modern responsive CSS
 ├── data/
 │   └── projects.json       # Structured database of VPKBIET student projects
-├── README.md               # Repository documentation and deployment guide
-└── LICENSE                 # Open-source MIT License
+├── dev-server.js           # Lightweight zero-dependency local development server
+├── package.json            # NPM scripts (npm run dev)
+└── README.md               # Repository documentation and deployment guide
 ```
 
 ---
