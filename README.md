@@ -1,9 +1,9 @@
 # ✺ VPKBIET IKS Digital Heritage Hub
 ### भारतीय ज्ञान परंपरा · Indian Knowledge Systems
 
-[![Live Demo](https://img.shields.io/badge/Live_Website-Visit_Portal-d4af37?style=for-the-badge&logo=githubpages&logoColor=white)](https://virajpathak27.github.io/iks-digital-heritage-hub1/)
+[![Live Demo](https://img.shields.io/badge/Live_Website-Visit_Portal-d4af37?style=for-the-badge&logo=githubpages&logoColor=white)](https://virajp2709.github.io/iks-digital-heritage-hub/)
 [![Institution](https://img.shields.io/badge/Institution-VPKBIET_Baramati-0e3a2f?style=for-the-badge)](https://www.vpkbiet.org/)
-[![Curator](https://img.shields.io/badge/Architect_%26_Developer-Viraj_Pathak-c85a32?style=for-the-badge)](https://github.com/virajpathak27)
+[![Curator](https://img.shields.io/badge/Architect_%26_Developer-Viraj_Pathak-c85a32?style=for-the-badge)](https://github.com/virajp2709)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 ---
@@ -19,7 +19,7 @@ The **VPKBIET IKS Digital Heritage Hub** is an open-access living digital reposi
 
 The platform is designed to bridge classical Indian scientific treatises—spanning Harappan hydraulic engineering, Vedic computational mathematics, rustless metallurgy, and temple acoustic resonance—with modern engineering simulations (ANSYS CFD, Verilog HDL / FPGA synthesis, SEM material spectrometry, and ray-tracing acoustics).
 
-🔗 **Live Portal:** [https://virajpathak27.github.io/iks-digital-heritage-hub1/](https://virajpathak27.github.io/iks-digital-heritage-hub1/)
+🔗 **Live Portal:** [https://virajp2709.github.io/iks-digital-heritage-hub/](https://virajp2709.github.io/iks-digital-heritage-hub/)
 
 ---
 
