@@ -70,9 +70,9 @@
         <a href="#explore-projects" class="nav-link">Student Projects</a>
         <a href="#about-institution" class="nav-link">About IKS Cell</a>
         <a href="#map-section" class="nav-link">Heritage Map</a>
-        <button id="open-submit-modal-btn" class="submit-nav-btn" type="button">
-          <span aria-hidden="true">✦</span>
-          <span>Submit Project</span>
+        <button id="open-add-project-btn" class="submit-nav-btn" type="button" aria-label="Add project (Admin)">
+          <span aria-hidden="true">🔒</span>
+          <span>Add Projects</span>
         </button>
       </nav>
     </div>
@@ -318,9 +318,9 @@
             <span>Explore Student Projects</span>
             <span aria-hidden="true">↓</span>
           </a>
-          <button id="hero-submit-trigger" class="btn-secondary-outline" type="button" onclick="document.getElementById('open-submit-modal-btn').click()">
-            <span aria-hidden="true">✍</span>
-            <span>Submit Your Project</span>
+          <button id="hero-add-trigger" class="btn-secondary-outline" type="button">
+            <span aria-hidden="true">🔒</span>
+            <span>Add Projects</span>
           </button>
         </div>
       </div>
@@ -539,49 +539,275 @@
   </div>
 
   <!-- ========================================================================
-       STUDENT PROJECT SUBMISSION MODAL
+       ADMIN AUTHENTICATION MODAL (PROTECTED BY PASSWORD "2026")
        ======================================================================== -->
-  <div id="project-submit-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="submit-modal-heading">
-    <div class="modal-dialog" style="max-width: 650px;">
-      <button id="close-submit-modal-btn" class="modal-close-btn" type="button" aria-label="Close submit modal">&times;</button>
-      <div class="modal-body" style="padding-top: 32px;">
-        <p class="section-kicker">VPKBIET IKS Cell Submission</p>
-        <h2 id="submit-modal-heading" class="modal-title" style="font-size: 1.5rem; margin-bottom: 12px;">Submit Student Project</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 24px;">
-          Have you conducted research correlating ancient Indian science with modern engineering? Submit your details to add your project to the official VPKBIET exhibition.
+  <div id="admin-auth-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="admin-auth-heading">
+    <div class="modal-dialog auth-dialog" style="max-width: 440px;">
+      <button id="close-auth-modal-btn" class="modal-close-btn" type="button" aria-label="Close authentication modal">&times;</button>
+      <div class="modal-body" style="text-align: center; padding: 36px 28px;">
+        <div class="auth-lock-icon" aria-hidden="true">🔒</div>
+        <p class="section-kicker" style="margin-bottom: 6px;">VPKBIET IKS Cell Admin</p>
+        <h2 id="admin-auth-heading" class="modal-title" style="font-size: 1.5rem; margin-bottom: 8px;">Admin Verification</h2>
+        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 24px;">
+          Enter the administrator security password to add and manage student projects.
         </p>
 
-        <form id="student-submit-form">
-          <div class="form-group">
-            <label for="submit-title">Project Title *</label>
-            <input id="submit-title" class="form-control" type="text" placeholder="e.g. Traditional Rainwater Harvesting in Sahyadri Forts" required>
+        <form id="admin-auth-form">
+          <div class="form-group" style="text-align: left;">
+            <label for="admin-pass-input">Security Password *</label>
+            <input id="admin-pass-input" class="form-control" type="password" placeholder="Enter Admin Password" autocomplete="current-password" required>
+            <div id="admin-auth-error" class="auth-error-msg" style="display: none;"></div>
           </div>
 
-          <div class="form-group">
-            <label for="submit-type">Project Discipline / Domain *</label>
-            <select id="submit-type" class="form-control">
-              <option value="Water Heritage & Civil Engineering">Water Heritage & Civil Engineering</option>
-              <option value="Vedic Mathematics & VLSI Hardware">Vedic Mathematics & VLSI Hardware</option>
-              <option value="Metallurgy & Material Science">Metallurgy & Material Science</option>
-              <option value="Architecture & Acoustic Engineering">Architecture & Acoustic Engineering</option>
-              <option value="Ethno-Botany & Ayurvedic Formulations">Ethno-Botany & Ayurvedic Formulations</option>
-              <option value="Astronomy & Mechanical Instruments">Astronomy & Mechanical Instruments</option>
-            </select>
+          <div style="display: flex; gap: 12px; margin-top: 24px;">
+            <button type="button" class="btn-secondary-outline" id="cancel-auth-btn" style="flex: 1; justify-content: center;">Cancel</button>
+            <button type="submit" class="btn-primary-gold" style="flex: 1.3; justify-content: center;">Unlock Access</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       ADD PROJECTS MODAL (ADMIN CONTROLLED - 1:1 WITH EXPLORE DETAILS)
+       ======================================================================== -->
+  <div id="project-add-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="add-modal-heading">
+    <div class="modal-dialog admin-modal-dialog">
+      <button id="close-add-modal-btn" class="modal-close-btn" type="button" aria-label="Close add project modal">&times;</button>
+
+      <div class="modal-body" style="padding: 36px 32px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+          <span class="modal-type-tag" style="background: rgba(212, 175, 55, 0.2); border-color: var(--gold-primary);">
+            🔒 Authenticated Admin Portal · VPKBIET IKS Cell
+          </span>
+          <button id="lock-admin-btn" type="button" class="preset-photo-pill" style="color: #ff9999; border-color: rgba(255,100,100,0.3);">
+            🔒 Lock Admin Session
+          </button>
+        </div>
+
+        <h2 id="add-modal-heading" class="modal-title" style="font-size: 1.8rem; margin-bottom: 6px;">Add New Student Project</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 28px;">
+          Fill out the project information below. The new entry will display with the exact same layout, photo carousel, tabs, team cards, and QR codes in <strong>Explore Student Projects</strong> and <strong>Explore Details</strong>.
+        </p>
+
+        <form id="admin-add-project-form">
+          <!-- SECTION 1: PHOTO GALLERY -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <h3><span>📷</span> Project Photos & Gallery</h3>
+              <small style="color: var(--text-gold);">Photos will display in the Explore Details photo carousel</small>
+            </div>
+
+            <div class="photo-manager-box">
+              <div class="photo-uploader-controls">
+                <!-- Local file upload -->
+                <div class="file-input-wrapper">
+                  <button type="button" class="file-input-btn">
+                    <span>📁</span> <span>Upload Image Files</span>
+                  </button>
+                  <input type="file" id="photo-file-input" accept="image/*" multiple>
+                </div>
+
+                <span style="color: var(--text-muted); font-size: 0.85rem;">or add image URL:</span>
+
+                <!-- URL input -->
+                <input type="url" id="photo-url-input" class="form-control" placeholder="https://example.com/photo.jpg" style="flex: 1; min-width: 200px; padding: 8px 12px; font-size: 0.85rem;">
+                <input type="text" id="photo-caption-input" class="form-control" placeholder="Photo caption (e.g. Lab prototype)" style="flex: 1; min-width: 180px; padding: 8px 12px; font-size: 0.85rem;">
+                <button type="button" id="add-photo-url-btn" class="file-input-btn">
+                  <span>+</span> <span>Add Photo</span>
+                </button>
+              </div>
+
+              <!-- Quick Presets -->
+              <div>
+                <small style="color: var(--text-muted);">Quick Heritage Presets (click to add high-res photos):</small>
+                <div class="preset-photo-pills">
+                  <button type="button" class="preset-photo-pill" data-preset="reservoir">💧 Dholavira Reservoir</button>
+                  <button type="button" class="preset-photo-pill" data-preset="stepwell">🏛️ Ancient Stepwell</button>
+                  <button type="button" class="preset-photo-pill" data-preset="manuscript">📜 Vedic Manuscript</button>
+                  <button type="button" class="preset-photo-pill" data-preset="metallurgy">⚙️ Bloomery Metallurgy</button>
+                  <button type="button" class="preset-photo-pill" data-preset="temple">🛕 Temple Acoustics</button>
+                  <button type="button" class="preset-photo-pill" data-preset="vlsi">💻 Microelectronics Hardware</button>
+                </div>
+              </div>
+
+              <!-- Live Photo Preview Cards -->
+              <div class="photo-previews-grid" id="photo-previews-container">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="submit-members">Team Members (Comma separated) *</label>
-            <input id="submit-members" class="form-control" type="text" placeholder="e.g. Viraj Pathak, Aditya Patil, Rohan Deshmukh" required>
+          <!-- SECTION 2: BASIC DETAILS -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <h3><span>📋</span> Project Title & Classification</h3>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="add-project-title">Project Title (English) *</label>
+                <input id="add-project-title" class="form-control" type="text" placeholder="e.g. Traditional Rainwater Harvesting in Sahyadri Forts" required>
+              </div>
+
+              <div class="form-group">
+                <label for="add-project-title-mr">Project Title (मराठी)</label>
+                <input id="add-project-title-mr" class="form-control" type="text" placeholder="e.g. सह्याद्रीतील किल्ल्यांवरील पारंपरिक जलसंधारण व्यवस्था">
+              </div>
+            </div>
+
+            <div class="form-row-3">
+              <div class="form-group">
+                <label for="add-project-type">Project Discipline / Domain *</label>
+                <select id="add-project-type" class="form-control" required>
+                  <option value="Water Heritage & Civil Engineering">Water Heritage & Civil Engineering</option>
+                  <option value="Vedic Mathematics & VLSI Hardware">Vedic Mathematics & VLSI Hardware</option>
+                  <option value="Metallurgy & Material Science">Metallurgy & Material Science</option>
+                  <option value="Architecture & Acoustic Engineering">Architecture & Acoustic Engineering</option>
+                  <option value="Ethno-Botany & Ayurvedic Formulations">Ethno-Botany & Ayurvedic Formulations</option>
+                  <option value="Astronomy & Mechanical Instruments">Astronomy & Mechanical Instruments</option>
+                  <option value="Sustainable Vastu & Civil Architecture">Sustainable Vastu & Civil Architecture</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="add-project-date">Created Date *</label>
+                <input id="add-project-date" class="form-control" type="text" placeholder="e.g. November 8, 2026" required>
+              </div>
+
+              <div class="form-group">
+                <label for="add-project-year">Academic Year / Semester *</label>
+                <input id="add-project-year" class="form-control" type="text" placeholder="e.g. 2026-2027 (Semester VII)" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="add-project-summary">Project Summary (Shown on the card in Explore Projects) *</label>
+              <textarea id="add-project-summary" class="form-control" rows="2" placeholder="Brief 2-3 sentence summary explaining the core Indian knowledge concept and modern engineering relevance..." required></textarea>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="submit-abstract">Abstract & Scientific Methodology *</label>
-            <textarea id="submit-abstract" class="form-control" rows="4" placeholder="Describe the ancient Indian concept, modern engineering simulation or laboratory prototype, and experimental findings..." required></textarea>
+          <!-- SECTION 3: RESEARCH & HERITAGE DETAILS (1:1 with Explore Details Tab 1) -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <h3><span>📜</span> Research & Scientific Documentation</h3>
+              <small style="color: var(--text-gold);">Exact fields shown in the Explore Details overview tab</small>
+            </div>
+
+            <div class="form-group">
+              <label for="add-project-abstract">Project Abstract & Problem Statement *</label>
+              <textarea id="add-project-abstract" class="form-control" rows="4" placeholder="Detailed scientific abstract explaining background, challenge addressed, and research motivation..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="add-project-historical">Historical Indian Tradition & Reference *</label>
+              <textarea id="add-project-historical" class="form-control" rows="3" placeholder="Classical texts (e.g. Arthashastra, Sulba Sutras, Rasaratnasamuccaya), archaeological sites, or traditional communities referenced..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="add-project-methodology">Modern Engineering Methodology *</label>
+              <textarea id="add-project-methodology" class="form-control" rows="3" placeholder="Engineering methods applied (e.g. 1. ANSYS CFD simulation, 2. Verilog HDL RTL coding, 3. Laboratory physical prototype testing)..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="add-project-findings">Key Findings & Future Impact *</label>
+              <textarea id="add-project-findings" class="form-control" rows="3" placeholder="Quantitative results, validation benchmarks, and potential real-world implementation in modern society..." required></textarea>
+            </div>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; gap: 14px; margin-top: 24px;">
-            <button type="button" class="btn-secondary-outline" onclick="document.getElementById('close-submit-modal-btn').click()">Cancel</button>
-            <button type="submit" class="btn-primary-gold">Submit to IKS Registry</button>
+          <!-- SECTION 4: TEAM & MENTOR (1:1 with Explore Details Tab 2) -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <h3><span>👥</span> Student Researchers & Faculty Guide</h3>
+              <small style="color: var(--text-gold);">Exact cards shown in Explore Details team tab</small>
+            </div>
+
+            <!-- Faculty Guide -->
+            <div class="form-row-3" style="margin-bottom: 20px;">
+              <div class="form-group">
+                <label for="add-mentor-name">Faculty Guide / Mentor Name *</label>
+                <input id="add-mentor-name" class="form-control" type="text" placeholder="e.g. Prof. S. R. Deshpande" required>
+              </div>
+
+              <div class="form-group">
+                <label for="add-mentor-role">Faculty Designation / Role *</label>
+                <input id="add-mentor-role" class="form-control" type="text" placeholder="e.g. Faculty Lead, VPKBIET IKS Cell" required>
+              </div>
+
+              <div class="form-group">
+                <label for="add-mentor-inst">Department / Cell *</label>
+                <input id="add-mentor-inst" class="form-control" type="text" placeholder="e.g. VPKBIET Baramati, Dept. of Civil Engg" required>
+              </div>
+            </div>
+
+            <!-- Student Researchers Dynamic List -->
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <label style="margin: 0;">Student Researchers *</label>
+                <button type="button" id="add-researcher-btn" class="add-row-btn">
+                  <span>+</span> <span>Add Researcher</span>
+                </button>
+              </div>
+
+              <div id="researchers-list-container">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 5: TECHNICAL METRICS & HIGHLIGHTS -->
+          <div class="form-section-card">
+            <div class="form-section-header">
+              <h3><span>📊</span> Key Metrics & Award Highlights (Optional)</h3>
+              <small style="color: var(--text-gold);">Displayed as quantitative badges in Explore Details</small>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="add-metric-1-label">Metric 1 Label</label>
+                <input id="add-metric-1-label" class="form-control" type="text" placeholder="e.g. Storage Capacity Model">
+              </div>
+              <div class="form-group">
+                <label for="add-metric-1-val">Metric 1 Value</label>
+                <input id="add-metric-1-val" class="form-control" type="text" placeholder="e.g. 250,000 m³">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="add-metric-2-label">Metric 2 Label</label>
+                <input id="add-metric-2-label" class="form-control" type="text" placeholder="e.g. Filtration Efficiency">
+              </div>
+              <div class="form-group">
+                <label for="add-metric-2-val">Metric 2 Value</label>
+                <input id="add-metric-2-val" class="form-control" type="text" placeholder="e.g. 78% Passive (0 kWh)">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="add-project-badge">Honor / Award Badge (Optional)</label>
+                <input id="add-project-badge" class="form-control" type="text" placeholder="e.g. Excellence Award Winner or National Finalist">
+              </div>
+              <div class="form-group">
+                <label for="add-project-tags">Keywords / Tags (Comma separated)</label>
+                <input id="add-project-tags" class="form-control" type="text" placeholder="e.g. Hydraulics, Dholavira, ANSYS, VPKBIET">
+              </div>
+            </div>
+          </div>
+
+          <!-- FORM ACTIONS -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-gold);">
+            <button type="button" id="export-projects-json-btn" class="btn-secondary-outline" title="Download updated projects.json file for permanent repository update">
+              <span>💾</span> <span>Export Updated projects.json</span>
+            </button>
+
+            <div style="display: flex; gap: 14px;">
+              <button type="button" class="btn-secondary-outline" id="cancel-add-btn">Cancel</button>
+              <button type="submit" class="btn-primary-gold">
+                <span>✦</span> <span>Save & Publish Project</span>
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -613,7 +839,7 @@
           <li><a href="#explore-projects">Student Projects</a></li>
           <li><a href="#about-institution">About IKS Cell</a></li>
           <li><a href="#map-section">Heritage Map of India</a></li>
-          <li><a href="#" onclick="document.getElementById('open-submit-modal-btn').click(); return false;">Submit Research</a></li>
+          <li><a href="#" id="footer-add-project-link">Add Projects (Admin)</a></li>
         </ul>
       </div>
 

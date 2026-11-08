@@ -309,7 +309,7 @@ const TRANSLATIONS = {
     iksDepartment: "Department of Indian Knowledge Systems (IKS)",
     exploreNav: "Explore Projects",
     institutionNav: "About IKS Cell",
-    submitNav: "Submit Project",
+    addNav: "Add Projects",
     audioToggle: "Ambient Sound",
     searchPlaceholder: "Search student projects by keyword, domain or author (Press /)",
     allCategories: "All Domains",
@@ -341,7 +341,7 @@ const TRANSLATIONS = {
     iksDepartment: "भारतीय ज्ञान प्रणाली विभाग (IKS Cell)",
     exploreNav: "प्रकल्प संग्रह",
     institutionNav: "IKS विभागाविषयी",
-    submitNav: "प्रकल्प जोडा",
+    addNav: "प्रकल्प जोडा",
     audioToggle: "पारंपरिक संगीत",
     searchPlaceholder: "प्रकल्प, विषय किंवा विद्यार्थ्याचे नाव शोधा (/ दाबा)",
     allCategories: "सर्व विभाग",
@@ -851,85 +851,493 @@ function closeProjectModal() {
 }
 
 /* ==========================================================================
-   SUBMISSION MODAL (STUDENTS UPLOADING NEW PROJECTS)
+   ADMIN AUTHENTICATION & ADD PROJECT PORTAL (PASSWORD: "2026")
    ========================================================================== */
 
-function initSubmissionModal() {
-  const openBtn = document.getElementById("open-submit-modal-btn");
-  const modal = document.getElementById("project-submit-modal");
-  const closeBtn = document.getElementById("close-submit-modal-btn");
-  const form = document.getElementById("student-submit-form");
+const PHOTO_PRESETS = {
+  reservoir: {
+    url: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    caption: "Dholavira Ancient Reservoir & Rock-cut Stepped Bunds"
+  },
+  stepwell: {
+    url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
+    caption: "Hydraulic Stepwell (Baoli) Geometric Water Access"
+  },
+  manuscript: {
+    url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+    caption: "Sanskrit Mathematical Palm-Leaf Manuscript"
+  },
+  metallurgy: {
+    url: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80",
+    caption: "Traditional Forge-Welding & Bloomery Hearth Recreation"
+  },
+  temple: {
+    url: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=1200&q=80",
+    caption: "Brihadeeswara Temple Granite Vimana Tower & Acoustic Corridors"
+  },
+  vlsi: {
+    url: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+    caption: "FPGA Silicon Board Testing of Hardware Vedic Multiplier"
+  }
+};
 
-  if (openBtn && modal) {
-    openBtn.addEventListener("click", () => {
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
+let addedProjectPhotos = [];
+
+function initAdminAndAddProjectModal() {
+  const authModal = document.getElementById("admin-auth-modal");
+  const addModal = document.getElementById("project-add-modal");
+  const authForm = document.getElementById("admin-auth-form");
+  const passInput = document.getElementById("admin-pass-input");
+  const authError = document.getElementById("admin-auth-error");
+
+  const openNavBtn = document.getElementById("open-add-project-btn");
+  const openHeroBtn = document.getElementById("hero-add-trigger");
+  const openFooterLink = document.getElementById("footer-add-project-link");
+
+  const closeAuthBtn = document.getElementById("close-auth-modal-btn");
+  const cancelAuthBtn = document.getElementById("cancel-auth-btn");
+  const closeAddBtn = document.getElementById("close-add-modal-btn");
+  const cancelAddBtn = document.getElementById("cancel-add-btn");
+  const lockAdminBtn = document.getElementById("lock-admin-btn");
+
+  const addProjectForm = document.getElementById("admin-add-project-form");
+  const exportBtn = document.getElementById("export-projects-json-btn");
+
+  // Open Workflow with Admin Check
+  function triggerAdminWorkflow() {
+    const isAuthed = sessionStorage.getItem("vpkbiet_iks_admin") === "true";
+    if (isAuthed) {
+      openAddProjectModal();
+    } else {
+      openAuthModal();
+    }
+  }
+
+  function openAuthModal() {
+    if (!authModal) return;
+    authModal.classList.add("active");
+    if (passInput) {
+      passInput.value = "";
+      passInput.focus();
+    }
+    if (authError) authError.style.display = "none";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeAuthModal() {
+    if (!authModal) return;
+    authModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  function openAddProjectModal() {
+    closeAuthModal();
+    if (!addModal) return;
+    addModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+
+    // Set default date if empty
+    const dateInput = document.getElementById("add-project-date");
+    if (dateInput && !dateInput.value) {
+      dateInput.value = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+    }
+    const yearInput = document.getElementById("add-project-year");
+    if (yearInput && !yearInput.value) {
+      yearInput.value = "2026-2027 (Semester VII)";
+    }
+
+    // Initialize researchers list if empty
+    const researchersContainer = document.getElementById("researchers-list-container");
+    if (researchersContainer && researchersContainer.children.length === 0) {
+      addResearcherRow("Viraj Pathak", "Project Lead & Researcher", "Civil / Computer Engg", "virajpathak@vpkbiet.ac.in");
+      addResearcherRow("", "Student Researcher", "Engineering", "");
+    }
+
+    // Initialize photos with 1 default if empty
+    if (addedProjectPhotos.length === 0) {
+      addedProjectPhotos = [
+        {
+          url: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+          caption: "Primary Project Research Photograph & Model",
+          alt: "VPKBIET Student Research"
+        }
+      ];
+      renderPhotoPreviews();
+    }
+  }
+
+  function closeAddProjectModal() {
+    if (!addModal) return;
+    addModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  // Event Listeners for Open Triggers
+  if (openNavBtn) openNavBtn.addEventListener("click", triggerAdminWorkflow);
+  if (openHeroBtn) openHeroBtn.addEventListener("click", triggerAdminWorkflow);
+  if (openFooterLink) openFooterLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    triggerAdminWorkflow();
+  });
+
+  // Modal Closers
+  if (closeAuthBtn) closeAuthBtn.addEventListener("click", closeAuthModal);
+  if (cancelAuthBtn) cancelAuthBtn.addEventListener("click", closeAuthModal);
+  if (closeAddBtn) closeAddBtn.addEventListener("click", closeAddProjectModal);
+  if (cancelAddBtn) cancelAddBtn.addEventListener("click", closeAddProjectModal);
+
+  if (authModal) {
+    authModal.addEventListener("click", (e) => {
+      if (e.target === authModal) closeAuthModal();
+    });
+  }
+  if (addModal) {
+    addModal.addEventListener("click", (e) => {
+      if (e.target === addModal) closeAddProjectModal();
     });
   }
 
-  if (closeBtn && modal) {
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
-    });
-  }
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
+  // Admin Authentication Password Verification ("2026")
+  if (authForm) {
+    authForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const title = document.getElementById("submit-title")?.value || "";
-      const type = document.getElementById("submit-type")?.value || "Engineering";
-      const members = document.getElementById("submit-members")?.value || "";
-      const abstract = document.getElementById("submit-abstract")?.value || "";
-
-      const newProject = {
-        id: "vpkbiet-" + Date.now().toString(36),
-        title: { en: title, mr: title },
-        type: type,
-        typeMr: type,
-        createdDate: new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
-        academicYear: "2026-2027",
-        institution: "VPKBIET Baramati, IKS Department",
-        mentor: "Prof. S. R. Deshpande / IKS Committee",
-        summary: {
-          en: abstract.slice(0, 180) + "...",
-          mr: abstract.slice(0, 180) + "..."
-        },
-        info: {
-          abstract: abstract,
-          historicalContext: "Documented student research project at VPKBIET Baramati.",
-          engineeringMethodology: "Under review by VPKBIET faculty panel.",
-          keyFindings: "Submitted for upcoming IKS conference exhibition."
-        },
-        photos: [
-          {
-            url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
-            caption: title
-          }
-        ],
-        teamMembers: members.split(",").map((name) => ({
-          name: name.trim(),
-          role: "Student Researcher",
-          department: "Engineering",
-          email: `${name.trim().toLowerCase().replace(/\s+/g, ".")}@vpkbiet.ac.in`
-        })),
-        metrics: [
-          { label: "Review Status", "value": "Under Evaluation" },
-          { label: "Submission Date", "value": "2026" }
-        ],
-        tags: [type, "Student Project", "VPKBIET"]
-      };
-
-      state.projects.unshift(newProject);
-      renderProjects();
-      form.reset();
-      modal?.classList.remove("active");
-      document.body.style.overflow = "auto";
-
-      showToast("Project successfully submitted to VPKBIET IKS registry!");
-      openProjectModal(newProject);
+      const enteredPassword = passInput?.value.trim() || "";
+      if (enteredPassword === "2026") {
+        sessionStorage.setItem("vpkbiet_iks_admin", "true");
+        if (authError) authError.style.display = "none";
+        showToast("✦ Admin authenticated successfully!");
+        openAddProjectModal();
+      } else {
+        if (authError) {
+          authError.textContent = "❌ Incorrect security password. Access restricted to IKS department admins.";
+          authError.style.display = "block";
+        }
+        if (passInput) {
+          passInput.classList.add("shake");
+          setTimeout(() => passInput.classList.remove("shake"), 400);
+          passInput.select();
+        }
+      }
     });
   }
+
+  // Lock Admin Session
+  if (lockAdminBtn) {
+    lockAdminBtn.addEventListener("click", () => {
+      sessionStorage.removeItem("vpkbiet_iks_admin");
+      closeAddProjectModal();
+      showToast("🔒 Admin session locked");
+    });
+  }
+
+  // Photo Management
+  initPhotoManager();
+
+  // Researcher Rows Management
+  const addResearcherBtn = document.getElementById("add-researcher-btn");
+  if (addResearcherBtn) {
+    addResearcherBtn.addEventListener("click", () => {
+      addResearcherRow("", "Student Researcher", "Engineering", "");
+    });
+  }
+
+  // Add Project Form Submit
+  if (addProjectForm) {
+    addProjectForm.addEventListener("submit", handleAddProjectSubmit);
+  }
+
+  // Export updated projects.json button
+  if (exportBtn) {
+    exportBtn.addEventListener("click", exportProjectsJSON);
+  }
+}
+
+function initPhotoManager() {
+  const fileInput = document.getElementById("photo-file-input");
+  const addUrlBtn = document.getElementById("add-photo-url-btn");
+  const urlInput = document.getElementById("photo-url-input");
+  const captionInput = document.getElementById("photo-caption-input");
+
+  // Local File Upload
+  if (fileInput) {
+    fileInput.addEventListener("change", (e) => {
+      const files = Array.from(e.target.files || []);
+      if (files.length === 0) return;
+
+      files.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          addedProjectPhotos.push({
+            url: event.target.result,
+            caption: file.name.replace(/\.[^/.]+$/, ""),
+            alt: file.name
+          });
+          renderPhotoPreviews();
+          showToast(`Uploaded ${file.name}`);
+        };
+        reader.readAsDataURL(file);
+      });
+      fileInput.value = "";
+    });
+  }
+
+  // Add Photo by URL
+  if (addUrlBtn) {
+    addUrlBtn.addEventListener("click", () => {
+      const url = urlInput?.value.trim();
+      const caption = captionInput?.value.trim() || "Project Photograph";
+      if (!url) {
+        showToast("Please enter an image URL");
+        urlInput?.focus();
+        return;
+      }
+      addedProjectPhotos.push({
+        url: url,
+        caption: caption,
+        alt: caption
+      });
+      if (urlInput) urlInput.value = "";
+      if (captionInput) captionInput.value = "";
+      renderPhotoPreviews();
+      showToast("Photo added to gallery");
+    });
+  }
+
+  // Preset Buttons
+  document.querySelectorAll(".preset-photo-pill").forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const presetKey = pill.dataset.preset;
+      const preset = PHOTO_PRESETS[presetKey];
+      if (preset) {
+        addedProjectPhotos.push({
+          url: preset.url,
+          caption: preset.caption,
+          alt: preset.caption
+        });
+        renderPhotoPreviews();
+        showToast(`Added ${pill.textContent.trim()} photo`);
+      }
+    });
+  });
+}
+
+function renderPhotoPreviews() {
+  const container = document.getElementById("photo-previews-container");
+  if (!container) return;
+  container.innerHTML = "";
+
+  addedProjectPhotos.forEach((p, idx) => {
+    const card = document.createElement("div");
+    card.className = "photo-preview-card";
+    card.innerHTML = `
+      <img src="${p.url}" alt="${p.alt || 'Photo'}" class="photo-preview-thumb">
+      <button type="button" class="photo-preview-remove-btn" title="Remove Photo">&times;</button>
+      <input type="text" class="photo-preview-caption-input" value="${escapeHtml(p.caption || '')}" placeholder="Caption...">
+      ${idx === 0 ? '<span style="position:absolute;bottom:26px;left:4px;background:rgba(212,175,55,0.9);color:#0b1512;font-size:0.65rem;font-weight:700;padding:1px 6px;border-radius:3px;">PRIMARY</span>' : ''}
+    `;
+
+    // Caption change handler
+    const captionInp = card.querySelector(".photo-preview-caption-input");
+    captionInp?.addEventListener("input", (e) => {
+      addedProjectPhotos[idx].caption = e.target.value;
+    });
+
+    // Remove handler
+    const removeBtn = card.querySelector(".photo-preview-remove-btn");
+    removeBtn?.addEventListener("click", () => {
+      addedProjectPhotos.splice(idx, 1);
+      renderPhotoPreviews();
+      showToast("Photo removed");
+    });
+
+    container.appendChild(card);
+  });
+}
+
+function addResearcherRow(name = "", role = "Student Researcher", dept = "Engineering", email = "") {
+  const container = document.getElementById("researchers-list-container");
+  if (!container) return;
+
+  const row = document.createElement("div");
+  row.className = "researcher-row";
+  row.innerHTML = `
+    <input type="text" class="form-control researcher-name" placeholder="Full Name *" value="${escapeHtml(name)}" required>
+    <input type="text" class="form-control researcher-role" placeholder="Role (e.g. Lead Modeler)" value="${escapeHtml(role)}" required>
+    <input type="text" class="form-control researcher-dept" placeholder="Dept (e.g. Civil Engg)" value="${escapeHtml(dept)}" required>
+    <button type="button" class="remove-row-btn" title="Remove Researcher">&times;</button>
+  `;
+
+  row.querySelector(".remove-row-btn")?.addEventListener("click", () => {
+    if (container.children.length > 1) {
+      row.remove();
+    } else {
+      showToast("At least one student researcher is required");
+    }
+  });
+
+  container.appendChild(row);
+}
+
+function handleAddProjectSubmit(e) {
+  e.preventDefault();
+
+  const titleEn = document.getElementById("add-project-title")?.value.trim() || "";
+  const titleMr = document.getElementById("add-project-title-mr")?.value.trim() || titleEn;
+  const type = document.getElementById("add-project-type")?.value || "Civil & Water Heritage";
+  const createdDate = document.getElementById("add-project-date")?.value.trim() || "November 2026";
+  const academicYear = document.getElementById("add-project-year")?.value.trim() || "2026-2027";
+  const summary = document.getElementById("add-project-summary")?.value.trim() || "";
+
+  const abstract = document.getElementById("add-project-abstract")?.value.trim() || "";
+  const historical = document.getElementById("add-project-historical")?.value.trim() || "";
+  const methodology = document.getElementById("add-project-methodology")?.value.trim() || "";
+  const findings = document.getElementById("add-project-findings")?.value.trim() || "";
+
+  const mentorName = document.getElementById("add-mentor-name")?.value.trim() || "Prof. S. R. Deshpande";
+  const mentorRole = document.getElementById("add-mentor-role")?.value.trim() || "Faculty Lead, VPKBIET IKS Cell";
+  const mentorInst = document.getElementById("add-mentor-inst")?.value.trim() || "VPKBIET Baramati";
+
+  // Gather researchers
+  const researcherRows = document.querySelectorAll("#researchers-list-container .researcher-row");
+  const teamMembers = [];
+  researcherRows.forEach((row) => {
+    const rName = row.querySelector(".researcher-name")?.value.trim();
+    const rRole = row.querySelector(".researcher-role")?.value.trim() || "Student Researcher";
+    const rDept = row.querySelector(".researcher-dept")?.value.trim() || "Engineering";
+    if (rName) {
+      teamMembers.push({
+        name: rName,
+        role: rRole,
+        department: rDept,
+        email: `${rName.toLowerCase().replace(/\s+/g, ".")}@vpkbiet.ac.in`
+      });
+    }
+  });
+
+  if (teamMembers.length === 0) {
+    teamMembers.push({
+      name: "Student Researcher",
+      role: "Project Contributor",
+      department: "VPKBIET Engineering",
+      email: "student@vpkbiet.ac.in"
+    });
+  }
+
+  // Gather Metrics
+  const metrics = [];
+  const m1Label = document.getElementById("add-metric-1-label")?.value.trim();
+  const m1Val = document.getElementById("add-metric-1-val")?.value.trim();
+  const m2Label = document.getElementById("add-metric-2-label")?.value.trim();
+  const m2Val = document.getElementById("add-metric-2-val")?.value.trim();
+
+  if (m1Label && m1Val) metrics.push({ label: m1Label, value: m1Val });
+  if (m2Label && m2Val) metrics.push({ label: m2Label, value: m2Val });
+
+  if (metrics.length === 0) {
+    metrics.push({ label: "Verification Status", value: "Verified & Evaluated" });
+    metrics.push({ label: "Research Cell", value: "VPKBIET IKS" });
+  }
+
+  // Tags & Badge
+  const badge = document.getElementById("add-project-badge")?.value.trim() || "VPKBIET Featured";
+  const tagsInput = document.getElementById("add-project-tags")?.value.trim() || "";
+  const tags = tagsInput
+    ? tagsInput.split(",").map((t) => t.trim()).filter(Boolean)
+    : [type, "VPKBIET IKS", "Student Project"];
+
+  // Photos
+  const photos = addedProjectPhotos.length > 0 ? addedProjectPhotos : [
+    {
+      url: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+      caption: titleEn,
+      alt: titleEn
+    }
+  ];
+
+  const slug = titleEn.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || Date.now().toString(36);
+  const newId = `vpkbiet-${slug}`;
+
+  const newProject = {
+    id: newId,
+    title: {
+      en: titleEn,
+      mr: titleMr
+    },
+    type: type,
+    typeMr: type,
+    createdDate: createdDate,
+    academicYear: academicYear,
+    institution: mentorInst,
+    mentor: `${mentorName} (${mentorRole})`,
+    summary: {
+      en: summary,
+      mr: summary
+    },
+    info: {
+      abstract: abstract,
+      historicalContext: historical,
+      engineeringMethodology: methodology,
+      keyFindings: findings
+    },
+    photos: photos,
+    teamMembers: teamMembers,
+    metrics: metrics,
+    tags: tags,
+    badge: badge
+  };
+
+  // Add to active state
+  state.projects.unshift(newProject);
+
+  // Save to LocalStorage for persistent browser storage
+  saveCustomProjectToStorage(newProject);
+
+  // Render & Close Add Modal
+  renderProjects();
+  document.getElementById("project-add-modal")?.classList.remove("active");
+  document.body.style.overflow = "auto";
+
+  showToast("✦ Project published to VPKBIET IKS Archive!");
+
+  // Immediately open in the Explore Details view so the user verifies it looks identical!
+  openProjectModal(newProject);
+}
+
+function saveCustomProjectToStorage(project) {
+  try {
+    let customList = [];
+    const stored = localStorage.getItem("vpkbiet_iks_custom_projects");
+    if (stored) {
+      customList = JSON.parse(stored);
+    }
+    // Remove if already exists with same id, then prepend
+    customList = customList.filter((p) => p.id !== project.id);
+    customList.unshift(project);
+    localStorage.setItem("vpkbiet_iks_custom_projects", JSON.stringify(customList));
+  } catch (err) {
+    console.warn("Could not save to localStorage:", err);
+  }
+}
+
+function exportProjectsJSON() {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state.projects, null, 2));
+  const downloadAnchor = document.createElement("a");
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", "projects.json");
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+  showToast("💾 Exported updated projects.json file");
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 /* ==========================================================================
@@ -999,7 +1407,7 @@ function handleRouting() {
 async function init() {
   initParticleCanvas();
   initMapInteractivity();
-  initSubmissionModal();
+  initAdminAndAddProjectModal();
 
   // Load Projects from data/projects.json with fallback
   try {
@@ -1012,6 +1420,23 @@ async function init() {
   } catch (e) {
     console.warn("Using offline bundled dataset:", e);
     state.projects = DEFAULT_PROJECTS;
+  }
+
+  // Merge any custom projects added via Admin Portal saved in localStorage
+  try {
+    const stored = localStorage.getItem("vpkbiet_iks_custom_projects");
+    if (stored) {
+      const customProjects = JSON.parse(stored);
+      if (Array.isArray(customProjects)) {
+        customProjects.forEach((cp) => {
+          if (!state.projects.some((p) => p.id === cp.id)) {
+            state.projects.unshift(cp);
+          }
+        });
+      }
+    }
+  } catch (err) {
+    console.warn("Error reading custom projects from localStorage:", err);
   }
 
   // Audio Toggle
