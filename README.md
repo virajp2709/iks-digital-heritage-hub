@@ -3,7 +3,7 @@
 
 [![Live Demo](https://img.shields.io/badge/Live_Website-Visit_Portal-d4af37?style=for-the-badge&logo=githubpages&logoColor=white)](https://virajp2709.github.io/iks-digital-heritage-hub/)
 [![Institution](https://img.shields.io/badge/Institution-VPKBIET_Baramati-0e3a2f?style=for-the-badge)](https://www.vpkbiet.org/)
-[![Curator](https://img.shields.io/badge/Architect_%26_Developer-Viraj_Pathak-c85a32?style=for-the-badge)](https://github.com/virajpathak27)
+[![Curator](https://img.shields.io/badge/Architect_%26_Developer-Viraj_Pathak-c85a32?style=for-the-badge)](https://github.com/virajp2709)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 ---
