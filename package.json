@@ -1,0 +1,20 @@
+{
+  "name": "iks-digital-heritage-hub",
+  "version": "1.0.0",
+  "description": "VPKBIET IKS Digital Heritage Hub — Department of Indian Knowledge Systems, Baramati",
+  "main": "dev-server.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js",
+    "serve": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "indian-knowledge-systems",
+    "iks",
+    "vpkbiet",
+    "heritage-hub",
+    "baramati"
+  ],
+  "author": "Viraj Pathak",
+  "license": "MIT"
+}
