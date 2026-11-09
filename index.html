@@ -383,19 +383,11 @@
         </p>
       </header>
 
-      <!-- Search & Category Filtering Control Bar -->
-      <div class="projects-control-bar" role="search" aria-label="Project Filters">
-        <div class="filter-pills" role="tablist">
-          <button class="filter-pill active" data-category="all" type="button" role="tab" aria-selected="true">All Domains</button>
-          <button class="filter-pill" data-category="Water" type="button" role="tab">Water & Hydraulics</button>
-          <button class="filter-pill" data-category="Vedic Mathematics" type="button" role="tab">Vedic Maths & VLSI</button>
-          <button class="filter-pill" data-category="Metallurgy" type="button" role="tab">Metallurgy & Materials</button>
-          <button class="filter-pill" data-category="Architecture" type="button" role="tab">Architecture & Acoustics</button>
-        </div>
-
-        <div class="search-wrapper">
+      <!-- Search Control Bar -->
+      <div class="projects-control-bar" role="search" aria-label="Search Projects" style="justify-content: center;">
+        <div class="search-wrapper" style="max-width: 650px; width: 100%;">
           <span class="search-icon" aria-hidden="true">🔍</span>
-          <input id="search-input" class="search-input" type="search" placeholder="Search projects, topics or students... (/)" aria-label="Search student projects">
+          <input id="search-input" class="search-input" type="search" placeholder="Search student projects by title, topic or researcher... (/)" aria-label="Search student projects">
         </div>
       </div>
 
@@ -471,7 +463,6 @@
       <div class="modal-body">
         <div class="modal-tags-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-            <span class="modal-type-tag" id="modal-project-type">Engineering</span>
             <span class="modal-date-tag" id="modal-project-date">Created Date</span>
           </div>
           <button id="modal-edit-project-btn" class="modal-edit-action-btn" type="button" title="Edit project details & photos (Requires Admin Password)">
@@ -485,7 +476,7 @@
         <!-- Tabs Navigation -->
         <nav class="modal-tabs" aria-label="Project Details Tabs">
           <button class="modal-tab-btn active" data-tab="overview" type="button">Overview & Abstract</button>
-          <button class="modal-tab-btn" data-tab="team" type="button">Team & Mentor</button>
+          <button class="modal-tab-btn" data-tab="team" type="button">Student Researchers</button>
           <button class="modal-tab-btn" data-tab="qr" type="button">Exhibition QR & Citation</button>
         </nav>
 
@@ -493,9 +484,6 @@
         <div class="modal-tab-pane active" id="tab-overview">
           <h3 class="info-section-title"><span aria-hidden="true">📜</span> Project Abstract & Problem Statement</h3>
           <p class="info-text-paragraph" id="modal-abstract-text"></p>
-
-          <!-- Key Metrics Grid -->
-          <div class="metrics-grid" id="modal-metrics-grid"></div>
 
           <h3 class="info-section-title"><span aria-hidden="true">🏛️</span> Historical Indian Tradition & Reference</h3>
           <p class="info-text-paragraph" id="modal-historical-text"></p>
@@ -509,8 +497,8 @@
 
         <!-- Tab 2: Team Members -->
         <div class="modal-tab-pane" id="tab-team">
-          <h3 class="info-section-title"><span aria-hidden="true">👥</span> Student Researchers & Faculty Guide</h3>
-          <p class="info-text-paragraph">Carried out under the guidance of the Department of Indian Knowledge Systems (IKS Cell), VPKBIET Baramati.</p>
+          <h3 class="info-section-title"><span aria-hidden="true">👥</span> Student Researchers</h3>
+          <p class="info-text-paragraph">Student research conducted at the Department of Indian Knowledge Systems (IKS Cell), VPKBIET Baramati.</p>
           <div class="team-cards-grid" id="modal-team-grid"></div>
         </div>
 
@@ -625,19 +613,6 @@
                 </button>
               </div>
 
-              <!-- Quick Presets -->
-              <div>
-                <small style="color: var(--text-muted);">Quick Heritage Presets (click to add high-res photos):</small>
-                <div class="preset-photo-pills">
-                  <button type="button" class="preset-photo-pill" data-preset="reservoir">💧 Dholavira Reservoir</button>
-                  <button type="button" class="preset-photo-pill" data-preset="stepwell">🏛️ Ancient Stepwell</button>
-                  <button type="button" class="preset-photo-pill" data-preset="manuscript">📜 Vedic Manuscript</button>
-                  <button type="button" class="preset-photo-pill" data-preset="metallurgy">⚙️ Bloomery Metallurgy</button>
-                  <button type="button" class="preset-photo-pill" data-preset="temple">🛕 Temple Acoustics</button>
-                  <button type="button" class="preset-photo-pill" data-preset="vlsi">💻 Microelectronics Hardware</button>
-                </div>
-              </div>
-
               <!-- Live Photo Preview Cards -->
               <div class="photo-previews-grid" id="photo-previews-container">
                 <!-- Injected via JavaScript -->
@@ -648,7 +623,7 @@
           <!-- SECTION 2: BASIC DETAILS -->
           <div class="form-section-card">
             <div class="form-section-header">
-              <h3><span>📋</span> Project Title & Classification</h3>
+              <h3><span>📋</span> Project Title & Date</h3>
             </div>
 
             <div class="form-row-2">
@@ -663,20 +638,7 @@
               </div>
             </div>
 
-            <div class="form-row-3">
-              <div class="form-group">
-                <label for="add-project-type">Project Discipline / Domain *</label>
-                <select id="add-project-type" class="form-control" required>
-                  <option value="Water Heritage & Civil Engineering">Water Heritage & Civil Engineering</option>
-                  <option value="Vedic Mathematics & VLSI Hardware">Vedic Mathematics & VLSI Hardware</option>
-                  <option value="Metallurgy & Material Science">Metallurgy & Material Science</option>
-                  <option value="Architecture & Acoustic Engineering">Architecture & Acoustic Engineering</option>
-                  <option value="Ethno-Botany & Ayurvedic Formulations">Ethno-Botany & Ayurvedic Formulations</option>
-                  <option value="Astronomy & Mechanical Instruments">Astronomy & Mechanical Instruments</option>
-                  <option value="Sustainable Vastu & Civil Architecture">Sustainable Vastu & Civil Architecture</option>
-                </select>
-              </div>
-
+            <div class="form-row-2">
               <div class="form-group">
                 <label for="add-project-date">Created Date *</label>
                 <input id="add-project-date" class="form-control" type="text" placeholder="e.g. November 8, 2026" required>
@@ -722,29 +684,11 @@
             </div>
           </div>
 
-          <!-- SECTION 4: TEAM & MENTOR (1:1 with Explore Details Tab 2) -->
+          <!-- SECTION 4: STUDENT RESEARCHERS (1:1 with Explore Details Tab 2) -->
           <div class="form-section-card">
             <div class="form-section-header">
-              <h3><span>👥</span> Student Researchers & Faculty Guide</h3>
-              <small style="color: var(--text-gold);">Exact cards shown in Explore Details team tab</small>
-            </div>
-
-            <!-- Faculty Guide -->
-            <div class="form-row-3" style="margin-bottom: 20px;">
-              <div class="form-group">
-                <label for="add-mentor-name">Faculty Guide / Mentor Name *</label>
-                <input id="add-mentor-name" class="form-control" type="text" placeholder="e.g. Prof. S. R. Deshpande" required>
-              </div>
-
-              <div class="form-group">
-                <label for="add-mentor-role">Faculty Designation / Role *</label>
-                <input id="add-mentor-role" class="form-control" type="text" placeholder="e.g. Faculty Lead, VPKBIET IKS Cell" required>
-              </div>
-
-              <div class="form-group">
-                <label for="add-mentor-inst">Department / Cell *</label>
-                <input id="add-mentor-inst" class="form-control" type="text" placeholder="e.g. VPKBIET Baramati, Dept. of Civil Engg" required>
-              </div>
+              <h3><span>👥</span> Student Researchers</h3>
+              <small style="color: var(--text-gold);">Shown in Explore Details team tab</small>
             </div>
 
             <!-- Student Researchers Dynamic List -->
@@ -758,47 +702,6 @@
 
               <div id="researchers-list-container">
                 <!-- Injected via JavaScript -->
-              </div>
-            </div>
-          </div>
-
-          <!-- SECTION 5: TECHNICAL METRICS & HIGHLIGHTS -->
-          <div class="form-section-card">
-            <div class="form-section-header">
-              <h3><span>📊</span> Key Metrics & Award Highlights (Optional)</h3>
-              <small style="color: var(--text-gold);">Displayed as quantitative badges in Explore Details</small>
-            </div>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="add-metric-1-label">Metric 1 Label</label>
-                <input id="add-metric-1-label" class="form-control" type="text" placeholder="e.g. Storage Capacity Model">
-              </div>
-              <div class="form-group">
-                <label for="add-metric-1-val">Metric 1 Value</label>
-                <input id="add-metric-1-val" class="form-control" type="text" placeholder="e.g. 250,000 m³">
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="add-metric-2-label">Metric 2 Label</label>
-                <input id="add-metric-2-label" class="form-control" type="text" placeholder="e.g. Filtration Efficiency">
-              </div>
-              <div class="form-group">
-                <label for="add-metric-2-val">Metric 2 Value</label>
-                <input id="add-metric-2-val" class="form-control" type="text" placeholder="e.g. 78% Passive (0 kWh)">
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="add-project-badge">Honor / Award Badge (Optional)</label>
-                <input id="add-project-badge" class="form-control" type="text" placeholder="e.g. Excellence Award Winner or National Finalist">
-              </div>
-              <div class="form-group">
-                <label for="add-project-tags">Keywords / Tags (Comma separated)</label>
-                <input id="add-project-tags" class="form-control" type="text" placeholder="e.g. Hydraulics, Dholavira, ANSYS, VPKBIET">
               </div>
             </div>
           </div>

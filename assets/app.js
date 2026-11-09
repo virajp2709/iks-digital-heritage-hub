@@ -322,7 +322,7 @@ const TRANSLATIONS = {
     collegeCell: "VPKBIET IKS Cell, Baramati",
     modalTabs: {
       overview: "Overview & Abstract",
-      team: "Student Team & Mentor",
+      team: "Student Researchers",
       qr: "Exhibition QR & Citation"
     },
     viewProjectBtn: "Explore Details →",
@@ -354,7 +354,7 @@ const TRANSLATIONS = {
     collegeCell: "VPKBIET IKS सेल, बारामती",
     modalTabs: {
       overview: "प्रकल्पाविषयी व संशोधन",
-      team: "विद्यार्थी संघ व मार्गदर्शक",
+      team: "विद्यार्थी संशोधक",
       qr: "प्रदर्शन QR व संदर्भ"
     },
     viewProjectBtn: "सविस्तर माहिती पाहा →",
@@ -617,8 +617,6 @@ function renderProjects() {
     card.innerHTML = `
       <div class="card-image-box">
         <img src="${mainPhoto}" alt="${p.photos?.[0]?.alt || getLocalized(p.title)}" loading="lazy">
-        <span class="card-type-badge">${state.lang === "mr" ? (p.typeMr || p.type) : p.type}</span>
-        ${p.badge ? `<span class="card-award-badge">✦ ${p.badge}</span>` : ""}
       </div>
       <div class="card-content">
         <div class="card-date-row">
@@ -663,10 +661,13 @@ function openProjectModal(project) {
   const modal = document.getElementById("project-detail-modal");
   if (!modal) return;
 
-  // Title, type, date
-  document.getElementById("modal-project-type").textContent = state.lang === "mr" ? (project.typeMr || project.type) : project.type;
-  document.getElementById("modal-project-date").textContent = `📅 Created: ${project.createdDate} · ${project.academicYear || ""}`;
-  document.getElementById("modal-project-title").textContent = getLocalized(project.title);
+  // Date and title
+  const typeTag = document.getElementById("modal-project-type");
+  if (typeTag) typeTag.textContent = state.lang === "mr" ? (project.typeMr || project.type || "") : (project.type || "");
+  const dateTag = document.getElementById("modal-project-date");
+  if (dateTag) dateTag.textContent = `📅 Created: ${project.createdDate} · ${project.academicYear || ""}`;
+  const titleEl = document.getElementById("modal-project-title");
+  if (titleEl) titleEl.textContent = getLocalized(project.title);
 
   // Photos & Gallery Carousel
   renderModalGallery(project);
@@ -682,22 +683,7 @@ function openProjectModal(project) {
   if (methodologyEl) methodologyEl.textContent = project.info?.engineeringMethodology || "Modern engineering simulation and prototyping.";
   if (findingsEl) findingsEl.textContent = project.info?.keyFindings || "Empirical validation completed at college laboratories.";
 
-  // Key metrics
-  const metricsContainer = document.getElementById("modal-metrics-grid");
-  if (metricsContainer) {
-    metricsContainer.innerHTML = (project.metrics || [])
-      .map(
-        (m) => `
-      <div class="metric-card">
-        <h4>${m.value}</h4>
-        <span>${m.label}</span>
-      </div>
-    `
-      )
-      .join("");
-  }
-
-  // Tab 2: Team Members
+  // Tab 2: Student Researchers
   const teamContainer = document.getElementById("modal-team-grid");
   if (teamContainer) {
     teamContainer.innerHTML = (project.teamMembers || [])
@@ -714,19 +700,6 @@ function openProjectModal(project) {
     `
       )
       .join("");
-
-    if (project.mentor) {
-      teamContainer.innerHTML += `
-        <div class="team-member-card" style="border-color: var(--gold-primary); background: rgba(212, 175, 55, 0.08);">
-          <div class="member-avatar" style="background: #fff; color: #000;">🏛️</div>
-          <div class="member-info">
-            <h4>${project.mentor}</h4>
-            <p>Faculty Guide & Mentor</p>
-            <small>${project.institution || "VPKBIET IKS Department"}</small>
-          </div>
-        </div>
-      `;
-    }
   }
 
   // Tab 3: QR Studio
@@ -853,33 +826,6 @@ function closeProjectModal() {
 /* ==========================================================================
    ADMIN AUTHENTICATION & ADD PROJECT PORTAL (PASSWORD: "2026")
    ========================================================================== */
-
-const PHOTO_PRESETS = {
-  reservoir: {
-    url: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
-    caption: "Dholavira Ancient Reservoir & Rock-cut Stepped Bunds"
-  },
-  stepwell: {
-    url: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80",
-    caption: "Hydraulic Stepwell (Baoli) Geometric Water Access"
-  },
-  manuscript: {
-    url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
-    caption: "Sanskrit Mathematical Palm-Leaf Manuscript"
-  },
-  metallurgy: {
-    url: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=80",
-    caption: "Traditional Forge-Welding & Bloomery Hearth Recreation"
-  },
-  temple: {
-    url: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=1200&q=80",
-    caption: "Brihadeeswara Temple Granite Vimana Tower & Acoustic Corridors"
-  },
-  vlsi: {
-    url: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-    caption: "FPGA Silicon Board Testing of Hardware Vedic Multiplier"
-  }
-};
 
 let addedProjectPhotos = [];
 let adminActionContext = {
@@ -1018,21 +964,6 @@ function initAdminAndAddProjectModal() {
     document.getElementById("add-project-title").value = project.title?.en || (typeof project.title === "string" ? project.title : "");
     document.getElementById("add-project-title-mr").value = project.title?.mr || "";
 
-    const typeSelect = document.getElementById("add-project-type");
-    if (typeSelect) {
-      let matched = false;
-      for (let opt of typeSelect.options) {
-        if (opt.value === project.type) {
-          opt.selected = true;
-          matched = true;
-          break;
-        }
-      }
-      if (!matched && typeSelect.options.length > 0) {
-        typeSelect.options[0].selected = true;
-      }
-    }
-
     document.getElementById("add-project-date").value = project.createdDate || "";
     document.getElementById("add-project-year").value = project.academicYear || "";
     document.getElementById("add-project-summary").value = project.summary?.en || (typeof project.summary === "string" ? project.summary : "");
@@ -1041,34 +972,6 @@ function initAdminAndAddProjectModal() {
     document.getElementById("add-project-historical").value = project.info?.historicalContext || "";
     document.getElementById("add-project-methodology").value = project.info?.engineeringMethodology || "";
     document.getElementById("add-project-findings").value = project.info?.keyFindings || "";
-
-    // Mentor
-    const mentorStr = project.mentor || "";
-    const mentorName = mentorStr.split("(")[0]?.trim() || mentorStr;
-    const mentorRole = mentorStr.includes("(") ? mentorStr.split("(")[1].replace(")", "").trim() : "Faculty Guide, VPKBIET IKS Cell";
-    document.getElementById("add-mentor-name").value = mentorName;
-    document.getElementById("add-mentor-role").value = mentorRole;
-    document.getElementById("add-mentor-inst").value = project.institution || "VPKBIET Baramati";
-
-    // Metrics
-    if (project.metrics && project.metrics[0]) {
-      document.getElementById("add-metric-1-label").value = project.metrics[0].label || "";
-      document.getElementById("add-metric-1-val").value = project.metrics[0].value || "";
-    } else {
-      document.getElementById("add-metric-1-label").value = "";
-      document.getElementById("add-metric-1-val").value = "";
-    }
-
-    if (project.metrics && project.metrics[1]) {
-      document.getElementById("add-metric-2-label").value = project.metrics[1].label || "";
-      document.getElementById("add-metric-2-val").value = project.metrics[1].value || "";
-    } else {
-      document.getElementById("add-metric-2-label").value = "";
-      document.getElementById("add-metric-2-val").value = "";
-    }
-
-    document.getElementById("add-project-badge").value = project.badge || "";
-    document.getElementById("add-project-tags").value = (project.tags || []).join(", ");
 
     // Photos: deep copy to allow editing, adding new photos, or deleting
     addedProjectPhotos = project.photos && project.photos.length > 0
@@ -1274,23 +1177,6 @@ function initPhotoManager() {
       showToast("Photo added to gallery");
     });
   }
-
-  // Preset Buttons
-  document.querySelectorAll(".preset-photo-pill").forEach((pill) => {
-    pill.addEventListener("click", () => {
-      const presetKey = pill.dataset.preset;
-      const preset = PHOTO_PRESETS[presetKey];
-      if (preset) {
-        addedProjectPhotos.push({
-          url: preset.url,
-          caption: preset.caption,
-          alt: preset.caption
-        });
-        renderPhotoPreviews();
-        showToast(`Added ${pill.textContent.trim()} photo`);
-      }
-    });
-  });
 }
 
 function renderPhotoPreviews() {
@@ -1355,7 +1241,6 @@ function handleAddProjectSubmit(e) {
 
   const titleEn = document.getElementById("add-project-title")?.value.trim() || "";
   const titleMr = document.getElementById("add-project-title-mr")?.value.trim() || titleEn;
-  const type = document.getElementById("add-project-type")?.value || "Civil & Water Heritage";
   const createdDate = document.getElementById("add-project-date")?.value.trim() || "November 2026";
   const academicYear = document.getElementById("add-project-year")?.value.trim() || "2026-2027";
   const summary = document.getElementById("add-project-summary")?.value.trim() || "";
@@ -1364,10 +1249,6 @@ function handleAddProjectSubmit(e) {
   const historical = document.getElementById("add-project-historical")?.value.trim() || "";
   const methodology = document.getElementById("add-project-methodology")?.value.trim() || "";
   const findings = document.getElementById("add-project-findings")?.value.trim() || "";
-
-  const mentorName = document.getElementById("add-mentor-name")?.value.trim() || "Prof. S. R. Deshpande";
-  const mentorRole = document.getElementById("add-mentor-role")?.value.trim() || "Faculty Lead, VPKBIET IKS Cell";
-  const mentorInst = document.getElementById("add-mentor-inst")?.value.trim() || "VPKBIET Baramati";
 
   // Gather researchers
   const researcherRows = document.querySelectorAll("#researchers-list-container .researcher-row");
@@ -1395,28 +1276,6 @@ function handleAddProjectSubmit(e) {
     });
   }
 
-  // Gather Metrics
-  const metrics = [];
-  const m1Label = document.getElementById("add-metric-1-label")?.value.trim();
-  const m1Val = document.getElementById("add-metric-1-val")?.value.trim();
-  const m2Label = document.getElementById("add-metric-2-label")?.value.trim();
-  const m2Val = document.getElementById("add-metric-2-val")?.value.trim();
-
-  if (m1Label && m1Val) metrics.push({ label: m1Label, value: m1Val });
-  if (m2Label && m2Val) metrics.push({ label: m2Label, value: m2Val });
-
-  if (metrics.length === 0) {
-    metrics.push({ label: "Verification Status", value: "Verified & Evaluated" });
-    metrics.push({ label: "Research Cell", value: "VPKBIET IKS" });
-  }
-
-  // Tags & Badge
-  const badge = document.getElementById("add-project-badge")?.value.trim() || "VPKBIET Featured";
-  const tagsInput = document.getElementById("add-project-tags")?.value.trim() || "";
-  const tags = tagsInput
-    ? tagsInput.split(",").map((t) => t.trim()).filter(Boolean)
-    : [type, "VPKBIET IKS", "Student Project"];
-
   // Photos
   const photos = addedProjectPhotos.length > 0 ? addedProjectPhotos : [
     {
@@ -1439,12 +1298,8 @@ function handleAddProjectSubmit(e) {
       en: titleEn,
       mr: titleMr
     },
-    type: type,
-    typeMr: type,
     createdDate: createdDate,
     academicYear: academicYear,
-    institution: mentorInst,
-    mentor: `${mentorName} (${mentorRole})`,
     summary: {
       en: summary,
       mr: summary
@@ -1456,10 +1311,7 @@ function handleAddProjectSubmit(e) {
       keyFindings: findings
     },
     photos: photos,
-    teamMembers: teamMembers,
-    metrics: metrics,
-    tags: tags,
-    badge: badge
+    teamMembers: teamMembers
   };
 
   if (isEditing) {
