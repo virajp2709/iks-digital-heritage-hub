@@ -1,5 +1,75 @@
 [
   {
+    "id": "vpkbiet-the-iron-pillar-of-delhi-ancient-indian-metallurgy-corrosion-resistance-materials-science",
+    "title": {
+      "en": "The Iron Pillar of Delhi: Ancient Indian Metallurgy, Corrosion Resistance & Materials Science",
+      "mr": "दिल्लीचा लोहस्तंभ: प्राचीन भारतीय धातुशास्त्र, गंजरोधक क्षमता आणि पदार्थ विज्ञान"
+    },
+    "createdDate": "November 11, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the historical significance and metallurgical excellence of the Iron Pillar of Delhi, located in the Qutb Complex, New Delhi. Dating to the Gupta period (c. 4th–5th century CE), the pillar is a remarkable example of ancient Indian ironworking and large-scale forging techniques. The study examines its wrought iron composition, relatively high phosphorus content, low carbon content, and the formation of a protective surface layer of iron hydrogen phosphate hydrate (misawite), which contributes to its corrosion resistance. It also investigates the forge-welding process used to construct the massive pillar, its structural design, foundation, and historical relocation. By separating popular myths from scientific explanations, the project highlights the achievements of ancient Indian metalworkers and demonstrates the relevance of traditional metallurgy to modern materials science.",
+      "mr": "This project explores the historical significance and metallurgical excellence of the Iron Pillar of Delhi, located in the Qutb Complex, New Delhi. Dating to the Gupta period (c. 4th–5th century CE), the pillar is a remarkable example of ancient Indian ironworking and large-scale forging techniques. The study examines its wrought iron composition, relatively high phosphorus content, low carbon content, and the formation of a protective surface layer of iron hydrogen phosphate hydrate (misawite), which contributes to its corrosion resistance. It also investigates the forge-welding process used to construct the massive pillar, its structural design, foundation, and historical relocation. By separating popular myths from scientific explanations, the project highlights the achievements of ancient Indian metalworkers and demonstrates the relevance of traditional metallurgy to modern materials science."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Munjaji Adkine",
+        "role": "Project Leader",
+        "department": "AIDS-1",
+        "email": "munjaji.adkine@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sagar Aglawe",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "sagar.aglawe@vpkbiet.ac.in"
+      },
+      {
+        "name": "Arush Bamdale",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "arush.bamdale@vpkbiet.ac.in"
+      },
+      {
+        "name": "Abhishek Chavan",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "abhishek.chavan@vpkbiet.ac.in"
+      },
+      {
+        "name": "Chaitanya Rajput",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "chaitanya.rajput@vpkbiet.ac.in"
+      },
+      {
+        "name": "Ammar Shaikh",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "ammar.shaikh@vpkbiet.ac.in"
+      },
+      {
+        "name": "Ayush Shahane",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "ayush.shahane@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-chhanda-shastra-of-pingala-ancient-indian-mathematics-prosody-binary-systems-fibonacci-sequence",
     "title": {
       "en": "Chhanda Shastra of Pingala: Ancient Indian Mathematics, Prosody, Binary Systems & Fibonacci Sequence",
