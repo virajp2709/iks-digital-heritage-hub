@@ -1,5 +1,139 @@
 [
   {
+    "id": "vpkbiet-panini-s-grammar-the-ashtadhyayi-sanskrit-linguistics-logical-rule-systems-foundations-of-natural-language-processing",
+    "title": {
+      "en": "Panini's Grammar: The Ashtadhyayi, Sanskrit Linguistics, Logical Rule Systems & Foundations of Natural Language Processing",
+      "mr": "पाणिनींचे व्याकरण: अष्टाध्यायी, संस्कृत भाषाशास्त्र, तार्किक नियमप्रणाली आणि नैसर्गिक भाषा प्रक्रियेची पायाभूत तत्त्वे"
+    },
+    "createdDate": "November 11, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the contributions of the ancient Indian grammarian Panini to Sanskrit grammar and linguistics through his renowned work, the Ashtadhyayi. It examines the historical development of Sanskrit grammar, Panini's systematic approach to language structure, and the approximately 4,000 grammatical rules (Sutras) organised into eight chapters. The project highlights how Panini used logical and rule-based methods, including conditional rules, specialised grammatical terminology, rule precedence, modular organisation, and recursion to explain word formation and grammatical structures. It also discusses the connection between Panini's grammatical framework and modern Artificial Intelligence (AI) and Natural Language Processing (NLP), particularly in language processing and computational grammar. Additionally, it introduces Sanskrit word formation through verbal roots (Dhatu), nominal bases (Pratipadika), derivation, composition, and inflection, demonstrating the systematic nature of the Sanskrit language.",
+      "mr": "This project explores the contributions of the ancient Indian grammarian Panini to Sanskrit grammar and linguistics through his renowned work, the Ashtadhyayi. It examines the historical development of Sanskrit grammar, Panini's systematic approach to language structure, and the approximately 4,000 grammatical rules (Sutras) organised into eight chapters. The project highlights how Panini used logical and rule-based methods, including conditional rules, specialised grammatical terminology, rule precedence, modular organisation, and recursion to explain word formation and grammatical structures. It also discusses the connection between Panini's grammatical framework and modern Artificial Intelligence (AI) and Natural Language Processing (NLP), particularly in language processing and computational grammar. Additionally, it introduces Sanskrit word formation through verbal roots (Dhatu), nominal bases (Pratipadika), derivation, composition, and inflection, demonstrating the systematic nature of the Sanskrit language."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Pradnya Bankar",
+        "role": "Project Leader",
+        "department": "AIDS-3",
+        "email": "pradnya.bankar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Poonam Chavan",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "poonam.chavan@vpkbiet.ac.in"
+      },
+      {
+        "name": "Mayuri Sagare",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "mayuri.sagare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Payal Gend",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "payal.gend@vpkbiet.ac.in"
+      },
+      {
+        "name": "Purva Jagtap",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "purva.jagtap@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "vpkbiet-the-ancient-archaeology-of-india-archaeological-heritage-historical-evidence-indian-knowledge-systems-with-special-focus-on-maharashtra",
+    "title": {
+      "en": "The Ancient Archaeology of India: Archaeological Heritage, Historical Evidence & Indian Knowledge Systems with Special Focus on Maharashtra",
+      "mr": "प्राचीन भारताचे पुरातत्त्वशास्त्र: पुरातत्त्वीय वारसा, ऐतिहासिक पुरावे आणि भारतीय ज्ञानप्रणाली – महाराष्ट्रावर विशेष भर"
+    },
+    "createdDate": "November 11, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the archaeological heritage of ancient India, with special focus on Maharashtra, and examines how archaeological evidence helps us understand India's history, culture, and traditional knowledge systems. It covers six major research areas across nineteen archaeological sites, including ancient civilizations, historical chronology, excavation methods, coins, inscriptions, seals, pottery, sculptures, paintings, monuments, and architecture. Special attention is given to ten important Maharashtra heritage sites: Daimabad, Nevasa, Paithan, Ter (Tagara), Bhaja, Karla, Pitalkhora, Ajanta, Ellora, and Elephanta. The project also highlights scientific and engineering achievements reflected in ancient drainage systems, reservoirs, metalworking, temple architecture, and rock-cut monuments. Through secondary research using archaeological and historical sources, it explains the importance of evidence-based interpretation, heritage conservation, and the contribution of archaeology to the study of Indian Knowledge Systems.",
+      "mr": "This project explores the archaeological heritage of ancient India, with special focus on Maharashtra, and examines how archaeological evidence helps us understand India's history, culture, and traditional knowledge systems. It covers six major research areas across nineteen archaeological sites, including ancient civilizations, historical chronology, excavation methods, coins, inscriptions, seals, pottery, sculptures, paintings, monuments, and architecture. Special attention is given to ten important Maharashtra heritage sites: Daimabad, Nevasa, Paithan, Ter (Tagara), Bhaja, Karla, Pitalkhora, Ajanta, Ellora, and Elephanta. The project also highlights scientific and engineering achievements reflected in ancient drainage systems, reservoirs, metalworking, temple architecture, and rock-cut monuments. Through secondary research using archaeological and historical sources, it explains the importance of evidence-based interpretation, heritage conservation, and the contribution of archaeology to the study of Indian Knowledge Systems."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Aditya Avinash Gaikwad",
+        "role": "Project Leader",
+        "department": "AIDS-1",
+        "email": "aditya.avinash.gaikwad@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aditya Dasharath Jadhav",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aditya.dasharath.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aayush Sachin Pahade",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aayush.sachin.pahade@vpkbiet.ac.in"
+      },
+      {
+        "name": "Abhinav Maruti Hingane",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "abhinav.maruti.hingane@vpkbiet.ac.in"
+      },
+      {
+        "name": "Alisha Faruk Attar",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "alisha.faruk.attar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Archana Omprakash Shukla",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "archana.omprakash.shukla@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aljina Rajuddin Sayyad",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aljina.rajuddin.sayyad@vpkbiet.ac.in"
+      },
+      {
+        "name": "Arpita Ranjeet Pisal",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "arpita.ranjeet.pisal@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-harappan-cities-ancient-urban-planning-civil-architecture-water-management-of-mohenjo-daro-and-dholavira",
     "title": {
       "en": "Harappan Cities: Ancient Urban Planning, Civil Architecture & Water Management of Mohenjo-daro and Dholavira",
