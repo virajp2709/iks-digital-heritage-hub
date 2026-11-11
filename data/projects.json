@@ -1,5 +1,93 @@
 [
   {
+    "id": "vpkbiet-harappan-cities-ancient-urban-planning-civil-architecture-water-management-of-mohenjo-daro-and-dholavira",
+    "title": {
+      "en": "Harappan Cities: Ancient Urban Planning, Civil Architecture & Water Management of Mohenjo-daro and Dholavira",
+      "mr": "हडप्पाकालीन शहरे: मोहेंजोदडो आणि धोलावीरा येथील प्राचीन नगररचना, स्थापत्य अभियांत्रिकी आणि जलव्यवस्थापन"
+    },
+    "createdDate": "November 11, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the urban planning, civil architecture, and engineering achievements of two major cities of the Harappan Civilization: Mohenjo-daro and Dholavira. It examines Mohenjo-daro's citadel, lower town, Great Bath, assembly halls, planned street networks, standardized baked bricks, covered drainage systems, and household wells. It also highlights Dholavira's unique three-part fortified layout, gateways, symbolic signboard, and advanced water conservation system, including reservoirs, channels, dams, and stone-lined wells. The project compares the geographical locations, construction materials, urban divisions, and water management practices of both cities. It further connects their achievements with the Indian Knowledge System through urban planning, sanitation, resource management, and construction standardisation, demonstrating the remarkable civil engineering knowledge of the Harappan people.",
+      "mr": "This project explores the urban planning, civil architecture, and engineering achievements of two major cities of the Harappan Civilization: Mohenjo-daro and Dholavira. It examines Mohenjo-daro's citadel, lower town, Great Bath, assembly halls, planned street networks, standardized baked bricks, covered drainage systems, and household wells. It also highlights Dholavira's unique three-part fortified layout, gateways, symbolic signboard, and advanced water conservation system, including reservoirs, channels, dams, and stone-lined wells. The project compares the geographical locations, construction materials, urban divisions, and water management practices of both cities. It further connects their achievements with the Indian Knowledge System through urban planning, sanitation, resource management, and construction standardisation, demonstrating the remarkable civil engineering knowledge of the Harappan people."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Suraj Ingale",
+        "role": "Project Leader",
+        "department": "AIDS-5",
+        "email": "suraj.ingale@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sneha Mulik",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "sneha.mulik@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sonali Wani",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "sonali.wani@vpkbiet.ac.in"
+      },
+      {
+        "name": "Srushti Karande",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "srushti.karande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Siddhart Salunke",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "siddhart.salunke@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sumit Shinde",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "sumit.shinde@vpkbiet.ac.in"
+      },
+      {
+        "name": "Rushikesh Tidke",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "rushikesh.tidke@vpkbiet.ac.in"
+      },
+      {
+        "name": "Samruddhi Takbhate",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "samruddhi.takbhate@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vaibhavi Mastud",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "vaibhavi.mastud@vpkbiet.ac.in"
+      },
+      {
+        "name": "Abhay Zunzurde",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "abhay.zunzurde@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-ancient-agriculture-in-india-historical-innovations-agrarian-heritage",
     "title": {
       "en": "Ancient Agriculture in India: Historical Innovations & Agrarian Heritage",
