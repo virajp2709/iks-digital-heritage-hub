@@ -844,6 +844,7 @@ function initAdminAndAddProjectModal() {
   const openHeroBtn = document.getElementById("hero-add-trigger");
   const openFooterLink = document.getElementById("footer-add-project-link");
   const editProjectDetailBtn = document.getElementById("modal-edit-project-btn");
+  const downloadSingleDetailBtn = document.getElementById("modal-download-project-json-btn");
 
   const closeAuthBtn = document.getElementById("close-auth-modal-btn");
   const cancelAuthBtn = document.getElementById("cancel-auth-btn");
@@ -854,6 +855,9 @@ function initAdminAndAddProjectModal() {
 
   const addProjectForm = document.getElementById("admin-add-project-form");
   const exportBtn = document.getElementById("export-projects-json-btn");
+  const exportSingleBtn = document.getElementById("export-single-project-json-btn");
+  const importBtn = document.getElementById("import-projects-json-btn");
+  const importInput = document.getElementById("import-projects-json-input");
 
   // Open Add Workflow
   function triggerAdminAddWorkflow() {
@@ -906,6 +910,7 @@ function initAdminAndAddProjectModal() {
     if (submitBtn) submitBtn.innerHTML = '<span>✦</span> <span>Save & Publish Project</span>';
 
     if (deleteProjectBtn) deleteProjectBtn.style.display = "none";
+    if (exportSingleBtn) exportSingleBtn.style.display = "none";
 
     // Reset form
     if (addProjectForm) addProjectForm.reset();
@@ -957,8 +962,9 @@ function initAdminAndAddProjectModal() {
     const submitBtn = document.getElementById("save-project-submit-btn");
     if (submitBtn) submitBtn.innerHTML = '<span>✦</span> <span>Save Changes</span>';
 
-    // Show Delete Project button
+    // Show Delete Project & Download single JSON buttons
     if (deleteProjectBtn) deleteProjectBtn.style.display = "inline-flex";
+    if (exportSingleBtn) exportSingleBtn.style.display = "inline-flex";
 
     // Populate Fields
     document.getElementById("add-project-title").value = project.title?.en || (typeof project.title === "string" ? project.title : "");
@@ -1121,10 +1127,86 @@ function initAdminAndAddProjectModal() {
     addProjectForm.addEventListener("submit", handleAddProjectSubmit);
   }
 
-  // Export updated projects.json button
+  // Download single project.json from Explore Details modal
+  if (downloadSingleDetailBtn) {
+    downloadSingleDetailBtn.addEventListener("click", () => {
+      if (state.activeProject) {
+        downloadSingleProjectJSON(state.activeProject);
+      }
+    });
+  }
+
+  // Export single project.json while editing
+  if (exportSingleBtn) {
+    exportSingleBtn.addEventListener("click", () => {
+      const editingId = document.getElementById("editing-project-id")?.value;
+      const project = state.projects.find((p) => p.id === editingId) || state.activeProject;
+      if (project) {
+        downloadSingleProjectJSON(project);
+      } else {
+        showToast("Save the project first to download its project.json");
+      }
+    });
+  }
+
+  // Export all projects.json button
   if (exportBtn) {
     exportBtn.addEventListener("click", exportProjectsJSON);
   }
+
+  // Import project.json or projects.json
+  if (importBtn && importInput) {
+    importBtn.addEventListener("click", () => importInput.click());
+    importInput.addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      handleImportProjectsJSON(file);
+      importInput.value = "";
+    });
+  }
+}
+
+function compressImageFile(file, maxDimension = 1000, quality = 0.78) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const dataUrl = event.target.result;
+      if (!file.type.startsWith("image/") || file.type === "image/svg+xml") {
+        resolve(dataUrl);
+        return;
+      }
+
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width <= maxDimension && height <= maxDimension && file.size < 250 * 1024) {
+          resolve(dataUrl);
+          return;
+        }
+        if (width > height && width > maxDimension) {
+          height = Math.round((height * maxDimension) / width);
+          width = maxDimension;
+        } else if (height > maxDimension) {
+          width = Math.round((width * maxDimension) / height);
+          height = maxDimension;
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          resolve(dataUrl);
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL("image/jpeg", quality));
+      };
+      img.onerror = () => resolve(dataUrl);
+      img.src = dataUrl;
+    };
+    reader.readAsDataURL(file);
+  });
 }
 
 function initPhotoManager() {
@@ -1133,25 +1215,22 @@ function initPhotoManager() {
   const urlInput = document.getElementById("photo-url-input");
   const captionInput = document.getElementById("photo-caption-input");
 
-  // Local File Upload
+  // Local File Upload (auto-compressed to keep localStorage & projects.json fast)
   if (fileInput) {
-    fileInput.addEventListener("change", (e) => {
+    fileInput.addEventListener("change", async (e) => {
       const files = Array.from(e.target.files || []);
       if (files.length === 0) return;
 
-      files.forEach((file) => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          addedProjectPhotos.push({
-            url: event.target.result,
-            caption: file.name.replace(/\.[^/.]+$/, ""),
-            alt: file.name
-          });
-          renderPhotoPreviews();
-          showToast(`Uploaded ${file.name}`);
-        };
-        reader.readAsDataURL(file);
-      });
+      for (const file of files) {
+        const compressedUrl = await compressImageFile(file);
+        addedProjectPhotos.push({
+          url: compressedUrl,
+          caption: file.name.replace(/\.[^/.]+$/, ""),
+          alt: file.name
+        });
+        renderPhotoPreviews();
+        showToast(`Uploaded ${file.name}`);
+      }
       fileInput.value = "";
     });
   }
@@ -1374,18 +1453,66 @@ function saveCustomProjectToStorage(project) {
     localStorage.setItem("vpkbiet_iks_custom_projects", JSON.stringify(customList));
   } catch (err) {
     console.warn("Could not save to localStorage:", err);
+    showToast("⚠️ Browser storage full! Please Export projects.json and upload to GitHub.");
   }
 }
 
-function exportProjectsJSON() {
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state.projects, null, 2));
+function downloadJSONFile(data, filename) {
+  const jsonStr = JSON.stringify(data, null, 2);
+  const blob = new Blob([jsonStr], { type: "application/json;charset=utf-8" });
+  const blobUrl = URL.createObjectURL(blob);
   const downloadAnchor = document.createElement("a");
-  downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", "projects.json");
+  downloadAnchor.href = blobUrl;
+  downloadAnchor.download = filename;
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();
   downloadAnchor.remove();
-  showToast("💾 Exported updated projects.json file");
+  setTimeout(() => URL.revokeObjectURL(blobUrl), 1500);
+}
+
+function downloadSingleProjectJSON(project) {
+  if (!project) return;
+  const safeId = (project.id || "project").replace(/[^a-z0-9-_]+/gi, "-").toLowerCase();
+  const filename = `${safeId}-project.json`;
+  downloadJSONFile(project, filename);
+  showToast(`📥 Downloaded ${filename}`);
+}
+
+function exportProjectsJSON() {
+  downloadJSONFile(state.projects, "projects.json");
+  showToast("💾 Exported all projects to projects.json");
+}
+
+function handleImportProjectsJSON(file) {
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    try {
+      const parsed = JSON.parse(event.target.result);
+      const importedList = Array.isArray(parsed) ? parsed : (parsed && parsed.id ? [parsed] : []);
+      if (importedList.length === 0) {
+        showToast("⚠️ Invalid project JSON format");
+        return;
+      }
+
+      importedList.forEach((proj) => {
+        if (!proj || !proj.id) return;
+        const idx = state.projects.findIndex((p) => p.id === proj.id);
+        if (idx >= 0) {
+          state.projects[idx] = proj;
+        } else {
+          state.projects.unshift(proj);
+        }
+        saveCustomProjectToStorage(proj);
+      });
+
+      renderProjects();
+      showToast(`📂 Imported ${importedList.length} project(s) successfully!`);
+    } catch (err) {
+      console.error("Failed to import JSON:", err);
+      showToast("⚠️ Could not read JSON file");
+    }
+  };
+  reader.readAsText(file);
 }
 
 function escapeHtml(str) {
@@ -1467,9 +1594,9 @@ async function init() {
   initMapInteractivity();
   initAdminAndAddProjectModal();
 
-  // Load Projects from data/projects.json with fallback
+  // Load Projects from data/projects.json with cache-busting & fallback
   try {
-    const res = await fetch("./data/projects.json");
+    const res = await fetch(`./data/projects.json?t=${Date.now()}`, { cache: "no-store" });
     if (res.ok) {
       state.projects = await res.json();
     } else {

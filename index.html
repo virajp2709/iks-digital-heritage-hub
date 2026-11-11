@@ -461,14 +461,20 @@
 
       <!-- Modal Body -->
       <div class="modal-body">
-        <div class="modal-tags-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div class="modal-tags-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px; flex-wrap: wrap;">
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
             <span class="modal-date-tag" id="modal-project-date">Created Date</span>
           </div>
-          <button id="modal-edit-project-btn" class="modal-edit-action-btn" type="button" title="Edit project details & photos (Requires Admin Password)">
-            <span aria-hidden="true">✏️</span>
-            <span>Edit Project</span>
-          </button>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <button id="modal-download-project-json-btn" class="modal-edit-action-btn" type="button" title="Download project.json for this project">
+              <span aria-hidden="true">📥</span>
+              <span>Download project.json</span>
+            </button>
+            <button id="modal-edit-project-btn" class="modal-edit-action-btn" type="button" title="Edit project details & photos (Requires Admin Password)">
+              <span aria-hidden="true">✏️</span>
+              <span>Edit Project</span>
+            </button>
+          </div>
         </div>
 
         <h2 class="modal-title" id="modal-project-title">Project Title</h2>
@@ -712,9 +718,16 @@
               <button type="button" id="delete-project-btn" class="btn-danger-outline" style="display: none;" title="Permanently delete this project from the archive">
                 <span>🗑️</span> <span>Delete Project</span>
               </button>
-              <button type="button" id="export-projects-json-btn" class="btn-secondary-outline" title="Download updated projects.json file for permanent repository update">
-                <span>💾</span> <span>Export Updated projects.json</span>
+              <button type="button" id="export-single-project-json-btn" class="btn-secondary-outline" style="display: none;" title="Download project.json for this project">
+                <span>📥</span> <span>Download This project.json</span>
               </button>
+              <button type="button" id="export-projects-json-btn" class="btn-secondary-outline" title="Download all projects as projects.json for updating data/projects.json on GitHub">
+                <span>💾</span> <span>Export All projects.json</span>
+              </button>
+              <button type="button" id="import-projects-json-btn" class="btn-secondary-outline" title="Import project.json or projects.json file">
+                <span>📂</span> <span>Import JSON</span>
+              </button>
+              <input type="file" id="import-projects-json-input" accept=".json,application/json" style="display: none;">
             </div>
 
             <div style="display: flex; gap: 14px;">
