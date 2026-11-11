@@ -1,5 +1,69 @@
 [
   {
+    "id": "vpkbiet-indian-ancient-ethics-governance-leadership-timeless-values-and-lessons-from-india-s-glorious-past",
+    "title": {
+      "en": "Indian Ancient Ethics, Governance & Leadership: Timeless Values and Lessons from India's Glorious Past",
+      "mr": "प्राचीन भारतीय नीतिमूल्ये, शासनव्यवस्था आणि नेतृत्व: भारताच्या गौरवशाली इतिहासातील कालातीत मूल्ये आणि शिकवण"
+    },
+    "createdDate": "November 11, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the principles of ethics, governance and leadership in ancient India and their relevance to modern society. It highlights important moral values such as truth (Satya), non-violence (Ahimsa), duty and responsibility (Dharma), respect, compassion (Karuna) and self-discipline (Sanyam), as reflected in ancient Indian texts including the Vedas, Upanishads, Bhagavad Gita, Ramayana and Mahabharata. The study examines the features of ancient governance, including justice, public welfare, taxation, administration and protection of trade and resources, with reference to Chanakya's Arthashastra. It also presents the leadership contributions of Chanakya, Emperor Ashoka and Chhatrapati Shivaji Maharaj. Through these examples, the project demonstrates how ethical values, responsible leadership and people-centred governance can contribute to a just, peaceful and prosperous society.",
+      "mr": "This project explores the principles of ethics, governance and leadership in ancient India and their relevance to modern society. It highlights important moral values such as truth (Satya), non-violence (Ahimsa), duty and responsibility (Dharma), respect, compassion (Karuna) and self-discipline (Sanyam), as reflected in ancient Indian texts including the Vedas, Upanishads, Bhagavad Gita, Ramayana and Mahabharata. The study examines the features of ancient governance, including justice, public welfare, taxation, administration and protection of trade and resources, with reference to Chanakya's Arthashastra. It also presents the leadership contributions of Chanakya, Emperor Ashoka and Chhatrapati Shivaji Maharaj. Through these examples, the project demonstrates how ethical values, responsible leadership and people-centred governance can contribute to a just, peaceful and prosperous society."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Atharv Mane",
+        "role": "Project Leader",
+        "department": "AIDS-1",
+        "email": "atharv.mane@vpkbiet.ac.in"
+      },
+      {
+        "name": "Adil Mulani",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "adil.mulani@vpkbiet.ac.in"
+      },
+      {
+        "name": "Atharv Amol Sonawane",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "atharv.amol.sonawane@vpkbiet.ac.in"
+      },
+      {
+        "name": "Atul Zori",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "atul.zori@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pranav Chavan",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "pranav.chavan@vpkbiet.ac.in"
+      },
+      {
+        "name": "Prathamesh Devkule",
+        "role": "Student Researcher",
+        "department": "Engineering",
+        "email": "prathamesh.devkule@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-the-iron-pillar-of-delhi-ancient-indian-metallurgy-corrosion-resistance-materials-science",
     "title": {
       "en": "The Iron Pillar of Delhi: Ancient Indian Metallurgy, Corrosion Resistance & Materials Science",
