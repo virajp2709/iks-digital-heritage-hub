@@ -942,7 +942,7 @@ function initAdminAndAddProjectModal() {
       }
     ];
     renderPhotoPreviews();
-
+    refreshGitHubSyncUI();
     addModal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
@@ -1004,6 +1004,7 @@ function initAdminAndAddProjectModal() {
       }
     }
 
+    refreshGitHubSyncUI();
     addModal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
@@ -1086,7 +1087,7 @@ function initAdminAndAddProjectModal() {
 
   // Delete Project Button Handler
   if (deleteProjectBtn) {
-    deleteProjectBtn.addEventListener("click", () => {
+    deleteProjectBtn.addEventListener("click", async () => {
       const editingId = document.getElementById("editing-project-id")?.value;
       if (!editingId) return;
 
@@ -1106,7 +1107,14 @@ function initAdminAndAddProjectModal() {
 
         // Re-render
         renderProjects();
-        showToast("🗑️ Project deleted successfully");
+        refreshGitHubSyncUI();
+
+        const syncRes = await syncProjectsToGitHub(`Delete project: ${editingId}`);
+        if (syncRes.ok) {
+          showToast("🗑️ Project deleted & synced to GitHub!");
+        } else {
+          showToast("🗑️ Project deleted locally");
+        }
       }
     });
   }
@@ -1154,14 +1162,94 @@ function initAdminAndAddProjectModal() {
     exportBtn.addEventListener("click", exportProjectsJSON);
   }
 
-  // Import project.json or projects.json
+  // Import one or multiple project.json / projects.json files
   if (importBtn && importInput) {
     importBtn.addEventListener("click", () => importInput.click());
-    importInput.addEventListener("change", (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      handleImportProjectsJSON(file);
+    importInput.addEventListener("change", async (e) => {
+      const files = Array.from(e.target.files || []);
+      if (files.length === 0) return;
+      await handleImportProjectsJSON(files);
       importInput.value = "";
+    });
+  }
+
+  // GitHub Auto-Sync Panel Controls
+  const ghToggleBtn = document.getElementById("gh-toggle-setup-btn");
+  const ghTokenBox = document.getElementById("gh-token-box");
+  const ghSaveBtn = document.getElementById("gh-save-token-btn");
+  const ghDisconnectBtn = document.getElementById("gh-disconnect-btn");
+  const ghSyncNowBtn = document.getElementById("gh-sync-now-btn");
+
+  if (ghToggleBtn && ghTokenBox) {
+    ghToggleBtn.addEventListener("click", () => {
+      const isHidden = ghTokenBox.style.display === "none";
+      ghTokenBox.style.display = isHidden ? "block" : "none";
+    });
+  }
+
+  if (ghSaveBtn) {
+    ghSaveBtn.addEventListener("click", async () => {
+      const repo = document.getElementById("gh-repo-input")?.value.trim() || "virajp2709/iks-digital-heritage-hub";
+      const branch = document.getElementById("gh-branch-input")?.value.trim() || "main";
+      const token = document.getElementById("gh-token-input")?.value.trim() || getGitHubSyncConfig().token;
+
+      if (!token) {
+        showToast("⚠️ Please paste your GitHub Personal Access Token");
+        document.getElementById("gh-token-input")?.focus();
+        return;
+      }
+
+      saveGitHubSyncConfig({ repo, branch, token });
+      refreshGitHubSyncUI();
+      ghSaveBtn.disabled = true;
+      ghSaveBtn.innerHTML = '<span>⏳</span> <span>Publishing to GitHub...</span>';
+
+      const res = await syncProjectsToGitHub(`Sync ${state.projects.length} projects via VPKBIET IKS Admin Hub`);
+      ghSaveBtn.disabled = false;
+      ghSaveBtn.innerHTML = '<span>✓</span> <span>Save & Publish All Now</span>';
+
+      if (res.ok) {
+        if (ghTokenBox) ghTokenBox.style.display = "none";
+        showToast(`☁️ Published all ${state.projects.length} projects to GitHub! Live on mobile in ~60s.`);
+      } else {
+        showToast(`⚠️ GitHub Sync failed: ${res.error}`);
+      }
+    });
+  }
+
+  if (ghDisconnectBtn) {
+    ghDisconnectBtn.addEventListener("click", () => {
+      clearGitHubSyncConfig();
+      const tokenInp = document.getElementById("gh-token-input");
+      if (tokenInp) tokenInp.value = "";
+      refreshGitHubSyncUI();
+      showToast("GitHub token disconnected from this browser");
+    });
+  }
+
+  if (ghSyncNowBtn) {
+    ghSyncNowBtn.addEventListener("click", async () => {
+      const cfg = getGitHubSyncConfig();
+      if (!cfg.token) {
+        if (ghTokenBox) ghTokenBox.style.display = "block";
+        document.getElementById("gh-token-input")?.focus();
+        showToast("Enter your GitHub Token once to publish all projects automatically!");
+        return;
+      }
+
+      ghSyncNowBtn.disabled = true;
+      const origHtml = ghSyncNowBtn.innerHTML;
+      ghSyncNowBtn.innerHTML = '<span>⏳</span> <span>Publishing...</span>';
+
+      const res = await syncProjectsToGitHub(`Publish all ${state.projects.length} projects from IKS Hub`);
+      ghSyncNowBtn.disabled = false;
+      ghSyncNowBtn.innerHTML = origHtml;
+
+      if (res.ok) {
+        showToast(`☁️ Published all ${state.projects.length} projects to GitHub! Live on mobile in ~60s.`);
+      } else {
+        showToast(`⚠️ GitHub Sync failed: ${res.error}`);
+      }
     });
   }
 }
@@ -1315,7 +1403,7 @@ function addResearcherRow(name = "", role = "Student Researcher", dept = "Engine
   container.appendChild(row);
 }
 
-function handleAddProjectSubmit(e) {
+async function handleAddProjectSubmit(e) {
   e.preventDefault();
 
   const titleEn = document.getElementById("add-project-title")?.value.trim() || "";
@@ -1409,13 +1497,22 @@ function handleAddProjectSubmit(e) {
 
   // Render & Close Add Modal
   renderProjects();
+  refreshGitHubSyncUI();
   document.getElementById("project-add-modal")?.classList.remove("active");
   document.body.style.overflow = "auto";
 
-  showToast(isEditing ? "✦ Project changes saved successfully!" : "✦ Project published to VPKBIET IKS Archive!");
-
   // Immediately open in the Explore Details view so the user verifies it looks identical!
   openProjectModal(projectData);
+
+  // Auto-sync to GitHub if token is configured
+  const syncRes = await syncProjectsToGitHub(isEditing ? `Update project: ${titleEn}` : `Add project: ${titleEn}`);
+  if (syncRes.ok) {
+    showToast(isEditing ? "☁️ Project changes saved & synced to GitHub!" : "☁️ Project published & synced to GitHub!");
+  } else if (syncRes.error) {
+    showToast(`Saved locally. GitHub sync error: ${syncRes.error}`);
+  } else {
+    showToast(isEditing ? "✦ Project changes saved locally!" : "✦ Project saved locally! Connect GitHub Sync to publish to mobile.");
+  }
 }
 
 function recordDeletedProject(id) {
@@ -1483,16 +1580,24 @@ function exportProjectsJSON() {
   showToast("💾 Exported all projects to projects.json");
 }
 
-function handleImportProjectsJSON(file) {
-  const reader = new FileReader();
-  reader.onload = (event) => {
+function readFileAsTextAsync(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => resolve(e.target.result);
+    reader.onerror = (e) => reject(e);
+    reader.readAsText(file);
+  });
+}
+
+async function handleImportProjectsJSON(files) {
+  const fileList = Array.isArray(files) ? files : [files];
+  let importedCount = 0;
+
+  for (const file of fileList) {
     try {
-      const parsed = JSON.parse(event.target.result);
+      const text = await readFileAsTextAsync(file);
+      const parsed = JSON.parse(text);
       const importedList = Array.isArray(parsed) ? parsed : (parsed && parsed.id ? [parsed] : []);
-      if (importedList.length === 0) {
-        showToast("⚠️ Invalid project JSON format");
-        return;
-      }
 
       importedList.forEach((proj) => {
         if (!proj || !proj.id) return;
@@ -1503,16 +1608,156 @@ function handleImportProjectsJSON(file) {
           state.projects.unshift(proj);
         }
         saveCustomProjectToStorage(proj);
+        importedCount += 1;
       });
-
-      renderProjects();
-      showToast(`📂 Imported ${importedList.length} project(s) successfully!`);
     } catch (err) {
-      console.error("Failed to import JSON:", err);
-      showToast("⚠️ Could not read JSON file");
+      console.error("Failed to import JSON:", file.name, err);
     }
+  }
+
+  if (importedCount === 0) {
+    showToast("⚠️ No valid project JSON found in selected file(s)");
+    return;
+  }
+
+  renderProjects();
+  refreshGitHubSyncUI();
+
+  const syncRes = await syncProjectsToGitHub(`Import ${importedCount} project(s) via IKS Admin Hub`);
+  if (syncRes.ok) {
+    showToast(`☁️ Imported & synced ${importedCount} project(s) to GitHub!`);
+  } else {
+    showToast(`📂 Imported ${importedCount} project(s)! Click "Publish All to GitHub" to show on mobile.`);
+  }
+}
+
+/* ==========================================================================
+   GITHUB DIRECT AUTO-SYNC (UPDATES data/projects.json VIA GITHUB REST API)
+   ========================================================================== */
+
+const GH_SYNC_STORAGE_KEY = "vpkbiet_iks_gh_config";
+
+function getGitHubSyncConfig() {
+  try {
+    const raw = localStorage.getItem(GH_SYNC_STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {
+    console.warn("Could not read GitHub config:", e);
+  }
+  return {
+    repo: "virajp2709/iks-digital-heritage-hub",
+    branch: "main",
+    token: ""
   };
-  reader.readAsText(file);
+}
+
+function saveGitHubSyncConfig(cfg) {
+  try {
+    localStorage.setItem(GH_SYNC_STORAGE_KEY, JSON.stringify(cfg));
+  } catch (e) {
+    console.warn("Could not save GitHub config:", e);
+  }
+}
+
+function clearGitHubSyncConfig() {
+  try {
+    localStorage.removeItem(GH_SYNC_STORAGE_KEY);
+  } catch (e) {
+    console.warn("Could not clear GitHub config:", e);
+  }
+}
+
+function refreshGitHubSyncUI() {
+  const cfg = getGitHubSyncConfig();
+  const statusEl = document.getElementById("gh-sync-status");
+  const countEl = document.getElementById("gh-local-count");
+  const repoInp = document.getElementById("gh-repo-input");
+  const branchInp = document.getElementById("gh-branch-input");
+  const disconnectBtn = document.getElementById("gh-disconnect-btn");
+
+  if (countEl) countEl.textContent = String(state.projects.length);
+  if (repoInp && cfg.repo) repoInp.value = cfg.repo;
+  if (branchInp && cfg.branch) branchInp.value = cfg.branch;
+
+  if (cfg.token) {
+    if (statusEl) {
+      statusEl.textContent = `🟢 Auto-Sync Active · ${cfg.repo} (${cfg.branch})`;
+      statusEl.style.color = "#6ef3a5";
+    }
+    if (disconnectBtn) disconnectBtn.style.display = "inline-flex";
+  } else {
+    if (statusEl) {
+      statusEl.textContent = "⚪ Not Connected (Projects stay in this browser only until synced)";
+      statusEl.style.color = "var(--text-gold)";
+    }
+    if (disconnectBtn) disconnectBtn.style.display = "none";
+  }
+}
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+}
+
+async function syncProjectsToGitHub(commitMessage = "Update data/projects.json via VPKBIET IKS Hub") {
+  const cfg = getGitHubSyncConfig();
+  if (!cfg.token) return { ok: false, skipped: true };
+
+  const repo = (cfg.repo || "virajp2709/iks-digital-heritage-hub").trim();
+  const branch = (cfg.branch || "main").trim();
+  const apiUrl = `https://api.github.com/repos/${repo}/contents/data/projects.json`;
+
+  try {
+    const headers = {
+      Authorization: `Bearer ${cfg.token}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json"
+    };
+
+    // Fetch current SHA of data/projects.json
+    let sha = undefined;
+    const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}&_=${Date.now()}`, {
+      method: "GET",
+      headers,
+      cache: "no-store"
+    });
+    if (getRes.ok) {
+      const meta = await getRes.json();
+      sha = meta.sha;
+    } else if (getRes.status !== 404) {
+      const errBody = await getRes.json().catch(() => ({}));
+      return { ok: false, error: errBody.message || `HTTP ${getRes.status}` };
+    }
+
+    const contentBase64 = utf8ToBase64(JSON.stringify(state.projects, null, 2));
+    const putBody = {
+      message: commitMessage,
+      content: contentBase64,
+      branch: branch
+    };
+    if (sha) putBody.sha = sha;
+
+    const putRes = await fetch(apiUrl, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify(putBody)
+    });
+
+    if (!putRes.ok) {
+      const errBody = await putRes.json().catch(() => ({}));
+      return { ok: false, error: errBody.message || `HTTP ${putRes.status}` };
+    }
+
+    return { ok: true, count: state.projects.length };
+  } catch (err) {
+    console.error("GitHub sync error:", err);
+    return { ok: false, error: err.message || "Network error" };
+  }
 }
 
 function escapeHtml(str) {

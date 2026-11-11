@@ -586,9 +586,56 @@
         </div>
 
         <h2 id="add-modal-heading" class="modal-title" style="font-size: 1.8rem; margin-bottom: 6px;">Add New Student Project</h2>
-        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 28px;">
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px;">
           Fill out the project information below. The new entry will display with the exact same layout, photo carousel, tabs, team cards, and QR codes in <strong>Explore Student Projects</strong> and <strong>Explore Details</strong>.
         </p>
+
+        <!-- GITHUB DIRECT AUTO-SYNC PANEL -->
+        <div class="form-section-card" id="github-sync-panel" style="border-color: var(--gold-primary); background: rgba(212, 175, 55, 0.06); margin-bottom: 24px;">
+          <div class="form-section-header" style="margin-bottom: 12px;">
+            <div>
+              <h3 style="margin-bottom: 4px;"><span>☁️</span> GitHub Auto-Sync (Show on Mobile & All Devices)</h3>
+              <small id="gh-sync-status" style="color: var(--text-gold);">⚪ Not Connected (Projects stay in this browser only until synced)</small>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+              <button type="button" id="gh-sync-now-btn" class="btn-primary-gold" style="padding: 8px 16px; font-size: 0.85rem;">
+                <span>☁️</span> <span>Publish All (<span id="gh-local-count">0</span>) to GitHub</span>
+              </button>
+              <button type="button" id="gh-toggle-setup-btn" class="btn-secondary-outline" style="padding: 8px 14px; font-size: 0.82rem;">
+                <span>⚙️</span> <span>Setup Token</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="gh-token-box" style="display: none; padding-top: 14px; border-top: 1px solid rgba(212, 175, 55, 0.25);">
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5;">
+              Connect once with a GitHub Token so every <strong>Save</strong>, <strong>Edit</strong>, or <strong>Delete</strong> updates <code>data/projects.json</code> on GitHub automatically (no manual file uploads needed!).<br>
+              <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light); text-decoration: underline;">Create a Fine-Grained Token on GitHub ↗</a> → Repository access: <strong>iks-digital-heritage-hub</strong> → Permissions: <strong>Contents (Read and write)</strong>.
+            </p>
+            <div class="form-row-2" style="margin-bottom: 12px;">
+              <div class="form-group">
+                <label for="gh-repo-input">GitHub Repository (owner/repo)</label>
+                <input id="gh-repo-input" class="form-control" type="text" value="virajp2709/iks-digital-heritage-hub" placeholder="virajp2709/iks-digital-heritage-hub">
+              </div>
+              <div class="form-group">
+                <label for="gh-branch-input">Branch</label>
+                <input id="gh-branch-input" class="form-control" type="text" value="main" placeholder="main">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label for="gh-token-input">GitHub Personal Access Token (stored safely in this browser only)</label>
+              <input id="gh-token-input" class="form-control" type="password" placeholder="github_pat_... or ghp_..." autocomplete="off">
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button type="button" id="gh-save-token-btn" class="btn-primary-gold" style="padding: 8px 18px; font-size: 0.85rem;">
+                <span>✓</span> <span>Save & Publish All Now</span>
+              </button>
+              <button type="button" id="gh-disconnect-btn" class="btn-danger-outline" style="padding: 8px 14px; font-size: 0.82rem; display: none;">
+                <span>Disconnect Token</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
         <form id="admin-add-project-form">
           <input type="hidden" id="editing-project-id" value="">
@@ -724,10 +771,10 @@
               <button type="button" id="export-projects-json-btn" class="btn-secondary-outline" title="Download all projects as projects.json for updating data/projects.json on GitHub">
                 <span>💾</span> <span>Export All projects.json</span>
               </button>
-              <button type="button" id="import-projects-json-btn" class="btn-secondary-outline" title="Import project.json or projects.json file">
-                <span>📂</span> <span>Import JSON</span>
+              <button type="button" id="import-projects-json-btn" class="btn-secondary-outline" title="Import one or multiple project.json / projects.json files at once">
+                <span>📂</span> <span>Import JSON(s)</span>
               </button>
-              <input type="file" id="import-projects-json-input" accept=".json,application/json" style="display: none;">
+              <input type="file" id="import-projects-json-input" accept=".json,application/json" multiple style="display: none;">
             </div>
 
             <div style="display: flex; gap: 14px;">
