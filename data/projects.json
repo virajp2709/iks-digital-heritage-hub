@@ -1,5 +1,69 @@
 [
   {
+    "id": "vpkbiet-chhanda-shastra-of-pingala-ancient-indian-mathematics-prosody-binary-systems-fibonacci-sequence",
+    "title": {
+      "en": "Chhanda Shastra of Pingala: Ancient Indian Mathematics, Prosody, Binary Systems & Fibonacci Sequence",
+      "mr": "पिंगलांचे छंदशास्त्र: प्राचीन भारतीय गणित, काव्यछंद, द्विमान संख्या प्रणाली आणि फिबोनाची श्रेणी"
+    },
+    "createdDate": "November 11, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the mathematical contributions of Acharya Pingala through his ancient work, Chhanda Shastra, which explains the structure and patterns of Sanskrit poetic metres. It examines the classification of syllables into Laghu (short) and Guru (long), represented as binary values, and explains how different combinations form rhythmic patterns in poetry. The project highlights the mathematical relationship between the number of possible metrical patterns and the Fibonacci sequence, along with the construction of Meru Prastara (a triangular arrangement related to Pascal's Triangle). It also discusses Pingala's combinatorial methods, known as Pratyaya, and the concepts of permutations (Ank Pasha) and binary representation. Overall, the project demonstrates the connection between ancient Indian prosody, combinatorics, number patterns, and mathematical approaches that are conceptually related to modern binary systems.",
+      "mr": "This project explores the mathematical contributions of Acharya Pingala through his ancient work, Chhanda Shastra, which explains the structure and patterns of Sanskrit poetic metres. It examines the classification of syllables into Laghu (short) and Guru (long), represented as binary values, and explains how different combinations form rhythmic patterns in poetry. The project highlights the mathematical relationship between the number of possible metrical patterns and the Fibonacci sequence, along with the construction of Meru Prastara (a triangular arrangement related to Pascal's Triangle). It also discusses Pingala's combinatorial methods, known as Pratyaya, and the concepts of permutations (Ank Pasha) and binary representation. Overall, the project demonstrates the connection between ancient Indian prosody, combinatorics, number patterns, and mathematical approaches that are conceptually related to modern binary systems."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Pranali Khedkar",
+        "role": "Project Leader",
+        "department": "AIDS-3",
+        "email": "pranali.khedkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pranjali Jogdand",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "pranjali.jogdand@vpkbiet.ac.in"
+      },
+      {
+        "name": "Rutuja Patil",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "rutuja.patil@vpkbiet.ac.in"
+      },
+      {
+        "name": "Priyadarshini Shinde",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "priyadarshini.shinde@vpkbiet.ac.in"
+      },
+      {
+        "name": "Poonam Mungase",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "poonam.mungase@vpkbiet.ac.in"
+      },
+      {
+        "name": "Rajnandini Phate",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "rajnandini.phate@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-cryptography-of-ancient-india-secret-writing-coded-communication-historical-information-security",
     "title": {
       "en": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
