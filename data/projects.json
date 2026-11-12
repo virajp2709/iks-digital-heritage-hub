@@ -1,5 +1,75 @@
 [
   {
+    "id": "vpkbiet-matheran-civilization-traditional-housing-architecture-sustainable-construction-climate-responsive-engineering",
+    "title": {
+      "en": "Matheran Civilization: Traditional Housing Architecture, Sustainable Construction & Climate-Responsive Engineering",
+      "mr": "माथेरानची वास्तुसंस्कृती: पारंपरिक निवास स्थापत्यकला, शाश्वत बांधकाम आणि हवामानानुसार अभियांत्रिकी"
+    },
+    "createdDate": "November 12, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the traditional and modern housing architecture of Matheran, focusing on construction materials, engineering techniques and sustainable design suited to its hilly terrain and humid climate. It examines the use of locally available materials such as stone, laterite and timber, along with elevated foundations, sloping roofs and effective drainage systems that help manage monsoon rainfall and soil erosion. The study also highlights climate-responsive features such as wide verandahs and high ceilings for ventilation, as well as load-bearing walls, wooden beams and stone masonry for structural stability on uneven terrain. Photographic examples on page 2 illustrate heritage bungalows, traditional wooden cottages, stone masonry houses, decorative wooden verandahs and local laterite construction. The project demonstrates how Matheran's architecture combines functionality, cultural heritage and environmental sustainability.",
+      "mr": "This project explores the traditional and modern housing architecture of Matheran, focusing on construction materials, engineering techniques and sustainable design suited to its hilly terrain and humid climate. It examines the use of locally available materials such as stone, laterite and timber, along with elevated foundations, sloping roofs and effective drainage systems that help manage monsoon rainfall and soil erosion. The study also highlights climate-responsive features such as wide verandahs and high ceilings for ventilation, as well as load-bearing walls, wooden beams and stone masonry for structural stability on uneven terrain. Photographic examples on page 2 illustrate heritage bungalows, traditional wooden cottages, stone masonry houses, decorative wooden verandahs and local laterite construction. The project demonstrates how Matheran's architecture combines functionality, cultural heritage and environmental sustainability."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Vishakha Navanath Danane",
+        "role": "Project Leader",
+        "department": "Civil",
+        "email": "vishakha.navanath.danane@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vaishnavi Nitin Shendkar",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "vaishnavi.nitin.shendkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Anagha Amol Nandrekar",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "anagha.amol.nandrekar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Anushka Sangram Sorate",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "anushka.sangram.sorate@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sandhya Prakash Waghmare",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "sandhya.prakash.waghmare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Renuka Vinod Pawar",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "renuka.vinod.pawar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Payal Laxman Giri",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "payal.laxman.giri@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-vedic-mathematics-ancient-indian-mathematical-techniques-mental-calculation-high-speed-computing-applications",
     "title": {
       "en": "Vedic Mathematics: Ancient Indian Mathematical Techniques, Mental Calculation & High-Speed Computing Applications",
