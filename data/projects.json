@@ -1,75 +1,5 @@
 [
   {
-    "id": "vpkbiet-cryptography-of-ancient-india-secret-writing-coded-communication-historical-information-security",
-    "title": {
-      "en": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
-      "mr": "प्राचीन भारतातील कूटलेखनशास्त्र: गुप्त लेखन, सांकेतिक संदेशवहन आणि माहिती सुरक्षेचा ऐतिहासिक अभ्यास"
-    },
-    "createdDate": "November 12, 2026",
-    "academicYear": "2026-2027 (Semester I)",
-    "summary": {
-      "en": "This project explores the historical development of secret writing and coded communication in ancient India, with reference to classical texts such as Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with unusual or cipher-like writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a method of representing numbers through letters. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting and communicating information without equating them with modern digital encryption.",
-      "mr": "This project explores the historical development of secret writing and coded communication in ancient India, with reference to classical texts such as Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with unusual or cipher-like writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a method of representing numbers through letters. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting and communicating information without equating them with modern digital encryption."
-    },
-    "info": {
-      "abstract": ".",
-      "historicalContext": ".",
-      "engineeringMethodology": ".",
-      "keyFindings": "."
-    },
-    "photos": [
-      {
-        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Primary Project Research Photograph & Model",
-        "alt": "VPKBIET Student Research"
-      }
-    ],
-    "teamMembers": [
-      {
-        "name": "Harsha Lokhande",
-        "role": "Project Leader",
-        "department": "AIDS-2",
-        "email": "harsha.lokhande@vpkbiet.ac.in"
-      },
-      {
-        "name": "Shubham Holkar",
-        "role": "Student Researcher",
-        "department": "AIDS-2",
-        "email": "shubham.holkar@vpkbiet.ac.in"
-      },
-      {
-        "name": "Sanjyot Kadam",
-        "role": "Student Researcher",
-        "department": "AIDS-2",
-        "email": "sanjyot.kadam@vpkbiet.ac.in"
-      },
-      {
-        "name": "Jignesh Jagtap",
-        "role": "Student Researcher",
-        "department": "AIDS-2",
-        "email": "jignesh.jagtap@vpkbiet.ac.in"
-      },
-      {
-        "name": "Kartik Pisal",
-        "role": "Student Researcher",
-        "department": "AIDS-2",
-        "email": "kartik.pisal@vpkbiet.ac.in"
-      },
-      {
-        "name": "Himanshu Patle",
-        "role": "Student Researcher",
-        "department": "AIDS-2",
-        "email": "himanshu.patle@vpkbiet.ac.in"
-      },
-      {
-        "name": "Harshavardhan Khamkar",
-        "role": "Student Researcher",
-        "department": "AIDS-2",
-        "email": "harshavardhan.khamkar@vpkbiet.ac.in"
-      }
-    ]
-  },
-  {
     "id": "vpkbiet-smart-navigation-lighting-system-using-ldr-sensors-electronic-circuits-automation",
     "title": {
       "en": "Smart Navigation Lighting System Using LDR Sensors, Electronic Circuits & Automation",
@@ -3940,43 +3870,43 @@
       {
         "name": "Vaidehi Santosh Bhagat",
         "role": "Project Leader",
-        "department": "AIDS-5",
+        "department": "AIIDS-5",
         "email": "vaidehi.santosh.bhagat@vpkbiet.ac.in"
       },
       {
         "name": "Swarali Sunil Deshpande",
         "role": "Student Researcher",
-        "department": "AIDS-5",
+        "department": "AIIDS-5",
         "email": "swarali.sunil.deshpande@vpkbiet.ac.in"
       },
       {
         "name": "Tanuja Vishwanath Jadhav",
         "role": "Student Researcher",
-        "department": "AIDS-5",
+        "department": "AIIDS-5",
         "email": "tanuja.vishwanath.jadhav@vpkbiet.ac.in"
       },
       {
         "name": "Tejal Chandrakant Chavre",
         "role": "Student Researcher",
-        "department": "AIDS-5",
+        "department": "AIIDS-5",
         "email": "tejal.chandrakant.chavre@vpkbiet.ac.in"
       },
       {
         "name": "Pragati Bhauso Thavare",
         "role": "Student Researcher",
-        "department": "AIDS-5",
+        "department": "AIIDS-5",
         "email": "pragati.bhauso.thavare@vpkbiet.ac.in"
       },
       {
         "name": "Sifa Iqbal Shaikh",
         "role": "Student Researcher",
-        "department": "AIDS-5",
+        "department": "AIIDS-5",
         "email": "sifa.iqbal.shaikh@vpkbiet.ac.in"
       },
       {
         "name": "Vaishnavi Dayanand Kshirsagar",
         "role": "Student Researcher",
-        "department": "AIDS-5",
+        "department": "AIIDS-5",
         "email": "vaishnavi.dayanand.kshirsagar@vpkbiet.ac.in"
       }
     ]
@@ -4366,10 +4296,10 @@
       "mr": "The Pushpak Viman is a legendary flying vehicle described in the Indian epic Ramayana and associated with the traditional narratives of ancient Indian literature. It represents an important cultural idea connected with imagination, craftsmanship, design and traditional knowledge.\n\nThis project translates the visual concept of the Pushpak Viman into a small-scale, stationary engineering display model. The proposed design includes a central body, pointed front section, rear tail, paired decorative wings, a raised pavilion-like canopy supported by pillars, a seating arrangement and a centrally placed rotating Chakra. A low-voltage geared DC motor drives the Chakra, while optional LED lighting enhances the model's appearance.\n\nThe project combines cultural interpretation with practical engineering skills such as structural design, material selection, measurement, component fabrication, mechanical motion, basic electrical wiring and assembly. The prototype is designed exclusively as a stationary display model and is not intended to fly or demonstrate historical flight technology."
     },
     "info": {
-      "abstract": "The Pushpak Viman is a well-known legendary vehicle in Indian literary and cultural traditions. Its descriptions have inspired artistic interpretations of an elaborate aerial vehicle with distinctive structural and decorative features.\n\nThis project aims to convert that traditional visual concept into a practical engineering model using modern workshop materials and basic mechanical and electrical components. The model consists of separate fabricated parts that are assembled around a stable base structure. A rotating Chakra powered by a low-voltage geared DC motor introduces the principles of rotational motion and mechanical transmission.\n\nThe project provides hands-on experience in drawing, measurement, cutting, shaping, joining, surface finishing, electrical connections and mechanical assembly.\n\nProblem Statement:\n\nHow can the traditional visual concept of the Pushpak Viman be represented through a small-scale stationary engineering model that combines structural design, decorative architecture, mechanical movement and a basic electrical system while maintaining safety and stability?\n\nProject Aim:\n\nTo study the traditional Indian idea of the Pushpak Viman and translate its visual features into a stationary engineering model. The project focuses on component design, material selection, structural assembly, rotating mechanisms, low-voltage electrical systems and decorative craftsmanship.",
-      "historicalContext": "The Pushpak Viman is associated with the Ramayana, one of India's major epic traditions. It is described as a remarkable aerial vehicle connected with the narratives of Kubera and Ravana and later associated with Lord Rama's return to Ayodhya.\n\nImportant cultural and traditional references include:\n\nRamayana Tradition: The Pushpak Viman appears in the Ramayana narrative as a remarkable flying vehicle. Its descriptions have influenced Indian storytelling, art and cultural imagination.\n\nTraditional Indian Imagination: The concept represents the historical interest of Indian literary traditions in extraordinary vehicles, movement, travel and imaginative forms of transportation.\n\nArchitectural Inspiration: The model uses a pavilion-like canopy, ornamental pillars, decorative borders and a raised seating arrangement to create a traditional royal appearance.\n\nDecorative Wings and Tail: The paired wings, pointed front section and rear tail are visual interpretations created for the engineering prototype. They are not claimed to be verified historical construction details.\n\nChakra Design: The central rotating Chakra is included as a decorative mechanical feature inspired by traditional Indian circular motifs and symbolic designs.\n\nIndian Knowledge Systems (IKS): The project connects cultural literature, traditional artistic imagination, craftsmanship and contemporary engineering education.\n\nThe Pushpak Viman is treated as a legendary and literary concept. Its description should not be considered archaeological or scientific proof of a historically operational aircraft.",
-      "engineeringMethodology": "The stationary Pushpak Viman model demonstrates how traditional visual inspiration can be converted into a practical engineering project using modern design and fabrication methods.\n\n1. Mechanical Motion – Rotating Chakra\n\nThe central Chakra is designed as a decorative rotating wheel driven by a low-voltage geared DC motor.\n\nThe DC motor converts electrical energy into mechanical rotational motion.\n\nA suitable shaft and coupling transfer rotation to the Chakra.\n\nThe geared motor provides controlled rotational speed and increased output torque.\n\nProper shaft alignment and bearing support help reduce unwanted vibration and friction.\n\nA compatible motor controller can regulate rotational speed.\n\nThe wheel should be lightweight and balanced to ensure smooth operation.\n\nA fixed protective guard should enclose the shaft, coupling and other moving parts to prevent accidental contact with pinch points.\n\n2. Structural Design and Material Selection\n\nThe model is divided into individual components assembled around a stable base frame.\n\nPlywood or timber can be used for the base and selected structural supports.\n\nFoam board and lightweight materials can be used for the body covering, wings and decorative panels.\n\nLightweight pillars and canopy elements create the pavilion-like upper structure.\n\nSuitable adhesives, screws and mechanical joints can be used for assembly.\n\nProper alignment and weight distribution help maintain the stability of the model.\n\nDecorative panels, wings and pillars should not automatically be treated as load-bearing components. The main supporting structure must carry the weight of the assembled model.\n\n3. Electrical System and Lighting\n\nA low-voltage DC electrical arrangement is proposed to operate the rotating Chakra and optional LED lighting.\n\nThe system may include:\n\nA compatible low-voltage DC power supply.\n\nA geared DC motor for the rotating Chakra.\n\nA suitable motor controller for speed regulation.\n\nAn electrical switch for controlling the system.\n\nFuse protection to reduce electrical fault risks.\n\nInsulated wires and secure electrical connections.\n\nOptional LED lights for decorative illumination.\n\nAll electrical components must be correctly rated and securely mounted. Wiring should be routed away from moving components and sharp edges. Connections should be inspected before the power supply is switched on.\n\n4. Traditional Form and Contemporary Model Making\n\nThe visual identity of the model is developed through a combination of traditional decorative inspiration and present-day fabrication techniques.\n\nImportant design elements include:\n\nCentral body with a pointed front section.\n\nRear tail and paired decorative wings.\n\nRaised pavilion-like canopy.\n\nOrnamental pillars and decorative borders.\n\nSeating arrangement for visual presentation.\n\nCentrally positioned rotating Chakra.\n\nOptional decorative flag and LED lighting.\n\nThe model-making process involves preparing drawings, creating templates, measuring materials, cutting components, shaping surfaces, joining parts, sanding, painting and final assembly.\n\n5. Design Drawings and Component Fabrication\n\nSeparate component drawings help organise the fabrication process and improve dimensional accuracy.\n\nThe proposed documentation includes:\n\nFront elevation of the model.\n\nSide elevation showing the body, wings and canopy.\n\nTop view showing the overall layout.\n\nDetailed drawing of the rotating Chakra mechanism.\n\nBase-frame and support arrangement.\n\nElectrical connection diagram.\n\nFinal assembled model drawing.\n\nThese drawings help identify component dimensions, assembly positions, material requirements and possible interference between moving and stationary parts.\n\n6. Assembly, Testing and Safety\n\nThe model should be assembled in a planned sequence to maintain stability and simplify testing.\n\nPrepare and inspect the base frame.\n\nFabricate and attach the central body and decorative sections.\n\nInstall the canopy, pillars and seating arrangement.\n\nMount the geared motor and Chakra mechanism.\n\nComplete the low-voltage electrical connections.\n\nInstall the protective guard around moving components.\n\nTest the rotating mechanism at a suitable low speed.\n\nCheck vibration, alignment, electrical connections and overall stability.\n\nThe model should remain stationary during operation. It should not be tested as a flying device or used with high-voltage electrical equipment.",
-      "keyFindings": "The Pushpak Viman model demonstrates how traditional Indian cultural concepts can be connected with practical engineering education and contemporary model-making techniques.\n\nKey Findings:\n\nIndian literary traditions provide creative inspiration for engineering and architectural model design.\n\nBreaking the model into separate components makes fabrication, measurement and assembly easier.\n\nMaterial selection plays an important role in structural stability, weight and surface finishing.\n\nThe rotating Chakra demonstrates basic principles of mechanical motion, torque transmission and motor operation.\n\nThe low-voltage electrical system introduces practical concepts of power supply, switching, motor control and LED connections.\n\nProtective guards, proper wiring and balanced moving components are essential for safe model operation.\n\nThe project combines traditional decorative forms with modern workshop methods without making unsupported claims about historical aircraft technology.\n\nFuture Impact:\n\nThis project can be extended through improved 3D modelling, computer-aided design, laser-cut components and more accurate fabrication techniques. Students can explore different motor speeds, mechanical arrangements, lighting systems and lightweight construction materials.\n\nThe model also provides an opportunity to develop skills in mechanical engineering, basic electronics, product design, technical drawing and project documentation. Further research into the Pushpak Viman's literary references can strengthen the connection between Indian Knowledge Systems and contemporary engineering education."
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
     },
     "photos": [
       {
@@ -4426,6 +4356,12 @@
         "role": "Student Researcher",
         "department": "AIDS-5",
         "email": "swaranjali.santosh.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vaibhav Shinde",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "vaibhav.shinde@vpkbiet.ac.in"
       }
     ]
   },
