@@ -1,5 +1,75 @@
 [
   {
+    "id": "vpkbiet-smart-navigation-lighting-system-using-ldr-sensors-electronic-circuits-automation",
+    "title": {
+      "en": "Smart Navigation Lighting System Using LDR Sensors, Electronic Circuits & Automation",
+      "mr": "स्वयंचलित दीपगृह: एलडीआर सेन्सर, इलेक्ट्रॉनिक सर्किट आणि स्वयंचलनावर आधारित स्मार्ट दिशादर्शक प्रकाश व्यवस्था"
+    },
+    "createdDate": "November 12, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project focuses on the design and working of an Automatic Lighthouse using light sensors and electronic circuits to provide automatic illumination for maritime navigation. It explains how a Light Dependent Resistor (LDR) detects changes in surrounding light intensity and controls the lighthouse lighting system through an automatic switching mechanism. The model uses high-intensity LEDs for energy-efficient illumination and a small DC motor to rotate the beacon, creating a sweeping light effect similar to a real lighthouse. The project demonstrates important electrical and electronic engineering concepts, including sensor technology, automatic control, LED lighting, motor operation and energy efficiency. It highlights how automation can improve the reliability of navigation lighting and support safer ship movement during nighttime and low-visibility conditions.",
+      "mr": "This project focuses on the design and working of an Automatic Lighthouse using light sensors and electronic circuits to provide automatic illumination for maritime navigation. It explains how a Light Dependent Resistor (LDR) detects changes in surrounding light intensity and controls the lighthouse lighting system through an automatic switching mechanism. The model uses high-intensity LEDs for energy-efficient illumination and a small DC motor to rotate the beacon, creating a sweeping light effect similar to a real lighthouse. The project demonstrates important electrical and electronic engineering concepts, including sensor technology, automatic control, LED lighting, motor operation and energy efficiency. It highlights how automation can improve the reliability of navigation lighting and support safer ship movement during nighttime and low-visibility conditions."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Sujal Santosh Patil",
+        "role": "Project Leader",
+        "department": "E&TC",
+        "email": "sujal.santosh.patil@vpkbiet.ac.in"
+      },
+      {
+        "name": "Swaraj Santosh Biradar",
+        "role": "Student Researcher",
+        "department": "E&TC",
+        "email": "swaraj.santosh.biradar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vedantika Vijaykumar Katkar",
+        "role": "Student Researcher",
+        "department": "E&TC",
+        "email": "vedantika.vijaykumar.katkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Avanti Dhanaji Narwade",
+        "role": "Student Researcher",
+        "department": "E&TC",
+        "email": "avanti.dhanaji.narwade@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sneha Suresh Bhange",
+        "role": "Student Researcher",
+        "department": "E&TC",
+        "email": "sneha.suresh.bhange@vpkbiet.ac.in"
+      },
+      {
+        "name": "Srushti Sadanand Zagade",
+        "role": "Student Researcher",
+        "department": "E&TC",
+        "email": "srushti.sadanand.zagade@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tanishka Gulab Shidture",
+        "role": "Student Researcher",
+        "department": "E&TC",
+        "email": "tanishka.gulab.shidture@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-pushpak-viman-mythology-inspired-design-mechanical-engineering-model-construction",
     "title": {
       "en": "Pushpak Viman: Mythology-Inspired Design, Mechanical Engineering & Model Construction",
