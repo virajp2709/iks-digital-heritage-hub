@@ -1,5 +1,57 @@
 [
   {
+    "id": "vpkbiet-the-vedas-ancient-indian-wisdom-knowledge-philosophy-cultural-heritage",
+    "title": {
+      "en": "The Vedas: Ancient Indian Wisdom, Knowledge, Philosophy & Cultural Heritage",
+      "mr": "वेद: प्राचीन भारतीय ज्ञान, तत्त्वज्ञान, संस्कृती आणि सांस्कृतिक वारसा"
+    },
+    "createdDate": "November 12, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the four Vedas—Rigveda, Samaveda, Yajurveda and Atharvaveda—and their significance in ancient Indian knowledge and cultural heritage. It highlights the meaning of the word Veda as knowledge or wisdom and examines the main themes of each text. The Rigveda contains hymns and prayers dedicated to various deities, the Samaveda focuses on musical chants and melodies, the Yajurveda explains rituals and ceremonial formulas, and the Atharvaveda includes ideas related to daily life, health, peace and social well-being. The project also discusses the importance of the Vedas in preserving Indian traditions, promoting moral values and shaping ancient education through oral learning, memorisation, discussion and the Guru–Shishya tradition. It highlights their enduring cultural and educational significance.",
+      "mr": "This project explores the four Vedas—Rigveda, Samaveda, Yajurveda and Atharvaveda—and their significance in ancient Indian knowledge and cultural heritage. It highlights the meaning of the word Veda as knowledge or wisdom and examines the main themes of each text. The Rigveda contains hymns and prayers dedicated to various deities, the Samaveda focuses on musical chants and melodies, the Yajurveda explains rituals and ceremonial formulas, and the Atharvaveda includes ideas related to daily life, health, peace and social well-being. The project also discusses the importance of the Vedas in preserving Indian traditions, promoting moral values and shaping ancient education through oral learning, memorisation, discussion and the Guru–Shishya tradition. It highlights their enduring cultural and educational significance."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Gauravraje Bhoite",
+        "role": "Project Leader",
+        "department": "AIDS-2",
+        "email": "gauravraje.bhoite@vpkbiet.ac.in"
+      },
+      {
+        "name": "Om Dhainje",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "om.dhainje@vpkbiet.ac.in"
+      },
+      {
+        "name": "Karik Pisal",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "karik.pisal@vpkbiet.ac.in"
+      },
+      {
+        "name": "Dhairyashil Kale",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "dhairyashil.kale@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-yoga-chakras-traditional-indian-health-practices-ancient-wisdom-for-a-healthy-balanced-mindful-life",
     "title": {
       "en": "Yoga, Chakras & Traditional Indian Health Practices: Ancient Wisdom for a Healthy, Balanced & Mindful Life",
