@@ -776,13 +776,19 @@ button, input, select {
   position: relative;
   min-width: 260px;
   flex: 1 1 360px;
-  max-width: 540px;
+  max-width: 560px;
+  height: 46px;
+  display: flex;
+  align-items: center;
 }
 
 .branch-filter-wrapper {
   position: relative;
-  flex: 0 1 240px;
-  min-width: 200px;
+  flex: 0 0 220px;
+  min-width: 190px;
+  height: 46px;
+  display: flex;
+  align-items: center;
 }
 
 .branch-filter-icon {
@@ -792,12 +798,14 @@ button, input, select {
   transform: translateY(-50%);
   color: var(--gold-primary);
   font-size: 0.95rem;
+  line-height: 1;
   pointer-events: none;
   z-index: 2;
 }
 
 .branch-filter-select {
   width: 100%;
+  height: 46px;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -812,6 +820,7 @@ button, input, select {
   cursor: pointer;
   transition: var(--transition);
   outline: none;
+  box-sizing: border-box;
 }
 
 .branch-filter-select:hover {
@@ -836,8 +845,10 @@ button, input, select {
   top: 50%;
   transform: translateY(-50%);
   color: var(--gold-primary);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  line-height: 1;
   pointer-events: none;
+  z-index: 2;
 }
 
 .card-branch-tag {
@@ -864,13 +875,15 @@ button, input, select {
 
 .search-input {
   width: 100%;
-  padding: 10px 18px 10px 42px;
+  height: 46px;
+  padding: 10px 18px 10px 44px;
   background: rgba(10, 16, 14, 0.8);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-full);
   font-size: 0.9rem;
   color: #fff;
   outline: none;
+  box-sizing: border-box;
   transition: var(--transition);
 }
 
@@ -886,7 +899,9 @@ button, input, select {
   transform: translateY(-50%);
   color: var(--gold-primary);
   font-size: 0.95rem;
+  line-height: 1;
   pointer-events: none;
+  z-index: 2;
 }
 
 /* PROJECT CARDS GRID */
@@ -2223,28 +2238,74 @@ textarea.form-control {
 
   /* Search & Branch Filter Controls */
   .projects-control-bar {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 12px 14px;
-    gap: 12px;
-    border-radius: var(--radius-md);
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 12px 14px !important;
+    gap: 12px !important;
+    border-radius: var(--radius-md) !important;
   }
   .search-wrapper,
   .branch-filter-wrapper {
-    max-width: 100%;
-    width: 100%;
-    min-width: 0;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
   }
   .search-input {
     font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
-    min-height: 46px;
-    padding: 10px 14px 10px 42px;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    padding: 10px 16px 10px 44px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: var(--radius-full) !important;
   }
   .branch-filter-select {
     font-size: 16px !important;
-    min-height: 46px;
-    padding: 10px 38px 10px 14px;
-    width: 100%;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    padding: 10px 38px 10px 42px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: var(--radius-full) !important;
+  }
+  .search-icon {
+    position: absolute !important;
+    left: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 2 !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+  }
+  .branch-filter-icon {
+    position: absolute !important;
+    left: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 2 !important;
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+  }
+  .branch-dropdown-arrow {
+    position: absolute !important;
+    right: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 2 !important;
+    font-size: 0.85rem !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
   }
 
   /* Projects Grid & Cards */
