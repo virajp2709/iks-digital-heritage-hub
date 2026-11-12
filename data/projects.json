@@ -1,5 +1,75 @@
 [
   {
+    "id": "vpkbiet-vedic-mathematics-ancient-indian-mathematical-techniques-mental-calculation-high-speed-computing-applications",
+    "title": {
+      "en": "Vedic Mathematics: Ancient Indian Mathematical Techniques, Mental Calculation & High-Speed Computing Applications",
+      "mr": "वैदिक गणित: प्राचीन भारतीय गणितीय पद्धती, मानसिक गणना आणि उच्च-गती संगणकीय उपयोग"
+    },
+    "createdDate": "November 12, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores Vedic Mathematics, its historical background and its applications in modern mathematical and engineering fields. It focuses on the 16 Sutras and 13 sub-sutras presented by Jagadguru Swami Sri Bharati Krishna Tirthaji Maharaja, highlighting techniques for faster arithmetic and algebraic calculations. The study examines important methods such as Nikhilam Navatashcaramam Dashatah and Urdhva-Tiryagbhyam, which use numerical patterns, symmetry and vertical-and-crosswise multiplication. It also investigates the application of Vedic multiplier techniques in VLSI digital microelectronics, including parallel generation of partial products and potential improvements in computational performance. Additionally, the project explores the geometric principles described in the Shulba Sutras and their connection with the design of Vedic fire altars. Overall, it connects traditional mathematical approaches with mental calculation, digital computing and engineering concepts.",
+      "mr": "This project explores Vedic Mathematics, its historical background and its applications in modern mathematical and engineering fields. It focuses on the 16 Sutras and 13 sub-sutras presented by Jagadguru Swami Sri Bharati Krishna Tirthaji Maharaja, highlighting techniques for faster arithmetic and algebraic calculations. The study examines important methods such as Nikhilam Navatashcaramam Dashatah and Urdhva-Tiryagbhyam, which use numerical patterns, symmetry and vertical-and-crosswise multiplication. It also investigates the application of Vedic multiplier techniques in VLSI digital microelectronics, including parallel generation of partial products and potential improvements in computational performance. Additionally, the project explores the geometric principles described in the Shulba Sutras and their connection with the design of Vedic fire altars. Overall, it connects traditional mathematical approaches with mental calculation, digital computing and engineering concepts."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Nikhil Shinde",
+        "role": "Project Leader",
+        "department": "AIDS-3",
+        "email": "nikhil.shinde@vpkbiet.ac.in"
+      },
+      {
+        "name": "Parth Lande",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "parth.lande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sumit Pawar",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "sumit.pawar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pradhyumn Pawar",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "pradhyumn.pawar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Omkar Pansare",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "omkar.pansare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pranav Nale",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "pranav.nale@vpkbiet.ac.in"
+      },
+      {
+        "name": "Om Chaudhari",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "om.chaudhari@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-the-vedas-ancient-indian-wisdom-knowledge-philosophy-cultural-heritage",
     "title": {
       "en": "The Vedas: Ancient Indian Wisdom, Knowledge, Philosophy & Cultural Heritage",
