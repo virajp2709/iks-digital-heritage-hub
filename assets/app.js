@@ -296,6 +296,7 @@ const state = {
   lang: localStorage.getItem("iks-vpkbiet-lang") || "en",
   projects: [],
   selectedCategory: "all",
+  selectedBranch: "all",
   searchQuery: "",
   activeProject: null,
   activePhotoIndex: 0,
@@ -566,6 +567,27 @@ function getLocalized(obj) {
   return obj[state.lang] || obj.en || "";
 }
 
+function getProjectLeader(project) {
+  if (!project || !project.teamMembers || project.teamMembers.length === 0) return null;
+  return project.teamMembers.find((m) => /lead/i.test(m.role)) || project.teamMembers[0];
+}
+
+function getLeaderBranch(project) {
+  const leader = getProjectLeader(project);
+  if (!leader || !leader.department) return "";
+  const dept = leader.department.trim();
+  if (/^ai+ds[-_\s]*1$/i.test(dept)) return "AIDS-1";
+  if (/^ai+ds[-_\s]*2$/i.test(dept)) return "AIDS-2";
+  if (/^ai+ds[-_\s]*3$/i.test(dept)) return "AIDS-3";
+  if (/^ai+ds[-_\s]*4$/i.test(dept)) return "AIDS-4";
+  if (/^ai+ds[-_\s]*5$/i.test(dept)) return "AIDS-5";
+  if (/civil/i.test(dept)) return "Civil";
+  if (/e\s*&\s*tc|etc/i.test(dept)) return "E&TC";
+  return dept;
+}
+
+const BRANCH_ORDER = ["AIDS-1", "AIDS-2", "AIDS-3", "AIDS-4", "AIDS-5", "Civil", "E&TC"];
+
 function renderProjects() {
   const grid = document.getElementById("projects-grid");
   const emptyState = document.getElementById("empty-state");
@@ -589,7 +611,25 @@ function renderProjects() {
       matchesCategory = (p.type || "").toLowerCase().includes(state.selectedCategory.toLowerCase());
     }
 
-    return matchesSearch && matchesCategory;
+    const leaderBranch = getLeaderBranch(p);
+    let matchesBranch = true;
+    if (state.selectedBranch !== "all") {
+      matchesBranch = leaderBranch === state.selectedBranch;
+    }
+
+    return matchesSearch && matchesCategory && matchesBranch;
+  });
+
+  // Sort filtered list by department branch order, then alphabetically by project title
+  filtered.sort((a, b) => {
+    const branchA = getLeaderBranch(a);
+    const branchB = getLeaderBranch(b);
+    const idxA = BRANCH_ORDER.indexOf(branchA);
+    const idxB = BRANCH_ORDER.indexOf(branchB);
+    const orderA = idxA >= 0 ? idxA : 999;
+    const orderB = idxB >= 0 ? idxB : 999;
+    if (orderA !== orderB) return orderA - orderB;
+    return getLocalized(a.title).localeCompare(getLocalized(b.title));
   });
 
   if (countEl) {
@@ -613,6 +653,8 @@ function renderProjects() {
     const mainPhoto = p.photos?.[0]?.url || "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80";
     const teamCount = p.teamMembers?.length || 1;
     const initialLetters = (p.teamMembers || []).slice(0, 3).map((m) => m.name.charAt(0));
+    const leaderBranch = getLeaderBranch(p);
+    const branchBadge = leaderBranch ? `${leaderBranch} · VPKBIET` : "VPKBIET";
 
     card.innerHTML = `
       <div class="card-image-box">
@@ -621,7 +663,7 @@ function renderProjects() {
       <div class="card-content">
         <div class="card-date-row">
           <span>📅 ${p.createdDate}</span>
-          <span>🏛️ VPKBIET</span>
+          <span class="card-branch-tag">🏛️ ${branchBadge}</span>
         </div>
         <h3 class="card-title">${getLocalized(p.title)}</h3>
         <p class="card-summary">${getLocalized(p.summary)}</p>
@@ -672,16 +714,28 @@ function openProjectModal(project) {
   // Photos & Gallery Carousel
   renderModalGallery(project);
 
-  // Tab 1: Overview & Research Info
+  // Leader branch badge
+  const branchEl = document.getElementById("modal-project-branch");
+  const leaderBranch = getLeaderBranch(project);
+  if (branchEl) {
+    branchEl.textContent = leaderBranch ? `🏛️ ${leaderBranch} · VPKBIET` : "🏛️ VPKBIET";
+  }
+
+  // Tab 1: Overview & Summary
+  const summaryEl = document.getElementById("modal-summary-text");
+  if (summaryEl) {
+    summaryEl.textContent = getLocalized(project.summary) || (project.info?.abstract && project.info.abstract !== "." ? project.info.abstract : "");
+  }
+
   const abstractEl = document.getElementById("modal-abstract-text");
   const historyEl = document.getElementById("modal-historical-text");
   const methodologyEl = document.getElementById("modal-methodology-text");
   const findingsEl = document.getElementById("modal-findings-text");
 
   if (abstractEl) abstractEl.textContent = project.info?.abstract || getLocalized(project.summary);
-  if (historyEl) historyEl.textContent = project.info?.historicalContext || "Investigated as part of VPKBIET's heritage technology research program.";
-  if (methodologyEl) methodologyEl.textContent = project.info?.engineeringMethodology || "Modern engineering simulation and prototyping.";
-  if (findingsEl) findingsEl.textContent = project.info?.keyFindings || "Empirical validation completed at college laboratories.";
+  if (historyEl) historyEl.textContent = project.info?.historicalContext || "";
+  if (methodologyEl) methodologyEl.textContent = project.info?.engineeringMethodology || "";
+  if (findingsEl) findingsEl.textContent = project.info?.keyFindings || "";
 
   // Tab 2: Student Researchers
   const teamContainer = document.getElementById("modal-team-grid");
@@ -974,10 +1028,10 @@ function initAdminAndAddProjectModal() {
     document.getElementById("add-project-year").value = project.academicYear || "";
     document.getElementById("add-project-summary").value = project.summary?.en || (typeof project.summary === "string" ? project.summary : "");
 
-    document.getElementById("add-project-abstract").value = project.info?.abstract || "";
-    document.getElementById("add-project-historical").value = project.info?.historicalContext || "";
-    document.getElementById("add-project-methodology").value = project.info?.engineeringMethodology || "";
-    document.getElementById("add-project-findings").value = project.info?.keyFindings || "";
+    if (document.getElementById("add-project-abstract")) document.getElementById("add-project-abstract").value = project.info?.abstract || "";
+    if (document.getElementById("add-project-historical")) document.getElementById("add-project-historical").value = project.info?.historicalContext || "";
+    if (document.getElementById("add-project-methodology")) document.getElementById("add-project-methodology").value = project.info?.engineeringMethodology || "";
+    if (document.getElementById("add-project-findings")) document.getElementById("add-project-findings").value = project.info?.keyFindings || "";
 
     // Photos: deep copy to allow editing, adding new photos, or deleting
     addedProjectPhotos = project.photos && project.photos.length > 0
@@ -1412,10 +1466,10 @@ async function handleAddProjectSubmit(e) {
   const academicYear = document.getElementById("add-project-year")?.value.trim() || "2026-2027";
   const summary = document.getElementById("add-project-summary")?.value.trim() || "";
 
-  const abstract = document.getElementById("add-project-abstract")?.value.trim() || "";
-  const historical = document.getElementById("add-project-historical")?.value.trim() || "";
-  const methodology = document.getElementById("add-project-methodology")?.value.trim() || "";
-  const findings = document.getElementById("add-project-findings")?.value.trim() || "";
+  const abstract = document.getElementById("add-project-abstract")?.value.trim() || ".";
+  const historical = document.getElementById("add-project-historical")?.value.trim() || ".";
+  const methodology = document.getElementById("add-project-methodology")?.value.trim() || ".";
+  const findings = document.getElementById("add-project-findings")?.value.trim() || ".";
 
   // Gather researchers
   const researcherRows = document.querySelectorAll("#researchers-list-container .researcher-row");
@@ -1909,6 +1963,16 @@ async function init() {
       if (e.key === "Escape") {
         closeProjectModal();
       }
+    });
+  }
+
+  // Branch Filter Dropdown
+  const branchSelect = document.getElementById("branch-select");
+  if (branchSelect) {
+    branchSelect.value = state.selectedBranch;
+    branchSelect.addEventListener("change", (e) => {
+      state.selectedBranch = e.target.value;
+      renderProjects();
     });
   }
 

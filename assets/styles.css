@@ -774,9 +774,92 @@ button, input, select {
 
 .search-wrapper {
   position: relative;
-  min-width: 280px;
-  flex: 1;
-  max-width: 360px;
+  min-width: 260px;
+  flex: 1 1 360px;
+  max-width: 540px;
+}
+
+.branch-filter-wrapper {
+  position: relative;
+  flex: 0 1 240px;
+  min-width: 200px;
+}
+
+.branch-filter-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-primary);
+  font-size: 0.95rem;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.branch-filter-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px 38px 10px 42px;
+  background: rgba(10, 16, 14, 0.85);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+}
+
+.branch-filter-select:hover {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.2);
+}
+
+.branch-filter-select:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.3);
+}
+
+.branch-filter-select option {
+  background: #101915;
+  color: #fff;
+  padding: 8px 12px;
+}
+
+.branch-dropdown-arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold-primary);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+
+.card-branch-tag {
+  color: var(--gold-primary);
+  font-weight: 600;
+  background: rgba(212, 175, 55, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.modal-branch-tag {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--border-gold);
+  color: var(--gold-primary);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .search-input {
@@ -1946,8 +2029,11 @@ textarea.form-control {
     flex-direction: column;
     align-items: stretch;
   }
-  .search-wrapper {
+  .search-wrapper,
+  .branch-filter-wrapper {
     max-width: 100%;
+    width: 100%;
+    min-width: 0;
   }
   .footer-container {
     grid-template-columns: 1fr;

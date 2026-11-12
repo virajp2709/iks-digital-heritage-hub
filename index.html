@@ -383,11 +383,27 @@
         </p>
       </header>
 
-      <!-- Search Control Bar -->
-      <div class="projects-control-bar" role="search" aria-label="Search Projects" style="justify-content: center;">
-        <div class="search-wrapper" style="max-width: 650px; width: 100%;">
+      <!-- Search & Branch Filter Control Bar -->
+      <div class="projects-control-bar" role="search" aria-label="Search and Filter Projects">
+        <div class="search-wrapper">
           <span class="search-icon" aria-hidden="true">🔍</span>
           <input id="search-input" class="search-input" type="search" placeholder="Search student projects by title, topic or researcher... (/)" aria-label="Search student projects">
+        </div>
+
+        <!-- Branch Filter Dropdown -->
+        <div class="branch-filter-wrapper">
+          <span class="branch-filter-icon" aria-hidden="true">🏛️</span>
+          <select id="branch-select" class="branch-filter-select" aria-label="Filter projects by Department Branch">
+            <option value="all">All Branches</option>
+            <option value="AIDS-1">AIDS-1</option>
+            <option value="AIDS-2">AIDS-2</option>
+            <option value="AIDS-3">AIDS-3</option>
+            <option value="AIDS-4">AIDS-4</option>
+            <option value="AIDS-5">AIDS-5</option>
+            <option value="Civil">Civil</option>
+            <option value="E&TC">E&TC</option>
+          </select>
+          <span class="branch-dropdown-arrow" aria-hidden="true">▾</span>
         </div>
       </div>
 
@@ -464,6 +480,7 @@
         <div class="modal-tags-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px; flex-wrap: wrap;">
           <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
             <span class="modal-date-tag" id="modal-project-date">Created Date</span>
+            <span class="modal-branch-tag" id="modal-project-branch">🏛️ Branch · VPKBIET</span>
           </div>
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
             <button id="modal-download-project-json-btn" class="modal-edit-action-btn" type="button" title="Download project.json for this project">
@@ -481,24 +498,15 @@
 
         <!-- Tabs Navigation -->
         <nav class="modal-tabs" aria-label="Project Details Tabs">
-          <button class="modal-tab-btn active" data-tab="overview" type="button">Overview & Abstract</button>
+          <button class="modal-tab-btn active" data-tab="overview" type="button">Project Overview</button>
           <button class="modal-tab-btn" data-tab="team" type="button">Student Researchers</button>
           <button class="modal-tab-btn" data-tab="qr" type="button">Exhibition QR & Citation</button>
         </nav>
 
-        <!-- Tab 1: Overview & Research Info -->
+        <!-- Tab 1: Project Overview & Summary -->
         <div class="modal-tab-pane active" id="tab-overview">
-          <h3 class="info-section-title"><span aria-hidden="true">📜</span> Project Abstract & Problem Statement</h3>
-          <p class="info-text-paragraph" id="modal-abstract-text"></p>
-
-          <h3 class="info-section-title"><span aria-hidden="true">🏛️</span> Historical Indian Tradition & Reference</h3>
-          <p class="info-text-paragraph" id="modal-historical-text"></p>
-
-          <h3 class="info-section-title"><span aria-hidden="true">⚙️</span> Modern Engineering Methodology</h3>
-          <p class="info-text-paragraph" id="modal-methodology-text"></p>
-
-          <h3 class="info-section-title"><span aria-hidden="true">🎯</span> Key Findings & Future Impact</h3>
-          <p class="info-text-paragraph" id="modal-findings-text"></p>
+          <h3 class="info-section-title"><span aria-hidden="true">📜</span> Project Overview & Summary</h3>
+          <p class="info-text-paragraph" id="modal-summary-text" style="font-size: 1.05rem; line-height: 1.85; color: var(--text-primary); white-space: pre-line;"></p>
         </div>
 
         <!-- Tab 2: Team Members -->
@@ -709,35 +717,7 @@
             </div>
           </div>
 
-          <!-- SECTION 3: RESEARCH & HERITAGE DETAILS (1:1 with Explore Details Tab 1) -->
-          <div class="form-section-card">
-            <div class="form-section-header">
-              <h3><span>📜</span> Research & Scientific Documentation</h3>
-              <small style="color: var(--text-gold);">Exact fields shown in the Explore Details overview tab</small>
-            </div>
-
-            <div class="form-group">
-              <label for="add-project-abstract">Project Abstract & Problem Statement *</label>
-              <textarea id="add-project-abstract" class="form-control" rows="4" placeholder="Detailed scientific abstract explaining background, challenge addressed, and research motivation..." required></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="add-project-historical">Historical Indian Tradition & Reference *</label>
-              <textarea id="add-project-historical" class="form-control" rows="3" placeholder="Classical texts (e.g. Arthashastra, Sulba Sutras, Rasaratnasamuccaya), archaeological sites, or traditional communities referenced..." required></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="add-project-methodology">Modern Engineering Methodology *</label>
-              <textarea id="add-project-methodology" class="form-control" rows="3" placeholder="Engineering methods applied (e.g. 1. ANSYS CFD simulation, 2. Verilog HDL RTL coding, 3. Laboratory physical prototype testing)..." required></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="add-project-findings">Key Findings & Future Impact *</label>
-              <textarea id="add-project-findings" class="form-control" rows="3" placeholder="Quantitative results, validation benchmarks, and potential real-world implementation in modern society..." required></textarea>
-            </div>
-          </div>
-
-          <!-- SECTION 4: STUDENT RESEARCHERS (1:1 with Explore Details Tab 2) -->
+          <!-- SECTION 3: STUDENT RESEARCHERS (1:1 with Explore Details Tab 2) -->
           <div class="form-section-card">
             <div class="form-section-header">
               <h3><span>👥</span> Student Researchers</h3>
