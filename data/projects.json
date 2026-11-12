@@ -1,5 +1,45 @@
 [
   {
+    "id": "vpkbiet-yoga-chakras-traditional-indian-health-practices-ancient-wisdom-for-a-healthy-balanced-mindful-life",
+    "title": {
+      "en": "Yoga, Chakras & Traditional Indian Health Practices: Ancient Wisdom for a Healthy, Balanced & Mindful Life",
+      "mr": "योग, चक्रे आणि पारंपरिक भारतीय आरोग्य पद्धती: निरोगी, संतुलित आणि सजग जीवनासाठी प्राचीन ज्ञान"
+    },
+    "createdDate": "November 12, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores traditional Indian knowledge related to health, food, the body and the mind. It examines Yoga and its practices, including asanas, pranayama and meditation, along with the traditional concept of the seven chakras and their associated qualities. The study also introduces Panchakarma, an Ayurvedic system of therapeutic procedures, and Nadi Parikshan, a traditional method of pulse examination based on the three doshas: Vata, Pitta and Kapha. Additionally, it discusses traditional Indian food habits, seasonal eating, balanced nutrition and intelligence tests that assess abilities such as memory, logical reasoning and problem-solving. The project highlights the relevance of these knowledge systems in daily life and education while emphasising responsible practice, individual differences and the importance of scientific evidence in health-related decisions.",
+      "mr": "This project explores traditional Indian knowledge related to health, food, the body and the mind. It examines Yoga and its practices, including asanas, pranayama and meditation, along with the traditional concept of the seven chakras and their associated qualities. The study also introduces Panchakarma, an Ayurvedic system of therapeutic procedures, and Nadi Parikshan, a traditional method of pulse examination based on the three doshas: Vata, Pitta and Kapha. Additionally, it discusses traditional Indian food habits, seasonal eating, balanced nutrition and intelligence tests that assess abilities such as memory, logical reasoning and problem-solving. The project highlights the relevance of these knowledge systems in daily life and education while emphasising responsible practice, individual differences and the importance of scientific evidence in health-related decisions."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Nishant Ranaware",
+        "role": "Project Leader",
+        "department": "Civil",
+        "email": "nishant.ranaware@vpkbiet.ac.in"
+      },
+      {
+        "name": "Neha Godase",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "neha.godase@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-cryptography-of-ancient-india-secret-writing-coded-communication-historical-information-security",
     "title": {
       "en": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
