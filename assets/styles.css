@@ -2246,7 +2246,7 @@ textarea.form-control {
   }
   .search-wrapper,
   .branch-filter-wrapper {
-    flex: 0 0 auto !important;
+    flex: 0 0 46px !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
