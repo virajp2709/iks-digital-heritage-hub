@@ -1,5 +1,75 @@
 [
   {
+    "id": "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-architectural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
+    "title": {
+      "en": "Lepakshi Veerabhadra Temple: Ancient Indian Architectural Engineering, Gravitational Principles & Load-Bearing System of the Hanging Pillar",
+      "mr": "लेपाक्षी वीरभद्र मंदिर: प्राचीन भारतीय स्थापत्य अभियांत्रिकी, गुरुत्वाकर्षणाची तत्त्वे आणि झुलत्या स्तंभाची भारवाहक प्रणाली"
+    },
+    "createdDate": "November 10, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the architectural brilliance and structural engineering of the Sri Veerabhadra Temple at Lepakshi, Andhra Pradesh, built during the Vijayanagara period in the 16th century CE. It focuses on the temple's granite pillars, stone beams, mandapas, and interconnected post-and-beam construction system. A key aspect is the famous hanging pillar in the Natya Mandapa, which appears to have a small gap beneath its base. The project explains the principles of gravity, load distribution, and structural stability, showing how beams and neighbouring pillars may share and transfer the weight of the roof towards the foundations. It also examines the role of granite, traditional stone construction, and empirical engineering knowledge. Overall, the project highlights the integration of structural design, craftsmanship, aesthetics, and traditional Indian architectural knowledge.",
+      "mr": "This project explores the architectural brilliance and structural engineering of the Sri Veerabhadra Temple at Lepakshi, Andhra Pradesh, built during the Vijayanagara period in the 16th century CE. It focuses on the temple's granite pillars, stone beams, mandapas, and interconnected post-and-beam construction system. A key aspect is the famous hanging pillar in the Natya Mandapa, which appears to have a small gap beneath its base. The project explains the principles of gravity, load distribution, and structural stability, showing how beams and neighbouring pillars may share and transfer the weight of the roof towards the foundations. It also examines the role of granite, traditional stone construction, and empirical engineering knowledge. Overall, the project highlights the integration of structural design, craftsmanship, aesthetics, and traditional Indian architectural knowledge."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Vaidehi Santosh Bhagat",
+        "role": "Project Leader",
+        "department": "AIIDS-5",
+        "email": "vaidehi.santosh.bhagat@vpkbiet.ac.in"
+      },
+      {
+        "name": "Swarali Sunil Deshpande",
+        "role": "Student Researcher",
+        "department": "AIIDS-5",
+        "email": "swarali.sunil.deshpande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tanuja Vishwanath Jadhav",
+        "role": "Student Researcher",
+        "department": "AIIDS-5",
+        "email": "tanuja.vishwanath.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tejal Chandrakant Chavre",
+        "role": "Student Researcher",
+        "department": "AIIDS-5",
+        "email": "tejal.chandrakant.chavre@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pragati Bhauso Thavare",
+        "role": "Student Researcher",
+        "department": "AIIDS-5",
+        "email": "pragati.bhauso.thavare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sifa Iqbal Shaikh",
+        "role": "Student Researcher",
+        "department": "AIIDS-5",
+        "email": "sifa.iqbal.shaikh@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vaishnavi Dayanand Kshirsagar",
+        "role": "Student Researcher",
+        "department": "AIIDS-5",
+        "email": "vaishnavi.dayanand.kshirsagar@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-smart-navigation-lighting-system-using-ldr-sensors-electronic-circuits-automation",
     "title": {
       "en": "Smart Navigation Lighting System Using LDR Sensors, Electronic Circuits & Automation",
