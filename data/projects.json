@@ -4538,5 +4538,151 @@
         "email": "afaroj.mulani@vpkbiet.ac.in"
       }
     ]
+  },
+  {
+    "id": "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-structural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
+    "title": {
+      "en": "Lepakshi Veerabhadra Temple: Ancient Indian Structural Engineering, Gravitational Principles & Load-Bearing System of the Hanging Pillar",
+      "mr": "लेपाक्षी वीरभद्र मंदिर: प्राचीन भारतीय संरचनात्मक अभियांत्रिकी, गुरुत्वाकर्षणाची तत्त्वे आणि झुलत्या स्तंभाची भारवाहक प्रणाली"
+    },
+    "createdDate": "November 13, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the architectural and structural engineering of the Sri Veerabhadra Temple at Lepakshi, Andhra Pradesh, built during the Vijayanagara period in the 16th century CE. It focuses on the temple's granite post-and-beam construction, carved pillars, mandapas and interconnected structural framework. Special attention is given to the famous hanging pillar in the Natya Mandapa, which appears to have a small gap beneath its base. The study explains the role of gravity, beam action, load transfer and load redistribution among neighbouring pillars in maintaining structural stability. It also examines the properties of granite, traditional stone construction techniques and the relationship between architectural design and structural performance. The project highlights the engineering knowledge and craftsmanship of ancient Indian builders while explaining that the hanging pillar does not defy gravity.",
+      "mr": "लेपाक्षी (आंध्र प्रदेश) येथील सोळाव्या शतकातील विजयनगरकालीन श्री वीरभद्र मंदिराच्या स्थापत्य आणि संरचनात्मक अभियांत्रिकीचा हा प्रकल्प अभ्यास करतो. यामध्ये ग्रॅनाइटचे खांब, तुळया, नक्षीकाम केलेले मंडप आणि परस्परांशी जोडलेली संरचना प्रणाली यावर भर देण्यात आला आहे. नाट्य मंडपातील प्रसिद्ध 'झुलता खांब' (हँगिंग पिलर), ज्याच्या तळाशी सूक्ष्म अंतर दिसते, त्याचा विशेष अभ्यास करण्यात आला आहे. गुरुत्वाकर्षण, बीम अ‍ॅक्शन, भार हस्तांतरण आणि शेजारील खांबांवर भाराचे पुनर्वितरण यांच्याद्वारे मंदिराची स्थिरता कशी राखली जाते हे हा अभ्यास स्पष्ट करतो."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Vaidehi Santosh Bhagat",
+        "role": "Project Leader",
+        "department": "AIDS-5",
+        "email": "vaidehi.santosh.bhagat@vpkbiet.ac.in"
+      },
+      {
+        "name": "Swarali Sunil Deshpande",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "swarali.sunil.deshpande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tanuja Vishvanath Jadhav",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "tanuja.vishvanath.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tejal Chandrakant Chavare",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "tejal.chandrakant.chavare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pragati Bhauso Thavar",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "pragati.bhauso.thavar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sifa Iqbal Shaikh",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "sifa.iqbal.shaikh@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vaishnavi Dayanand Kshirsagar",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "vaishnavi.dayanand.kshirsagar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Snehal Sonavane",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "snehal.sonavane@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "vpkbiet-cryptography-of-ancient-india-secret-writing-coded-communication-historical-information-security",
+    "title": {
+      "en": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
+      "mr": "प्राचीन भारतातील कूटलेखनशास्त्र: गुप्त लेखन, सांकेतिक संदेशवहन आणि माहिती सुरक्षेचा ऐतिहासिक अभ्यास"
+    },
+    "createdDate": "November 13, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the historical importance of secret writing and coded communication in ancient India, with reference to Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with cipher-like or unusual writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a mnemonic method of representing numbers through letters and words. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting information while recognising that they were different from modern digital encryption.",
+      "mr": "हा प्रकल्प वात्स्यायनांचे कामसूत्र आणि कौटिल्याचे अर्थशास्त्र या संदर्भाने प्राचीन भारतातील गुप्त लेखन आणि सांकेतिक संदेशवहनाचे ऐतिहासिक महत्त्व अभ्यासतो. यात म्लेंच्छित विकल्प आणि गूढलेख्य या गुप्त लेखन पद्धतींचा अभ्यास आहे. अक्षरे आणि ध्वनी बदल, गुप्त चिन्हे, गोपनीय संवाद आणि एनकोडिंग, एन्क्रिप्शन आणि स्टेगॅनोग्राफीमधील फरक स्पष्ट केले आहेत."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Harsh Lokhande",
+        "role": "Project Leader",
+        "department": "AIDS-2",
+        "email": "harsh.lokhande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Shubham Holkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "shubham.holkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sanjyot Kadam",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "sanjyot.kadam@vpkbiet.ac.in"
+      },
+      {
+        "name": "Jignesh Jagtap",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "jignesh.jagtap@vpkbiet.ac.in"
+      },
+      {
+        "name": "Kartik pisal",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "kartik.pisal@vpkbiet.ac.in"
+      },
+      {
+        "name": "Himanshu Patle",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "himanshu.patle@vpkbiet.ac.in"
+      },
+      {
+        "name": "Harshvardhan Khamkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "harshvardhan.khamkar@vpkbiet.ac.in"
+      }
+    ]
   }
 ]

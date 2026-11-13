@@ -1932,28 +1932,15 @@ async function init() {
   }
 
   // Handle deletions & custom project edits/additions from localStorage
-  const PERMANENTLY_REMOVED_IDS = [
-    "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-structural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
-    "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-architectural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar"
-  ];
-
-  const RESTORED_PROJECT_IDS = [
-    "vpkbiet-land-records-and-measurement-systems-during-the-peshwa-period-historical-land-administration-agriculture-revenue-collection",
-    "vpkbiet-ancient-climate-changes-in-bharat-historical-climate-patterns-traditional-environmental-knowledge-sustainable-water-management"
-  ];
-
   try {
     const deletedStored = localStorage.getItem("vpkbiet_iks_deleted_ids");
     let deletedIds = deletedStored ? JSON.parse(deletedStored) : [];
     if (!Array.isArray(deletedIds)) deletedIds = [];
 
-    // Ensure restored projects are unblocked from any legacy deletions
-    deletedIds = deletedIds.filter((id) => !RESTORED_PROJECT_IDS.includes(id));
-
-    // Ensure Lepakshi is permanently recorded as deleted
-    PERMANENTLY_REMOVED_IDS.forEach((id) => {
-      if (!deletedIds.includes(id)) deletedIds.push(id);
-    });
+    // Projects in official data/projects.json must always display.
+    // Clear any stale deleted_ids from user browser matching official projects:
+    const officialIds = new Set(state.projects.map((p) => p.id));
+    deletedIds = deletedIds.filter((id) => !officialIds.has(id));
     localStorage.setItem("vpkbiet_iks_deleted_ids", JSON.stringify(deletedIds));
 
     state.projects = state.projects.filter((p) => !deletedIds.includes(p.id));
@@ -1962,9 +1949,6 @@ async function init() {
     if (stored) {
       let customProjects = JSON.parse(stored);
       if (Array.isArray(customProjects)) {
-        customProjects = customProjects.filter((cp) => !PERMANENTLY_REMOVED_IDS.includes(cp.id));
-        localStorage.setItem("vpkbiet_iks_custom_projects", JSON.stringify(customProjects));
-
         customProjects.forEach((cp) => {
           if (deletedIds.includes(cp.id)) return;
           const existingIdx = state.projects.findIndex((p) => p.id === cp.id);
@@ -1979,9 +1963,6 @@ async function init() {
   } catch (err) {
     console.warn("Error reading custom projects from localStorage:", err);
   }
-
-  // Ensure permanently removed projects are never present in memory
-  state.projects = state.projects.filter((p) => !PERMANENTLY_REMOVED_IDS.includes(p.id));
 
   // Audio Toggle
   const audioBtn = document.getElementById("audio-toggle-btn");
