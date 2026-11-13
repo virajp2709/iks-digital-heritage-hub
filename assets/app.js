@@ -1907,17 +1907,30 @@ async function init() {
   }
 
   // Handle deletions & custom project edits/additions from localStorage
+  const PERMANENTLY_REMOVED_IDS = [
+    "vpkbiet-land-records-and-measurement-systems-during-the-peshwa-period-historical-land-administration-agriculture-revenue-collection",
+    "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-architectural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
+    "vpkbiet-ancient-climate-changes-in-bharat-historical-climate-patterns-traditional-environmental-knowledge-sustainable-water-management"
+  ];
+
   try {
     const deletedStored = localStorage.getItem("vpkbiet_iks_deleted_ids");
-    const deletedIds = deletedStored ? JSON.parse(deletedStored) : [];
-    if (Array.isArray(deletedIds) && deletedIds.length > 0) {
-      state.projects = state.projects.filter((p) => !deletedIds.includes(p.id));
-    }
+    let deletedIds = deletedStored ? JSON.parse(deletedStored) : [];
+    if (!Array.isArray(deletedIds)) deletedIds = [];
+    PERMANENTLY_REMOVED_IDS.forEach((id) => {
+      if (!deletedIds.includes(id)) deletedIds.push(id);
+    });
+    localStorage.setItem("vpkbiet_iks_deleted_ids", JSON.stringify(deletedIds));
+
+    state.projects = state.projects.filter((p) => !deletedIds.includes(p.id));
 
     const stored = localStorage.getItem("vpkbiet_iks_custom_projects");
     if (stored) {
-      const customProjects = JSON.parse(stored);
+      let customProjects = JSON.parse(stored);
       if (Array.isArray(customProjects)) {
+        customProjects = customProjects.filter((cp) => !PERMANENTLY_REMOVED_IDS.includes(cp.id));
+        localStorage.setItem("vpkbiet_iks_custom_projects", JSON.stringify(customProjects));
+
         customProjects.forEach((cp) => {
           if (deletedIds.includes(cp.id)) return;
           const existingIdx = state.projects.findIndex((p) => p.id === cp.id);
@@ -1932,6 +1945,9 @@ async function init() {
   } catch (err) {
     console.warn("Error reading custom projects from localStorage:", err);
   }
+
+  // Ensure permanently removed projects are never present in memory
+  state.projects = state.projects.filter((p) => !PERMANENTLY_REMOVED_IDS.includes(p.id));
 
   // Audio Toggle
   const audioBtn = document.getElementById("audio-toggle-btn");
