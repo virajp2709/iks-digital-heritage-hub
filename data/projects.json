@@ -1,5 +1,81 @@
 [
   {
+    "id": "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-structural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
+    "title": {
+      "en": "Lepakshi Veerabhadra Temple: Ancient Indian Structural Engineering, Gravitational Principles & Load-Bearing System of the Hanging Pillar",
+      "mr": "लेपाक्षी वीरभद्र मंदिर: प्राचीन भारतीय संरचनात्मक अभियांत्रिकी, गुरुत्वाकर्षणाची तत्त्वे आणि झुलत्या स्तंभाची भारवाहक प्रणाली"
+    },
+    "createdDate": "November 13, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the architectural and structural engineering of the Sri Veerabhadra Temple at Lepakshi, Andhra Pradesh, built during the Vijayanagara period in the 16th century CE. It focuses on the temple's granite post-and-beam construction, carved pillars, mandapas and interconnected structural framework. Special attention is given to the famous hanging pillar in the Natya Mandapa, which appears to have a small gap beneath its base. The study explains the role of gravity, beam action, load transfer and load redistribution among neighbouring pillars in maintaining structural stability. It also examines the properties of granite, traditional stone construction techniques and the relationship between architectural design and structural performance. The project highlights the engineering knowledge and craftsmanship of ancient Indian builders while explaining that the hanging pillar does not defy gravity.",
+      "mr": "This project explores the architectural and structural engineering of the Sri Veerabhadra Temple at Lepakshi, Andhra Pradesh, built during the Vijayanagara period in the 16th century CE. It focuses on the temple's granite post-and-beam construction, carved pillars, mandapas and interconnected structural framework. Special attention is given to the famous hanging pillar in the Natya Mandapa, which appears to have a small gap beneath its base. The study explains the role of gravity, beam action, load transfer and load redistribution among neighbouring pillars in maintaining structural stability. It also examines the properties of granite, traditional stone construction techniques and the relationship between architectural design and structural performance. The project highlights the engineering knowledge and craftsmanship of ancient Indian builders while explaining that the hanging pillar does not defy gravity."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Vaidehi Santosh Bhagat",
+        "role": "Project Leader",
+        "department": "AIDS-5",
+        "email": "vaidehi.santosh.bhagat@vpkbiet.ac.in"
+      },
+      {
+        "name": "Swarali Sunil Deshpande",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "swarali.sunil.deshpande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tanuja Vishvanath Jadhav",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "tanuja.vishvanath.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tejal Chandrakant Chavare",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "tejal.chandrakant.chavare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pragati Bhauso Thavar",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "pragati.bhauso.thavar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sifa Iqbal Shaikh",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "sifa.iqbal.shaikh@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vaishnavi Dayanand Kshirsagar",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "vaishnavi.dayanand.kshirsagar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Snehal Sonavane",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "snehal.sonavane@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-cryptography-of-ancient-india-secret-writing-coded-communication-historical-information-security",
     "title": {
       "en": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
