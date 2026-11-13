@@ -1,75 +1,5 @@
 [
   {
-    "id": "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-structural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
-    "title": {
-      "en": "Lepakshi Veerabhadra Temple: Ancient Indian Structural Engineering, Gravitational Principles & Load-Bearing System of the Hanging Pillar",
-      "mr": "लेपाक्षी वीरभद्र मंदिर: प्राचीन भारतीय संरचनात्मक अभियांत्रिकी, गुरुत्वाकर्षणाची तत्त्वे आणि झुलत्या स्तंभाची भारवाहक प्रणाली"
-    },
-    "createdDate": "November 13, 2026",
-    "academicYear": "2026-2027 (Semester I)",
-    "summary": {
-      "en": "This project explores the architectural and structural engineering of the Sri Veerabhadra Temple at Lepakshi, Andhra Pradesh, built during the Vijayanagara period in the 16th century CE. It focuses on the temple's granite post-and-beam construction, carved pillars, mandapas and interconnected structural framework. Special attention is given to the famous hanging pillar in the Natya Mandapa, which appears to have a small gap beneath its base. The study explains the role of gravity, beam action, load transfer and load redistribution among neighbouring pillars in maintaining structural stability. It also examines the properties of granite, traditional stone construction techniques and the relationship between architectural design and structural performance. The project highlights the engineering knowledge and craftsmanship of ancient Indian builders while explaining that the hanging pillar does not defy gravity.",
-      "mr": "This project explores the architectural and structural engineering of the Sri Veerabhadra Temple at Lepakshi, Andhra Pradesh, built during the Vijayanagara period in the 16th century CE. It focuses on the temple's granite post-and-beam construction, carved pillars, mandapas and interconnected structural framework. Special attention is given to the famous hanging pillar in the Natya Mandapa, which appears to have a small gap beneath its base. The study explains the role of gravity, beam action, load transfer and load redistribution among neighbouring pillars in maintaining structural stability. It also examines the properties of granite, traditional stone construction techniques and the relationship between architectural design and structural performance. The project highlights the engineering knowledge and craftsmanship of ancient Indian builders while explaining that the hanging pillar does not defy gravity."
-    },
-    "info": {
-      "abstract": ".",
-      "historicalContext": ".",
-      "engineeringMethodology": ".",
-      "keyFindings": "."
-    },
-    "photos": [
-      {
-        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Primary Project Research Photograph & Model",
-        "alt": "VPKBIET Student Research"
-      }
-    ],
-    "teamMembers": [
-      {
-        "name": "Vaidehi Santosh Bhagat",
-        "role": "Project Leader",
-        "department": "AIDS-5",
-        "email": "vaidehi.santosh.bhagat@vpkbiet.ac.in"
-      },
-      {
-        "name": "Swarali Sunil Deshpande",
-        "role": "Student Researcher",
-        "department": "AIDS-5",
-        "email": "swarali.sunil.deshpande@vpkbiet.ac.in"
-      },
-      {
-        "name": "Tanuja Vishvanath Jadhav",
-        "role": "Student Researcher",
-        "department": "AIDS-5",
-        "email": "tanuja.vishvanath.jadhav@vpkbiet.ac.in"
-      },
-      {
-        "name": "Tejal Chandrakant Chavre",
-        "role": "Student Researcher",
-        "department": "AIDS-5",
-        "email": "tejal.chandrakant.chavre@vpkbiet.ac.in"
-      },
-      {
-        "name": "Pragati Bhauso Thavare",
-        "role": "Student Researcher",
-        "department": "AIDS-5",
-        "email": "pragati.bhauso.thavare@vpkbiet.ac.in"
-      },
-      {
-        "name": "Sifa Iqbal Shaikh",
-        "role": "Student Researcher",
-        "department": "AIDS-5",
-        "email": "sifa.iqbal.shaikh@vpkbiet.ac.in"
-      },
-      {
-        "name": "Vaishnavi Dayanand Kshirsagar",
-        "role": "Student Researcher",
-        "department": "AIDS-5",
-        "email": "vaishnavi.dayanand.kshirsagar@vpkbiet.ac.in"
-      }
-    ]
-  },
-  {
     "id": "vpkbiet-smart-navigation-lighting-system-using-ldr-sensors-electronic-circuits-automation",
     "title": {
       "en": "Smart Navigation Lighting System Using LDR Sensors, Electronic Circuits & Automation",
@@ -4566,6 +4496,198 @@
         "role": "Student Researcher",
         "department": "AIDS-4",
         "email": "sanika.mundhe@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "vpkbiet-cryptography-of-ancient-india-secret-writing-coded-communication-historical-information-security",
+    "title": {
+      "en": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
+      "mr": "प्राचीन भारतातील कूटलेखनशास्त्र: गुप्त लेखन, सांकेतिक संदेशवहन आणि माहिती सुरक्षेचा ऐतिहासिक अभ्यास"
+    },
+    "createdDate": "November 12, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the historical development of secret writing and coded communication in ancient India, with reference to classical texts such as Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with unusual or cipher-like writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a method of representing numbers through letters. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting and communicating information without equating them with modern digital encryption.",
+      "mr": "This project explores the historical development of secret writing and coded communication in ancient India, with reference to classical texts such as Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with unusual or cipher-like writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a method of representing numbers through letters. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting and communicating information without equating them with modern digital encryption."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Harsha Lokhande",
+        "role": "Project Leader",
+        "department": "AIDS-2",
+        "email": "harsha.lokhande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Shubham Holkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "shubham.holkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sanjyot Kadam",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "sanjyot.kadam@vpkbiet.ac.in"
+      },
+      {
+        "name": "Jignesh Jagtap",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "jignesh.jagtap@vpkbiet.ac.in"
+      },
+      {
+        "name": "Kartik Pisal",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "kartik.pisal@vpkbiet.ac.in"
+      },
+      {
+        "name": "Himanshu Patle",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "himanshu.patle@vpkbiet.ac.in"
+      },
+      {
+        "name": "Harshavardhan Khamkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "harshavardhan.khamkar@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "vpkbiet-land-records-and-measurement-systems-during-the-peshwa-period-historical-land-administration-agriculture-revenue-collection",
+    "title": {
+      "en": "Land Records and Measurement Systems During the Peshwa Period: Historical Land Administration, Agriculture & Revenue Collection",
+      "mr": "पेशवेकालीन भूमी अभिलेख आणि मोजणी पद्धती: ऐतिहासिक जमीन प्रशासन, शेती व्यवस्था आणि महसूल संकलन"
+    },
+    "createdDate": "November 11, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project studies the land record-keeping, measurement systems, agricultural practices and revenue administration during the Peshwa period in Maharashtra. It explores how handwritten records were maintained to document farmers' names, land areas and classifications such as dry and irrigated land. The study highlights the roles of the Patil, who managed village affairs and assisted in revenue collection, and the Kulkarni, who maintained land records and financial accounts. It also examines traditional land measurement using the Shivshahi measuring rod, boundary markers and regional practices. The project describes major agricultural crops, including jowar, bajra, wheat, gram, sugarcane, bananas and grapes, along with the collection of land revenue in cash or grain. It highlights the importance of agriculture and systematic land administration in the Peshwa-era economy.",
+      "mr": "This project studies the land record-keeping, measurement systems, agricultural practices and revenue administration during the Peshwa period in Maharashtra. It explores how handwritten records were maintained to document farmers' names, land areas and classifications such as dry and irrigated land. The study highlights the roles of the Patil, who managed village affairs and assisted in revenue collection, and the Kulkarni, who maintained land records and financial accounts. It also examines traditional land measurement using the Shivshahi measuring rod, boundary markers and regional practices. The project describes major agricultural crops, including jowar, bajra, wheat, gram, sugarcane, bananas and grapes, along with the collection of land revenue in cash or grain. It highlights the importance of agriculture and systematic land administration in the Peshwa-era economy."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Pratik Gaikwad",
+        "role": "Project Leader",
+        "department": "Civil",
+        "email": "pratik.gaikwad@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pratapsinh Patil",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "pratapsinh.patil@vpkbiet.ac.in"
+      },
+      {
+        "name": "Anuj Mundhe",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "anuj.mundhe@vpkbiet.ac.in"
+      },
+      {
+        "name": "Soham Mhetre",
+        "role": "Student Researcher",
+        "department": "Civil",
+        "email": "soham.mhetre@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "vpkbiet-ancient-climate-changes-in-bharat-historical-climate-patterns-traditional-environmental-knowledge-sustainable-water-management",
+    "title": {
+      "en": "Ancient Climate Changes in Bharat: Historical Climate Patterns, Traditional Environmental Knowledge & Sustainable Water Management",
+      "mr": "भारतातील प्राचीन हवामान बदल: ऐतिहासिक हवामान पद्धती, पारंपरिक पर्यावरणीय ज्ञान आणि शाश्वत जलव्यवस्थापन"
+    },
+    "createdDate": "November 10, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the historical climate changes in Bharat and examines how geography, population growth, and human activities have influenced environmental conditions over thousands of years. It focuses on the changing climate of the Himalayan and Thar Desert regions, the historical transformation of Rajasthan from wetter landscapes to increasingly arid conditions, and the relationship between population growth, pollution, and greenhouse gas emissions. The project also studies traditional Indian environmental knowledge, particularly the Megha Garbha Lakshana principle described in texts such as the Brihat Samhita and Krishi-Parashara. Additionally, it highlights Dholavira's water conservation systems and traditional stepwells as examples of climate adaptation and sustainable water management. Overall, the project connects ancient environmental observations with present-day challenges such as climate change, drought, pollution, and water scarcity.",
+      "mr": "This project explores the historical climate changes in Bharat and examines how geography, population growth, and human activities have influenced environmental conditions over thousands of years. It focuses on the changing climate of the Himalayan and Thar Desert regions, the historical transformation of Rajasthan from wetter landscapes to increasingly arid conditions, and the relationship between population growth, pollution, and greenhouse gas emissions. The project also studies traditional Indian environmental knowledge, particularly the Megha Garbha Lakshana principle described in texts such as the Brihat Samhita and Krishi-Parashara. Additionally, it highlights Dholavira's water conservation systems and traditional stepwells as examples of climate adaptation and sustainable water management. Overall, the project connects ancient environmental observations with present-day challenges such as climate change, drought, pollution, and water scarcity."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Chandrashekhar Jadhav",
+        "role": "Project Leader",
+        "department": "AIDS-1",
+        "email": "chandrashekhar.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Chaitali Bhosale",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "chaitali.bhosale@vpkbiet.ac.in"
+      },
+      {
+        "name": "Parth Birhade",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "parth.birhade@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aditi Jadhav",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aditi.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Ayan Mahat",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "ayan.mahat@vpkbiet.ac.in"
+      },
+      {
+        "name": "Akshara Type",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "akshara.type@vpkbiet.ac.in"
+      },
+      {
+        "name": "Afaroj Mulani",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "afaroj.mulani@vpkbiet.ac.in"
       }
     ]
   }

@@ -703,6 +703,10 @@ function openProjectModal(project) {
   const modal = document.getElementById("project-detail-modal");
   if (!modal) return;
 
+  // Show modal immediately so it opens reliably regardless of async/secondary tasks
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+
   // Date and title
   const typeTag = document.getElementById("modal-project-type");
   if (typeTag) typeTag.textContent = state.lang === "mr" ? (project.typeMr || project.type || "") : (project.type || "");
@@ -712,7 +716,11 @@ function openProjectModal(project) {
   if (titleEl) titleEl.textContent = getLocalized(project.title);
 
   // Photos & Gallery Carousel
-  renderModalGallery(project);
+  try {
+    renderModalGallery(project);
+  } catch (err) {
+    console.warn("Error rendering modal gallery:", err);
+  }
 
   // Leader branch badge
   const branchEl = document.getElementById("modal-project-branch");
@@ -744,11 +752,11 @@ function openProjectModal(project) {
       .map(
         (member) => `
       <div class="team-member-card">
-        <div class="member-avatar">${member.name.charAt(0)}</div>
+        <div class="member-avatar">${escapeHtml((member.name || "?").charAt(0))}</div>
         <div class="member-info">
-          <h4>${member.name}</h4>
-          <p>${member.role}</p>
-          <small>${member.department} · VPKBIET</small>
+          <h4>${escapeHtml(member.name || "Student Researcher")}</h4>
+          <p>${escapeHtml(member.role || "Researcher")}</p>
+          <small>${escapeHtml(member.department || "")} · VPKBIET</small>
         </div>
       </div>
     `
@@ -757,11 +765,11 @@ function openProjectModal(project) {
   }
 
   // Tab 3: QR Studio
-  renderProjectQR(project);
-
-  // Show modal
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
+  try {
+    renderProjectQR(project);
+  } catch (err) {
+    console.warn("Error rendering project QR code:", err);
+  }
 }
 
 function renderModalGallery(project) {
@@ -814,16 +822,33 @@ function renderProjectQR(project) {
   const projectUrl = `${window.location.origin}${window.location.pathname}#project/${project.id}`;
 
   if (typeof QRCode !== "undefined") {
-    new QRCode(qrContainer, {
-      text: projectUrl,
-      width: 190,
-      height: 190,
-      colorDark: "#0b1512",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    });
+    try {
+      new QRCode(qrContainer, {
+        text: projectUrl,
+        width: 190,
+        height: 190,
+        colorDark: "#0b1512",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } catch (qrErr) {
+      console.warn("QR code generation with Level M failed, falling back to Level L:", qrErr);
+      try {
+        new QRCode(qrContainer, {
+          text: projectUrl,
+          width: 190,
+          height: 190,
+          colorDark: "#0b1512",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.L
+        });
+      } catch (qrErr2) {
+        console.warn("QR code generation with Level L also failed:", qrErr2);
+        qrContainer.innerHTML = `<p style="color:#000; font-size: 0.8rem; padding: 20px; text-align:center;">[QR code ready: ${escapeHtml(project.id)}]</p>`;
+      }
+    }
   } else {
-    qrContainer.innerHTML = `<p style="color:#000; font-size: 0.8rem; padding: 20px;">[QR code ready: ${project.id}]</p>`;
+    qrContainer.innerHTML = `<p style="color:#000; font-size: 0.8rem; padding: 20px; text-align:center;">[QR code ready: ${escapeHtml(project.id)}]</p>`;
   }
 
   // Setup Download & Print Handlers
@@ -1908,8 +1933,12 @@ async function init() {
 
   // Handle deletions & custom project edits/additions from localStorage
   const PERMANENTLY_REMOVED_IDS = [
+    "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-structural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
+    "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-architectural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar"
+  ];
+
+  const RESTORED_PROJECT_IDS = [
     "vpkbiet-land-records-and-measurement-systems-during-the-peshwa-period-historical-land-administration-agriculture-revenue-collection",
-    "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-architectural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
     "vpkbiet-ancient-climate-changes-in-bharat-historical-climate-patterns-traditional-environmental-knowledge-sustainable-water-management"
   ];
 
@@ -1917,6 +1946,11 @@ async function init() {
     const deletedStored = localStorage.getItem("vpkbiet_iks_deleted_ids");
     let deletedIds = deletedStored ? JSON.parse(deletedStored) : [];
     if (!Array.isArray(deletedIds)) deletedIds = [];
+
+    // Ensure restored projects are unblocked from any legacy deletions
+    deletedIds = deletedIds.filter((id) => !RESTORED_PROJECT_IDS.includes(id));
+
+    // Ensure Lepakshi is permanently recorded as deleted
     PERMANENTLY_REMOVED_IDS.forEach((id) => {
       if (!deletedIds.includes(id)) deletedIds.push(id);
     });
