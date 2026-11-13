@@ -1,5 +1,75 @@
 [
   {
+    "id": "vpkbiet-cryptography-of-ancient-india-secret-writing-coded-communication-historical-information-security",
+    "title": {
+      "en": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
+      "mr": "प्राचीन भारतातील कूटलेखनशास्त्र: गुप्त लेखन, सांकेतिक संदेशवहन आणि माहिती सुरक्षेचा ऐतिहासिक अभ्यास"
+    },
+    "createdDate": "November 13, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the historical importance of secret writing and coded communication in ancient India, with reference to Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with cipher-like or unusual writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a mnemonic method of representing numbers through letters and words. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting information while recognising that they were different from modern digital encryption.",
+      "mr": "This project explores the historical importance of secret writing and coded communication in ancient India, with reference to Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with cipher-like or unusual writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a mnemonic method of representing numbers through letters and words. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting information while recognising that they were different from modern digital encryption."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Harsh Lokhande",
+        "role": "Project Leader",
+        "department": "AIDS-2",
+        "email": "harsh.lokhande@vpkbiet.ac.in"
+      },
+      {
+        "name": "Shubham Holkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "shubham.holkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sanjyot Kadam",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "sanjyot.kadam@vpkbiet.ac.in"
+      },
+      {
+        "name": "Jignesh Jagtap",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "jignesh.jagtap@vpkbiet.ac.in"
+      },
+      {
+        "name": "Kartik pisal",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "kartik.pisal@vpkbiet.ac.in"
+      },
+      {
+        "name": "Himanshu Patle",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "himanshu.patle@vpkbiet.ac.in"
+      },
+      {
+        "name": "Harshvardhan Khamkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "harshvardhan.khamkar@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-pushpak-viman-mythology-inspired-design-mechanical-engineering-stationary-model-construction",
     "title": {
       "en": "Pushpak Viman: Mythology-Inspired Design, Mechanical Engineering & Stationary Model Construction",
