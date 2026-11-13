@@ -38,16 +38,16 @@
         "email": "swarali.sunil.deshpande@vpkbiet.ac.in"
       },
       {
-        "name": "Tanuja Vishwanath Jadhav",
+        "name": "Tanuja Vishvanath Jadhav",
         "role": "Student Researcher",
         "department": "AIDS-5",
-        "email": "tanuja.vishwanath.jadhav@vpkbiet.ac.in"
+        "email": "tanuja.vishvanath.jadhav@vpkbiet.ac.in"
       },
       {
-        "name": "Tejal Chavare",
+        "name": "Tejal Chandrakant Chavare",
         "role": "Student Researcher",
         "department": "AIDS-5",
-        "email": "tejal.chavare@vpkbiet.ac.in"
+        "email": "tejal.chandrakant.chavare@vpkbiet.ac.in"
       },
       {
         "name": "Pragati Bhauso Thavare",
@@ -66,6 +66,12 @@
         "role": "Student Researcher",
         "department": "AIDS-5",
         "email": "vaishnavi.dayanand.kshirsagar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Snehal Sonavane",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "snehal.sonavane@vpkbiet.ac.in"
       }
     ]
   },
