@@ -2756,16 +2756,16 @@
         "email": "viraj.more@vpkbiet.ac.in"
       },
       {
-        "name": "Aryan Guruv",
+        "name": "Aryan Gurav",
         "role": "Student Researcher",
         "department": "E&TC",
-        "email": "aryan.guruv@vpkbiet.ac.in"
+        "email": "aryan.gurav@vpkbiet.ac.in"
       },
       {
-        "name": "Parth Gadhve",
+        "name": "Parth Gadhave",
         "role": "Student Researcher",
         "department": "E&TC",
-        "email": "parth.gadhve@vpkbiet.ac.in"
+        "email": "parth.gadhave@vpkbiet.ac.in"
       },
       {
         "name": "Samyak Gade",
@@ -2780,10 +2780,10 @@
         "email": "soham.wagh@vpkbiet.ac.in"
       },
       {
-        "name": "Audumber Kale",
+        "name": "Audumbar Kale",
         "role": "Student Researcher",
         "department": "E&TC",
-        "email": "audumber.kale@vpkbiet.ac.in"
+        "email": "audumbar.kale@vpkbiet.ac.in"
       },
       {
         "name": "Avishkar Khalate",
@@ -4625,7 +4625,7 @@
     "academicYear": "2026-2027 (Semester I)",
     "summary": {
       "en": "This project explores the historical importance of secret writing and coded communication in ancient India, with reference to Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with cipher-like or unusual writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a mnemonic method of representing numbers through letters and words. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting information while recognising that they were different from modern digital encryption.",
-      "mr": "हा प्रकल्प वात्स्यायनांचे कामसूत्र आणि कौटिल्याचे अर्थशास्त्र या संदर्भाने प्राचीन भारतातील गुप्त लेखन आणि सांकेतिक संदेशवहनाचे ऐतिहासिक महत्त्व अभ्यासतो. यात म्लेंच्छित विकल्प आणि गूढलेख्य या गुप्त लेखन पद्धतींचा अभ्यास आहे. अक्षरे आणि ध्वनी बदल, गुप्त चिन्हे, गोपनीय संवाद आणि एनकोडिंग, एन्क्रिप्शन आणि स्टेगॅनोग्राफीमधील फरक स्पष्ट केले आहेत."
+      "mr": "This project explores the historical importance of secret writing and coded communication in ancient India, with reference to Vatsyayana's Kamasutra and Kautilya's Arthashastra. It examines Mlecchita Vikalpa, an art associated with cipher-like or unusual writing, and Gudhalekhya, referring to secret writing discussed in the Arthashastra. The study explains the principles of letter and sound substitution, secret signs, confidential communication, and the differences between encoding, encryption and steganography. It also discusses later explanations of secret-writing methods such as Kautiliya and Muladeviya, along with the Katapayadi system as a mnemonic method of representing numbers through letters and words. By connecting these historical references with modern information security concepts, the project highlights ancient approaches to protecting information while recognising that they were different from modern digital encryption."
     },
     "info": {
       "abstract": ".",
