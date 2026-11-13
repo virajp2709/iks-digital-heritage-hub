@@ -1,75 +1,5 @@
 [
   {
-    "id": "vpkbiet-ancient-climate-changes-in-bharat-historical-climate-patterns-traditional-environmental-knowledge-sustainable-water-management",
-    "title": {
-      "en": "Ancient Climate Changes in Bharat: Historical Climate Patterns, Traditional Environmental Knowledge & Sustainable Water Management",
-      "mr": "भारतातील प्राचीन हवामान बदल: ऐतिहासिक हवामान पद्धती, पारंपरिक पर्यावरणीय ज्ञान आणि शाश्वत जलव्यवस्थापन"
-    },
-    "createdDate": "November 13, 2026",
-    "academicYear": "2026-2027 (Semester I)",
-    "summary": {
-      "en": "This project explores historical climate changes in Bharat and examines how geographical conditions, population growth and human activities have influenced the environment over thousands of years. It focuses on climatic changes in the Himalayan and Thar Desert regions, the historical transformation of Rajasthan from wetter conditions to increasing aridity, and the relationship between population, pollution and greenhouse gas emissions. The study also examines traditional Indian environmental knowledge, particularly the Megha Garbha Lakshana principle described in the Brihat Samhita and Krishi Parashara, which uses natural observations to interpret monsoon patterns. Additionally, it highlights the water conservation practices of Dholavira and traditional stepwells as examples of climate adaptation and sustainable resource management. The project connects ancient environmental knowledge with contemporary challenges such as climate change, drought and water scarcity.",
-      "mr": "This project explores historical climate changes in Bharat and examines how geographical conditions, population growth and human activities have influenced the environment over thousands of years. It focuses on climatic changes in the Himalayan and Thar Desert regions, the historical transformation of Rajasthan from wetter conditions to increasing aridity, and the relationship between population, pollution and greenhouse gas emissions. The study also examines traditional Indian environmental knowledge, particularly the Megha Garbha Lakshana principle described in the Brihat Samhita and Krishi Parashara, which uses natural observations to interpret monsoon patterns. Additionally, it highlights the water conservation practices of Dholavira and traditional stepwells as examples of climate adaptation and sustainable resource management. The project connects ancient environmental knowledge with contemporary challenges such as climate change, drought and water scarcity."
-    },
-    "info": {
-      "abstract": ".",
-      "historicalContext": ".",
-      "engineeringMethodology": ".",
-      "keyFindings": "."
-    },
-    "photos": [
-      {
-        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Primary Project Research Photograph & Model",
-        "alt": "VPKBIET Student Research"
-      }
-    ],
-    "teamMembers": [
-      {
-        "name": "Chandrshekhar Jadhav",
-        "role": "Project Leader",
-        "department": "AIDS-1",
-        "email": "chandrshekhar.jadhav@vpkbiet.ac.in"
-      },
-      {
-        "name": "Chaitali Bhosale",
-        "role": "Student Researcher",
-        "department": "AIDS-1",
-        "email": "chaitali.bhosale@vpkbiet.ac.in"
-      },
-      {
-        "name": "Parth Birhade",
-        "role": "Student Researcher",
-        "department": "AIDS-1",
-        "email": "parth.birhade@vpkbiet.ac.in"
-      },
-      {
-        "name": "Aditi Jadhav",
-        "role": "Student Researcher",
-        "department": "AIDS-1",
-        "email": "aditi.jadhav@vpkbiet.ac.in"
-      },
-      {
-        "name": "Ayan Mahat",
-        "role": "Student Researcher",
-        "department": "AIDS-1",
-        "email": "ayan.mahat@vpkbiet.ac.in"
-      },
-      {
-        "name": "Akshara Tupe",
-        "role": "Student Researcher",
-        "department": "AIDS-1",
-        "email": "akshara.tupe@vpkbiet.ac.in"
-      },
-      {
-        "name": "Afaroj Mulani",
-        "role": "Student Researcher",
-        "department": "AIDS-1",
-        "email": "afaroj.mulani@vpkbiet.ac.in"
-      }
-    ]
-  },
-  {
     "id": "vpkbiet-lepakshi-veerabhadra-temple-ancient-indian-structural-engineering-gravitational-principles-load-bearing-system-of-the-hanging-pillar",
     "title": {
       "en": "Lepakshi Veerabhadra Temple: Ancient Indian Structural Engineering, Gravitational Principles & Load-Bearing System of the Hanging Pillar",
@@ -294,7 +224,7 @@
   {
     "id": "vpkbiet-the-anatomy-of-a-nagara-temple-ancient-indian-temple-architecture-structural-design-spatial-planning",
     "title": {
-      "en": "The Anatomy of a Nagara Temple: Ancient Indian Temple Architecture, Structural Design & Spatial Planning",
+      "en": "The Anatomy of a Dravidian Nagara Temple: Ancient Indian Temple Architecture, Structural Design & Spatial Planning",
       "mr": "नागर मंदिराची रचना: प्राचीन भारतीय मंदिर स्थापत्यकला, संरचनात्मक अभिकल्पना आणि अवकाश नियोजन"
     },
     "createdDate": "November 12, 2026",
@@ -330,16 +260,16 @@
         "email": "yash.zol@vpkbiet.ac.in"
       },
       {
-        "name": "Smit Pandhre",
+        "name": "Smit Pandhare",
         "role": "Student Researcher",
         "department": "Civil",
-        "email": "smit.pandhre@vpkbiet.ac.in"
+        "email": "smit.pandhare@vpkbiet.ac.in"
       },
       {
-        "name": "Samarth Jagdale",
+        "name": "Samarth Jagadale",
         "role": "Student Researcher",
         "department": "Civil",
-        "email": "samarth.jagdale@vpkbiet.ac.in"
+        "email": "samarth.jagadale@vpkbiet.ac.in"
       },
       {
         "name": "Piyush Shinde",
