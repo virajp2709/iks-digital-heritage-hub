@@ -1,5 +1,87 @@
 [
   {
+    "id": "vpkbiet-pushpak-viman-mythology-inspired-design-mechanical-engineering-stationary-model-construction",
+    "title": {
+      "en": "Pushpak Viman: Mythology-Inspired Design, Mechanical Engineering & Stationary Model Construction",
+      "mr": "पुष्पक विमान: पौराणिक संकल्पनेतून प्रेरित रचना, यांत्रिक अभियांत्रिकी आणि स्थिर प्रतिकृती निर्मिती"
+    },
+    "createdDate": "November 13, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the traditional Indian concept of the Pushpak Viman through a small-scale, stationary engineering model inspired by cultural descriptions and artistic representations. The model features a central body, pointed front section, rear tail, decorative wings, a pavilion-like canopy with pillars, a seating arrangement and a centrally positioned rotating Chakra. The study focuses on structural design, lightweight material selection, measurement, component fabrication, mechanical motion and basic electrical systems. A low-voltage geared DC motor drives the decorative Chakra, demonstrating concepts such as rotational motion, torque transmission, shaft alignment, friction and speed control. Optional LED lighting adds to the model's visual presentation. The project combines Indian cultural inspiration with practical engineering and model-making skills, while clearly defining the prototype as a stationary display model that is neither flight-capable nor designed for human occupancy.",
+      "mr": "This project explores the traditional Indian concept of the Pushpak Viman through a small-scale, stationary engineering model inspired by cultural descriptions and artistic representations. The model features a central body, pointed front section, rear tail, decorative wings, a pavilion-like canopy with pillars, a seating arrangement and a centrally positioned rotating Chakra. The study focuses on structural design, lightweight material selection, measurement, component fabrication, mechanical motion and basic electrical systems. A low-voltage geared DC motor drives the decorative Chakra, demonstrating concepts such as rotational motion, torque transmission, shaft alignment, friction and speed control. Optional LED lighting adds to the model's visual presentation. The project combines Indian cultural inspiration with practical engineering and model-making skills, while clearly defining the prototype as a stationary display model that is neither flight-capable nor designed for human occupancy."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Soham Somanath Wavhal",
+        "role": "Project Leader",
+        "department": "AIDS-5",
+        "email": "soham.somanath.wavhal@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aryan Pravin Telap",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "aryan.pravin.telap@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tanishk Surendra Mohite",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "tanishk.surendra.mohite@vpkbiet.ac.in"
+      },
+      {
+        "name": "Viraj Vijaykumar Pathak",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "viraj.vijaykumar.pathak@vpkbiet.ac.in"
+      },
+      {
+        "name": "Soham Rajendra Zarekar",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "soham.rajendra.zarekar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Swapnil Sachin Fadtare",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "swapnil.sachin.fadtare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Tanishka Deepak Lokare",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "tanishka.deepak.lokare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Swaranjali Santosh Jadhav",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "swaranjali.santosh.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Vaibhav Shinde",
+        "role": "Student Researcher",
+        "department": "AIDS-5",
+        "email": "vaibhav.shinde@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-smart-navigation-lighting-system-using-ldr-sensors-electronic-circuits-automation",
     "title": {
       "en": "Smart Navigation Lighting System Using LDR Sensors, Electronic Circuits & Automation",
