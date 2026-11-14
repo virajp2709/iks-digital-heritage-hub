@@ -4170,14 +4170,14 @@
   {
     "id": "vpkbiet-automatic-lighthouse-smart-lighting-system-using-ldr-sensors-electronic-circuits-automation",
     "title": {
-      "en": "Automatic Lighthouse: Smart Lighting System Using LDR Sensors, Electronic Circuits & Automation",
-      "mr": "स्वयंचलित दीपगृह: एलडीआर सेन्सर, इलेक्ट्रॉनिक सर्किट आणि स्वयंचलनावर आधारित स्मार्ट प्रकाश व्यवस्था"
+      "en": "Naval & Indigenous Shipbuilding",
+      "mr": "भारतीय नौदल (Naval) आणि स्वदेशी जहाजबांधणी (Indigenous Shipbuilding)"
     },
     "createdDate": "November 10, 2026",
     "academicYear": "2026-2027 (Semester I)",
     "summary": {
-      "en": "This project demonstrates the design and working of an Automatic Lighthouse using LDR sensors, electronic control circuits, and LED technology. Its main objective is to provide automatic illumination according to surrounding light conditions, helping ships navigate safely during nighttime and low-visibility conditions. The system uses an LDR sensor to detect changes in ambient light intensity and an electronic switching mechanism to turn the lighthouse light ON in darkness and OFF during sufficient daylight. High-intensity LEDs provide efficient illumination, while a small DC motor rotates the light mechanism to create a sweeping beam similar to a traditional lighthouse. The project highlights key concepts of sensor technology, automation, electrical and electronic engineering, energy efficiency, and practical navigation assistance.",
-      "mr": "This project demonstrates the design and working of an Automatic Lighthouse using LDR sensors, electronic control circuits, and LED technology. Its main objective is to provide automatic illumination according to surrounding light conditions, helping ships navigate safely during nighttime and low-visibility conditions. The system uses an LDR sensor to detect changes in ambient light intensity and an electronic switching mechanism to turn the lighthouse light ON in darkness and OFF during sufficient daylight. High-intensity LEDs provide efficient illumination, while a small DC motor rotates the light mechanism to create a sweeping beam similar to a traditional lighthouse. The project highlights key concepts of sensor technology, automation, electrical and electronic engineering, energy efficiency, and practical navigation assistance."
+      "en": "Indian Marine Technology showcases the evolution of Indian ships from ancient wooden boats to modern advanced vessels. It highlights the development of shipbuilding, navigation, propulsion systems, and marine engineering. This project explains India's progress in maritime trade, transportation, and naval technology.",
+      "mr": "Indian Marine Technology showcases the evolution of Indian ships from ancient wooden boats to modern advanced vessels. It highlights the development of shipbuilding, navigation, propulsion systems, and marine engineering. This project explains India's progress in maritime trade, transportation, and naval technology."
     },
     "info": {
       "abstract": ".",
