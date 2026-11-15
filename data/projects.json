@@ -1,5 +1,51 @@
 [
   {
+    "id": "vpkbiet-iks-digital-heritage-hub-a-digital-platform-for-preserving-exploring-promoting-indian-knowledge-systems",
+    "title": {
+      "en": "IKS Digital Heritage Hub: A Digital Platform for Preserving, Exploring & Promoting Indian Knowledge Systems",
+      "mr": "IKS डिजिटल हेरिटेज हब: भारतीय ज्ञानप्रणालीचे जतन, अन्वेषण आणि प्रसार करणारे डिजिटल व्यासपीठ"
+    },
+    "createdDate": "November 15, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project focuses on developing the IKS Digital Heritage Hub, a web-based platform designed to document, preserve and promote India's rich heritage and traditional knowledge systems through digital technology. The platform provides a centralised collection of student projects covering diverse topics such as ancient Indian science, mathematics, architecture, engineering, metallurgy, agriculture, astronomy, history and cultural traditions. It enables users to explore projects, search for specific topics, browse information through categories and access detailed project descriptions. The website also supports the presentation of project team members and their contributions, helping students showcase their research and creativity. By integrating Indian Knowledge Systems with modern web technologies, the project aims to make traditional knowledge more accessible, encourage collaborative learning and create a growing digital repository of India's intellectual, scientific and cultural heritage.",
+      "mr": "This project focuses on developing the IKS Digital Heritage Hub, a web-based platform designed to document, preserve and promote India's rich heritage and traditional knowledge systems through digital technology. The platform provides a centralised collection of student projects covering diverse topics such as ancient Indian science, mathematics, architecture, engineering, metallurgy, agriculture, astronomy, history and cultural traditions. It enables users to explore projects, search for specific topics, browse information through categories and access detailed project descriptions. The website also supports the presentation of project team members and their contributions, helping students showcase their research and creativity. By integrating Indian Knowledge Systems with modern web technologies, the project aims to make traditional knowledge more accessible, encourage collaborative learning and create a growing digital repository of India's intellectual, scientific and cultural heritage."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Viraj Vijaykumar Pathak",
+        "role": "Website Development & Technical Lead",
+        "department": "AIDS-5",
+        "email": "viraj.vijaykumar.pathak@vpkbiet.ac.in"
+      },
+      {
+        "name": "Soham Somanath Wavhal",
+        "role": "Content Management & Documentation Lead",
+        "department": "AIDS-5",
+        "email": "soham.somanath.wavhal@vpkbiet.ac.in"
+      },
+      {
+        "name": "Parth Bankar",
+        "role": "Student Data Collection & Coordination Lead",
+        "department": "E&TC",
+        "email": "parth.bankar@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-pushpak-viman-mythology-inspired-design-mechanical-engineering-stationary-model-construction",
     "title": {
       "en": "Pushpak Viman: Mythology-Inspired Design, Mechanical Engineering & Stationary Model Construction",
