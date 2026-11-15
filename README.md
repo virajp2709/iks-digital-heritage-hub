@@ -75,7 +75,7 @@ Clicking on any project card opens a rich full-screen modal featuring:
 
 ## 👨‍💻 Author & Credits
 
-- **Curated & Developed by:** **Viraj Pathak**
+- **Created & Developed by:** **Viraj Pathak**
 - **Department:** Department of Indian Knowledge Systems (IKS Cell)
 - **Institution:** Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology (VPKBIET), Baramati, Maharashtra, India.
 - **Affiliation:** Savitribai Phule Pune University (SPPU) · NAAC Accredited 'A' Grade
