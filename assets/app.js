@@ -587,6 +587,7 @@ function getLeaderBranch(project) {
 }
 
 const BRANCH_ORDER = ["AIDS-1", "AIDS-2", "AIDS-3", "AIDS-4", "AIDS-5", "Civil", "E&TC"];
+const PINNED_PROJECT_ID = "vpkbiet-iks-digital-heritage-hub-a-digital-platform-for-preserving-exploring-promoting-indian-knowledge-systems";
 
 function renderProjects() {
   const grid = document.getElementById("projects-grid");
@@ -620,8 +621,13 @@ function renderProjects() {
     return matchesSearch && matchesCategory && matchesBranch;
   });
 
-  // Sort filtered list by department branch order, then alphabetically by project title
+  // Sort filtered list: pinned project always stays on top, then by department branch order, then alphabetically by title
   filtered.sort((a, b) => {
+    const isPinnedA = a.id === PINNED_PROJECT_ID || a.pinned === true;
+    const isPinnedB = b.id === PINNED_PROJECT_ID || b.pinned === true;
+    if (isPinnedA && !isPinnedB) return -1;
+    if (!isPinnedA && isPinnedB) return 1;
+
     const branchA = getLeaderBranch(a);
     const branchB = getLeaderBranch(b);
     const idxA = BRANCH_ORDER.indexOf(branchA);
@@ -645,7 +651,8 @@ function renderProjects() {
 
   filtered.forEach((p) => {
     const card = document.createElement("article");
-    card.className = "project-card";
+    const isPinned = p.id === PINNED_PROJECT_ID || p.pinned === true;
+    card.className = `project-card ${isPinned ? "pinned-project-card" : ""}`;
     card.setAttribute("tabindex", "0");
     card.setAttribute("role", "button");
     card.setAttribute("aria-label", `Open project details for ${getLocalized(p.title)}`);
@@ -659,6 +666,7 @@ function renderProjects() {
     card.innerHTML = `
       <div class="card-image-box">
         <img src="${mainPhoto}" alt="${p.photos?.[0]?.alt || getLocalized(p.title)}" loading="lazy">
+        ${isPinned ? `<span class="card-award-badge" style="background: linear-gradient(135deg, #d4af37, #f38a1e); color: #0b1512; font-weight: 800; border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 4px 14px rgba(212, 175, 55, 0.5);">📌 PINNED PROJECT</span>` : ""}
       </div>
       <div class="card-content">
         <div class="card-date-row">
