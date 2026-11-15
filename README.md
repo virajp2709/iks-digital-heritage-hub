@@ -75,7 +75,9 @@ Clicking on any project card opens a rich full-screen modal featuring:
 
 ## 👨‍💻 Author & Credits
 
-- **Created & Developed by:** **Viraj Pathak**
+- **Website Development & Technical Lead by:** **Viraj Vijaykumar Pathak** **AIDS-5**
+- **Content Management & Documentation Lead by:** **Soham Somanath Wavhal** **AIDS-5**
+- **Student Data Collection & Coordination Lead by:** **Parth Bankar** **E&TC**
 - **Department:** Department of Indian Knowledge Systems (IKS Cell)
 - **Institution:** Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology (VPKBIET), Baramati, Maharashtra, India.
 - **Affiliation:** Savitribai Phule Pune University (SPPU) · NAAC Accredited 'A' Grade
