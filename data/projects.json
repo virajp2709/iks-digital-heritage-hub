@@ -1,5 +1,75 @@
 [
   {
+    "id": "vpkbiet-the-kailasa-temple-of-ellora-ancient-indian-rock-cut-architecture-structural-engineering-artistic-heritage",
+    "title": {
+      "en": "The Kailasa Temple of Ellora: Ancient Indian Rock-Cut Architecture, Structural Engineering & Artistic Heritage",
+      "mr": "वेरूळचे कैलास मंदिर: प्राचीन भारतीय कातळ स्थापत्यकला, संरचनात्मक अभियांत्रिकी आणि कलात्मक वारसा"
+    },
+    "createdDate": "November 17, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "This project explores the historical, architectural, geological and engineering significance of the Kailasa Temple at Ellora, Maharashtra, a magnificent rock-cut monument traditionally associated with Rashtrakuta king Krishna I during the 8th century CE. It examines the remarkable top-down excavation technique through which an enormous basalt rock formation was transformed into a temple complex featuring a central shrine, Nandi pavilion, mandapas, gateways, pillars and sculptural galleries. The study highlights the properties of Deccan Trap basalt, ancient excavation methods, spatial planning, structural stability and intricate stone craftsmanship. It also explores the temple's Shaivite significance, including sculptures depicting Lord Shiva, Ravana shaking Mount Kailasa and Nataraja, along with Ellora's Buddhist, Hindu and Jain heritage. The project emphasises the achievements of ancient Indian engineers and artisans and the importance of conserving this UNESCO World Heritage Site for future generations.",
+      "mr": "This project explores the historical, architectural, geological and engineering significance of the Kailasa Temple at Ellora, Maharashtra, a magnificent rock-cut monument traditionally associated with Rashtrakuta king Krishna I during the 8th century CE. It examines the remarkable top-down excavation technique through which an enormous basalt rock formation was transformed into a temple complex featuring a central shrine, Nandi pavilion, mandapas, gateways, pillars and sculptural galleries. The study highlights the properties of Deccan Trap basalt, ancient excavation methods, spatial planning, structural stability and intricate stone craftsmanship. It also explores the temple's Shaivite significance, including sculptures depicting Lord Shiva, Ravana shaking Mount Kailasa and Nataraja, along with Ellora's Buddhist, Hindu and Jain heritage. The project emphasises the achievements of ancient Indian engineers and artisans and the importance of conserving this UNESCO World Heritage Site for future generations."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Aniket Bharat Desai",
+        "role": "Project Leader",
+        "department": "AIDS-1",
+        "email": "aniket.bharat.desai@vpkbiet.ac.in"
+      },
+      {
+        "name": "Atharv Atul Holkar",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "atharv.atul.holkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aayush Santosh Gore",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aayush.santosh.gore@vpkbiet.ac.in"
+      },
+      {
+        "name": "Bhagyashree Annasaheb Rupanawar",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "bhagyashree.annasaheb.rupanawar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Asmita Balasaheb Patil",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "asmita.balasaheb.patil@vpkbiet.ac.in"
+      },
+      {
+        "name": "Anushka Vilas Dhavale",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "anushka.vilas.dhavale@vpkbiet.ac.in"
+      },
+      {
+        "name": "Amruta Ramdas Pokale",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "amruta.ramdas.pokale@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-iks-digital-heritage-hub-a-digital-platform-for-preserving-exploring-promoting-indian-knowledge-systems",
     "title": {
       "en": "IKS Digital Heritage Hub: A Digital Platform for Preserving, Exploring & Promoting Indian Knowledge Systems",
@@ -43,8 +113,7 @@
         "department": "E&TC",
         "email": "parth.bankar@vpkbiet.ac.in"
       }
-    ],
-    "pinned": true
+    ]
   },
   {
     "id": "vpkbiet-pushpak-viman-mythology-inspired-design-mechanical-engineering-stationary-model-construction",
