@@ -1,5 +1,57 @@
 [
   {
+    "id": "vpkbiet-yoga-union-of-body-mind-and-spirit-ancient-indian-knowledge-and-holistic-well-being",
+    "title": {
+      "en": "Yoga: Union of Body, Mind and Spirit – Ancient Indian Knowledge and Holistic Well-being",
+      "mr": "योग: शरीर, मन आणि आत्म्याचा समन्वय – प्राचीन भारतीय ज्ञान आणि सर्वांगीण कल्याण"
+    },
+    "createdDate": "November 24, 2026",
+    "academicYear": "2026-2027 (Semester I)",
+    "summary": {
+      "en": "Yoga is a traditional Indian discipline that combines physical postures, breathing techniques, concentration, meditation and self-awareness to cultivate harmony between the body, mind and inner self. The project explores the roots and development of yoga in Indian intellectual and spiritual traditions, including the teachings of Patanjali’s Yoga Sutras, the Bhagavad Gita and the Hatha Yoga Pradipika. It explains the eight limbs of Ashtanga Yoga—Yama, Niyama, Asana, Pranayama, Pratyahara, Dharana, Dhyana and Samadhi—and introduces the main paths of Karma Yoga, Bhakti Yoga, Jnana Yoga and Raja Yoga. The project also highlights yoga practices, their potential benefits for flexibility, balance, focus and stress management, safe practice guidelines, and the significance of International Day of Yoga, celebrated on 21 June.",
+      "mr": "Yoga is a traditional Indian discipline that combines physical postures, breathing techniques, concentration, meditation and self-awareness to cultivate harmony between the body, mind and inner self. The project explores the roots and development of yoga in Indian intellectual and spiritual traditions, including the teachings of Patanjali’s Yoga Sutras, the Bhagavad Gita and the Hatha Yoga Pradipika. It explains the eight limbs of Ashtanga Yoga—Yama, Niyama, Asana, Pranayama, Pratyahara, Dharana, Dhyana and Samadhi—and introduces the main paths of Karma Yoga, Bhakti Yoga, Jnana Yoga and Raja Yoga. The project also highlights yoga practices, their potential benefits for flexibility, balance, focus and stress management, safe practice guidelines, and the significance of International Day of Yoga, celebrated on 21 June."
+    },
+    "info": {
+      "abstract": ".",
+      "historicalContext": ".",
+      "engineeringMethodology": ".",
+      "keyFindings": "."
+    },
+    "photos": [
+      {
+        "url": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Primary Project Research Photograph & Model",
+        "alt": "VPKBIET Student Research"
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Saksham Khape",
+        "role": "Project Leader",
+        "department": "AIDS-4",
+        "email": "saksham.khape@vpkbiet.ac.in"
+      },
+      {
+        "name": "Shubham more",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "shubham.more@vpkbiet.ac.in"
+      },
+      {
+        "name": "Shivraj choudhari",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "shivraj.choudhari@vpkbiet.ac.in"
+      },
+      {
+        "name": "Shailesh dolase",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "shailesh.dolase@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
     "id": "vpkbiet-the-kailasa-temple-of-ellora-ancient-indian-rock-cut-architecture-structural-engineering-artistic-heritage",
     "title": {
       "en": "The Kailasa Temple of Ellora: Ancient Indian Rock-Cut Architecture, Structural Engineering & Artistic Heritage",
