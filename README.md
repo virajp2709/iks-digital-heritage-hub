@@ -62,8 +62,8 @@ Clicking on any project card opens a rich full-screen modal featuring:
 - **Print Label**: Formatted for printing physical desk and poster exhibition cards.
 - **Share Link**: One-click URL copy with deep hash linking (`#project/<id>`).
 
-### 6. 🔒 Admin "Add Projects" Portal (Password: 2026)
-- Secured administrator gateway requiring security key **`2026`** to add and manage student projects.
+### 6. 🔒 Admin "Add Projects" Portal (Password: Unknown)
+- Secured administrator gateway requiring security key **`----`** to add and manage student projects.
 - **Photo Management**: Upload local images or add URLs with live previews and captions that feed directly into the Explore Details photo carousel.
 - **Full Explore Details Parity**: Direct input for *Project Abstract & Problem Statement*, *Historical Indian Tradition & Reference*, *Modern Engineering Methodology*, *Key Findings & Future Impact*, *Student Researchers & Faculty Guide*, and *Technical Quantitative Metrics*.
 - **Persistence & Export**: Newly added projects persist in the browser and can be exported as updated `projects.json` with one click.
