@@ -1,6 +1,6 @@
 /**
  * VPKBIET IKS Digital Heritage Hub - Student Website Projects Controller
- * Handles loading, filtering, search, and dynamic QR generation for student websites
+ * Handles loading, filtering, search, dynamic QR generation, Explore modal, and Admin editing of student websites
  */
 
 const state = {
@@ -10,7 +10,7 @@ const state = {
   activeWebsite: null
 };
 
-// Default fallback if data/websites.json fails to load offline
+// Default catalog of all student websites
 const DEFAULT_WEBSITES = [
   {
     id: "iks-digital-heritage-hub",
@@ -342,31 +342,32 @@ function renderHubQR() {
   const dlHubBtn = document.getElementById("download-hub-qr-btn");
   if (dlHubBtn) {
     dlHubBtn.onclick = () => {
-      const img = hubQrBox.querySelector("img") || hubQrBox.querySelector("canvas");
-      if (img) {
-        const src = img.src || (img.toDataURL ? img.toDataURL("image/png") : null);
-        if (src) {
-          const a = document.createElement("a");
-          a.href = src;
-          a.download = "VPKBIET-IKS-Websites-Hub-QR.png";
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          showToast("Hub QR code downloaded!");
-        }
+      const img = hubQrBox.querySelector("img");
+      const canvas = hubQrBox.querySelector("canvas");
+      let dataUrl = "";
+      if (img && img.src) {
+        dataUrl = img.src;
+      } else if (canvas) {
+        dataUrl = canvas.toDataURL("image/png");
+      }
+      if (dataUrl) {
+        const a = document.createElement("a");
+        a.href = dataUrl;
+        a.download = "vpkbiet-iks-student-websites-qr.png";
+        a.click();
+        showToast("Exhibition Hub QR downloaded successfully");
+      } else {
+        showToast("QR code image preparing, please retry in a second");
       }
     };
   }
 
   const copyHubBtn = document.getElementById("copy-hub-link-btn");
   if (copyHubBtn) {
-    copyHubBtn.onclick = async () => {
-      try {
-        await navigator.clipboard.writeText(pageUrl);
-        showToast("Websites Hub link copied to clipboard!");
-      } catch (err) {
-        showToast("Link: " + pageUrl);
-      }
+    copyHubBtn.onclick = () => {
+      navigator.clipboard?.writeText(pageUrl)
+        .then(() => showToast("Hub link copied to clipboard"))
+        .catch(() => showToast("Could not copy link"));
     };
   }
 }
@@ -374,7 +375,6 @@ function renderHubQR() {
 // Render the grid of website projects
 function renderWebsites() {
   const grid = document.getElementById("websites-grid");
-  const countEl = document.getElementById("websites-count-display");
   const emptyState = document.getElementById("websites-empty-state");
   if (!grid) return;
 
@@ -398,10 +398,6 @@ function renderWebsites() {
     return matchesSearch && matchesBranch;
   });
 
-  if (countEl) {
-    countEl.textContent = String(filtered.length).padStart(2, "0");
-  }
-
   if (filtered.length === 0) {
     if (emptyState) emptyState.style.display = "block";
     return;
@@ -412,13 +408,13 @@ function renderWebsites() {
   filtered.forEach((site) => {
     const card = document.createElement("article");
     card.className = `project-card website-card ${site.isFlagship ? "pinned-project-card" : ""}`;
+    card.style.cursor = "pointer";
 
     const thumbnail = site.thumbnail || "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80";
     const branch = site.branch || "VPKBIET";
     const teamCount = site.teamMembers?.length || 1;
     const initialLetters = (site.teamMembers || []).slice(0, 3).map((m) => m.name.charAt(0));
 
-    // Resolve URL (if it's a relative URL or full external URL)
     const targetUrl = site.liveUrl || "#";
 
     card.innerHTML = `
@@ -453,127 +449,320 @@ function renderWebsites() {
 
         <!-- Action Buttons -->
         <div class="website-actions-row" style="display: flex; gap: 10px; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 14px;">
-          <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary-gold" style="flex: 1.2; justify-content: center; text-decoration: none; padding: 9px 14px; font-size: 0.85rem;">
+          <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary-gold launch-site-link" style="flex: 1.2; justify-content: center; text-decoration: none; padding: 9px 14px; font-size: 0.85rem;">
             <span>Launch Website</span> <span>↗</span>
           </a>
-          <button type="button" class="btn-secondary-outline site-qr-btn" data-site-id="${escapeHtml(site.id)}" style="flex: 0.8; justify-content: center; padding: 9px 12px; font-size: 0.82rem;">
-            <span>📱 QR</span>
+          <button type="button" class="btn-secondary-outline site-explore-btn" data-site-id="${escapeHtml(site.id)}" style="flex: 0.9; justify-content: center; padding: 9px 12px; font-size: 0.85rem;">
+            <span>✦ Explore</span>
           </button>
         </div>
       </div>
     `;
 
-    // Hook up individual QR code popup
-    card.querySelector(".site-qr-btn")?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openWebsiteQRModal(site);
+    // Clicking anywhere on the card or the Explore button opens the Explore Details modal
+    card.addEventListener("click", (e) => {
+      if (e.target.closest(".launch-site-link")) {
+        return; // Allow direct website opening
+      }
+      openWebsiteDetailModal(site);
     });
 
     grid.appendChild(card);
   });
 }
 
-// Open modal showing individual QR code for a specific student website
-function openWebsiteQRModal(site) {
-  const modal = document.getElementById("website-qr-modal");
-  const titleEl = document.getElementById("site-qr-modal-title");
-  const descEl = document.getElementById("site-qr-modal-desc");
-  const qrBox = document.getElementById("site-qr-modal-canvas");
-  const openLink = document.getElementById("site-qr-modal-open-link");
-  const dlBtn = document.getElementById("site-qr-modal-download-btn");
-  const copyBtn = document.getElementById("site-qr-modal-copy-btn");
-
-  if (!modal || !qrBox) return;
-
-  state.activeWebsite = site;
-  if (titleEl) titleEl.textContent = site.title;
-  if (descEl) descEl.textContent = site.tagline || site.description;
-
-  // Compute full URL
-  let fullUrl = site.liveUrl || "";
-  if (!fullUrl.startsWith("http://") && !fullUrl.startsWith("https://")) {
+// Compute the full target URL (handling relative vs absolute)
+function computeFullUrl(rawUrl) {
+  let url = rawUrl || "";
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
     const origin = window.location.origin;
     const path = window.location.pathname.replace(/[^/]*$/, "");
-    fullUrl = `${origin}${path}${fullUrl}`;
+    url = `${origin}${path}${url}`;
+  }
+  return url;
+}
+
+// Open the rich Explore Details modal for a website project
+function openWebsiteDetailModal(site) {
+  state.activeWebsite = site;
+  const modal = document.getElementById("website-detail-modal");
+  if (!modal) return;
+
+  const targetUrl = site.liveUrl || "#";
+  const fullUrl = computeFullUrl(site.liveUrl);
+
+  // Populate Header & Meta
+  const imgEl = document.getElementById("modal-site-img");
+  const captionEl = document.getElementById("modal-site-caption");
+  if (imgEl) imgEl.src = site.thumbnail || "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80";
+  if (captionEl) captionEl.textContent = `${site.title} · VPKBIET Student Innovation`;
+
+  const dateEl = document.getElementById("modal-site-date");
+  const branchEl = document.getElementById("modal-site-branch");
+  const titleEl = document.getElementById("modal-site-title");
+  const taglineEl = document.getElementById("modal-site-tagline");
+
+  if (dateEl) dateEl.textContent = `📅 Academic Year: ${site.academicYear || "2026-2027"}`;
+  if (branchEl) branchEl.textContent = `🏛️ ${site.branch || "VPKBIET"} · VPKBIET`;
+  if (titleEl) titleEl.textContent = site.title;
+  if (taglineEl) taglineEl.textContent = site.tagline || "";
+
+  // Direct Launch Buttons
+  const topLaunch = document.getElementById("modal-site-direct-launch-btn");
+  const bottomLaunch = document.getElementById("modal-site-bottom-launch-btn");
+  if (topLaunch) topLaunch.href = targetUrl;
+  if (bottomLaunch) bottomLaunch.href = targetUrl;
+
+  // Tab 1: Overview & Tech Stack
+  const descEl = document.getElementById("modal-site-description");
+  if (descEl) descEl.textContent = site.description || "Interactive student engineering project developed at VPKBIET IKS Cell.";
+
+  const techEl = document.getElementById("modal-site-tech");
+  if (techEl) {
+    techEl.innerHTML = (site.techStack || ["Web Technology", "IKS"])
+      .map((t) => `<span class="preset-photo-pill" style="font-size: 0.8rem; padding: 4px 10px;">${escapeHtml(t)}</span>`)
+      .join("");
   }
 
-  if (openLink) {
-    openLink.href = fullUrl;
+  // Tab 2: Student Developers Grid
+  const teamGrid = document.getElementById("modal-site-team-grid");
+  if (teamGrid) {
+    teamGrid.innerHTML = (site.teamMembers || []).map((member) => `
+      <div class="team-member-card">
+        <div class="member-avatar">${escapeHtml((member.name || "?").charAt(0))}</div>
+        <div class="member-info">
+          <h4>${escapeHtml(member.name || "Student Developer")}</h4>
+          <p>${escapeHtml(member.role || "Developer")}</p>
+          <small>${escapeHtml(member.department || site.branch || "")} · VPKBIET</small>
+          ${member.email ? `<small style="display:block; color:var(--text-muted); font-size:0.75rem; margin-top:2px;">${escapeHtml(member.email)}</small>` : ""}
+        </div>
+      </div>
+    `).join("");
   }
 
-  qrBox.innerHTML = "";
-  if (typeof QRCode !== "undefined") {
-    try {
-      new QRCode(qrBox, {
-        text: fullUrl,
-        width: 190,
-        height: 190,
-        colorDark: "#0b1512",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.M
-      });
-    } catch (err) {
+  // Tab 3: QR Code Studio
+  const qrCanvas = document.getElementById("modal-site-qrcode-canvas");
+  const qrUrlText = document.getElementById("modal-site-qr-url-text");
+  if (qrUrlText) qrUrlText.textContent = fullUrl;
+
+  if (qrCanvas) {
+    qrCanvas.innerHTML = "";
+    if (typeof QRCode !== "undefined") {
       try {
-        new QRCode(qrBox, {
+        new QRCode(qrCanvas, {
           text: fullUrl,
-          width: 190,
-          height: 190,
+          width: 180,
+          height: 180,
           colorDark: "#0b1512",
           colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.L
+          correctLevel: QRCode.CorrectLevel.M
         });
-      } catch (e2) {
-        qrBox.innerHTML = `<p style="padding:20px; font-size:0.8rem; color:#000;">[QR Ready: ${escapeHtml(site.id)}]</p>`;
+      } catch (e1) {
+        try {
+          new QRCode(qrCanvas, {
+            text: fullUrl,
+            width: 180,
+            height: 180,
+            colorDark: "#0b1512",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.L
+          });
+        } catch (e2) {
+          qrCanvas.innerHTML = `<div style="font-size:0.8rem; color:#000;">[QR Ready]</div>`;
+        }
       }
     }
   }
 
-  if (dlBtn) {
-    dlBtn.onclick = () => {
-      const img = qrBox.querySelector("img") || qrBox.querySelector("canvas");
-      if (img) {
-        const src = img.src || (img.toDataURL ? img.toDataURL("image/png") : null);
-        if (src) {
-          const a = document.createElement("a");
-          a.href = src;
-          a.download = `VPKBIET-IKS-${site.id}-QR.png`;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          showToast("Website QR code downloaded!");
-        }
-      }
-    };
-  }
-
-  if (copyBtn) {
-    copyBtn.onclick = async () => {
-      try {
-        await navigator.clipboard.writeText(fullUrl);
-        showToast("Website link copied!");
-      } catch (err) {
-        showToast("Link: " + fullUrl);
-      }
-    };
-  }
+  // Reset tab to overview
+  switchModalTab("site-overview");
 
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
-function closeWebsiteQRModal() {
-  const modal = document.getElementById("website-qr-modal");
+function closeWebsiteDetailModal() {
+  const modal = document.getElementById("website-detail-modal");
   if (modal) {
     modal.classList.remove("active");
     document.body.style.overflow = "auto";
   }
 }
 
-// Background particle animation
-function initParticleCanvas() {
+// Tab switcher for website explore modal
+function switchModalTab(tabId) {
+  const tabBtns = document.querySelectorAll("#website-detail-modal .modal-tab-btn");
+  const tabPanes = document.querySelectorAll("#website-detail-modal .modal-tab-pane");
+
+  tabBtns.forEach((btn) => {
+    btn.classList.toggle("active", btn.getAttribute("data-tab") === tabId);
+  });
+
+  tabPanes.forEach((pane) => {
+    pane.classList.toggle("active", pane.id === `tab-${tabId}`);
+  });
+}
+
+// Admin Authentication & Edit Workflow
+function triggerWebsiteEditWorkflow() {
+  if (!state.activeWebsite) return;
+  const isAuthed = sessionStorage.getItem("vpkbiet_iks_admin") === "true";
+  if (isAuthed) {
+    openWebsiteEditModal(state.activeWebsite);
+  } else {
+    openAdminAuthModal();
+  }
+}
+
+function openAdminAuthModal() {
+  const authModal = document.getElementById("admin-auth-modal");
+  const passInput = document.getElementById("admin-pass-input");
+  const authError = document.getElementById("admin-auth-error");
+
+  if (!authModal) return;
+  authModal.classList.add("active");
+  if (passInput) {
+    passInput.value = "";
+    passInput.focus();
+  }
+  if (authError) authError.style.display = "none";
+  document.body.style.overflow = "hidden";
+}
+
+function closeAdminAuthModal() {
+  const authModal = document.getElementById("admin-auth-modal");
+  if (authModal) {
+    authModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+}
+
+// Render student member input rows inside the edit modal
+function renderEditTeamRows(members) {
+  const container = document.getElementById("edit-team-members-list");
+  if (!container) return;
+
+  container.innerHTML = "";
+  const list = members && members.length > 0 ? members : [{ name: "", role: "Project Leader", department: "AIDS-1", email: "" }];
+
+  list.forEach((m, idx) => {
+    const row = document.createElement("div");
+    row.className = "edit-team-row";
+    row.style.cssText = "display: grid; grid-template-columns: 2fr 1.5fr 1fr 2fr auto; gap: 8px; align-items: center; background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);";
+
+    row.innerHTML = `
+      <input type="text" class="member-name-input" placeholder="Student Name" value="${escapeHtml(m.name || "")}" required style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+      <select class="member-role-input" style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+        <option value="Project Leader" ${m.role === "Project Leader" ? "selected" : ""}>Project Leader</option>
+        <option value="Student Researcher" ${m.role !== "Project Leader" ? "selected" : ""}>Student Researcher</option>
+        <option value="Developer">Developer</option>
+      </select>
+      <input type="text" class="member-dept-input" placeholder="Branch" value="${escapeHtml(m.department || "")}" style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+      <input type="email" class="member-email-input" placeholder="College Email" value="${escapeHtml(m.email || "")}" style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+      <button type="button" class="remove-member-row-btn" style="background: none; border: 1px solid rgba(255,100,100,0.4); color: #ff8888; border-radius: var(--radius-sm); width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem;" title="Remove student">✕</button>
+    `;
+
+    row.querySelector(".remove-member-row-btn").onclick = () => {
+      row.remove();
+    };
+
+    container.appendChild(row);
+  });
+}
+
+function openWebsiteEditModal(site) {
+  closeAdminAuthModal();
+  const editModal = document.getElementById("website-edit-modal");
+  if (!editModal || !site) return;
+
+  document.getElementById("edit-site-id").value = site.id;
+  document.getElementById("edit-site-title").value = site.title || "";
+  document.getElementById("edit-site-branch").value = site.branch || "AIDS-1";
+  document.getElementById("edit-site-year").value = site.academicYear || "2026-2027";
+  document.getElementById("edit-site-url").value = site.liveUrl || "";
+  document.getElementById("edit-site-tagline").value = site.tagline || "";
+  document.getElementById("edit-site-desc").value = site.description || "";
+  document.getElementById("edit-site-tech").value = (site.techStack || []).join(", ");
+
+  renderEditTeamRows(site.teamMembers || []);
+
+  editModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeWebsiteEditModal() {
+  const editModal = document.getElementById("website-edit-modal");
+  if (editModal) {
+    editModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+}
+
+// Save form changes
+function saveWebsiteEdits(e) {
+  e.preventDefault();
+  const siteId = document.getElementById("edit-site-id").value;
+  const site = state.websites.find((s) => s.id === siteId);
+  if (!site) return;
+
+  site.title = document.getElementById("edit-site-title").value.trim();
+  site.branch = document.getElementById("edit-site-branch").value.trim();
+  site.academicYear = document.getElementById("edit-site-year").value.trim();
+  site.liveUrl = document.getElementById("edit-site-url").value.trim();
+  site.tagline = document.getElementById("edit-site-tagline").value.trim();
+  site.description = document.getElementById("edit-site-desc").value.trim();
+
+  const techVal = document.getElementById("edit-site-tech").value.trim();
+  site.techStack = techVal ? techVal.split(",").map((t) => t.trim()).filter(Boolean) : [];
+
+  // Harvest student team members
+  const rows = document.querySelectorAll("#edit-team-members-list .edit-team-row");
+  const updatedMembers = [];
+  rows.forEach((row) => {
+    const name = row.querySelector(".member-name-input")?.value.trim();
+    const role = row.querySelector(".member-role-input")?.value.trim() || "Student Researcher";
+    const department = row.querySelector(".member-dept-input")?.value.trim() || site.branch;
+    const email = row.querySelector(".member-email-input")?.value.trim() || "";
+
+    if (name) {
+      updatedMembers.push({ name, role, department, email });
+    }
+  });
+
+  site.teamMembers = updatedMembers;
+
+  // Persist locally in localStorage
+  try {
+    localStorage.setItem("vpkbiet_iks_websites", JSON.stringify(state.websites));
+  } catch (err) {
+    console.warn("Could not save to localStorage:", err);
+  }
+
+  closeWebsiteEditModal();
+  renderWebsites();
+  openWebsiteDetailModal(site);
+  showToast("✦ Student names & website details updated successfully!");
+}
+
+// Download updated websites.json file
+function downloadWebsitesJson() {
+  const jsonStr = JSON.stringify(state.websites, null, 2);
+  const blob = new Blob([jsonStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "websites.json";
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast("Downloaded updated websites.json");
+}
+
+// Initialize ambient particle canvas
+function initParticlesCanvas() {
   const canvas = document.getElementById("particles-canvas");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
+  let particles = [];
   let width = (canvas.width = window.innerWidth);
   let height = (canvas.height = window.innerHeight);
 
@@ -582,29 +771,30 @@ function initParticleCanvas() {
     height = canvas.height = window.innerHeight;
   });
 
-  const particles = Array.from({ length: 45 }, () => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    radius: Math.random() * 2 + 0.5,
-    speedX: (Math.random() - 0.5) * 0.4,
-    speedY: -Math.random() * 0.5 - 0.2,
-    alpha: Math.random() * 0.6 + 0.2
-  }));
+  for (let i = 0; i < 45; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2 + 0.6,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: -Math.random() * 0.5 - 0.1,
+      opacity: Math.random() * 0.6 + 0.2
+    });
+  }
 
   function loop() {
     ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = "#d4af37";
     particles.forEach((p) => {
-      p.x += p.speedX;
-      p.y += p.speedY;
+      p.x += p.vx;
+      p.y += p.vy;
       if (p.y < 0) p.y = height;
       if (p.x < 0) p.x = width;
       if (p.x > width) p.x = 0;
 
+      ctx.globalAlpha = p.opacity;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = "rgba(212, 175, 55, 0.4)";
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fill();
     });
     requestAnimationFrame(loop);
@@ -612,27 +802,41 @@ function initParticleCanvas() {
   loop();
 }
 
-// Initialization
-async function init() {
-  initParticleCanvas();
+// Main initialization
+document.addEventListener("DOMContentLoaded", async () => {
+  initParticlesCanvas();
 
-  // Load from data/websites.json
+  // Load website catalog (check localStorage first, then fetch data/websites.json)
+  let loaded = false;
   try {
-    const res = await fetch(`./data/websites.json?t=${Date.now()}`, { cache: "no-store" });
-    if (res.ok) {
-      state.websites = await res.json();
-    } else {
-      state.websites = DEFAULT_WEBSITES;
+    const cached = localStorage.getItem("vpkbiet_iks_websites");
+    if (cached) {
+      state.websites = JSON.parse(cached);
+      loaded = true;
     }
-  } catch (err) {
-    console.warn("Using default websites dataset:", err);
+  } catch (e) {}
+
+  if (!loaded) {
+    try {
+      const res = await fetch("data/websites.json?v=" + Date.now());
+      if (res.ok) {
+        state.websites = await res.json();
+        loaded = true;
+      }
+    } catch (err) {
+      console.warn("Could not fetch data/websites.json, using default:", err);
+    }
+  }
+
+  if (!loaded || !state.websites || state.websites.length === 0) {
     state.websites = DEFAULT_WEBSITES;
   }
 
+  // Render Hub QR and website grid
   renderHubQR();
   renderWebsites();
 
-  // Search input
+  // Search input listener
   const searchInput = document.getElementById("website-search-input");
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
@@ -641,7 +845,7 @@ async function init() {
     });
   }
 
-  // Branch dropdown filter
+  // Branch filter listener
   const branchSelect = document.getElementById("website-branch-select");
   if (branchSelect) {
     branchSelect.addEventListener("change", (e) => {
@@ -650,14 +854,118 @@ async function init() {
     });
   }
 
-  // Modal close handlers
-  document.getElementById("close-site-qr-modal-btn")?.addEventListener("click", closeWebsiteQRModal);
-  document.getElementById("website-qr-modal")?.addEventListener("click", (e) => {
-    if (e.target.id === "website-qr-modal") closeWebsiteQRModal();
+  // Detail Modal tab buttons
+  document.querySelectorAll("#website-detail-modal .modal-tab-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tabId = btn.getAttribute("data-tab").replace("site-", "");
+      switchModalTab(btn.getAttribute("data-tab"));
+    });
   });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeWebsiteQRModal();
-  });
-}
 
-document.addEventListener("DOMContentLoaded", init);
+  // Close Detail Modal
+  document.getElementById("close-site-modal-btn")?.addEventListener("click", closeWebsiteDetailModal);
+  document.getElementById("website-detail-modal")?.addEventListener("click", (e) => {
+    if (e.target.id === "website-detail-modal") closeWebsiteDetailModal();
+  });
+
+  // Edit Button in Detail Modal
+  document.getElementById("modal-site-edit-btn")?.addEventListener("click", triggerWebsiteEditWorkflow);
+  document.getElementById("modal-site-edit-team-shortcut")?.addEventListener("click", triggerWebsiteEditWorkflow);
+
+  // Admin Auth Form (Password: "2026")
+  const authForm = document.getElementById("admin-auth-form");
+  if (authForm) {
+    authForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const pass = document.getElementById("admin-pass-input")?.value.trim() || "";
+      const errorEl = document.getElementById("admin-auth-error");
+
+      if (pass === "2026") {
+        sessionStorage.setItem("vpkbiet_iks_admin", "true");
+        if (errorEl) errorEl.style.display = "none";
+        openWebsiteEditModal(state.activeWebsite);
+      } else {
+        if (errorEl) {
+          errorEl.textContent = "❌ Incorrect security password. Access restricted to IKS department admins.";
+          errorEl.style.display = "block";
+        }
+      }
+    });
+  }
+
+  document.getElementById("close-auth-modal-btn")?.addEventListener("click", closeAdminAuthModal);
+  document.getElementById("cancel-auth-btn")?.addEventListener("click", closeAdminAuthModal);
+  document.getElementById("admin-auth-modal")?.addEventListener("click", (e) => {
+    if (e.target.id === "admin-auth-modal") closeAdminAuthModal();
+  });
+
+  // Website Edit Form Save & Cancel
+  document.getElementById("website-edit-form")?.addEventListener("submit", saveWebsiteEdits);
+  document.getElementById("close-edit-site-modal-btn")?.addEventListener("click", closeWebsiteEditModal);
+  document.getElementById("cancel-edit-site-btn")?.addEventListener("click", closeWebsiteEditModal);
+  document.getElementById("website-edit-modal")?.addEventListener("click", (e) => {
+    if (e.target.id === "website-edit-modal") closeWebsiteEditModal();
+  });
+
+  // Add Student Row button
+  document.getElementById("add-team-member-row-btn")?.addEventListener("click", () => {
+    const container = document.getElementById("edit-team-members-list");
+    if (!container) return;
+    const row = document.createElement("div");
+    row.className = "edit-team-row";
+    row.style.cssText = "display: grid; grid-template-columns: 2fr 1.5fr 1fr 2fr auto; gap: 8px; align-items: center; background: rgba(0,0,0,0.3); padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);";
+
+    row.innerHTML = `
+      <input type="text" class="member-name-input" placeholder="Student Name" required style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+      <select class="member-role-input" style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+        <option value="Student Researcher">Student Researcher</option>
+        <option value="Project Leader">Project Leader</option>
+        <option value="Developer">Developer</option>
+      </select>
+      <input type="text" class="member-dept-input" placeholder="Branch" value="AIDS" style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+      <input type="email" class="member-email-input" placeholder="College Email" style="padding: 7px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: #16201a; color: #fff; font-size: 0.85rem;">
+      <button type="button" class="remove-member-row-btn" style="background: none; border: 1px solid rgba(255,100,100,0.4); color: #ff8888; border-radius: var(--radius-sm); width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem;" title="Remove student">✕</button>
+    `;
+
+    row.querySelector(".remove-member-row-btn").onclick = () => row.remove();
+    container.appendChild(row);
+  });
+
+  // Download updated JSON button
+  document.getElementById("download-updated-websites-json-btn")?.addEventListener("click", downloadWebsitesJson);
+
+  // Modal QR download & copy buttons
+  document.getElementById("modal-site-download-qr-btn")?.addEventListener("click", () => {
+    const qrCanvas = document.getElementById("modal-site-qrcode-canvas");
+    if (!qrCanvas) return;
+    const img = qrCanvas.querySelector("img");
+    const canvas = qrCanvas.querySelector("canvas");
+    let dataUrl = img?.src || canvas?.toDataURL("image/png") || "";
+    if (dataUrl) {
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = `${state.activeWebsite?.id || "website"}-qr.png`;
+      a.click();
+      showToast("Website QR code downloaded successfully");
+    } else {
+      showToast("Preparing QR code...");
+    }
+  });
+
+  document.getElementById("modal-site-copy-link-btn")?.addEventListener("click", () => {
+    if (!state.activeWebsite) return;
+    const fullUrl = computeFullUrl(state.activeWebsite.liveUrl);
+    navigator.clipboard?.writeText(fullUrl)
+      .then(() => showToast("Website link copied to clipboard"))
+      .catch(() => showToast("Could not copy link"));
+  });
+
+  // Global keydown (Escape to close modals)
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeWebsiteDetailModal();
+      closeAdminAuthModal();
+      closeWebsiteEditModal();
+    }
+  });
+});
