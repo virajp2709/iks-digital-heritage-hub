@@ -212,11 +212,6 @@
 
         <!-- Theme Switcher, Quiz CTA & Mobile Menu Button -->
         <div class="flex items-center space-x-2">
-          <!-- Back to Hub Link -->
-          <a href="../../websites.html" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-amber-300 transition">
-            <span>←</span> <span>All IKS Websites</span>
-          </a>
-
           <!-- Theme Switcher Toggle -->
           <button onclick="toggleVisualTheme()" id="theme-toggle-btn" title="Switch between Classical Manuscript Mode and Cosmic Logic Mode" class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-parchment flex items-center gap-1.5 transition">
             <span id="theme-icon">🌌</span>
@@ -241,7 +236,6 @@
 
     <!-- Mobile / Tablet Dropdown Menu -->
     <div id="mobile-menu" class="hidden xl:hidden bg-indigoDeep/95 border-t border-white/15 px-4 pt-2 pb-4 space-y-1">
-      <a href="../../websites.html" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-amber-300 hover:bg-white/10">← Return to IKS Website Projects Hub</a>
       <a href="#history" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">01. Introduction & Historical Evolution</a>
       <a href="#maheshvara" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">02. 14 Māheśvara Sūtras & Pratyāhāra Explorer</a>
       <a href="#architecture" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">03. Logical Architecture & Sūtra Types</a>
@@ -306,8 +300,8 @@
         <a href="#word-engine" class="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold text-sm sm:text-base shadow-md hover:scale-105 active:scale-95 transition flex items-center gap-2">
           <span>⚙️</span> Word Compiler Simulator
         </a>
-        <a href="#credits" class="px-5 py-3.5 rounded-full bg-white/5 hover:bg-white/15 text-parchment/90 border border-white/15 font-medium text-sm sm:text-base transition">
-          Project Credits ↓
+        <a href="javascript:history.back()" class="px-5 py-3.5 rounded-full bg-white/5 hover:bg-white/15 text-parchment/90 border border-white/15 font-medium text-sm sm:text-base transition">
+          ← Back to IKS Websites
         </a>
       </div>
 
@@ -388,7 +382,7 @@
        SECTION 02: INTERACTIVE 14 MĀHEŚVARA SŪTRAS & PRATYĀHĀRA EXPLORER
        ======================================================================== -->
   <section id="maheshvara" class="py-16 sm:py-20 theme-section-alt border-y scroll-mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-10">
         <span class="text-xs font-extrabold uppercase tracking-[0.2em] theme-kicker">02 · Phonetic Data Compression</span>
         <h2 class="font-serifTitle text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mt-2">14 Māheśvara Sūtras & Pratyāhāra Explorer</h2>
@@ -882,7 +876,6 @@
         quizNavBtn.className = 'px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-bold text-xs shadow hover:brightness-110 active:scale-95 transition flex items-center gap-1';
         heroCta.className = 'px-6 py-3.5 rounded-full bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-extrabold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition flex items-center gap-2';
       }
-      // Refresh dynamic components so buttons reflect theme contrast cleanly
       selectTimelineTab(currentTimelineKey);
       highlightPratyahara(currentPratKey);
     }
