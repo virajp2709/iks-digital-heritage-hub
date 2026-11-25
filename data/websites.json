@@ -1,0 +1,35 @@
+[
+  {
+    "id": "iks-digital-heritage-hub",
+    "title": "IKS Digital Heritage Hub",
+    "titleMr": "IKS डिजिटल हेरिटेज हब",
+    "tagline": "Central Web Platform for Preserving, Exploring & Promoting Indian Knowledge Systems",
+    "description": "A comprehensive digital heritage repository and interactive platform developed to document, preserve, and showcase 70+ student multidisciplinary engineering research projects covering ancient Indian mathematics, metallurgy, temple acoustics, hydraulic architecture, and astronomy.",
+    "branch": "AIDS-5",
+    "academicYear": "2026-2027",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "SVG Graphics", "QRCode.js"],
+    "liveUrl": "index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": true,
+    "teamMembers": [
+      {
+        "name": "Viraj Vijaykumar Pathak",
+        "role": "Website Development & Technical Lead",
+        "department": "AIDS-5",
+        "email": "viraj.vijaykumar.pathak@vpkbiet.ac.in"
+      },
+      {
+        "name": "Soham Somanath Wavhal",
+        "role": "Content Management & Documentation Lead",
+        "department": "AIDS-5",
+        "email": "soham.somanath.wavhal@vpkbiet.ac.in"
+      },
+      {
+        "name": "Parth Bankar",
+        "role": "Student Data Collection & Coordination Lead",
+        "department": "E&TC",
+        "email": "parth.bankar@vpkbiet.ac.in"
+      }
+    ]
+  }
+]

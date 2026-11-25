@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d1210">
+  <meta name="description" content="VPKBIET IKS Student Website Projects — Interactive digital portals, web applications, and living simulations on Indian Knowledge Systems created by engineering students at Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology, Baramati.">
+  <meta name="author" content="Viraj Pathak">
+
+  <title>Website Projects | VPKBIET IKS Digital Heritage Hub</title>
+
+  <!-- Favicon / Apple Touch Icon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✺</text></svg>">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="./assets/styles.css?v=20261125a">
+
+  <!-- QRCode.js Library for Exhibition Labels -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Websites Showcase Script -->
+  <script defer src="./assets/websites.js?v=20261125a"></script>
+</head>
+
+<body>
+  <!-- Ambient Particle Canvas for Floating Golden Dust -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="bg-sanskrit-pattern" aria-hidden="true"></div>
+
+  <!-- Top Announcement Bar: VPKBIET Institutional Identity -->
+  <aside class="college-topbar" aria-label="Institutional Affiliation">
+    <div class="topbar-container">
+      <div class="college-badge">
+        <span class="om-emblem" aria-hidden="true">ॐ</span>
+        <span>Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology, Baramati · <strong>IKS Department</strong></span>
+      </div>
+      <div class="topbar-actions">
+        <a href="index.html" class="audio-toggle-btn" style="text-decoration: none;">
+          <span aria-hidden="true">🏛️</span>
+          <span>Main Research Hub</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Sticky Site Navigation Header -->
+  <header class="site-header" role="banner">
+    <div class="header-container">
+      <a href="index.html" class="brand-wrapper" aria-label="VPKBIET IKS Digital Heritage Hub Home">
+        <div class="brand-mandala" aria-hidden="true">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="14" fill="currentColor"/>
+            <path d="M50 4 C55 24 64 36 84 50 C64 64 55 76 50 96 C45 76 36 64 16 50 C36 36 45 24 50 4 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M17 17 C35 28 42 42 50 50 C42 58 35 72 17 83 C28 65 42 58 50 50 C42 42 28 35 17 17 Z" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+            <path d="M83 17 C65 28 58 42 50 50 C58 58 65 72 83 83 C72 65 58 58 50 50 C58 42 72 35 83 17 Z" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h2>VPKBIET IKS HUB</h2>
+          <p>Indian Knowledge System Cell</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="index.html#explore-projects" class="nav-link">Student Projects</a>
+        <a href="websites.html" class="nav-link active" style="color: var(--gold-light); font-weight: 700;">Website Projects</a>
+        <a href="index.html#about-institution" class="nav-link">About IKS Cell</a>
+        <a href="index.html#map-section" class="nav-link">Heritage Map</a>
+        <a href="index.html" class="submit-nav-btn" style="text-decoration: none;">
+          <span aria-hidden="true">✦</span>
+          <span>Main Hub</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ======================================================================
+         HERO SECTION: STUDENT WEBSITE PROJECTS & EXHIBITION QR HUB
+         ====================================================================== -->
+    <section class="hero-masthead" style="min-height: auto; padding: 60px 20px 40px;" aria-labelledby="websites-title-main">
+      <div class="hero-content">
+        <div class="sacred-seal" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="50" cy="50" r="10" fill="currentColor"/>
+            <polygon points="50,15 62,38 87,41 68,58 74,83 50,70 26,83 32,58 13,41 38,38" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+
+        <p class="heritage-kicker">Interactive Student Innovations</p>
+        <h1 id="websites-title-main" class="hero-title-main" style="font-size: clamp(2rem, 4.5vw, 3.4rem); margin-bottom: 16px;">
+          Student Website Projects
+        </h1>
+        <p class="hero-description" style="max-width: 820px; margin: 0 auto 36px; line-height: 1.7; color: var(--text-secondary);">
+          Interactive digital heritage portals, simulations, and web platforms developed by VPKBIET engineering students. Exploring ancient Indian sciences, architecture, mathematics, and metallurgy through modern software engineering.
+        </p>
+
+        <!-- QR Code Exhibition Hub Banner -->
+        <div class="form-section-card" style="max-width: 780px; margin: 0 auto; background: rgba(20, 30, 25, 0.85); border-color: var(--gold-primary); box-shadow: 0 10px 35px rgba(0,0,0,0.5);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 260px; text-align: left;">
+              <span class="card-type-badge" style="position: static; display: inline-block; margin-bottom: 10px;">📱 Exhibition QR Hub</span>
+              <h2 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin-bottom: 8px;">Scan to Open All Websites Directly</h2>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                Scan this universal QR code with any smartphone at exhibitions, model displays, or project reviews to open the live interactive interface of all student websites.
+              </p>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button type="button" id="download-hub-qr-btn" class="btn-primary-gold" style="padding: 9px 18px; font-size: 0.85rem;">
+                  <span>📥 Download QR PNG</span>
+                </button>
+                <button type="button" id="copy-hub-link-btn" class="btn-secondary-outline" style="padding: 9px 16px; font-size: 0.85rem;">
+                  <span>🔗 Copy Hub Link</span>
+                </button>
+              </div>
+            </div>
+
+            <div style="background: #fffdf8; padding: 12px; border-radius: var(--radius-md); border: 2px solid var(--gold-primary); box-shadow: 0 4px 20px rgba(212,175,55,0.3); display: flex; flex-direction: column; align-items: center; gap: 6px;">
+              <div id="hub-qr-canvas"></div>
+              <span style="font-size: 0.7rem; font-weight: 700; color: #0b1512; letter-spacing: 0.05em;">SCAN FOR WEBSITES</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         WEBSITE PROJECTS SHOWCASE SECTION
+         ====================================================================== -->
+    <section class="projects-section" id="explore-websites" style="padding-top: 30px;">
+      <header class="section-header" style="margin-bottom: 30px;">
+        <p class="section-kicker">Live Interactive Platforms</p>
+        <h2 class="section-title">Explore Web Applications</h2>
+        <p class="section-description">
+          Click "Launch Website" to explore any student project live, or scan its QR code to open directly on your mobile device.
+        </p>
+      </header>
+
+      <!-- Search & Branch Filter Control Bar -->
+      <div class="projects-control-bar" role="search" aria-label="Search and Filter Website Projects">
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input id="website-search-input" class="search-input" type="search" placeholder="Search student websites by title, topic or student... (/)" aria-label="Search student websites">
+        </div>
+
+        <!-- Branch Filter Dropdown -->
+        <div class="branch-filter-wrapper">
+          <span class="branch-filter-icon" aria-hidden="true">🏛️</span>
+          <select id="website-branch-select" class="branch-filter-select" aria-label="Filter websites by Department Branch">
+            <option value="all">All Branches</option>
+            <option value="AIDS-1">AIDS-1</option>
+            <option value="AIDS-2">AIDS-2</option>
+            <option value="AIDS-3">AIDS-3</option>
+            <option value="AIDS-4">AIDS-4</option>
+            <option value="AIDS-5">AIDS-5</option>
+            <option value="Civil">Civil</option>
+            <option value="E&TC">E&TC</option>
+          </select>
+          <span class="branch-dropdown-arrow" aria-hidden="true">▾</span>
+        </div>
+      </div>
+
+      <!-- Website Cards Grid -->
+      <div class="projects-grid" id="websites-grid" aria-live="polite">
+        <!-- Rendered dynamically by assets/websites.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="websites-empty-state" class="empty-state" style="display: none; text-align: center; padding: 60px 20px;">
+        <span style="font-size: 3rem; color: var(--gold-primary); display: block; margin-bottom: 16px;">⌕</span>
+        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: 8px;">No website projects found</h3>
+        <p style="color: var(--text-secondary);">Try adjusting your search terms or select "All Branches".</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       INDIVIDUAL WEBSITE QR CODE MODAL
+       ======================================================================== -->
+  <div id="website-qr-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="site-qr-modal-title">
+    <div class="modal-dialog auth-dialog" style="max-width: 460px;">
+      <button id="close-site-qr-modal-btn" class="modal-close-btn" type="button" aria-label="Close QR modal">&times;</button>
+      <div class="modal-body" style="text-align: center; padding: 32px 24px;">
+        <span class="card-type-badge" style="position: static; display: inline-block; margin-bottom: 12px;">📱 Direct Website Access</span>
+        <h2 id="site-qr-modal-title" class="modal-title" style="font-size: 1.35rem; margin-bottom: 8px;">Website QR Code</h2>
+        <p id="site-qr-modal-desc" style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5;"></p>
+
+        <div style="background: #fffdf8; padding: 18px; border-radius: var(--radius-md); border: 3px solid var(--gold-primary); box-shadow: 0 10px 30px rgba(0,0,0,0.6); display: inline-block; margin-bottom: 20px;">
+          <div id="site-qr-modal-canvas"></div>
+          <span style="font-size: 0.72rem; font-weight: 700; color: #0b1512; letter-spacing: 0.05em; display: block; margin-top: 8px;">SCAN TO OPEN WEBSITE</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a id="site-qr-modal-open-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary-gold" style="justify-content: center; text-decoration: none;">
+            <span>Open Website Directly</span> <span>↗</span>
+          </a>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" id="site-qr-modal-download-btn" class="btn-secondary-outline" style="flex: 1; justify-content: center;">
+              <span>📥 Download QR</span>
+            </button>
+            <button type="button" id="site-qr-modal-copy-btn" class="btn-secondary-outline" style="flex: 1; justify-content: center;">
+              <span>🔗 Copy Link</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SITE FOOTER (FEATURING VIRAJ PATHAK & VPKBIET IKS DEPARTMENT)
+       ======================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-top-pattern" aria-hidden="true"></div>
+
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>VPKBIET IKS HUB</h3>
+        <p>
+          Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology, Baramati. A dedicated digital living archive uniting ancient Indian scientific wisdom with modern multidisciplinary engineering.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html#explore-projects">Student Projects</a></li>
+          <li><a href="websites.html">Website Projects</a></li>
+          <li><a href="index.html#about-institution">About IKS Cell</a></li>
+          <li><a href="index.html#map-section">Heritage Map of India</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Institutional Cell</h4>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px;">
+          Vidyanagari, Bhigwan Road, Baramati, Dist. Pune, Maharashtra 413133.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--gold-light);">
+          Affiliated to Savitribai Phule Pune University (SPPU) · NAAC 'A' Grade
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <p class="footer-credits-text">
+        &copy; 2026 VPKBIET IKS Department · Vidya Pratishthan. All Rights Reserved.
+      </p>
+      <div class="viraj-signature-badge">
+        <span aria-hidden="true">✦</span>
+        <span>Created & Developed by Viraj Pathak</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
