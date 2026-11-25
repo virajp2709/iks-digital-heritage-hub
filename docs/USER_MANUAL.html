@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VPKBIET IKS Hub - Technical User Manual & Deployment Guide</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 16mm 14mm 18mm 14mm;
+      @bottom-right {
+        content: "Page " counter(page);
+        font-size: 8pt;
+        color: #666;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1a221f;
+      background: #ffffff;
+      line-height: 1.55;
+      font-size: 9.5pt;
+    }
+
+    /* Print & Screen Layout */
+    .manual-container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Cover / Header Banner */
+    .doc-header {
+      border-bottom: 3px double #b8860b;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .doc-header-left h1 {
+      font-size: 17pt;
+      font-weight: 800;
+      color: #0b1512;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-family: Georgia, serif;
+    }
+
+    .doc-header-left h2 {
+      font-size: 10pt;
+      font-weight: 600;
+      color: #b8860b;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .doc-header-right {
+      text-align: right;
+      font-size: 8pt;
+      color: #555;
+    }
+
+    .doc-header-right .tag {
+      display: inline-block;
+      background: #f7f3e8;
+      color: #8b6508;
+      border: 1px solid #d4af37;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-weight: 700;
+      font-size: 7.5pt;
+      margin-bottom: 3px;
+    }
+
+    /* Section Styling */
+    .section {
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 12pt;
+      font-weight: 800;
+      color: #0b1512;
+      border-left: 4px solid #b8860b;
+      padding-left: 8px;
+      margin-bottom: 8px;
+      font-family: Georgia, serif;
+      background: #faf8f2;
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #8b6508;
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      margin-bottom: 7px;
+      text-align: justify;
+    }
+
+    /* Callout & Alert Boxes */
+    .alert-box {
+      background: #fcfaf5;
+      border: 1px solid #d4af37;
+      border-left: 4px solid #b8860b;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 9pt;
+    }
+
+    .alert-box.info {
+      background: #f0f7f5;
+      border-color: #2e7d32;
+      border-left: 4px solid #1b5e20;
+    }
+
+    .alert-box strong {
+      color: #0b1512;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0;
+      font-size: 8.5pt;
+    }
+
+    th, td {
+      border: 1px solid #dcd5c5;
+      padding: 5px 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #f4efe2;
+      font-weight: 700;
+      color: #0b1512;
+    }
+
+    tr:nth-child(even) td {
+      background: #faf8f2;
+    }
+
+    /* Code Snippets & Command Blocks */
+    .code-block {
+      background: #111815;
+      color: #e5c158;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 8pt;
+      line-height: 1.45;
+      margin: 6px 0;
+      border: 1px solid #2e3832;
+      overflow-x: auto;
+    }
+
+    .code-block .comment {
+      color: #8b9990;
+      font-style: italic;
+    }
+
+    .code-block .keyword {
+      color: #72d6ff;
+      font-weight: 700;
+    }
+
+    .inline-code {
+      font-family: "Consolas", "Courier New", monospace;
+      background: #f0ece1;
+      color: #801818;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 8.5pt;
+      border: 1px solid #ded5be;
+    }
+
+    /* Step Numbers */
+    ol, ul {
+      margin-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .step-badge {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      background: #b8860b;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 7.5pt;
+      font-weight: bold;
+      margin-right: 4px;
+    }
+
+    /* Visual Divider */
+    hr {
+      border: 0;
+      height: 1px;
+      background: #dcd5c5;
+      margin: 14px 0;
+    }
+
+    /* Page Break Helper */
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* Signature & Attribution */
+    .author-signoff {
+      margin-top: 20px;
+      background: #fcfaf5;
+      border: 2px solid #b8860b;
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      page-break-inside: avoid;
+    }
+
+    .author-details h3 {
+      font-size: 11pt;
+      color: #0b1512;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-family: Georgia, serif;
+    }
+
+    .author-details p {
+      font-size: 8.5pt;
+      color: #555;
+      margin-bottom: 0;
+    }
+
+    .signature-badge {
+      text-align: right;
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #8b6508;
+      padding: 4px 12px;
+      background: #faf4e3;
+      border: 1px dashed #b8860b;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="manual-container">
+
+  <!-- HEADER -->
+  <header class="doc-header">
+    <div class="doc-header-left">
+      <h1>VPKBIET IKS DIGITAL HERITAGE HUB</h1>
+      <h2>Technical Deployment & GitHub Synchronization User Manual</h2>
+    </div>
+    <div class="doc-header-right">
+      <span class="tag">OFFICIAL GUIDE</span><br>
+      <strong>Version:</strong> 2.0 (November 2026)<br>
+      <strong>Target:</strong> College & Student Admins
+    </div>
+  </header>
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="section">
+    <div class="section-title">1. Executive Overview & Repository Specification</div>
+    <p>
+      The <strong>VPKBIET Indian Knowledge System (IKS) Digital Heritage Hub</strong> is a comprehensive digital repository engineered to document, preserve, and showcase multidisciplinary engineering research on Indian Knowledge Systems at <em>Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology, Baramati</em>. It features 70+ student research projects, interactive living simulation websites, exhibition QR codes, and password-protected administrative interfaces.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Official Specification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Author & Lead Developer</strong></td>
+          <td><strong>Viraj Pathak</strong> (AIDS Department, VPKBIET Baramati)</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub Source Repository</strong></td>
+          <td><code>https://github.com/virajp2709/iks-digital-heritage-hub</code></td>
+        </tr>
+        <tr>
+          <td><strong>Live Exhibition Deployment</strong></td>
+          <td><code>https://virajp2709.github.io/iks-digital-heritage-hub/</code></td>
+        </tr>
+        <tr>
+          <td><strong>Institutional Target Site</strong></td>
+          <td><code>https://www.vpkbiet.org/</code> (Affiliated to SPPU · NAAC 'A' Grade)</td>
+        </tr>
+        <tr>
+          <td><strong>Software Architecture</strong></td>
+          <td>Static Serverless Architecture (HTML5, Vanilla CSS3, Modern ES6+ JavaScript, Tailwind CSS subportals, QRCode.js, Canvas Particles, Vector SVG). Runs directly on any web server or GitHub Pages without server-side database requirements.</td>
+        </tr>
+        <tr>
+          <td><strong>Admin Security Password</strong></td>
+          <td><span class="inline-code">2026</span> (Protects addition and editing of student researchers and websites)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2: ACCESSING THE CODEBASE -->
+  <div class="section">
+    <div class="section-title">2. How to Access & Download the Codebase</div>
+    <p>
+      Anyone—including college IT staff, faculty mentors, or student researchers—can access the full codebase via GitHub in two primary ways:
+    </p>
+
+    <div class="section-subtitle">Method A: Cloning via Git (Recommended for Developers & Admins)</div>
+    <p>Clone the complete repository with all history, assets, and project data to your local machine using terminal or PowerShell:</p>
+    <div class="code-block">
+<span class="comment"># 1. Open Terminal, Command Prompt, or PowerShell</span>
+<span class="keyword">git</span> clone https://github.com/virajp2709/iks-digital-heritage-hub.git
+
+<span class="comment"># 2. Enter project directory</span>
+<span class="keyword">cd</span> iks-digital-heritage-hub
+
+<span class="comment"># 3. Open in VS Code</span>
+code .
+    </div>
+
+    <div class="section-subtitle">Method B: Direct ZIP Download (For Offline Review & Presentation)</div>
+    <ol>
+      <li>Visit the GitHub link in any web browser: <a href="https://github.com/virajp2709/iks-digital-heritage-hub"><code>https://github.com/virajp2709/iks-digital-heritage-hub</code></a></li>
+      <li>Click the green <strong>"Code"</strong> button located at the top right of the file list.</li>
+      <li>Select <strong>"Download ZIP"</strong> from the dropdown menu.</li>
+      <li>Extract the downloaded archive (<code>iks-digital-heritage-hub-main.zip</code>) to any folder.</li>
+      <li>Double-click <span class="inline-code">index.html</span> to launch the main hub or <span class="inline-code">websites.html</span> to launch the student websites portal in any modern web browser.</li>
+    </ol>
+  </div>
+
+  <!-- SECTION 3: CONNECTING WITH COLLEGE GITHUB -->
+  <div class="section">
+    <div class="section-title">3. Connecting with College GitHub or Any Organization Account</div>
+    <p>
+      To link or transfer the project to the official VPKBIET college GitHub organization (e.g., <code>github.com/vpkbiet</code>) or another department account, follow either of the following approaches:
+    </p>
+
+    <div class="section-subtitle">Approach 1: Forking the Repository (Preserves Upstream Link)</div>
+    <ol>
+      <li>Log in to the destination GitHub account (e.g. college organization account).</li>
+      <li>Navigate to <a href="https://github.com/virajp2709/iks-digital-heritage-hub"><code>https://github.com/virajp2709/iks-digital-heritage-hub</code></a>.</li>
+      <li>Click the <strong>"Fork"</strong> button at the top right of the repository page.</li>
+      <li>Under <em>"Owner"</em>, choose your college organization or personal handle, name the repository, and click <strong>"Create fork"</strong>.</li>
+      <li>The repository is now duplicated under your organization while retaining the ability to sync future updates with one click via <em>"Sync fork"</em>.</li>
+    </ol>
+
+    <div class="section-subtitle">Approach 2: Pushing to a Fresh Institutional Remote</div>
+    <p>If the college prefers an independent repository without a fork badge:</p>
+    <div class="code-block">
+<span class="comment"># 1. Create a new empty repository on the College GitHub (e.g., vpkbiet-iks-hub)</span>
+
+<span class="comment"># 2. On your local machine inside the cloned folder, add the college remote</span>
+<span class="keyword">git</span> remote add college https://github.com/vpkbiet/vpkbiet-iks-hub.git
+
+<span class="comment"># 3. Push all code and branches directly to the college repository</span>
+<span class="keyword">git</span> push -u college main
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 4: GITHUB TOKEN (PAT) SETUP -->
+  <div class="section">
+    <div class="section-title">4. Step-by-Step: Adding GitHub Token (PAT) for Automated Sync</div>
+    <p>
+      Since August 2021, GitHub requires a <strong>Personal Access Token (PAT)</strong> instead of an account password for secure command-line Git operations (<span class="inline-code">git push</span>, <span class="inline-code">git fetch</span>). Follow these exact steps to generate and authenticate using a token:
+    </p>
+
+    <div class="section-subtitle">Step 1: Generate a Personal Access Token on GitHub</div>
+    <ol>
+      <li>Log in to your GitHub account and click your <strong>Profile Icon</strong> in the top-right corner.</li>
+      <li>Click <strong>Settings</strong> from the dropdown menu.</li>
+      <li>In the left sidebar, scroll down to the bottom and click <strong>"Developer settings"</strong>.</li>
+      <li>Under <em>"Personal access tokens"</em>, click <strong>"Tokens (classic)"</strong>.</li>
+      <li>Click the button <strong>"Generate new token"</strong> &rarr; <strong>"Generate new token (classic)"</strong>.</li>
+      <li>Configure the token parameters:
+        <ul>
+          <li><strong>Note:</strong> Enter a recognizable name, e.g., <code>VPKBIET-IKS-Hub-Sync-Token</code></li>
+          <li><strong>Expiration:</strong> Choose <em>90 days</em> or <em>No expiration</em> (for institutional automated pipelines).</li>
+          <li><strong>Scopes (Permissions):</strong> Check the following essential checkboxes:
+            <br>&bull; <span class="inline-code">[X] repo</span> (Full control of private repositories & commit access)
+            <br>&bull; <span class="inline-code">[X] workflow</span> (Allows triggering GitHub Actions & deployments)
+          </li>
+        </ul>
+      </li>
+      <li>Scroll to the bottom and click the green <strong>"Generate token"</strong> button.</li>
+      <li><strong>CRITICAL:</strong> Copy the displayed token immediately (format begins with <code>ghp_...</code>). <em>GitHub will never show it to you again.</em> Store it securely in a password manager.</li>
+    </ol>
+
+    <div class="section-subtitle">Step 2: Configure the Token on Your Computer</div>
+    <p>Configure Git to use your token for password-less, secure pushes:</p>
+    <div class="code-block">
+<span class="comment"># Option A: Embed token directly in Git remote URL (Quickest & permanent)</span>
+<span class="keyword">git</span> remote set-url origin https://&lt;YOUR_GITHUB_TOKEN&gt;@github.com/&lt;USERNAME&gt;/&lt;REPO&gt;.git
+
+<span class="comment"># Example for this repository:</span>
+<span class="keyword">git</span> remote set-url origin https://ghp_YourSecretTokenHere@github.com/virajp2709/iks-digital-heritage-hub.git
+
+<span class="comment"># Option B: Use Git Credential Manager (Prompts once, then remembers securely)</span>
+<span class="keyword">git</span> config --global credential.helper manager
+    </div>
+
+    <div class="section-subtitle">Step 3: Test Synchronization by Pushing Changes</div>
+    <div class="code-block">
+<span class="comment"># Stage modified files</span>
+<span class="keyword">git</span> add .
+
+<span class="comment"># Commit with a clear descriptive message</span>
+<span class="keyword">git</span> commit -m "Update student project catalog and website showcase"
+
+<span class="comment"># Push live to GitHub main branch</span>
+<span class="keyword">git</span> push origin main
+    </div>
+
+    <div class="alert-box info">
+      <strong>Pro Tip:</strong> When prompted in terminal for your username and password, enter your <strong>GitHub username</strong> and paste your <strong>Personal Access Token (ghp_...)</strong> into the password field.
+    </div>
+  </div>
+
+  <!-- SECTION 5: LINKING TO COLLEGE WEBSITE -->
+  <div class="section">
+    <div class="section-title">5. Enabling Free GitHub Pages & Linking to College Website (vpkbiet.org)</div>
+    <p>
+      The platform is designed to be hosted 100% free with 99.99% uptime via GitHub Pages, with automatic SSL (HTTPS) encryption.
+    </p>
+
+    <div class="section-subtitle">Step 1: Turn On GitHub Pages</div>
+    <ol>
+      <li>Go to your repository on GitHub &rarr; Click <strong>Settings</strong> tab &rarr; Click <strong>Pages</strong> in the left sidebar.</li>
+      <li>Under <em>"Build and deployment"</em> &rarr; <strong>Source</strong>: Select <code>Deploy from a branch</code>.</li>
+      <li>Under <strong>Branch</strong>: Select <code>main</code> and folder <code>/ (root)</code> &rarr; Click <strong>Save</strong>.</li>
+      <li>Within 60 seconds, GitHub Pages compiles and publishes the portal at:
+        <br><span class="inline-code">https://&lt;organization&gt;.github.io/&lt;repository-name&gt;/</span>
+      </li>
+    </ol>
+
+    <div class="section-subtitle">Step 2: Linking from the Official College Website (vpkbiet.org)</div>
+    <p>The college IT web administrator can integrate this portal on <a href="https://www.vpkbiet.org/">vpkbiet.org</a> using any of the three standard integration patterns:</p>
+
+    <ol>
+      <li>
+        <strong>Navigation Bar / Menu Link (Recommended):</strong> Add an item named <em>"IKS Heritage Hub"</em> or <em>"Indian Knowledge Systems"</em> to the college website header/footer:
+        <div class="code-block">
+&lt;a href="https://virajp2709.github.io/iks-digital-heritage-hub/" target="_blank" rel="noopener noreferrer"&gt;
+  🏛️ IKS Digital Heritage Hub
+&lt;/a&gt;
+        </div>
+      </li>
+      <li>
+        <strong>Custom Subdomain (e.g. iks.vpkbiet.org):</strong>
+        In GitHub Pages settings, under <em>"Custom domain"</em>, enter <code>iks.vpkbiet.org</code>. In college domain DNS manager, add a <strong>CNAME record</strong> pointing <code>iks</code> to <code>virajp2709.github.io</code>. Check <em>"Enforce HTTPS"</em>.
+      </li>
+      <li>
+        <strong>Embedded iFrame on College Page:</strong>
+        Embed the entire hub seamlessly inside an existing college web template:
+        <div class="code-block">
+&lt;iframe src="https://virajp2709.github.io/iks-digital-heritage-hub/" style="width:100%; height:900px; border:none;" title="VPKBIET IKS Hub"&gt;&lt;/iframe&gt;
+        </div>
+      </li>
+    </ol>
+  </div>
+
+  <!-- SECTION 6: DIRECTORY STRUCTURE & ADMIN PASSWORD -->
+  <div class="section">
+    <div class="section-title">6. Repository Architecture & Admin Master Control</div>
+    <table>
+      <thead>
+        <tr>
+          <th>File / Folder Path</th>
+          <th>Functionality</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="inline-code">index.html</span></td>
+          <td>Main Hub homepage: Hero interactive map of India, 70+ student projects filter, search, QR modal, audio toggle, and SPPU college footer.</td>
+        </tr>
+        <tr>
+          <td><span class="inline-code">websites.html</span></td>
+          <td>Dedicated Student Website Showcase Portal: Displays 8+ student-built web platforms, 3D apps, and AI research tools with instant QR codes and direct launch buttons.</td>
+        </tr>
+        <tr>
+          <td><span class="inline-code">data/projects.json</span></td>
+          <td>Master database of all student research projects (titles in EN/MR, abstracts, methodologies, test photos, student developer names, departments, and emails).</td>
+        </tr>
+        <tr>
+          <td><span class="inline-code">data/websites.json</span></td>
+          <td>Database of all published student websites and living tools.</td>
+        </tr>
+        <tr>
+          <td><span class="inline-code">websites/</span></td>
+          <td>Self-contained student web applications (e.g., <code>websites/pingala-chandashastra/</code>, <code>websites/panini-grammar/</code>).</td>
+        </tr>
+        <tr>
+          <td><span class="inline-code">assets/</span></td>
+          <td>Core CSS styling (<span class="inline-code">styles.css</span>), main portal script (<span class="inline-code">app.js</span>), and websites controller (<span class="inline-code">websites.js</span>).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert-box">
+      <strong>Administrative Control & Security:</strong><br>
+      To prevent unauthorized modifications during public exhibition, editing or adding student research papers or website projects is protected by the master administrator password:
+      <br>&bull; <strong>Master Security Password:</strong> <strong style="font-size: 11pt; color: #801818;">2026</strong>
+      <br>Whenever an administrator unlocks the dialog using password <code>2026</code>, they can edit student names, add new research, and click <em>"Download updated JSON"</em> to commit updates back to version control.
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- AUTHOR & CREATOR ATTRIBUTION -->
+  <footer class="author-signoff">
+    <div class="author-details">
+      <h3>Viraj Pathak</h3>
+      <p>Created & Designed the VPKBIET IKS Digital Heritage Hub Website</p>
+      <p>Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology (VPKBIET), Baramati</p>
+      <p style="color: #8b6508; font-weight: 600; margin-top: 3px;">Affiliated to Savitribai Phule Pune University (SPPU) · NAAC 'A' Grade</p>
+    </div>
+    <div class="signature-badge">
+      ✦ Designed & Created by Viraj Pathak
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
