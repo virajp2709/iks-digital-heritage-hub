@@ -67,10 +67,10 @@
         <a href="websites.html" class="nav-link active" style="color: var(--gold-light); font-weight: 700;">Website Projects</a>
         <a href="index.html#about-institution" class="nav-link">About IKS Cell</a>
         <a href="index.html#map-section" class="nav-link">Heritage Map</a>
-        <a href="index.html" class="submit-nav-btn" style="text-decoration: none;">
-          <span aria-hidden="true">✦</span>
-          <span>Main Hub</span>
-        </a>
+        <button id="open-add-website-btn" class="submit-nav-btn" type="button" aria-label="Add website project (Admin)">
+          <span aria-hidden="true">🔒</span>
+          <span>Add Website</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -387,11 +387,16 @@
             </div>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
-            <button type="button" class="btn-secondary-outline" id="cancel-edit-site-btn">Cancel</button>
-            <button type="submit" class="btn-primary-gold" id="save-site-btn">
-              <span>✦</span> <span>Save Changes</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 16px; flex-wrap: wrap; gap: 12px;">
+            <button type="button" id="delete-site-btn" class="btn-secondary-outline" style="color: #ff8888; border-color: rgba(255,100,100,0.4); display: none;">
+              <span>🗑️</span> <span>Delete Website</span>
             </button>
+            <div style="display: flex; gap: 12px; margin-left: auto;">
+              <button type="button" class="btn-secondary-outline" id="cancel-edit-site-btn">Cancel</button>
+              <button type="submit" class="btn-primary-gold" id="save-site-btn">
+                <span>✦</span> <span id="save-site-btn-text">Save Changes</span>
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -419,6 +424,7 @@
           <li><a href="websites.html">Website Projects</a></li>
           <li><a href="index.html#about-institution">About IKS Cell</a></li>
           <li><a href="index.html#map-section">Heritage Map of India</a></li>
+          <li><a href="#" id="footer-add-website-link">Add Website (Admin)</a></li>
         </ul>
       </div>
 

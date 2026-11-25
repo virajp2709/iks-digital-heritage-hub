@@ -603,15 +603,22 @@ function switchModalTab(tabId) {
   });
 }
 
-// Admin Authentication & Edit Workflow
+let adminActionContext = {
+  mode: "edit",
+  site: null
+};
+
+// Admin Authentication & Edit Workflow (Always requires password "2026" every time)
 function triggerWebsiteEditWorkflow() {
   if (!state.activeWebsite) return;
-  const isAuthed = sessionStorage.getItem("vpkbiet_iks_admin") === "true";
-  if (isAuthed) {
-    openWebsiteEditModal(state.activeWebsite);
-  } else {
-    openAdminAuthModal();
-  }
+  adminActionContext = { mode: "edit", site: state.activeWebsite };
+  openAdminAuthModal();
+}
+
+// Admin Add Website Workflow (Always requires password "2026" every time)
+function triggerWebsiteAddWorkflow() {
+  adminActionContext = { mode: "add", site: null };
+  openAdminAuthModal();
 }
 
 function openAdminAuthModal() {
@@ -676,6 +683,10 @@ function openWebsiteEditModal(site) {
   if (!editModal || !site) return;
 
   document.getElementById("edit-site-id").value = site.id;
+  document.getElementById("edit-site-modal-heading").textContent = "Edit Website & Student Details";
+  const saveBtnText = document.getElementById("save-site-btn-text");
+  if (saveBtnText) saveBtnText.textContent = "Save Changes";
+
   document.getElementById("edit-site-title").value = site.title || "";
   document.getElementById("edit-site-branch").value = site.branch || "AIDS-1";
   document.getElementById("edit-site-year").value = site.academicYear || "2026-2027";
@@ -684,7 +695,51 @@ function openWebsiteEditModal(site) {
   document.getElementById("edit-site-desc").value = site.description || "";
   document.getElementById("edit-site-tech").value = (site.techStack || []).join(", ");
 
+  const deleteBtn = document.getElementById("delete-site-btn");
+  if (deleteBtn) {
+    deleteBtn.style.display = site.isFlagship ? "none" : "inline-flex";
+    deleteBtn.onclick = () => {
+      if (confirm(`Are you sure you want to delete "${site.title}"?`)) {
+        state.websites = state.websites.filter((s) => s.id !== site.id);
+        try {
+          localStorage.setItem("vpkbiet_iks_websites", JSON.stringify(state.websites));
+        } catch (err) {}
+        closeWebsiteEditModal();
+        closeWebsiteDetailModal();
+        renderWebsites();
+        showToast("Website project removed successfully");
+      }
+    };
+  }
+
   renderEditTeamRows(site.teamMembers || []);
+
+  editModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function openWebsiteAddModal() {
+  closeAdminAuthModal();
+  const editModal = document.getElementById("website-edit-modal");
+  if (!editModal) return;
+
+  document.getElementById("edit-site-id").value = "";
+  document.getElementById("edit-site-modal-heading").textContent = "Add New Student Website Project";
+  const saveBtnText = document.getElementById("save-site-btn-text");
+  if (saveBtnText) saveBtnText.textContent = "Add & Publish Website";
+
+  document.getElementById("edit-site-title").value = "";
+  document.getElementById("edit-site-branch").value = "AIDS-1";
+  document.getElementById("edit-site-year").value = "2026-2027";
+  document.getElementById("edit-site-url").value = "";
+  document.getElementById("edit-site-tagline").value = "";
+  document.getElementById("edit-site-desc").value = "";
+  document.getElementById("edit-site-tech").value = "";
+
+  const deleteBtn = document.getElementById("delete-site-btn");
+  if (deleteBtn) deleteBtn.style.display = "none";
+
+  renderEditTeamRows([{ name: "", role: "Project Leader", department: "AIDS-1", email: "" }]);
 
   editModal.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -698,22 +753,19 @@ function closeWebsiteEditModal() {
   }
 }
 
-// Save form changes
+// Save form changes (Add or Edit)
 function saveWebsiteEdits(e) {
   e.preventDefault();
   const siteId = document.getElementById("edit-site-id").value;
-  const site = state.websites.find((s) => s.id === siteId);
-  if (!site) return;
 
-  site.title = document.getElementById("edit-site-title").value.trim();
-  site.branch = document.getElementById("edit-site-branch").value.trim();
-  site.academicYear = document.getElementById("edit-site-year").value.trim();
-  site.liveUrl = document.getElementById("edit-site-url").value.trim();
-  site.tagline = document.getElementById("edit-site-tagline").value.trim();
-  site.description = document.getElementById("edit-site-desc").value.trim();
-
+  const titleVal = document.getElementById("edit-site-title").value.trim();
+  const branchVal = document.getElementById("edit-site-branch").value.trim();
+  const yearVal = document.getElementById("edit-site-year").value.trim() || "2026-2027";
+  const urlVal = document.getElementById("edit-site-url").value.trim();
+  const taglineVal = document.getElementById("edit-site-tagline").value.trim();
+  const descVal = document.getElementById("edit-site-desc").value.trim();
   const techVal = document.getElementById("edit-site-tech").value.trim();
-  site.techStack = techVal ? techVal.split(",").map((t) => t.trim()).filter(Boolean) : [];
+  const techStack = techVal ? techVal.split(",").map((t) => t.trim()).filter(Boolean) : ["Web Technology"];
 
   // Harvest student team members
   const rows = document.querySelectorAll("#edit-team-members-list .edit-team-row");
@@ -721,7 +773,7 @@ function saveWebsiteEdits(e) {
   rows.forEach((row) => {
     const name = row.querySelector(".member-name-input")?.value.trim();
     const role = row.querySelector(".member-role-input")?.value.trim() || "Student Researcher";
-    const department = row.querySelector(".member-dept-input")?.value.trim() || site.branch;
+    const department = row.querySelector(".member-dept-input")?.value.trim() || branchVal;
     const email = row.querySelector(".member-email-input")?.value.trim() || "";
 
     if (name) {
@@ -729,7 +781,37 @@ function saveWebsiteEdits(e) {
     }
   });
 
-  site.teamMembers = updatedMembers;
+  let targetSite;
+  if (!siteId) {
+    // Add new website project
+    const newId = "vpkbiet-site-" + Date.now();
+    targetSite = {
+      id: newId,
+      title: titleVal,
+      branch: branchVal,
+      academicYear: yearVal,
+      liveUrl: urlVal,
+      tagline: taglineVal,
+      description: descVal,
+      thumbnail: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+      isFlagship: false,
+      techStack: techStack,
+      teamMembers: updatedMembers.length > 0 ? updatedMembers : [{ name: "Student Developer", role: "Project Leader", department: branchVal, email: "" }]
+    };
+    state.websites.push(targetSite);
+  } else {
+    // Update existing website project
+    targetSite = state.websites.find((s) => s.id === siteId);
+    if (!targetSite) return;
+    targetSite.title = titleVal;
+    targetSite.branch = branchVal;
+    targetSite.academicYear = yearVal;
+    targetSite.liveUrl = urlVal;
+    targetSite.tagline = taglineVal;
+    targetSite.description = descVal;
+    targetSite.techStack = techStack;
+    targetSite.teamMembers = updatedMembers;
+  }
 
   // Persist locally in localStorage
   try {
@@ -740,8 +822,8 @@ function saveWebsiteEdits(e) {
 
   closeWebsiteEditModal();
   renderWebsites();
-  openWebsiteDetailModal(site);
-  showToast("✦ Student names & website details updated successfully!");
+  openWebsiteDetailModal(targetSite);
+  showToast("✦ Website details & student names saved successfully!");
 }
 
 // Download updated websites.json file
@@ -868,7 +950,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (e.target.id === "website-detail-modal") closeWebsiteDetailModal();
   });
 
-  // Edit Button in Detail Modal
+  // Open Add Website Workflow (Nav button & footer link)
+  document.getElementById("open-add-website-btn")?.addEventListener("click", triggerWebsiteAddWorkflow);
+  document.getElementById("footer-add-website-link")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    triggerWebsiteAddWorkflow();
+  });
+
+  // Edit Button in Detail Modal (Always requires password "2026")
   document.getElementById("modal-site-edit-btn")?.addEventListener("click", triggerWebsiteEditWorkflow);
   document.getElementById("modal-site-edit-team-shortcut")?.addEventListener("click", triggerWebsiteEditWorkflow);
 
@@ -877,17 +966,30 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (authForm) {
     authForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const pass = document.getElementById("admin-pass-input")?.value.trim() || "";
+      const passInput = document.getElementById("admin-pass-input");
+      const pass = passInput?.value.trim() || "";
       const errorEl = document.getElementById("admin-auth-error");
 
       if (pass === "2026") {
-        sessionStorage.setItem("vpkbiet_iks_admin", "true");
         if (errorEl) errorEl.style.display = "none";
-        openWebsiteEditModal(state.activeWebsite);
+        closeAdminAuthModal();
+
+        if (adminActionContext.mode === "edit" && adminActionContext.site) {
+          showToast("✦ Admin verified for editing!");
+          openWebsiteEditModal(adminActionContext.site);
+        } else {
+          showToast("✦ Admin verified for adding website!");
+          openWebsiteAddModal();
+        }
       } else {
         if (errorEl) {
           errorEl.textContent = "❌ Incorrect security password. Access restricted to IKS department admins.";
           errorEl.style.display = "block";
+        }
+        if (passInput) {
+          passInput.classList.add("shake");
+          setTimeout(() => passInput.classList.remove("shake"), 400);
+          passInput.select();
         }
       }
     });
