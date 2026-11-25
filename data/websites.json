@@ -31,5 +31,56 @@
         "email": "parth.bankar@vpkbiet.ac.in"
       }
     ]
+  },
+  {
+    "id": "pingala-chandashastra-science-of-meter",
+    "title": "Chhanda Shastra of Pingala: Science of Meter",
+    "titleMr": "पिंगलांचे छंदशास्त्र: प्राचीन भारतीय काव्यछंद आणि द्विमान प्रणाली",
+    "tagline": "Interactive 3D Gaṇa Cube, Mātrā Meru (Pascal's Triangle), Binary Systems & Chandas Scanner",
+    "description": "An interactive digital platform exploring Acharya Pingala's ancient Chhandaśāstra (c. 3rd-2nd century BCE). Features real-time interactive tools including a 3D Gaṇa rotation cube with speech synthesis, Mātrā-Meru (Pascal's triangle) visualization, Fibonacci sequence mappings, moric binary converter, and a live Sanskrit Chandas verse scanner.",
+    "branch": "AIDS-3",
+    "academicYear": "2026-2027",
+    "techStack": ["HTML5", "CSS 3D", "Canvas 2D", "Web Speech API", "JavaScript", "Combinatorics"],
+    "liveUrl": "websites/pingala-chandashastra/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": false,
+    "teamMembers": [
+      {
+        "name": "Pranali Khedkar",
+        "role": "Project Leader",
+        "department": "AIDS-3",
+        "email": "pranali.khedkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pranjali Jogdand",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "pranjali.jogdand@vpkbiet.ac.in"
+      },
+      {
+        "name": "Rutuja Patil",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "rutuja.patil@vpkbiet.ac.in"
+      },
+      {
+        "name": "Priyadarshini Shinde",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "priyadarshini.shinde@vpkbiet.ac.in"
+      },
+      {
+        "name": "Poonam Mungase",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "poonam.mungase@vpkbiet.ac.in"
+      },
+      {
+        "name": "Rajnandini Phate",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "rajnandini.phate@vpkbiet.ac.in"
+      }
+    ]
   }
 ]
