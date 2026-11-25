@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#161B33" />
+  <title>Pāṇini’s Grammar | Ancient Sūtras to Silicon Logic (IKS Project)</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cinzel, Playfair Display, Plus Jakarta Sans, Inter & Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: '#FAF6EE',
+            parchmentDark: '#F2EAD9',
+            indigoDeep: '#161B33',
+            indigoSoft: '#22294A',
+            saffron: '#D97706',
+            goldAccent: '#F59E0B',
+            maroonAccent: '#991B1B',
+            cosmicBg: '#100D2C',
+            cosmicPink: '#ED4D91',
+            cosmicViolet: '#6E4BCB',
+          },
+          fontFamily: {
+            serifTitle: ['Cinzel', 'Playfair Display', 'serif'],
+            serifSub: ['Playfair Display', 'serif'],
+            sansBody: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            editorial: ['Inter', 'sans-serif'],
+            devanagari: ['Noto Sans Devanagari', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ==========================================================================
+       DUAL-THEME DESIGN SYSTEM:
+       1. Manuscript Mode (Default): Warm parchment, deep indigo, saffron & gold
+       2. Cosmic Logic Mode: Cosmic indigo-violet gradient, luminous pink & cyan
+       ========================================================================== */
+    :root {
+      --bg-main: #FAF6EE;
+      --bg-alt: rgba(242, 234, 217, 0.72);
+      --text-primary: #161B33;
+      --text-secondary: rgba(22, 27, 51, 0.82);
+      --text-muted: rgba(22, 27, 51, 0.65);
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --card-border: rgba(217, 119, 6, 0.25);
+      --accent-primary: #D97706;
+      --accent-secondary: #991B1B;
+      --accent-gold: #F59E0B;
+      --hero-bg: linear-gradient(155deg, #161B33 0%, #1F2647 55%, #12162B 100%);
+      --nav-bg: rgba(22, 27, 51, 0.94);
+      --panel-dark: #161B33;
+      --it-color: #991B1B;
+    }
+
+    body.cosmic-mode {
+      --bg-main: #100D2C;
+      --bg-alt: rgba(255, 255, 255, 0.03);
+      --text-primary: #F8F5FF;
+      --text-secondary: #D8CCE9;
+      --text-muted: #B6A8CE;
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.16);
+      --accent-primary: #ED4D91;
+      --accent-secondary: #FF9BC4;
+      --accent-gold: #8BDCFF;
+      --hero-bg: radial-gradient(ellipse at 15% 5%, #842B73 0%, transparent 42%),
+                 radial-gradient(ellipse at 88% 42%, #273B89 0%, transparent 45%),
+                 linear-gradient(145deg, #170E38 0%, #10102F 60%, #091B3D 100%);
+      --nav-bg: rgba(13, 10, 37, 0.88);
+      --panel-dark: #151138;
+      --it-color: #FF8DBB;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    /* Subtle manuscript dot pattern in Manuscript Mode; cosmic radial mesh in Cosmic Mode */
+    body:not(.cosmic-mode) {
+      background-image:
+        radial-gradient(rgba(217, 119, 6, 0.08) 1px, transparent 1px),
+        radial-gradient(rgba(22, 27, 51, 0.045) 1px, #FAF6EE 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+
+    body.cosmic-mode {
+      background-image:
+        radial-gradient(ellipse at 12% 18%, rgba(132, 43, 115, 0.32) 0%, transparent 42%),
+        radial-gradient(ellipse at 88% 72%, rgba(39, 59, 137, 0.35) 0%, transparent 45%),
+        linear-gradient(160deg, #130C30 0%, #0E0E29 55%, #081736 100%);
+      background-attachment: fixed;
+    }
+
+    .theme-nav {
+      background: var(--nav-bg);
+      backdrop-filter: blur(16px);
+    }
+
+    .theme-hero {
+      background: var(--hero-bg);
+    }
+
+    .theme-section-alt {
+      background: var(--bg-alt);
+      border-color: var(--card-border);
+    }
+
+    .theme-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.35s ease, border-color 0.35s ease;
+    }
+
+    .theme-text-primary { color: var(--text-primary); }
+    .theme-text-secondary { color: var(--text-secondary); }
+    .theme-text-muted { color: var(--text-muted); }
+    .theme-kicker { color: var(--accent-secondary); }
+
+    body.cosmic-mode .font-serifTitle {
+      font-family: 'Inter', 'Cinzel', sans-serif;
+      letter-spacing: -0.025em;
+    }
+
+    /* Sūtra Highlight Styling */
+    .sutra-highlight {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #ffffff !important;
+      transform: scale(1.04);
+      box-shadow: 0 8px 22px rgba(217, 119, 6, 0.35);
+      border-color: #B45309 !important;
+    }
+
+    body.cosmic-mode .sutra-highlight {
+      background: linear-gradient(125deg, #ED4D91 0%, #6E4BCB 100%);
+      box-shadow: 0 8px 25px rgba(237, 77, 145, 0.4);
+      border-color: #FF9BC4 !important;
+    }
+
+    .it-marker {
+      color: var(--it-color);
+      font-weight: 700;
+      border-bottom: 2px dashed var(--it-color);
+    }
+
+    .sutra-highlight .it-marker {
+      color: #FEF3C7;
+      border-bottom-color: #FEF3C7;
+    }
+
+    /* Rotating Mandala Animation */
+    @keyframes pulseSlow {
+      0%, 100% { opacity: 0.24; transform: rotate(0deg); }
+      50% { opacity: 0.38; transform: rotate(180deg); }
+    }
+    .mandala-spin {
+      animation: pulseSlow 52s linear infinite;
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: #111 !important; }
+      .theme-card { border: 1px solid #ccc !important; background: #fff !important; }
+    }
+  </style>
+</head>
+<body class="font-sansBody antialiased selection:bg-saffron selection:text-white">
+
+  <!-- ========================================================================
+       STICKY NAVIGATION BAR WITH THEME SWITCHER & QUICK QUIZ
+       ======================================================================== -->
+  <header class="sticky top-0 z-50 theme-nav text-parchment border-b border-white/15 shadow-lg no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-2">
+        <!-- Brand / Emblem -->
+        <a href="#hero" class="flex items-center space-x-2.5 group shrink-0">
+          <div id="brand-badge" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-saffron to-maroonAccent flex items-center justify-center text-white font-devanagari text-lg sm:text-xl font-bold shadow-md group-hover:scale-105 transition">
+            अ
+          </div>
+          <div>
+            <span id="brand-title" class="font-serifTitle text-sm sm:text-base font-bold tracking-wider text-goldAccent block leading-none">PĀṆINI’S GRAMMAR</span>
+            <span class="text-[10px] sm:text-[11px] uppercase tracking-widest text-parchment/70">IKS Research Portal</span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden xl:flex items-center space-x-1 text-xs font-semibold">
+          <a href="#history" class="px-2.5 py-2 rounded-lg hover:bg-white/10 hover:text-goldAccent transition">01. History & Trimuni</a>
+          <a href="#maheshvara" class="px-2.5 py-2 rounded-lg hover:bg-white/10 hover:text-goldAccent transition">02. Māheśvara Sūtras</a>
+          <a href="#architecture" class="px-2.5 py-2 rounded-lg hover:bg-white/10 hover:text-goldAccent transition">03. Logical Rules</a>
+          <a href="#word-engine" class="px-2.5 py-2 rounded-lg hover:bg-white/10 hover:text-goldAccent transition">04. Word Builder</a>
+          <a href="#ai-bridge" class="px-2.5 py-2 rounded-lg hover:bg-white/10 hover:text-goldAccent transition">05. Pāṇini & AI</a>
+          <a href="#takeaway" class="px-2.5 py-2 rounded-lg hover:bg-white/10 hover:text-goldAccent transition">06. Takeaway</a>
+          <a href="#credits" class="px-2.5 py-2 rounded-lg hover:bg-white/10 hover:text-goldAccent transition">07. Credits</a>
+        </nav>
+
+        <!-- Theme Switcher, Quiz CTA & Mobile Menu Button -->
+        <div class="flex items-center space-x-2">
+          <!-- Back to Hub Link -->
+          <a href="../../websites.html" class="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-amber-300 transition">
+            <span>←</span> <span>All IKS Websites</span>
+          </a>
+
+          <!-- Theme Switcher Toggle -->
+          <button onclick="toggleVisualTheme()" id="theme-toggle-btn" title="Switch between Classical Manuscript Mode and Cosmic Logic Mode" class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-parchment flex items-center gap-1.5 transition">
+            <span id="theme-icon">🌌</span>
+            <span id="theme-label" class="hidden sm:inline">Cosmic Logic Mode</span>
+            <span id="theme-label-short" class="sm:hidden">Theme</span>
+          </button>
+
+          <!-- Quick Quiz Button -->
+          <button onclick="openQuizModal()" id="quiz-nav-btn" class="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-bold text-xs shadow hover:brightness-110 active:scale-95 transition flex items-center gap-1">
+            <span>✦</span> <span>Quiz</span>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-btn" class="xl:hidden p-2 rounded-lg text-parchment hover:bg-white/10 focus:outline-none" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile / Tablet Dropdown Menu -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-indigoDeep/95 border-t border-white/15 px-4 pt-2 pb-4 space-y-1">
+      <a href="../../websites.html" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-amber-300 hover:bg-white/10">← Return to IKS Website Projects Hub</a>
+      <a href="#history" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">01. Introduction & Historical Evolution</a>
+      <a href="#maheshvara" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">02. 14 Māheśvara Sūtras & Pratyāhāra Explorer</a>
+      <a href="#architecture" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">03. Logical Architecture & Sūtra Types</a>
+      <a href="#word-engine" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">04. Sanskrit Word Formation Engine</a>
+      <a href="#ai-bridge" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">05. Pāṇini’s Grammar & Modern AI</a>
+      <a href="#takeaway" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">06. Takeaway & Legacy</a>
+      <a href="#credits" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm text-parchment hover:bg-white/10">07. Project Team & Credits</a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION
+       ======================================================================== -->
+  <section id="hero" class="relative overflow-hidden theme-hero text-parchment py-16 sm:py-24 lg:py-28 border-b-4 border-saffron" style="border-color: var(--accent-primary);">
+    <!-- Sacred Geometry Mandala + Orbital Rings Backdrop -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center opacity-25">
+      <svg class="w-[720px] h-[720px] mandala-spin" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="190" stroke="#F59E0B" stroke-width="1" stroke-dasharray="6 6"/>
+        <circle cx="200" cy="200" r="150" stroke="#ED4D91" stroke-width="1.2"/>
+        <circle cx="200" cy="200" r="105" stroke="#8BDCFF" stroke-width="1" stroke-dasharray="3 5"/>
+        <polygon points="200,20 355,290 45,290" stroke="#F59E0B" stroke-width="1" fill="none"/>
+        <polygon points="200,380 355,110 45,110" stroke="#ED4D91" stroke-width="1" fill="none"/>
+        <rect x="95" y="95" width="210" height="210" stroke="#F59E0B" stroke-width="0.8" transform="rotate(45 200 200)"/>
+      </svg>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- IKS Eyebrow Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/25 text-amber-300 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+        Indian Knowledge Systems · IKS Project
+      </div>
+
+      <!-- Editorial Headline -->
+      <h1 class="font-serifTitle text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.03] max-w-5xl mx-auto">
+        PĀṆINI’S GRAMMAR
+        <span class="block mt-2 text-2xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-amber-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent">
+          Where Ancient Sūtras Become Silicon Logic
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-6 max-w-3xl mx-auto text-base sm:text-lg lg:text-xl text-parchment/85 leading-relaxed">
+        Composed around the 5th–4th century BCE by <strong class="text-amber-300">Maharṣi Pāṇini</strong>—revered as the Father of Sanskrit Grammar and Formal Linguistics—the <em class="text-white font-serifSub">Aṣṭādhyāyī</em> encodes Sanskrit into ~3,959 algorithmic rules that connect language, logic, and modern computing.
+      </p>
+
+      <!-- Sanskrit Quote Banner -->
+      <div class="mt-7 inline-block px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-lg">
+        <p class="font-devanagari text-lg sm:text-xl text-amber-300">
+          “वृद्धिरादैच्” • <span class="text-xs sm:text-sm font-sansBody text-parchment/85 italic">Aṣṭādhyāyī Sūtra 1.1.1 — The world’s earliest formal meta-linguistic definition</span>
+        </p>
+      </div>
+
+      <!-- Quick-Jump Action CTAs -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <a href="#history" id="hero-primary-cta" class="px-6 py-3.5 rounded-full bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-extrabold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition flex items-center gap-2">
+          <span>📜</span> Explore the Project <span>→</span>
+        </a>
+        <a href="#maheshvara" class="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold text-sm sm:text-base shadow-md hover:scale-105 active:scale-95 transition flex items-center gap-2">
+          <span>🔤</span> 14 Māheśvara Sūtras
+        </a>
+        <a href="#word-engine" class="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold text-sm sm:text-base shadow-md hover:scale-105 active:scale-95 transition flex items-center gap-2">
+          <span>⚙️</span> Word Compiler Simulator
+        </a>
+        <a href="#credits" class="px-5 py-3.5 rounded-full bg-white/5 hover:bg-white/15 text-parchment/90 border border-white/15 font-medium text-sm sm:text-base transition">
+          Project Credits ↓
+        </a>
+      </div>
+
+      <!-- Key Metrics Bar -->
+      <div class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md">
+          <div class="font-serifTitle text-xl sm:text-3xl font-bold text-amber-300">5th–4th BCE</div>
+          <div class="text-xs sm:text-sm text-parchment/80 mt-1">Historical Era of Pāṇini</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md">
+          <div class="font-serifTitle text-xl sm:text-3xl font-bold text-pink-300">8 × 4 = 32</div>
+          <div class="text-xs sm:text-sm text-parchment/80 mt-1">Chapters & Quarters (Pādas)</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md">
+          <div class="font-serifTitle text-xl sm:text-3xl font-bold text-cyan-300">~3,959</div>
+          <div class="text-xs sm:text-sm text-parchment/80 mt-1">Ultra-Compressed Sūtras</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md">
+          <div class="font-serifTitle text-xl sm:text-3xl font-bold text-amber-300">14 Sūtras</div>
+          <div class="text-xs sm:text-sm text-parchment/80 mt-1">Māheśvara Phonetic Matrix</div>
+        </div>
+      </div>
+
+      <p class="mt-8 text-xs sm:text-sm tracking-widest uppercase text-parchment/60">A compact system · A lasting legacy</p>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 01: INTRODUCTION & HISTORICAL EVOLUTION (WITH TRIMUNI)
+       ======================================================================== -->
+  <section id="history" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-16">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-xs font-extrabold uppercase tracking-[0.2em] theme-kicker">01 · Foundations & Lineage</span>
+      <h2 class="font-serifTitle text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mt-2">The Scholar & Historical Evolution</h2>
+      <p class="mt-3 theme-text-secondary text-base sm:text-lg">
+        How Vedic oral preservation evolved into Maharṣi Pāṇini’s <em>Aṣṭādhyāyī</em> (“Eight Chapters”) and the classical <em>Trimuni</em> commentarial tradition.
+      </p>
+    </div>
+
+    <!-- Intro Duo Cards (Scholar & Central Work) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <div class="theme-card rounded-3xl p-6 sm:p-7 shadow-md">
+        <span class="text-xs font-extrabold uppercase tracking-widest theme-kicker">The Grammarian</span>
+        <h3 class="font-serifSub text-2xl font-bold theme-text-primary mt-1 mb-2">Maharṣi Pāṇini (5th–4th Century BCE)</h3>
+        <p class="theme-text-secondary text-sm sm:text-base leading-relaxed">
+          Born in Śalātura (ancient Gandhāra), Pāṇini is widely regarded as the <strong>Father of Sanskrit Grammar</strong> and formal linguistics. His work brought unmatched structural precision to describing Sanskrit phonology, morphology, and syntax.
+        </p>
+      </div>
+      <div class="theme-card rounded-3xl p-6 sm:p-7 shadow-md">
+        <span class="text-xs font-extrabold uppercase tracking-widest theme-kicker">The Central Work</span>
+        <h3 class="font-serifSub text-2xl font-bold theme-text-primary mt-1 mb-2">Aṣṭādhyāyī (“Eight Chapters”)</h3>
+        <p class="theme-text-secondary text-sm sm:text-base leading-relaxed">
+          Structured into <strong>8 chapters</strong> divided into 4 quarters each (<strong>32 pādas</strong>) containing ~3,959 aphoristic rules (<em>sūtras</em>), it systematically governs word formation, pronunciation, sentence structure, and grammatical usage.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive Timeline Switcher Tabs -->
+    <div class="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-6" role="tablist">
+      <button onclick="selectTimelineTab('vedic')" id="tab-vedic" class="timeline-tab-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-sm">
+        1. Vedic Roots & Rig-Veda (c. 1000 BCE)
+      </button>
+      <button onclick="selectTimelineTab('panini')" id="tab-panini" class="timeline-tab-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-md">
+        2. Maharṣi Pāṇini (5th–4th BCE)
+      </button>
+      <button onclick="selectTimelineTab('trimuni')" id="tab-trimuni" class="timeline-tab-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-sm">
+        3. The Trimuni Tradition
+      </button>
+    </div>
+
+    <!-- Dynamic Timeline Content Panel -->
+    <div id="timeline-content" class="theme-card rounded-3xl p-6 sm:p-10 shadow-xl transition-all duration-300">
+      <!-- Populated via JS -->
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 02: INTERACTIVE 14 MĀHEŚVARA SŪTRAS & PRATYĀHĀRA EXPLORER
+       ======================================================================== -->
+  <section id="maheshvara" class="py-16 sm:py-20 theme-section-alt border-y scroll-mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-extrabold uppercase tracking-[0.2em] theme-kicker">02 · Phonetic Data Compression</span>
+        <h2 class="font-serifTitle text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mt-2">14 Māheśvara Sūtras & Pratyāhāra Explorer</h2>
+        <p class="mt-3 theme-text-secondary text-base sm:text-lg">
+          Pāṇini organized Sanskrit phonemes into 14 aphorisms ending with marker consonants (<strong class="it-marker">It / Anubandha</strong>). Select a <strong>Pratyāhāra</strong> below to see how two syllables compress entire sound classes!
+        </p>
+      </div>
+
+      <!-- Pratyāhāra Controls Panel -->
+      <div class="theme-card rounded-3xl p-5 sm:p-6 shadow-lg mb-8">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-5 border-b border-white/15">
+          <div>
+            <h3 class="font-serifSub text-lg font-bold theme-text-primary">Select a Pratyāhāra (Phonetic Set Compression):</h3>
+            <p class="text-xs sm:text-sm theme-text-muted">Click any button to highlight the active sound range (excluding underlined <span class="it-marker">It</span> markers).</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="highlightPratyahara('aC')" id="btn-prat-aC" class="prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold shadow transition hover:scale-105">
+              aC (अच्) — All Vowels
+            </button>
+            <button onclick="highlightPratyahara('haL')" id="btn-prat-haL" class="prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition hover:scale-105">
+              haL (हल्) — All Consonants
+            </button>
+            <button onclick="highlightPratyahara('yaN')" id="btn-prat-yaN" class="prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition hover:scale-105">
+              yaṆ (यण्) — Semivowels
+            </button>
+            <button onclick="highlightPratyahara('aN')" id="btn-prat-aN" class="prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition hover:scale-105">
+              aṆ (अण्) — Simple Vowels
+            </button>
+            <button onclick="highlightPratyahara('jaS')" id="btn-prat-jaS" class="prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition hover:scale-105">
+              jaŚ (जश्) — Voiced Stops
+            </button>
+            <button onclick="highlightPratyahara('NONE')" id="btn-prat-NONE" class="prat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-gray-500/20 theme-text-primary hover:bg-gray-500/30 transition">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Pratyāhāra Explanation Banner -->
+        <div class="mt-4 p-4 sm:p-5 rounded-2xl bg-indigoDeep text-parchment border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="text-xs uppercase tracking-wider text-amber-300 font-bold block">Active Pratyāhāra Output</span>
+            <p id="prat-title" class="font-serifSub text-lg font-bold text-white mt-0.5">aC (अच्) — Complete Sanskrit Vowel Set (Sūtras 1 to 4)</p>
+            <p id="prat-desc" class="text-xs sm:text-sm text-parchment/85 mt-1">Starts at <strong>अ (a)</strong> in Sūtra 1 and terminates at marker <strong>च् (C)</strong> in Sūtra 4, yielding: <strong>a, i, u, ṛ, ḷ, e, o, ai, au</strong>.</p>
+          </div>
+          <div class="shrink-0 bg-white/10 px-4 py-2.5 rounded-xl border border-amber-300/30 text-center">
+            <span class="text-[11px] uppercase text-amber-300 block">Compression Ratio</span>
+            <span id="prat-ratio" class="font-mono font-bold text-sm sm:text-base text-white">9 Phonemes → 2 Syllables</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 Māheśvara Sūtras Grid -->
+      <div id="maheshvara-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 03: LOGICAL ARCHITECTURE & FUNCTIONAL SŪTRA TYPES
+       ======================================================================== -->
+  <section id="architecture" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-16">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-xs font-extrabold uppercase tracking-[0.2em] theme-kicker">03 · Algorithmic Design</span>
+      <h2 class="font-serifTitle text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mt-2">Logical Architecture of the Aṣṭādhyāyī</h2>
+      <p class="mt-3 theme-text-secondary text-base sm:text-lg">
+        Pāṇini’s generative grammar operates conceptually like an algorithmic program or modern compiler, built upon four computational pillars.
+      </p>
+    </div>
+
+    <!-- 4 Foundational Logical Pillars -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-14">
+      <div class="theme-card rounded-3xl p-6 sm:p-7 shadow-md border-l-4 border-l-saffron">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-xl bg-saffron/20 text-saffron flex items-center justify-center font-extrabold text-base">01</span>
+          <h3 class="font-serifSub text-xl font-bold theme-text-primary">Deterministic Production Rules</h3>
+        </div>
+        <p class="text-sm sm:text-base theme-text-secondary leading-relaxed">
+          Every sūtra acts as strict <strong>IF–THEN context-sensitive logic</strong> (<code class="bg-black/10 px-1.5 py-0.5 rounded font-mono text-xs">A → B / X _ Y</code>). Given a root and syntactic intent, the rule engine deterministically produces valid word forms without ambiguity.
+        </p>
+      </div>
+
+      <div class="theme-card rounded-3xl p-6 sm:p-7 shadow-md border-l-4 border-l-indigo-500">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-extrabold text-base">02</span>
+          <h3 class="font-serifSub text-xl font-bold theme-text-primary">Specialized Metalanguage & Compression</h3>
+        </div>
+        <p class="text-sm sm:text-base theme-text-secondary leading-relaxed">
+          Pāṇini separated <em>object language</em> (Sanskrit) from <em>metalanguage</em> (technical markers). Using <strong>Anubandhas</strong>, <strong>Pratyāhāras</strong>, and <strong>Anuvṛtti</strong> (inheritance from prior rules), he achieved extreme brevity.
+        </p>
+      </div>
+
+      <div class="theme-card rounded-3xl p-6 sm:p-7 shadow-md border-l-4 border-l-pink-500">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center font-extrabold text-base">03</span>
+          <h3 class="font-serifSub text-xl font-bold theme-text-primary">Conflict Resolution & Precedence Logic</h3>
+        </div>
+        <p class="text-sm sm:text-base theme-text-secondary leading-relaxed">
+          When competing rules apply simultaneously, metarules (<em class="font-semibold">Paribhāṣās</em>) resolve collisions—such as <strong>Para-kārya</strong> (later rule overrides earlier rule, 1.4.2) and <strong>Apavāda</strong> (specific exception overrides general rule).
+        </p>
+      </div>
+
+      <div class="theme-card rounded-3xl p-6 sm:p-7 shadow-md border-l-4 border-l-cyan-500">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-extrabold text-base">04</span>
+          <h3 class="font-serifSub text-xl font-bold theme-text-primary">Modularity & Recursion</h3>
+        </div>
+        <p class="text-sm sm:text-base theme-text-secondary leading-relaxed">
+          Rules are grouped into modular scope blocks via <strong>Adhikāra</strong> headers, and outputs of derivations (such as derived stems or compounds) recursively feed back into morphological loops to generate complex words.
+        </p>
+      </div>
+    </div>
+
+    <!-- Interactive Sūtra Classification Filter -->
+    <div class="bg-indigoDeep text-parchment rounded-3xl p-6 sm:p-8 shadow-xl border border-white/15">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-amber-300 font-bold">Taxonomy of Rules</span>
+          <h3 class="font-serifTitle text-2xl font-bold text-white mt-1">Explore the 4 Functional Types of Sūtras</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterSutras('ALL')" class="sutra-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-400 text-indigoDeep transition" data-type="ALL">All Types</button>
+          <button onclick="filterSutras('SAMJNA')" class="sutra-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white/10 text-parchment hover:bg-white/20 transition" data-type="SAMJNA">Saṃjñā (Definitions)</button>
+          <button onclick="filterSutras('PARIBHASHA')" class="sutra-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white/10 text-parchment hover:bg-white/20 transition" data-type="PARIBHASHA">Paribhāṣā (Metarules)</button>
+          <button onclick="filterSutras('ADHIKARA')" class="sutra-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white/10 text-parchment hover:bg-white/20 transition" data-type="ADHIKARA">Adhikāra (Scope Headers)</button>
+          <button onclick="filterSutras('VIDHI')" class="sutra-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white/10 text-parchment hover:bg-white/20 transition" data-type="VIDHI">Vidhi (Operations)</button>
+        </div>
+      </div>
+
+      <div id="sutra-types-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 04: SANSKRIT WORD FORMATION ENGINE (CONCEPTS + COMPILER)
+       ======================================================================== -->
+  <section id="word-engine" class="py-16 sm:py-20 theme-section-alt border-y scroll-mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="text-xs font-extrabold uppercase tracking-[0.2em] theme-kicker">04 · Language in Action</span>
+        <h2 class="font-serifTitle text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mt-2">Sanskrit Word Formation Engine</h2>
+        <p class="mt-3 theme-text-secondary text-base sm:text-lg">
+          Sanskrit constructs its vast vocabulary systematically from verbal roots (<strong>Dhātu</strong>) and nominal bases (<strong>Prātipadika</strong>) via derivation, composition, inflection, and metaphorical extension.
+        </p>
+      </div>
+
+      <!-- Conceptual Building Blocks Cards (from File 2) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10 max-w-5xl mx-auto">
+        <div class="theme-card rounded-2xl p-5 shadow-sm">
+          <span class="text-[11px] font-extrabold uppercase tracking-wider theme-kicker">Building Block I</span>
+          <h3 class="font-serifSub text-xl font-bold theme-text-primary mt-1">Dhātu (Verbal Root)</h3>
+          <p class="text-sm theme-text-secondary mt-1.5">A foundational verbal root cataloged in the <em>Dhātupāṭha</em> (e.g., <code class="font-devanagari">√पठ्</code>) that generates verbs and derived nouns.</p>
+        </div>
+        <div class="theme-card rounded-2xl p-5 shadow-sm">
+          <span class="text-[11px] font-extrabold uppercase tracking-wider theme-kicker">Building Block II</span>
+          <h3 class="font-serifSub text-xl font-bold theme-text-primary mt-1">Prātipadika (Nominal Base)</h3>
+          <p class="text-sm theme-text-secondary mt-1.5">A meaningful uninflected nominal stem used as the base for case endings (<em>Subanta</em>) and compound formation.</p>
+        </div>
+        <div class="theme-card rounded-2xl p-5 shadow-sm">
+          <span class="text-[11px] font-extrabold uppercase tracking-wider theme-kicker">Generative Mechanisms</span>
+          <h3 class="font-serifSub text-xl font-bold theme-text-primary mt-1">5 Vocabulary Processes</h3>
+          <p class="text-sm theme-text-secondary mt-1.5">Derivation (<em>Kṛt/Taddhita</em>), composition (<em>Samāsa</em>), inflection (<em>Subanta/Tiṅanta</em>), verbal conjugation, and metaphorical extension.</p>
+        </div>
+      </div>
+
+      <!-- Interactive Derivation Compiler Box -->
+      <div class="theme-card rounded-3xl p-6 sm:p-8 shadow-xl max-w-5xl mx-auto">
+        <div class="mb-6">
+          <label class="block text-xs font-extrabold uppercase tracking-wider theme-text-muted mb-3">Choose an Input Derivation Expression to Simulate:</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <button onclick="loadDerivation(0)" id="deriv-preset-0" class="deriv-preset-btn p-3.5 rounded-2xl text-left border-2 border-saffron bg-indigoDeep text-white shadow-md transition">
+              <span class="text-[11px] uppercase tracking-wider text-amber-300 font-bold block">Yaṇ Sandhi</span>
+              <span class="font-devanagari text-base font-bold">सु + आगतम्</span>
+              <span class="text-xs text-parchment/80 block">su + āgatam → स्वागतम्</span>
+            </button>
+
+            <button onclick="loadDerivation(1)" id="deriv-preset-1" class="deriv-preset-btn p-3.5 rounded-2xl text-left border border-white/20 bg-white/80 text-indigoDeep hover:border-saffron transition">
+              <span class="text-[11px] uppercase tracking-wider text-maroonAccent font-bold block">Dīrgha Sandhi</span>
+              <span class="font-devanagari text-base font-bold">हिम + आलयः</span>
+              <span class="text-xs text-indigoDeep/75 block">hima + ālayaḥ → हिमालयः</span>
+            </button>
+
+            <button onclick="loadDerivation(2)" id="deriv-preset-2" class="deriv-preset-btn p-3.5 rounded-2xl text-left border border-white/20 bg-white/80 text-indigoDeep hover:border-saffron transition">
+              <span class="text-[11px] uppercase tracking-wider text-maroonAccent font-bold block">Tatpuruṣa Samāsa</span>
+              <span class="font-devanagari text-base font-bold">राजः + पुरुषः</span>
+              <span class="text-xs text-indigoDeep/75 block">rājaḥ puruṣaḥ → राजपुरुषः</span>
+            </button>
+
+            <button onclick="loadDerivation(3)" id="deriv-preset-3" class="deriv-preset-btn p-3.5 rounded-2xl text-left border border-white/20 bg-white/80 text-indigoDeep hover:border-saffron transition">
+              <span class="text-[11px] uppercase tracking-wider text-maroonAccent font-bold block">Tiṅanta Verb Inflection</span>
+              <span class="font-devanagari text-base font-bold">√पठ् + ति</span>
+              <span class="text-xs text-indigoDeep/75 block">paṭh + ti → पठति</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Compiler Execution Display -->
+        <div class="bg-indigoDeep rounded-2xl p-6 text-parchment border border-white/15">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
+            <div>
+              <span class="text-xs uppercase tracking-widest text-amber-300 font-bold">Pāṇinian Rule Execution Trace</span>
+              <h3 id="deriv-heading" class="font-serifSub text-xl font-bold text-white mt-0.5">Deriving: स्वागतम् (svāgatam — "Welcome")</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="prevDerivStep()" id="btn-prev-step" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs sm:text-sm font-semibold disabled:opacity-40 transition">
+                ← Prev
+              </button>
+              <button onclick="nextDerivStep()" id="btn-next-step" class="px-4 py-2 rounded-xl bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep text-xs sm:text-sm font-bold shadow hover:brightness-110 transition">
+                Next Step →
+              </button>
+              <button onclick="runAllDerivSteps()" class="px-3.5 py-2 rounded-xl bg-maroonAccent hover:bg-red-800 text-white text-xs sm:text-sm font-semibold transition">
+                ⚡ Run All
+              </button>
+            </div>
+          </div>
+
+          <div id="deriv-steps-container" class="mt-5 space-y-3">
+            <!-- Steps rendered dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 05: PĀṆINI’S GRAMMAR & MODERN AI / NLP BRIDGE
+       ======================================================================== -->
+  <section id="ai-bridge" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-16">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-xs font-extrabold uppercase tracking-[0.2em] theme-kicker">05 · Ancient Wisdom × Modern Technology</span>
+      <h2 class="font-serifTitle text-3xl sm:text-4xl lg:text-5xl font-bold theme-text-primary mt-2">Pāṇini’s Grammar & Modern AI</h2>
+      <p class="mt-3 theme-text-secondary text-base sm:text-lg">
+        Pāṇini’s <em>Aṣṭādhyāyī</em> shares deep conceptual and structural connections with modern Artificial Intelligence (AI) and Natural Language Processing (NLP).
+      </p>
+    </div>
+
+    <!-- Conceptual Pipeline Flow Diagram (from File 2) -->
+    <div class="theme-card rounded-3xl p-6 sm:p-8 shadow-md mb-10 text-center">
+      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4">
+        <span class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigoDeep to-indigoSoft text-amber-300 font-bold text-xs sm:text-sm border border-white/15 shadow">Sanskrit Rules</span>
+        <span class="theme-kicker font-bold text-lg">→</span>
+        <span class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigoDeep to-indigoSoft text-pink-300 font-bold text-xs sm:text-sm border border-white/15 shadow">Structured Language</span>
+        <span class="theme-kicker font-bold text-lg">→</span>
+        <span class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigoDeep to-indigoSoft text-cyan-300 font-bold text-xs sm:text-sm border border-white/15 shadow">Language Processing</span>
+        <span class="theme-kicker font-bold text-lg">→</span>
+        <span class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-extrabold text-xs sm:text-sm shadow">AI & NLP Concepts</span>
+      </div>
+      <p class="mt-4 text-xs sm:text-sm theme-text-muted max-w-2xl mx-auto">
+        <em>Academic Note:</em> Both rule-based Sanskrit grammar and computational language systems represent language in a formal, structured manner—highlighting a structural and conceptual bridge rather than claiming Pāṇini built modern AI.
+      </p>
+    </div>
+
+    <!-- Interactive View Toggle -->
+    <div class="flex justify-center mb-8">
+      <div class="inline-flex p-1.5 rounded-2xl theme-card">
+        <button onclick="toggleAiView('comparison')" id="ai-btn-comparison" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigoDeep text-amber-300 shadow transition">
+          Side-by-Side Architecture Matrix
+        </button>
+        <button onclick="toggleAiView('milestones')" id="ai-btn-milestones" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold theme-text-primary hover:bg-white/10 transition">
+          Key CS & AI Parallels
+        </button>
+      </div>
+    </div>
+
+    <!-- Comparison Matrix View -->
+    <div id="ai-view-comparison" class="overflow-x-auto rounded-3xl shadow-xl theme-card">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-indigoDeep text-parchment">
+            <th class="p-4 sm:p-5 font-serifTitle text-sm sm:text-base text-amber-300">Computational Concept</th>
+            <th class="p-4 sm:p-5 font-serifTitle text-sm sm:text-base">Pāṇinian Mechanism (5th BCE)</th>
+            <th class="p-4 sm:p-5 font-serifTitle text-sm sm:text-base">Modern CS & AI Equivalent</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/10 text-sm sm:text-base theme-text-secondary">
+          <tr class="hover:bg-white/5 transition">
+            <td class="p-4 sm:p-5 font-bold theme-text-primary">Formal Syntax Notation</td>
+            <td class="p-4 sm:p-5">Meta-rules & rewrite sūtras in the <em>Aṣṭādhyāyī</em></td>
+            <td class="p-4 sm:p-5"><span class="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-300 font-semibold text-xs">Backus-Naur Form (Pāṇini–Backus Form)</span> used to define programming languages</td>
+          </tr>
+          <tr class="hover:bg-white/5 transition">
+            <td class="p-4 sm:p-5 font-bold theme-text-primary">Tokenization & Symbol Tables</td>
+            <td class="p-4 sm:p-5"><em>Māheśvara Sūtras</em> & <em>Pratyāhāras</em> (e.g., <code>aC</code>, <code>haL</code>)</td>
+            <td class="p-4 sm:p-5">Lexical Character Classes, Regex Sets (<code>[a-z]</code>), and Token Encodings in NLP</td>
+          </tr>
+          <tr class="hover:bg-white/5 transition">
+            <td class="p-4 sm:p-5 font-bold theme-text-primary">Generative Grammar</td>
+            <td class="p-4 sm:p-5">Context-sensitive transformations (<code class="font-mono text-xs">A → B / X_Y</code>)</td>
+            <td class="p-4 sm:p-5">Chomsky Hierarchy (Type-1 Context-Sensitive Grammars) & Morphological Analyzers</td>
+          </tr>
+          <tr class="hover:bg-white/5 transition">
+            <td class="p-4 sm:p-5 font-bold theme-text-primary">Semantic Role Labeling</td>
+            <td class="p-4 sm:p-5"><strong>Kāraka Theory</strong> (mapping <em>Kartṛ, Karman, Karaṇa</em> to <em>Vibhakti</em>)</td>
+            <td class="p-4 sm:p-5">Dependency Parsing, Knowledge Graphs & Semantic Role Labeling (SRL) in AI</td>
+          </tr>
+          <tr class="hover:bg-white/5 transition">
+            <td class="p-4 sm:p-5 font-bold theme-text-primary">Code Optimization & Inheritance</td>
+            <td class="p-4 sm:p-5"><em>Anuvṛtti</em> (context carryover) & <em>Adhikāra</em> (scope blocks)</td>
+            <td class="p-4 sm:p-5">Lexical Scoping, Object-Oriented Inheritance & DRY (Don't Repeat Yourself) Principle</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CS Parallels Cards View (Hidden by default) -->
+    <div id="ai-view-milestones" class="hidden grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="theme-card rounded-3xl p-6 shadow-md">
+        <div class="theme-kicker font-bold text-xs uppercase tracking-wider mb-2">1950s–1960s • Programming Languages</div>
+        <h3 class="font-serifSub text-xl font-bold theme-text-primary mb-2">Pāṇini–Backus Form</h3>
+        <p class="text-sm theme-text-secondary leading-relaxed">
+          When John Backus and Peter Naur created BNF to specify ALGOL syntax, computer scientist T.R.N. Rao and linguist Frits Staal demonstrated that Pāṇini had invented an equivalent formal meta-syntax 2,400 years earlier—leading scholars to propose renaming BNF as <strong>Pāṇini–Backus Form</strong>.
+        </p>
+      </div>
+      <div class="theme-card rounded-3xl p-6 shadow-md">
+        <div class="theme-kicker font-bold text-xs uppercase tracking-wider mb-2">1985 • Knowledge Representation</div>
+        <h3 class="font-serifSub text-xl font-bold theme-text-primary mb-2">Rick Briggs & AI Semantics</h3>
+        <p class="text-sm theme-text-secondary leading-relaxed">
+          In his landmark <em>AI Magazine</em> paper <em>"Knowledge Representation in Sanskrit and Artificial Intelligence"</em>, researcher Rick Briggs highlighted how Sanskrit’s Pāṇinian Kāraka analysis maps directly to unambiguous semantic networks used in modern AI reasoning.
+        </p>
+      </div>
+      <div class="theme-card rounded-3xl p-6 shadow-md">
+        <div class="theme-kicker font-bold text-xs uppercase tracking-wider mb-2">2022 • Algorithmic Resolution</div>
+        <h3 class="font-serifSub text-xl font-bold theme-text-primary mb-2">Zero-Ambiguity Rule Engine</h3>
+        <p class="text-sm theme-text-secondary leading-relaxed">
+          Recent computational Sanskrit breakthroughs resolved Pāṇini’s 2,500-year-old conflict-resolution metarule (Sūtra 1.4.2), confirming that the <em>Aṣṭādhyāyī</em> operates as a completely deterministic, machine-executable linguistic algorithm.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 06: CONCLUSION / TAKEAWAY & INTERACTIVE QUIZ CTA
+       ======================================================================== -->
+  <section id="takeaway" class="py-14 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-16">
+    <div class="theme-card rounded-3xl p-8 sm:p-12 shadow-xl border-2 border-saffron/35 relative overflow-hidden">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-xs font-extrabold uppercase tracking-[0.2em] theme-kicker">06 · Takeaway & Legacy</span>
+        <h2 class="font-serifTitle text-2xl sm:text-4xl font-bold theme-text-primary mt-2">A compact system. A lasting legacy.</h2>
+        <blockquote class="mt-6 font-serifSub text-xl sm:text-3xl font-bold theme-text-primary leading-snug">
+          “Pāṇini’s grammar is a perfect example of how ancient knowledge can connect with modern technology.”
+        </blockquote>
+        <p class="mt-4 theme-text-secondary text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Pāṇini’s work demonstrates the enduring power of systematic thinking in understanding human language. Its precise rules and modular architecture continue to bridge classical linguistics, formal logic, and Artificial Intelligence.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3 no-print">
+          <button onclick="openQuizModal()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-extrabold text-sm shadow-lg hover:scale-105 transition flex items-center gap-2">
+            <span>🎯</span> Take the 5-Question Knowledge Quiz
+          </button>
+          <button onclick="window.print()" class="px-5 py-3 rounded-xl bg-indigoDeep text-parchment hover:bg-indigoSoft font-semibold text-sm shadow transition flex items-center gap-2">
+            <span>🖨️</span> Print / Save Research Summary
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 07: PROJECT CREDITS & TEAM FOOTER
+       ======================================================================== -->
+  <footer id="credits" class="bg-indigoDeep text-parchment border-t-4 border-saffron pt-14 pb-10 scroll-mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-xs font-extrabold uppercase tracking-[0.2em] text-amber-300">07 · Project Credits</span>
+        <h2 class="font-serifTitle text-2xl sm:text-3xl font-bold text-white mt-1">Created with Curiosity</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-10 border-b border-white/10">
+        <!-- Project Overview -->
+        <div class="lg:col-span-5">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-saffron to-maroonAccent flex items-center justify-center text-white font-devanagari text-xl font-bold">
+              अ
+            </div>
+            <div>
+              <h3 class="font-serifTitle text-lg font-bold text-amber-300">Pāṇini’s Grammar</h3>
+              <p class="text-xs text-parchment/70">Indian Knowledge Systems (IKS) Project</p>
+            </div>
+          </div>
+          <p class="text-sm text-parchment/80 leading-relaxed">
+            An interdisciplinary academic exploration celebrating Maharṣi Pāṇini’s <em>Aṣṭādhyāyī</em>—uniting Sanskrit Vyākaraṇa, formal logic, and computational linguistics.
+          </p>
+        </div>
+
+        <!-- Created By Team Members -->
+        <div class="lg:col-span-4">
+          <h4 class="font-serifTitle text-sm uppercase tracking-wider text-amber-300 font-bold mb-4">Created By (Project Team)</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-saffron"></span>
+              <span class="font-medium text-white">Pradnya Ganesh Bankar</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-saffron"></span>
+              <span class="font-medium text-white">Payal Balaso Gend</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-saffron"></span>
+              <span class="font-medium text-white">Poonam Dinesh Chavan</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-saffron"></span>
+              <span class="font-medium text-white">Mayuri Sagare</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-saffron"></span>
+              <span class="font-medium text-white">Purva Jagtap</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-saffron"></span>
+              <span class="font-medium text-white">Nikita Shinde</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Guided By -->
+        <div class="lg:col-span-3">
+          <h4 class="font-serifTitle text-sm uppercase tracking-wider text-amber-300 font-bold mb-4">Guided By</h4>
+          <div class="p-4 rounded-2xl bg-white/5 border border-amber-300/30">
+            <span class="text-xs uppercase tracking-wider text-parchment/60 block">Faculty Mentor</span>
+            <p class="font-serifSub text-lg font-bold text-white mt-1">Miss Kalyani Kulkarni</p>
+            <span class="inline-block mt-2 px-2.5 py-0.5 rounded-md bg-saffron/20 text-amber-300 text-xs font-semibold">
+              Indian Knowledge Systems (IKS)
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright & Smooth Back to Top -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-parchment/70">
+        <p>© Indian Knowledge Systems (IKS) Project • Ancient Wisdom · Language · Logic · Modern Technology</p>
+        <a href="#hero" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-amber-400 hover:text-indigoDeep text-parchment font-semibold transition no-print">
+          Back to top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       INTERACTIVE 5-QUESTION QUIZ MODAL
+       ======================================================================== -->
+  <div id="quiz-modal" class="fixed inset-0 z-50 hidden bg-indigoDeep/80 backdrop-blur-sm flex items-center justify-center p-4 no-print">
+    <div class="bg-parchment text-indigoDeep rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border-2 border-saffron relative">
+      <button onclick="closeQuizModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-parchmentDark hover:bg-maroonAccent hover:text-white flex items-center justify-center font-bold transition" aria-label="Close Quiz">
+        ✕
+      </button>
+
+      <span class="text-xs font-extrabold uppercase tracking-widest text-saffron">Interactive Assessment</span>
+      <h3 class="font-serifTitle text-2xl font-bold text-indigoDeep mt-1">Pāṇini & Sanskrit Grammar Quiz</h3>
+
+      <div id="quiz-body" class="mt-5">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       APPLICATION JAVASCRIPT
+       ======================================================================== -->
+  <script>
+    // ------------------------------------------------------------------------
+    // 1. Visual Theme Switcher (Manuscript Mode vs. Cosmic Logic Mode)
+    // ------------------------------------------------------------------------
+    let isCosmicMode = false;
+
+    function toggleVisualTheme() {
+      isCosmicMode = !isCosmicMode;
+      document.body.classList.toggle('cosmic-mode', isCosmicMode);
+
+      const icon = document.getElementById('theme-icon');
+      const label = document.getElementById('theme-label');
+      const brandBadge = document.getElementById('brand-badge');
+      const brandTitle = document.getElementById('brand-title');
+      const quizNavBtn = document.getElementById('quiz-nav-btn');
+      const heroCta = document.getElementById('hero-primary-cta');
+
+      if (isCosmicMode) {
+        icon.textContent = '📜';
+        label.textContent = 'Manuscript Mode';
+        brandBadge.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-pink-500 to-violet-600 flex items-center justify-center text-white font-devanagari text-lg sm:text-xl font-bold shadow-md group-hover:scale-105 transition';
+        brandTitle.className = 'font-serifTitle text-sm sm:text-base font-bold tracking-wider text-pink-300 block leading-none';
+        quizNavBtn.className = 'px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-pink-500 to-violet-600 text-white font-bold text-xs shadow hover:brightness-110 active:scale-95 transition flex items-center gap-1';
+        heroCta.className = 'px-6 py-3.5 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 text-white font-extrabold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition flex items-center gap-2';
+      } else {
+        icon.textContent = '🌌';
+        label.textContent = 'Cosmic Logic Mode';
+        brandBadge.className = 'w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-saffron to-maroonAccent flex items-center justify-center text-white font-devanagari text-lg sm:text-xl font-bold shadow-md group-hover:scale-105 transition';
+        brandTitle.className = 'font-serifTitle text-sm sm:text-base font-bold tracking-wider text-goldAccent block leading-none';
+        quizNavBtn.className = 'px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-bold text-xs shadow hover:brightness-110 active:scale-95 transition flex items-center gap-1';
+        heroCta.className = 'px-6 py-3.5 rounded-full bg-gradient-to-r from-saffron to-goldAccent text-indigoDeep font-extrabold text-sm sm:text-base shadow-lg hover:scale-105 active:scale-95 transition flex items-center gap-2';
+      }
+      // Refresh dynamic components so buttons reflect theme contrast cleanly
+      selectTimelineTab(currentTimelineKey);
+      highlightPratyahara(currentPratKey);
+    }
+
+    // ------------------------------------------------------------------------
+    // 2. Mobile Navigation Toggle
+    // ------------------------------------------------------------------------
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // ------------------------------------------------------------------------
+    // 3. Historical Evolution Timeline Tabs (Vedic, Pāṇini, Trimuni)
+    // ------------------------------------------------------------------------
+    const timelineData = {
+      vedic: {
+        era: 'c. 1500 – 1000 BCE',
+        title: 'Vedic Roots & Oral Preservation',
+        subtitle: 'Proto-Indo-Aryan Evolution & The Rig-Veda',
+        body: 'The Sanskrit grammatical tradition began in late Vedic India. The oldest attested form of Proto-Indo-Aryan in the Indian subcontinent—Vedic Sanskrit—was consolidated into the Rig-Veda by around 1000 BCE. As the canonical basis of Vedic ritual and thought, preserving every syllable and pitch accent across generations via strict oral transmission inspired systematic phonetic analysis (Śikṣā and Prātiśākhyas).',
+        highlights: [
+          'Proto-Indo-Aryan evolved into Vedic Sanskrit in the Indian subcontinent',
+          'Vedic hymns consolidated into the Rig-Veda around 1000 BCE',
+          'Exact oral transmission demanded scientific phonetics and Sandhi rules'
+        ]
+      },
+      panini: {
+        era: '5th – 4th Century BCE',
+        title: 'Maharṣi Pāṇini & The Aṣṭādhyāyī',
+        subtitle: 'Father of Sanskrit Grammar and Formal Linguistics',
+        body: 'Born in Śalātura, Pāṇini synthesized centuries of linguistic study into the Aṣṭādhyāyī ("Eight Chapters"). Comprising 8 chapters divided into 4 quarters (32 pādas) and ~3,959 ultra-concise rules (sūtras), it defines word formation, pronunciation, sentence structure, and grammatical usage—standardizing Classical Sanskrit forever.',
+        highlights: [
+          '~3,959 generative rules arranged in 8 chapters (32 pādas)',
+          'Supported by Śivasūtras (phonetics), Dhātupāṭha (roots), and Gaṇapāṭha (lexicon)',
+          'Operates like an algorithmic compiler with zero redundancy'
+        ]
+      },
+      trimuni: {
+        era: '5th – 2nd Century BCE',
+        title: 'The Trimuni Tradition (Three Master Sages)',
+        subtitle: 'Pāṇini, Kātyāyana, and Patañjali',
+        body: 'Classical Sanskrit Vyākaraṇa rests upon the Trimuni (Three Sages): Pāṇini authored the foundational Aṣṭādhyāyī; Kātyāyana (c. 3rd century BCE) composed the Vārttikas—critical supplementary notes adapting rules to evolving usage; and Patañjali (c. 2nd century BCE) wrote the monumental Mahābhāṣya ("Great Commentary"), analyzing the logic and philosophy of language.',
+        highlights: [
+          'Pāṇini: Author of the Aṣṭādhyāyī (Root Sūtras)',
+          'Kātyāyana: Author of the Vārttikas (Critical Supplements)',
+          'Patañjali: Author of the Mahābhāṣya (Great Commentary)'
+        ]
+      }
+    };
+
+    let currentTimelineKey = 'panini';
+
+    function selectTimelineTab(key) {
+      currentTimelineKey = key;
+      const data = timelineData[key];
+      const container = document.getElementById('timeline-content');
+
+      document.querySelectorAll('.timeline-tab-btn').forEach(btn => {
+        btn.className = 'timeline-tab-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-sm theme-card theme-text-primary hover:opacity-90';
+      });
+      const activeBtn = document.getElementById(`tab-${key}`);
+      activeBtn.className = isCosmicMode
+        ? 'timeline-tab-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-md bg-gradient-to-r from-pink-500 to-violet-600 text-white'
+        : 'timeline-tab-btn px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-md bg-indigoDeep text-amber-300';
+
+      container.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <span class="inline-block px-3 py-1 rounded-full bg-amber-500/15 theme-kicker font-extrabold text-xs uppercase tracking-wider mb-3">${data.era}</span>
+            <h3 class="font-serifTitle text-2xl sm:text-3xl font-bold theme-text-primary">${data.title}</h3>
+            <p class="font-serifSub text-base sm:text-lg theme-kicker font-semibold mt-1">${data.subtitle}</p>
+            <p class="mt-4 theme-text-secondary text-sm sm:text-base leading-relaxed">${data.body}</p>
+          </div>
+          <div class="lg:col-span-5 bg-indigoDeep text-parchment rounded-2xl p-6 border border-white/15 shadow-inner">
+            <h4 class="font-serifTitle text-sm uppercase tracking-wider text-amber-300 font-bold mb-4">Key Historical Milestones</h4>
+            <ul class="space-y-3 text-sm">
+              ${data.highlights.map(item => `
+                <li class="flex items-start gap-2.5">
+                  <span class="text-amber-300 font-bold mt-0.5">✦</span>
+                  <span>${item}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+    selectTimelineTab('panini');
+
+    // ------------------------------------------------------------------------
+    // 4. 14 Māheśvara Sūtras & Pratyāhāra Explorer
+    // ------------------------------------------------------------------------
+    const maheshvaraSutras = [
+      { id: 1, dev: 'अ इ उ', devIt: 'ण्', iast: 'a i u', iastIt: 'Ṇ', group: 'Simple Vowels' },
+      { id: 2, dev: 'ऋ ऌ', devIt: 'क्', iast: 'ṛ ḷ', iastIt: 'K', group: 'Vocalic Liquids' },
+      { id: 3, dev: 'ए ओ', devIt: 'ङ्', iast: 'e o', iastIt: 'Ṅ', group: 'Guṇa Diphthongs' },
+      { id: 4, dev: 'ऐ औ', devIt: 'च्', iast: 'ai au', iastIt: 'C', group: 'Vṛddhi Diphthongs' },
+      { id: 5, dev: 'ह य व र', devIt: 'ट्', iast: 'h y v r', iastIt: 'Ṭ', group: 'Aspirate & Semivowels' },
+      { id: 6, dev: 'ल', devIt: 'ण्', iast: 'l', iastIt: 'Ṇ', group: 'Lateral Semivowel' },
+      { id: 7, dev: 'ञ म ङ ण न', devIt: 'म्', iast: 'ñ m ṅ ṇ n', iastIt: 'M', group: 'Nasal Consonants' },
+      { id: 8, dev: 'झ भ', devIt: 'ञ्', iast: 'jh bh', iastIt: 'Ñ', group: 'Voiced Aspirates (I)' },
+      { id: 9, dev: 'घ ढ ध', devIt: 'ष्', iast: 'gh ḍh dh', iastIt: 'Ṣ', group: 'Voiced Aspirates (II)' },
+      { id: 10, dev: 'ज ब ग ड द', devIt: 'श्', iast: 'j b g ḍ d', iastIt: 'Ś', group: 'Voiced Unaspirated Stops' },
+      { id: 11, dev: 'ख फ छ ठ थ च ट त', devIt: 'व्', iast: 'kh ph ch ṭh th c ṭ t', iastIt: 'V', group: 'Unvoiced Stops' },
+      { id: 12, dev: 'क प', devIt: 'य्', iast: 'k p', iastIt: 'Y', group: 'Velar & Labial Unvoiced' },
+      { id: 13, dev: 'श ष स', devIt: 'र्', iast: 'ś ṣ s', iastIt: 'R', group: 'Sibilants (Fricatives)' },
+      { id: 14, dev: 'ह', devIt: 'ल्', iast: 'h', iastIt: 'L', group: 'Glottal Fricative' }
+    ];
+
+    const pratyaharaPresets = {
+      aC: {
+        sutraIds: [1, 2, 3, 4],
+        title: 'aC (अच्) — Complete Sanskrit Vowel Set (Sūtras 1 to 4)',
+        desc: 'Starts at अ (a) in Sūtra 1 and terminates at marker च् (C) in Sūtra 4, yielding: a, i, u, ṛ, ḷ, e, o, ai, au.',
+        ratio: '9 Phonemes → 2 Syllables'
+      },
+      haL: {
+        sutraIds: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+        title: 'haL (हल्) — Complete Sanskrit Consonant Set (Sūtras 5 to 14)',
+        desc: 'Starts at ह (h) in Sūtra 5 and terminates at marker ल् (L) in Sūtra 14, capturing all 33 consonants.',
+        ratio: '33 Phonemes → 2 Syllables'
+      },
+      yaN: {
+        sutraIds: [5, 6],
+        title: 'yaṆ (यण्) — Semivowels (Sūtras 5 to 6)',
+        desc: 'Starts at य (y) in Sūtra 5 and ends at ण् (Ṇ) in Sūtra 6, capturing y, v, r, l—crucial for Yaṇ Sandhi.',
+        ratio: '4 Semivowels → 2 Syllables'
+      },
+      aN: {
+        sutraIds: [1],
+        title: 'aṆ (अण्) — Basic Monophthong Vowels (Sūtra 1)',
+        desc: 'Starts at अ (a) and ends at ण् (Ṇ) in Sūtra 1, capturing the three fundamental vowels: a, i, u.',
+        ratio: '3 Vowels → 2 Syllables'
+      },
+      jaS: {
+        sutraIds: [10],
+        title: 'jaŚ (जश्) — Voiced Unaspirated Stops (Sūtra 10)',
+        desc: 'Starts at ज (j) and ends at श् (Ś) in Sūtra 10: j, b, g, ḍ, d (used in Jaśtva consonant sandhi).',
+        ratio: '5 Stops → 2 Syllables'
+      },
+      NONE: {
+        sutraIds: [],
+        title: 'All 14 Māheśvara Sūtras (Full Phonetic Inventory)',
+        desc: 'Select any Pratyāhāra button above to highlight how Pāṇini groups sounds using start phonemes and terminal It markers.',
+        ratio: '42 Phonemes + 14 Markers'
+      }
+    };
+
+    let currentPratKey = 'aC';
+
+    function renderMaheshvaraGrid(activeSutraIds = []) {
+      const grid = document.getElementById('maheshvara-grid');
+      grid.innerHTML = maheshvaraSutras.map(s => {
+        const isHighlighted = activeSutraIds.includes(s.id);
+        return `
+          <div class="rounded-2xl p-4 border transition-all duration-300 ${isHighlighted ? 'sutra-highlight' : 'theme-card theme-text-primary shadow-sm hover:border-amber-400'}">
+            <div class="flex items-center justify-between text-xs mb-2 ${isHighlighted ? 'text-amber-100' : 'theme-text-muted'}">
+              <span class="font-bold">Sūtra #${s.id}</span>
+              <span class="truncate max-w-[155px]">${s.group}</span>
+            </div>
+            <div class="font-devanagari text-xl sm:text-2xl font-bold tracking-wide">
+              ${s.dev} <span class="it-marker">${s.devIt}</span>
+            </div>
+            <div class="font-mono text-sm mt-1 ${isHighlighted ? 'text-white' : 'theme-text-secondary'}">
+              ${s.iast} <span class="it-marker">${s.iastIt}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function highlightPratyahara(code) {
+      currentPratKey = code;
+      const preset = pratyaharaPresets[code];
+      renderMaheshvaraGrid(preset.sutraIds);
+
+      document.getElementById('prat-title').textContent = preset.title;
+      document.getElementById('prat-desc').textContent = preset.desc;
+      document.getElementById('prat-ratio').textContent = preset.ratio;
+
+      document.querySelectorAll('.prat-btn').forEach(btn => {
+        if (!btn.id.includes('NONE')) {
+          btn.className = 'prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold theme-card theme-text-primary transition hover:scale-105';
+        }
+      });
+      const activeBtn = document.getElementById(`btn-prat-${code}`);
+      if (activeBtn && code !== 'NONE') {
+        activeBtn.className = isCosmicMode
+          ? 'prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-pink-500 to-violet-600 text-white shadow transition hover:scale-105'
+          : 'prat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigoDeep text-amber-300 shadow transition hover:scale-105';
+      }
+    }
+    highlightPratyahara('aC');
+
+    // ------------------------------------------------------------------------
+    // 5. Functional Types of Sūtras
+    // ------------------------------------------------------------------------
+    const sutraTypes = [
+      {
+        type: 'SAMJNA',
+        badge: 'Saṃjñā Sūtra (Definition)',
+        sanskrit: 'वृद्धिरादैच् (1.1.1)',
+        translit: 'Vṛddhir ādaic',
+        desc: 'Assigns technical labels/variables to linguistic entities so subsequent rules can reference them concisely.',
+        example: 'Defines the technical term "Vṛddhi" as the vowels ā, ai, and au.'
+      },
+      {
+        type: 'PARIBHASHA',
+        badge: 'Paribhāṣā Sūtra (Metarule)',
+        sanskrit: 'विप्रतिषेधे परं कार्यम् (1.4.2)',
+        translit: 'Vipratiṣedhe paraṃ kāryam',
+        desc: 'Acts as an interpretive algorithm resolving conflicts when two grammatical rules apply at the exact same step.',
+        example: 'When two rules of equal strength collide, the rule appearing later in the Aṣṭādhyāyī takes precedence.'
+      },
+      {
+        type: 'ADHIKARA',
+        badge: 'Adhikāra Sūtra (Scope Header)',
+        sanskrit: 'प्रत्ययः (3.1.1) • समासः (2.1.3)',
+        translit: 'Pratyayaḥ / Samāsaḥ',
+        desc: 'Establishes a governing block/scope header that remains active across hundreds of subsequent rules without repetition.',
+        example: 'Rule 3.1.1 declares "Affix" as a heading governing Chapters 3, 4, and 5.'
+      },
+      {
+        type: 'VIDHI',
+        badge: 'Vidhi Sūtra (Operational Rule)',
+        sanskrit: 'इको यणचि (6.1.77)',
+        translit: 'Iko yaṇ aci',
+        desc: 'Executes the actual linguistic transformation: substitution (ādeśa), insertion (āgama), deletion (lopa), or affixation.',
+        example: 'Replaces vowels i, u, ṛ, ḷ (iK) with semivowels y, v, r, l (yaṆ) when followed by a dissimilar vowel (aC).'
+      }
+    ];
+
+    function filterSutras(filterType) {
+      const container = document.getElementById('sutra-types-grid');
+      const filtered = filterType === 'ALL' ? sutraTypes : sutraTypes.filter(s => s.type === filterType);
+
+      container.innerHTML = filtered.map(s => `
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/15 hover:border-amber-300/50 transition">
+          <span class="inline-block px-2.5 py-1 rounded-lg bg-amber-400/20 text-amber-300 text-xs font-bold mb-2">${s.badge}</span>
+          <h4 class="font-devanagari text-lg font-bold text-white">${s.sanskrit} <span class="font-sansBody text-xs text-parchment/75 italic font-normal">(${s.translit})</span></h4>
+          <p class="text-sm text-parchment/85 mt-2 leading-relaxed">${s.desc}</p>
+          <div class="mt-3 pt-2.5 border-t border-white/10 text-xs text-amber-200">
+            <strong>Example:</strong> ${s.example}
+          </div>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.sutra-filter-btn').forEach(btn => {
+        if (btn.dataset.type === filterType) {
+          btn.className = 'sutra-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-400 text-indigoDeep transition';
+        } else {
+          btn.className = 'sutra-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-white/10 text-parchment hover:bg-white/20 transition';
+        }
+      });
+    }
+    filterSutras('ALL');
+
+    // ------------------------------------------------------------------------
+    // 6. Sanskrit Word Formation Engine (Step-by-Step Simulator)
+    // ------------------------------------------------------------------------
+    const derivations = [
+      {
+        title: 'Deriving: स्वागतम् (svāgatam — "Welcome")',
+        steps: [
+          { stage: 'Input Components', expr: 'सु (su) + आगतम् (āgatam)', rule: 'Upasarga (prefix) + Kṛdanta nominal stem' },
+          { stage: 'Phonetic Boundary Analysis', expr: 's + [u] + [ā] + gatam', rule: 'Short vowel "u" (in iK) meets dissimilar vowel "ā" (in aC)' },
+          { stage: 'Apply Sūtra 6.1.77 (Iko yaṇ aci)', expr: 's + [v] + ā + gatam', rule: 'Vidhi Rule: "u" is substituted by semivowel "v" (yaṆ)' },
+          { stage: 'Compiled Output', expr: 'स्वागतम् (svāgatam)', rule: 'Valid Sanskrit word ready for syntactic usage' }
+        ]
+      },
+      {
+        title: 'Deriving: हिमालयः (himālayaḥ — "Abode of Snow")',
+        steps: [
+          { stage: 'Input Components', expr: 'हिम (hima) + आलयः (ālayaḥ)', rule: 'Two nominal stems in compound/juxtaposition' },
+          { stage: 'Phonetic Boundary Analysis', expr: 'him + [a] + [ā] + layaḥ', rule: 'Homogeneous vowels "a" and "ā" (Savarṇa) meet' },
+          { stage: 'Apply Sūtra 6.1.101 (Akaḥ savarṇe dīrghaḥ)', expr: 'him + [ā] + layaḥ', rule: 'Single long vowel substitute (Ekādeśa) replaces both vowels' },
+          { stage: 'Compiled Output', expr: 'हिमालयः (himālayaḥ)', rule: 'Dīrgha Sandhi completed deterministically' }
+        ]
+      },
+      {
+        title: 'Deriving: राजपुरुषः (rājapuruṣaḥ — "King’s Officer")',
+        steps: [
+          { stage: 'Vigraha-vākya (Analytical Phrase)', expr: 'राजः (rājaḥ) + पुरुषः (puruṣaḥ)', rule: 'Genitive case (Ṣaṣṭhī Vibhakti) + Nominative head noun' },
+          { stage: 'Apply Samāsa Rule (Sūtra 2.2.8)', expr: 'राजन् + ङस् + पुरुष + सु', rule: 'Assigns Tatpuruṣa compound classification' },
+          { stage: 'Sup-Lopa (Case Deletion, Sūtra 2.4.71)', expr: 'राजन् + पुरुष → राजपुरुष', rule: 'Internal case suffix (ङस्) is deleted; final "n" drops (8.2.7)' },
+          { stage: 'Compiled Output', expr: 'राजपुरुषः (rājapuruṣaḥ)', rule: 'Single compound nominal stem inflected in nominative singular' }
+        ]
+      },
+      {
+        title: 'Deriving: पठति (paṭhati — "He/She Reads")',
+        steps: [
+          { stage: 'Select Verbal Root (Dhātupāṭha)', expr: '√पठ् (paṭh — "to read/recite")', rule: '1st Conjugation (Bhvādi-gaṇa) verbal root' },
+          { stage: 'Attach Tense & Person Affix', expr: 'पठ् + लट् → पठ् + तिप् (ti)', rule: 'Present tense (Laṭ), 3rd person singular active (Parasmaipada)' },
+          { stage: 'Insert Vikaraṇa Infix (Sūtra 3.1.68)', expr: 'पठ् + शप् (a) + ति', rule: 'Thematic vowel "a" (Śap) is inserted between root and ending' },
+          { stage: 'Compiled Output', expr: 'पठति (paṭhati)', rule: 'Complete Tiṅanta finite verb form generated' }
+        ]
+      }
+    ];
+
+    let currentDerivIndex = 0;
+    let visibleStepCount = 2;
+
+    function renderDerivation() {
+      const deriv = derivations[currentDerivIndex];
+      document.getElementById('deriv-heading').textContent = deriv.title;
+      const container = document.getElementById('deriv-steps-container');
+
+      container.innerHTML = deriv.steps.slice(0, visibleStepCount).map((step, idx) => {
+        const isFinal = idx === deriv.steps.length - 1;
+        return `
+          <div class="p-4 rounded-xl border ${isFinal ? 'bg-gradient-to-r from-saffron/25 to-amber-400/20 border-amber-300' : 'bg-white/5 border-white/10'} flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition-all">
+            <div>
+              <span class="text-[11px] uppercase tracking-wider font-bold ${isFinal ? 'text-amber-300' : 'text-parchment/60'}">Step ${idx + 1}: ${step.stage}</span>
+              <div class="font-devanagari text-lg font-bold text-white mt-0.5">${step.expr}</div>
+            </div>
+            <div class="text-xs sm:text-sm text-amber-200/90 sm:text-right max-w-md">
+              ${step.rule}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('btn-prev-step').disabled = visibleStepCount <= 1;
+      document.getElementById('btn-next-step').disabled = visibleStepCount >= deriv.steps.length;
+    }
+
+    function loadDerivation(index) {
+      currentDerivIndex = index;
+      visibleStepCount = 2;
+      document.querySelectorAll('.deriv-preset-btn').forEach((btn, idx) => {
+        if (idx === index) {
+          btn.className = 'deriv-preset-btn p-3.5 rounded-2xl text-left border-2 border-saffron bg-indigoDeep text-white shadow-md transition';
+          btn.querySelector('span:first-child').className = 'text-[11px] uppercase tracking-wider text-amber-300 font-bold block';
+        } else {
+          btn.className = 'deriv-preset-btn p-3.5 rounded-2xl text-left border border-white/20 bg-white/85 text-indigoDeep hover:border-saffron transition';
+          btn.querySelector('span:first-child').className = 'text-[11px] uppercase tracking-wider text-maroonAccent font-bold block';
+        }
+      });
+      renderDerivation();
+    }
+
+    function nextDerivStep() {
+      if (visibleStepCount < derivations[currentDerivIndex].steps.length) {
+        visibleStepCount++;
+        renderDerivation();
+      }
+    }
+
+    function prevDerivStep() {
+      if (visibleStepCount > 1) {
+        visibleStepCount--;
+        renderDerivation();
+      }
+    }
+
+    function runAllDerivSteps() {
+      visibleStepCount = derivations[currentDerivIndex].steps.length;
+      renderDerivation();
+    }
+
+    renderDerivation();
+
+    // ------------------------------------------------------------------------
+    // 7. AI & Computer Science View Switcher
+    // ------------------------------------------------------------------------
+    function toggleAiView(view) {
+      const compView = document.getElementById('ai-view-comparison');
+      const mileView = document.getElementById('ai-view-milestones');
+      const compBtn = document.getElementById('ai-btn-comparison');
+      const mileBtn = document.getElementById('ai-btn-milestones');
+
+      if (view === 'comparison') {
+        compView.classList.remove('hidden');
+        mileView.classList.add('hidden');
+        compBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigoDeep text-amber-300 shadow transition';
+        mileBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold theme-text-primary hover:bg-white/10 transition';
+      } else {
+        compView.classList.add('hidden');
+        mileView.classList.remove('hidden');
+        mileBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigoDeep text-amber-300 shadow transition';
+        compBtn.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold theme-text-primary hover:bg-white/10 transition';
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // 8. Interactive 5-Question Quiz Modal
+    // ------------------------------------------------------------------------
+    const quizQuestions = [
+      {
+        q: 'What does the Sanskrit title "Aṣṭādhyāyī" literally mean?',
+        options: ['Fourteen Sounds', 'Eight Chapters', 'Three Sages', 'Thousand Rules'],
+        answer: 1
+      },
+      {
+        q: 'Which Pratyāhāra in Pāṇini’s Māheśvara Sūtras represents ALL Sanskrit vowels?',
+        options: ['haL (हल्)', 'yaṆ (यण्)', 'aC (अच्)', 'jaŚ (जश्)'],
+        answer: 2
+      },
+      {
+        q: 'Who are the three sages known as the "Trimuni" of Sanskrit grammar?',
+        options: ['Pāṇini, Kātyāyana, and Patañjali', 'Vyāsa, Vālmīki, and Kālidāsa', 'Āryabhaṭa, Brahmagupta, and Bhāskara', 'Caraka, Suśruta, and Vāgbhaṭa'],
+        answer: 0
+      },
+      {
+        q: 'Which modern computer science notation is widely compared to Pāṇini’s formal grammar?',
+        options: ['HTML5 Markup', 'Backus-Naur Form (BNF)', 'SQL Queries', 'CSS Grid'],
+        answer: 1
+      },
+      {
+        q: 'In Sanskrit word formation, what is a verbal root called?',
+        options: ['Prātipadika', 'Vibhakti', 'Dhātu', 'Avyaya'],
+        answer: 2
+      }
+    ];
+
+    let quizIndex = 0;
+    let quizScore = 0;
+
+    function openQuizModal() {
+      quizIndex = 0;
+      quizScore = 0;
+      document.getElementById('quiz-modal').classList.remove('hidden');
+      renderQuizQuestion();
+    }
+
+    function closeQuizModal() {
+      document.getElementById('quiz-modal').classList.add('hidden');
+    }
+
+    function renderQuizQuestion() {
+      const body = document.getElementById('quiz-body');
+      if (quizIndex >= quizQuestions.length) {
+        body.innerHTML = `
+          <div class="text-center py-6">
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-saffron to-goldAccent text-indigoDeep flex items-center justify-center text-3xl font-bold shadow-lg mb-4">
+              🏆
+            </div>
+            <h4 class="font-serifTitle text-2xl font-bold text-indigoDeep">Quiz Complete!</h4>
+            <p class="mt-2 text-base text-indigoDeep/80">You scored <strong class="text-maroonAccent text-xl">${quizScore} / ${quizQuestions.length}</strong></p>
+            <div class="mt-6 flex justify-center gap-3">
+              <button onclick="openQuizModal()" class="px-5 py-2.5 rounded-xl bg-indigoDeep text-amber-300 font-bold text-sm hover:opacity-90 transition">Retake Quiz</button>
+              <button onclick="closeQuizModal()" class="px-5 py-2.5 rounded-xl bg-parchmentDark text-indigoDeep font-semibold text-sm hover:bg-gray-200 transition">Close</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      const item = quizQuestions[quizIndex];
+      body.innerHTML = `
+        <div class="flex items-center justify-between text-xs font-bold text-indigoDeep/60 mb-3">
+          <span>Question ${quizIndex + 1} of ${quizQuestions.length}</span>
+          <span>Score: ${quizScore}</span>
+        </div>
+        <p class="font-serifSub text-lg font-bold text-indigoDeep mb-4">${item.q}</p>
+        <div class="space-y-2.5">
+          ${item.options.map((opt, idx) => `
+            <button onclick="submitQuizAnswer(${idx})" class="w-full text-left p-3.5 rounded-xl bg-white border border-saffron/30 hover:border-saffron hover:bg-amber-50 font-medium text-sm transition flex items-center justify-between">
+              <span>${opt}</span>
+              <span class="text-saffron font-bold">→</span>
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function submitQuizAnswer(selectedIdx) {
+      if (selectedIdx === quizQuestions[quizIndex].answer) {
+        quizScore++;
+      }
+      quizIndex++;
+      renderQuizQuestion();
+    }
+  </script>
+</body>
+</html>

@@ -325,5 +325,56 @@
         "email": "rushikesh.ransing@vpkbiet.ac.in"
       }
     ]
+  },
+  {
+    "id": "panini-grammar-ancient-sutras-to-silicon-logic",
+    "title": "Pāṇini’s Grammar: Where Ancient Sūtras Become Silicon Logic",
+    "titleMr": "पाणिनींचे व्याकरण: अष्टाध्यायी, संस्कृत भाषाशास्त्र आणि संगणकीय तार्किक प्रणाली",
+    "tagline": "Interactive 14 Māheśvara Sūtras, Pratyāhāra Explorer, Word Formation Compiler & Modern AI/NLP Bridge",
+    "description": "An interactive computational linguistics platform exploring Maharṣi Pāṇini’s Aṣṭādhyāyī (~3,959 algorithmic rules, c. 5th-4th century BCE). Features dual-theme Manuscript & Cosmic Logic modes, a live 14 Māheśvara Sūtras and Pratyāhāra phonetic set compression explorer, step-by-step word formation compiler trace (Yaṇ Sandhi, Dīrgha Sandhi, Samāsa, Tiṅanta), side-by-side Backus-Naur Form (Pāṇini-Backus Form) and AI/NLP semantic role labeling comparisons, and an interactive knowledge quiz.",
+    "branch": "AIDS-3",
+    "academicYear": "2026-2027",
+    "techStack": ["Tailwind CSS", "JavaScript", "Computational Linguistics", "Dual-Theme Engine", "Interactive Compilers"],
+    "liveUrl": "websites/panini-grammar/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": false,
+    "teamMembers": [
+      {
+        "name": "Pradnya Ganesh Bankar",
+        "role": "Project Leader",
+        "department": "AIDS-3",
+        "email": "pradnya.bankar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Poonam Dinesh Chavan",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "poonam.chavan@vpkbiet.ac.in"
+      },
+      {
+        "name": "Mayuri Sagare",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "mayuri.sagare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Payal Balaso Gend",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "payal.gend@vpkbiet.ac.in"
+      },
+      {
+        "name": "Purva Jagtap",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "purva.jagtap@vpkbiet.ac.in"
+      },
+      {
+        "name": "Nikita Shinde",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "nikita.shinde@vpkbiet.ac.in"
+      }
+    ]
   }
 ]
