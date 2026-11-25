@@ -31,5 +31,248 @@
         "email": "parth.bankar@vpkbiet.ac.in"
       }
     ]
+  },
+  {
+    "id": "pingala-chandashastra-science-of-meter",
+    "title": "Chhanda Shastra of Pingala: Science of Meter",
+    "titleMr": "पिंगलांचे छंदशास्त्र: प्राचीन भारतीय काव्यछंद आणि द्विमान प्रणाली",
+    "tagline": "Interactive 3D Gaṇa Cube, Mātrā Meru (Pascal's Triangle), Binary Systems & Chandas Scanner",
+    "description": "An interactive digital platform exploring Acharya Pingala's ancient Chhandaśāstra (c. 3rd-2nd century BCE). Features real-time interactive tools including a 3D Gaṇa rotation cube with speech synthesis, Mātrā-Meru (Pascal's triangle) visualization, Fibonacci sequence mappings, moric binary converter, and a live Sanskrit Chandas verse scanner.",
+    "branch": "AIDS-3",
+    "academicYear": "2026-2027",
+    "techStack": ["HTML5", "CSS 3D", "Canvas 2D", "Web Speech API", "JavaScript", "Combinatorics"],
+    "liveUrl": "websites/pingala-chandashastra/index.html",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": false,
+    "teamMembers": [
+      {
+        "name": "Pranali Khedkar",
+        "role": "Project Leader",
+        "department": "AIDS-3",
+        "email": "pranali.khedkar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Pranjali Jogdand",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "pranjali.jogdand@vpkbiet.ac.in"
+      },
+      {
+        "name": "Rutuja Patil",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "rutuja.patil@vpkbiet.ac.in"
+      },
+      {
+        "name": "Priyadarshini Shinde",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "priyadarshini.shinde@vpkbiet.ac.in"
+      },
+      {
+        "name": "Poonam Mungase",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "poonam.mungase@vpkbiet.ac.in"
+      },
+      {
+        "name": "Rajnandini Phate",
+        "role": "Student Researcher",
+        "department": "AIDS-3",
+        "email": "rajnandini.phate@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "the-ancient-archaeology-of-india",
+    "title": "The Ancient Archaeology of India: Five Thousand Years in Brick & Stone",
+    "titleMr": "प्राचीन भारतीय पुरातत्त्वशास्त्र: विटा आणि दगडांमधील पाच हजार वर्षांचा इतिहास",
+    "tagline": "Walk through Mohenjo-daro, Sanchi, Ajanta, Ellora, Konark and Hampi with 3D Monument Models",
+    "description": "An interactive 3D web platform exploring India's five-thousand-year archaeological heritage starting from 7000 BCE. Features real-time 3D monument models of ancient civil and sacred engineering including Mohenjo-daro, Sanchi Stupa, Ajanta and Ellora Caves, Konark Sun Temple, and Hampi.",
+    "branch": "AIDS-1",
+    "academicYear": "2026-2027",
+    "techStack": ["Lovable.app", "React", "Three.js 3D", "Tailwind CSS", "Vite"],
+    "liveUrl": "https://thearchologyofindia.lovable.app/",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": false,
+    "teamMembers": [
+      {
+        "name": "Aditya Avinash Gaikwad",
+        "role": "Project Leader",
+        "department": "AIDS-1",
+        "email": "aditya.avinash.gaikwad@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aditya Dasharath Jadhav",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aditya.dasharath.jadhav@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aayush Sachin Pahade",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aayush.sachin.pahade@vpkbiet.ac.in"
+      },
+      {
+        "name": "Abhinav Maruti Hingane",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "abhinav.maruti.hingane@vpkbiet.ac.in"
+      },
+      {
+        "name": "Alisha Faruk Attar",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "alisha.faruk.attar@vpkbiet.ac.in"
+      },
+      {
+        "name": "Archana Omprakash Shukla",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "archana.omprakash.shukla@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aljina Rajuddin Sayyad",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "aljina.rajuddin.sayyad@vpkbiet.ac.in"
+      },
+      {
+        "name": "Arpita Ranjeet Pisal",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": "arpita.ranjeet.pisal@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "coding-and-decoding-in-ancient-india",
+    "title": "Coding and Decoding in Ancient India: Cryptography & Binary Systems",
+    "titleMr": "प्राचीन भारतातील कोडिंग आणि डिकोडिंग: गुप्तलेखनशास्त्र आणि द्विमान प्रणाली",
+    "tagline": "Alphanumeric Ciphers, Katapayadi System, Gudhalekhya & Historical Information Security",
+    "description": "An interactive web platform investigating historical Indian ciphers and coded communication. Demonstrates the Katapayadi mnemonic number system, Kautilya's Gudhalekhya from Arthashastra, letter and sound substitution principles, and the evolution toward modern information security.",
+    "branch": "AIDS-2",
+    "academicYear": "2026-2027",
+    "techStack": ["HTML5", "CSS3", "JavaScript", "Netlify", "Ciphers"],
+    "liveUrl": "https://aids-2group-2iksproject2026.netlify.app/",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": false,
+    "teamMembers": [
+      {
+        "name": "Durgeshwar Eklare",
+        "role": "Project Leader",
+        "department": "AIDS-2",
+        "email": "durgeshwar.eklare@vpkbiet.ac.in"
+      },
+      {
+        "name": "Aditya Gawali",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "aditya.gawali@vpkbiet.ac.in"
+      },
+      {
+        "name": "Harshal Borse",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "harshal.borse@vpkbiet.ac.in"
+      },
+      {
+        "name": "Harshal Maske",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "harshal.maske@vpkbiet.ac.in"
+      },
+      {
+        "name": "Harsh Wanjole",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "harsh.wanjole@vpkbiet.ac.in"
+      },
+      {
+        "name": "Ishant Kalbhor",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "ishant.kalbhor@vpkbiet.ac.in"
+      },
+      {
+        "name": "Jayesh Kulkarni",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": "jayesh.kulkarni@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "sarthcalc-vedic-maths-calculators",
+    "title": "Sarthcalc: 16 Vedic Mathematics Sutra Calculators",
+    "titleMr": "सार्थ-कॅल्क: १६ वैदिक गणित सूत्र कॅल्क्युलेटर",
+    "tagline": "Interactive Calculators for all 16 Vedic Mathematics Sutras & High-Speed Mental Calculation",
+    "description": "A comprehensive computational calculator platform developed for all 16 Vedic Mathematics Sutras. Enables rapid mental calculation simulations, algebraic shortcuts, division and squaring algorithms (Nikhilam, Urdhva Tiryagbhyam, Ekadhikena Purvena) with dynamic step-by-step visualizations.",
+    "branch": "AIDS-4",
+    "academicYear": "2026-2027",
+    "techStack": ["Vedic Maths", "JavaScript", "Netlify", "Math Engines"],
+    "liveUrl": "https://sarthcalc.netlify.app/",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": false,
+    "teamMembers": [
+      {
+        "name": "Sarthak Khomane",
+        "role": "Project Leader",
+        "department": "AIDS-4",
+        "email": "sarthak.khomane@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sangram Nadgude",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "sangram.nadgude@vpkbiet.ac.in"
+      },
+      {
+        "name": "Shreyas Saste",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "shreyas.saste@vpkbiet.ac.in"
+      },
+      {
+        "name": "Samarth Khot",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "samarth.khot@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sarthak Machale",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "sarthak.machale@vpkbiet.ac.in"
+      },
+      {
+        "name": "Sahil Nanawre",
+        "role": "Student Researcher",
+        "department": "AIDS-4",
+        "email": "sahil.nanawre@vpkbiet.ac.in"
+      }
+    ]
+  },
+  {
+    "id": "iks-interactive-ai-assistant",
+    "title": "IKS Interactive AI Knowledge & Research Dialogues",
+    "titleMr": "IKS संवादात्मक AI ज्ञान आणि संशोधन प्रणाली",
+    "tagline": "AI-Powered Exploration & Computational Dialogues on Indian Knowledge Systems",
+    "description": "An interactive digital knowledge retrieval and research dialogue session powered by Google Gemini AI. Allows students and visitors to explore nuanced engineering concepts, architectural principles, astronomical models, and historical texts of ancient India through guided AI synthesis.",
+    "branch": "AIDS-5",
+    "academicYear": "2026-2027",
+    "techStack": ["Google Gemini AI", "Interactive Assistant", "Knowledge Retrieval"],
+    "liveUrl": "https://gemini.google.com/share/13040c72f603?social_preview=true&skid=5dec912f-0452-4bf7-aa40-01784b871fad",
+    "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    "isFlagship": false,
+    "teamMembers": [
+      {
+        "name": "VPKBIET Student Innovations",
+        "role": "Research & AI Prompt Engineering Team",
+        "department": "AIDS-5",
+        "email": "iks@vpkbiet.ac.in"
+      }
+    ]
   }
 ]
