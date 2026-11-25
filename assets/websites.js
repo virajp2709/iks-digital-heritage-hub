@@ -389,6 +389,27 @@ const DEFAULT_WEBSITES = [
         email: "nikita.shinde@vpkbiet.ac.in"
       }
     ]
+  },
+  {
+    id: "iks-ai-knowledge-dialogue-session-2",
+    title: "IKS Advanced AI Research & Knowledge Dialogues (Session II)",
+    titleMr: "IKS प्रगत AI ज्ञान आणि संशोधन संवाद (सत्र २)",
+    tagline: "Interactive Deep Exploration & Scientific Dialogues on Indian Knowledge Systems powered by Google Gemini",
+    description: "An advanced interactive AI knowledge exploration and research dialogue session powered by Google Gemini AI. Allows students, researchers, and exhibition visitors to engage in interactive discussions on Indian Knowledge Systems, ancient engineering methodologies, historical texts, and modern technological connections.",
+    branch: "AIDS-5",
+    academicYear: "2026-2027",
+    techStack: ["Google Gemini AI", "Knowledge Synthesis", "Interactive Research", "IKS Prompting"],
+    liveUrl: "https://gemini.google.com/share/2a5cce6561d4?social_preview=true&skid=63392ca3-ffd7-439a-a9a9-0935ac8ed0fa",
+    thumbnail: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    isFlagship: false,
+    teamMembers: [
+      {
+        name: "VPKBIET Student Innovations",
+        role: "Research & AI Prompt Engineering Team",
+        department: "AIDS-5",
+        email: "iks@vpkbiet.ac.in"
+      }
+    ]
   }
 ];
 
