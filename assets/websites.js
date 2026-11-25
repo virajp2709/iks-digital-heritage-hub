@@ -287,6 +287,57 @@ const DEFAULT_WEBSITES = [
         email: "iks@vpkbiet.ac.in"
       }
     ]
+  },
+  {
+    id: "water-harvesting-in-ancient-india",
+    title: "Water Harvesting in Ancient India: Traditional Hydraulic Engineering & Climate Resilience",
+    titleMr: "प्राचीन भारतातील जलसंधारण: पारंपरिक जल अभियांत्रिकी, शाश्वत जलव्यवस्थापन आणि हवामान बदलाशी सामना",
+    tagline: "Traditional Hydraulic Architecture, Stepwells, Baolis, Ahar-Pyne & Dholavira Water Engineering",
+    description: "An interactive digital platform exploring the traditional water harvesting systems of ancient India and their relevance to modern challenges such as climate change, groundwater depletion, and water scarcity. Features interactive studies of Baolis in Rajasthan, Ahar-Pyne systems in Bihar, Kuls in Himachal Pradesh, Harappan wedge-shaped well bricks, gravity-fed distribution, Kallanai Grand Anicut, and Dholavira's advanced reservoirs.",
+    branch: "AIDS-4",
+    academicYear: "2026-2027",
+    techStack: ["Lovable.app", "React", "Hydraulic Architecture", "Tailwind CSS", "Vite"],
+    liveUrl: "https://waterharvestinginancientindia.lovable.app/",
+    thumbnail: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
+    isFlagship: false,
+    teamMembers: [
+      {
+        name: "Shambhuraj Deshmukh",
+        role: "Project Leader",
+        department: "AIDS-4",
+        email: "shambhuraj.deshmukh@vpkbiet.ac.in"
+      },
+      {
+        name: "Shreya Bhosale",
+        role: "Student Researcher",
+        department: "AIDS-4",
+        email: "shreya.bhosale@vpkbiet.ac.in"
+      },
+      {
+        name: "Rutuja Zadage",
+        role: "Student Researcher",
+        department: "AIDS-4",
+        email: "rutuja.zadage@vpkbiet.ac.in"
+      },
+      {
+        name: "Shambhuraj Kadam",
+        role: "Student Researcher",
+        department: "AIDS-4",
+        email: "shambhuraj.kadam@vpkbiet.ac.in"
+      },
+      {
+        name: "Ranveer Dhanawade",
+        role: "Student Researcher",
+        department: "AIDS-4",
+        email: "ranveer.dhanawade@vpkbiet.ac.in"
+      },
+      {
+        name: "Rushikesh Ransing",
+        role: "Student Researcher",
+        department: "AIDS-4",
+        email: "rushikesh.ransing@vpkbiet.ac.in"
+      }
+    ]
   }
 ];
 
@@ -888,30 +939,38 @@ function initParticlesCanvas() {
 document.addEventListener("DOMContentLoaded", async () => {
   initParticlesCanvas();
 
-  // Load website catalog (check localStorage first, then fetch data/websites.json)
-  let loaded = false;
+  // Load website catalog (merge catalog with any local admin edits)
+  let localList = null;
   try {
     const cached = localStorage.getItem("vpkbiet_iks_websites");
-    if (cached) {
-      state.websites = JSON.parse(cached);
-      loaded = true;
-    }
+    if (cached) localList = JSON.parse(cached);
   } catch (e) {}
 
-  if (!loaded) {
-    try {
-      const res = await fetch("data/websites.json?v=" + Date.now());
-      if (res.ok) {
-        state.websites = await res.json();
-        loaded = true;
-      }
-    } catch (err) {
-      console.warn("Could not fetch data/websites.json, using default:", err);
-    }
+  let catalogList = [];
+  try {
+    const res = await fetch("data/websites.json?v=" + Date.now());
+    if (res.ok) catalogList = await res.json();
+  } catch (err) {
+    console.warn("Could not fetch data/websites.json, using default:", err);
   }
 
-  if (!loaded || !state.websites || state.websites.length === 0) {
-    state.websites = DEFAULT_WEBSITES;
+  if (!catalogList || catalogList.length === 0) {
+    catalogList = DEFAULT_WEBSITES;
+  }
+
+  if (Array.isArray(localList) && localList.length > 0) {
+    // Preserve local edits, but seamlessly merge any new catalog entries
+    const localIds = new Set(localList.map(item => item.id));
+    catalogList.forEach(item => {
+      if (!localIds.has(item.id)) {
+        localList.push(item);
+      }
+    });
+    state.websites = localList;
+    localStorage.setItem("vpkbiet_iks_websites", JSON.stringify(localList));
+  } else {
+    state.websites = catalogList;
+    localStorage.setItem("vpkbiet_iks_websites", JSON.stringify(catalogList));
   }
 
   // Render Hub QR and website grid
