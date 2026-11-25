@@ -13,13 +13,13 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✺</text></svg>">
 
   <!-- Core Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="./assets/styles.css?v=20261115a">
+  <link rel="stylesheet" href="./assets/styles.css?v=20261125d">
 
   <!-- QRCode.js Library for Exhibition Labels -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Core Interactive Script with Cache Busting -->
-  <script defer src="./assets/app.js?v=20261115a"></script>
+  <script defer src="./assets/app.js?v=20261125d"></script>
 </head>
 
 <body>
@@ -68,7 +68,7 @@
 
       <nav class="main-nav" aria-label="Main Navigation">
         <a href="#explore-projects" class="nav-link">Student Projects</a>
-        <a href="websites.html" class="nav-link">Website Projects</a>
+        <a href="websites.html" class="nav-link" target="_blank" rel="noopener noreferrer">Website Projects</a>
         <a href="#about-institution" class="nav-link">About IKS Cell</a>
         <a href="#map-section" class="nav-link">Heritage Map</a>
         <button id="open-add-project-btn" class="submit-nav-btn" type="button" aria-label="Add project (Admin)">
@@ -318,6 +318,11 @@
           <a href="#explore-projects" class="btn-primary-gold">
             <span>Explore Student Projects</span>
             <span aria-hidden="true">↓</span>
+          </a>
+          <a href="websites.html" target="_blank" rel="noopener noreferrer" class="btn-secondary-outline" style="border-color: var(--gold-primary); color: var(--gold-light);">
+            <span aria-hidden="true">🌐</span>
+            <span>Website Projects</span>
+            <span aria-hidden="true">↗</span>
           </a>
           <button id="hero-add-trigger" class="btn-secondary-outline" type="button">
             <span aria-hidden="true">🔒</span>
