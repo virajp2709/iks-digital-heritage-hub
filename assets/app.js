@@ -2052,9 +2052,45 @@ async function init() {
   // Render initial project cards
   renderProjects();
 
+  // Dynamically update total Website Projects count from websites section/dataset
+  updateWebsitesCountDisplay();
+
   // Listen for hash changes
   window.addEventListener("hashchange", handleRouting);
   handleRouting();
+}
+
+async function updateWebsitesCountDisplay() {
+  const websitesCountEl = document.getElementById("websites-count-display");
+  if (!websitesCountEl) return;
+
+  let count = 0;
+  // Check localStorage first for any local additions/edits
+  try {
+    const cached = localStorage.getItem("vpkbiet_iks_websites");
+    if (cached) {
+      const parsed = JSON.parse(cached);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        count = parsed.length;
+      }
+    }
+  } catch (e) {}
+
+  // Fetch from data/websites.json
+  if (!count) {
+    try {
+      const res = await fetch(`./data/websites.json?t=${Date.now()}`, { cache: "no-store" });
+      if (res.ok) {
+        const list = await res.json();
+        if (Array.isArray(list) && list.length > 0) {
+          count = list.length;
+        }
+      }
+    } catch (err) {}
+  }
+
+  if (!count) count = 9;
+  websitesCountEl.textContent = String(count).padStart(2, "0");
 }
 
 document.addEventListener("DOMContentLoaded", init);
