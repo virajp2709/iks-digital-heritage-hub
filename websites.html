@@ -67,6 +67,10 @@
         <a href="websites.html" class="nav-link active" style="color: var(--gold-light); font-weight: 700;">Website Projects</a>
         <a href="index.html#about-institution" class="nav-link">About IKS Cell</a>
         <a href="index.html#map-section" class="nav-link">Heritage Map</a>
+        <button id="header-sync-websites-btn" class="submit-nav-btn" type="button" style="background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold-primary);" title="Publish all website projects to GitHub">
+          <span aria-hidden="true">☁️</span>
+          <span>Sync to GitHub</span>
+        </button>
         <button id="open-add-website-btn" class="submit-nav-btn" type="button" aria-label="Add website project (Admin)">
           <span aria-hidden="true">🔒</span>
           <span>Add Website</span>
@@ -320,6 +324,53 @@
         </div>
 
         <h2 id="edit-site-modal-heading" class="modal-title" style="font-size: 1.6rem; margin-bottom: 16px;">Edit Website & Student Details</h2>
+
+        <!-- GITHUB DIRECT AUTO-SYNC PANEL FOR WEBSITES -->
+        <div class="form-section-card" id="github-sync-panel" style="border: 1px solid var(--gold-primary); background: rgba(212, 175, 55, 0.06); padding: 16px 20px; border-radius: var(--radius-md); margin-bottom: 22px;">
+          <div class="form-section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <h3 style="margin: 0 0 4px; font-family: var(--font-heading); font-size: 1.1rem; color: #fff;"><span>☁️</span> GitHub Auto-Sync (Show on Mobile & All Devices)</h3>
+              <small id="gh-sync-status" style="color: var(--text-gold); font-size: 0.8rem;">⚪ Not Connected (Website projects stay in this browser only until synced)</small>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+              <button type="button" id="gh-sync-now-btn" class="btn-primary-gold" style="padding: 8px 16px; font-size: 0.85rem;">
+                <span>☁️</span> <span>Publish All (<span id="gh-local-count">0</span>) to GitHub</span>
+              </button>
+              <button type="button" id="gh-toggle-setup-btn" class="btn-secondary-outline" style="padding: 8px 14px; font-size: 0.82rem;">
+                <span>⚙️</span> <span>Setup Token</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="gh-token-box" style="display: none; padding-top: 14px; border-top: 1px solid rgba(212, 175, 55, 0.25);">
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5;">
+              Connect once with a GitHub Token so every <strong>Save</strong>, <strong>Edit</strong>, or <strong>Delete</strong> updates <code>data/websites.json</code> on GitHub automatically (no manual file uploads needed!).<br>
+              <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light); text-decoration: underline;">Create a Fine-Grained Token on GitHub ↗</a> → Repository access: <strong>iks-digital-heritage-hub</strong> → Permissions: <strong>Contents (Read and write)</strong>.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
+              <div class="form-group">
+                <label for="gh-repo-input" style="display: block; font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 4px;">GitHub Repository (owner/repo)</label>
+                <input id="gh-repo-input" class="form-control" type="text" value="virajp2709/iks-digital-heritage-hub" placeholder="virajp2709/iks-digital-heritage-hub" style="width: 100%; padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: rgba(0,0,0,0.5); color: #fff; font-size: 0.85rem;">
+              </div>
+              <div class="form-group">
+                <label for="gh-branch-input" style="display: block; font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 4px;">Branch</label>
+                <input id="gh-branch-input" class="form-control" type="text" value="main" placeholder="main" style="width: 100%; padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: rgba(0,0,0,0.5); color: #fff; font-size: 0.85rem;">
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 12px;">
+              <label for="gh-token-input" style="display: block; font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 4px;">GitHub Personal Access Token (stored safely in this browser only)</label>
+              <input id="gh-token-input" class="form-control" type="password" placeholder="github_pat_... or ghp_..." autocomplete="off" style="width: 100%; padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); background: rgba(0,0,0,0.5); color: #fff; font-size: 0.85rem;">
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button type="button" id="gh-save-token-btn" class="btn-primary-gold" style="padding: 8px 18px; font-size: 0.85rem;">
+                <span>✓</span> <span>Save & Publish All Now</span>
+              </button>
+              <button type="button" id="gh-disconnect-btn" class="btn-danger-outline" style="padding: 8px 14px; font-size: 0.82rem; display: none;">
+                <span>Disconnect Token</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
         <form id="website-edit-form">
           <input type="hidden" id="edit-site-id">

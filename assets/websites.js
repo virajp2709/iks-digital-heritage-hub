@@ -821,7 +821,7 @@ function openWebsiteEditModal(site) {
   const deleteBtn = document.getElementById("delete-site-btn");
   if (deleteBtn) {
     deleteBtn.style.display = site.isFlagship ? "none" : "inline-flex";
-    deleteBtn.onclick = () => {
+    deleteBtn.onclick = async () => {
       if (confirm(`Are you sure you want to delete "${site.title}"?`)) {
         state.websites = state.websites.filter((s) => s.id !== site.id);
         try {
@@ -830,12 +830,19 @@ function openWebsiteEditModal(site) {
         closeWebsiteEditModal();
         closeWebsiteDetailModal();
         renderWebsites();
-        showToast("Website project removed successfully");
+        refreshGitHubSyncUI();
+        const syncRes = await syncWebsitesToGitHub(`Delete website: ${site.title} via VPKBIET IKS Admin Hub`);
+        if (syncRes.ok) {
+          showToast("☁️ Website removed & synced to GitHub!");
+        } else {
+          showToast("Website project removed successfully");
+        }
       }
     };
   }
 
   renderEditTeamRows(site.teamMembers || []);
+  refreshGitHubSyncUI();
 
   editModal.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -863,6 +870,7 @@ function openWebsiteAddModal() {
   if (deleteBtn) deleteBtn.style.display = "none";
 
   renderEditTeamRows([{ name: "", role: "Project Leader", department: "AIDS-1", email: "" }]);
+  refreshGitHubSyncUI();
 
   editModal.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -877,7 +885,7 @@ function closeWebsiteEditModal() {
 }
 
 // Save form changes (Add or Edit)
-function saveWebsiteEdits(e) {
+async function saveWebsiteEdits(e) {
   e.preventDefault();
   const siteId = document.getElementById("edit-site-id").value;
 
@@ -904,8 +912,9 @@ function saveWebsiteEdits(e) {
     }
   });
 
+  const isEditing = Boolean(siteId);
   let targetSite;
-  if (!siteId) {
+  if (!isEditing) {
     // Add new website project
     const newId = "vpkbiet-site-" + Date.now();
     targetSite = {
@@ -946,7 +955,15 @@ function saveWebsiteEdits(e) {
   closeWebsiteEditModal();
   renderWebsites();
   openWebsiteDetailModal(targetSite);
-  showToast("✦ Website details & student names saved successfully!");
+  refreshGitHubSyncUI();
+
+  // Auto-sync to GitHub if token is configured
+  const syncRes = await syncWebsitesToGitHub(isEditing ? `Update website: ${titleVal} via VPKBIET IKS Admin Hub` : `Add website: ${titleVal} via VPKBIET IKS Admin Hub`);
+  if (syncRes.ok) {
+    showToast(isEditing ? "☁️ Website changes saved & synced to GitHub!" : "☁️ Website added & synced to GitHub!");
+  } else {
+    showToast("✦ Website details & student names saved successfully!");
+  }
 }
 
 // Download updated websites.json file
@@ -960,6 +977,135 @@ function downloadWebsitesJson() {
   a.click();
   URL.revokeObjectURL(url);
   showToast("Downloaded updated websites.json");
+}
+
+/* ==========================================================================
+   GITHUB DIRECT AUTO-SYNC FOR WEBSITES (UPDATES data/websites.json VIA REST API)
+   ========================================================================== */
+
+const GH_SYNC_STORAGE_KEY = "vpkbiet_iks_gh_config";
+
+function getGitHubSyncConfig() {
+  try {
+    const raw = localStorage.getItem(GH_SYNC_STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {
+    console.warn("Could not read GitHub config:", e);
+  }
+  return {
+    repo: "virajp2709/iks-digital-heritage-hub",
+    branch: "main",
+    token: ""
+  };
+}
+
+function saveGitHubSyncConfig(cfg) {
+  try {
+    localStorage.setItem(GH_SYNC_STORAGE_KEY, JSON.stringify(cfg));
+  } catch (e) {
+    console.warn("Could not save GitHub config:", e);
+  }
+}
+
+function clearGitHubSyncConfig() {
+  try {
+    localStorage.removeItem(GH_SYNC_STORAGE_KEY);
+  } catch (e) {
+    console.warn("Could not clear GitHub config:", e);
+  }
+}
+
+function refreshGitHubSyncUI() {
+  const cfg = getGitHubSyncConfig();
+  const statusEl = document.getElementById("gh-sync-status");
+  const countEl = document.getElementById("gh-local-count");
+  const repoInp = document.getElementById("gh-repo-input");
+  const branchInp = document.getElementById("gh-branch-input");
+  const disconnectBtn = document.getElementById("gh-disconnect-btn");
+
+  if (countEl) countEl.textContent = String(state.websites.length);
+  if (repoInp && cfg.repo) repoInp.value = cfg.repo;
+  if (branchInp && cfg.branch) branchInp.value = cfg.branch;
+
+  if (cfg.token) {
+    if (statusEl) {
+      statusEl.textContent = `🟢 Auto-Sync Active · ${cfg.repo} (${cfg.branch})`;
+      statusEl.style.color = "#6ef3a5";
+    }
+    if (disconnectBtn) disconnectBtn.style.display = "inline-flex";
+  } else {
+    if (statusEl) {
+      statusEl.textContent = "⚪ Not Connected (Website projects stay in this browser only until synced)";
+      statusEl.style.color = "var(--text-gold)";
+    }
+    if (disconnectBtn) disconnectBtn.style.display = "none";
+  }
+}
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+}
+
+async function syncWebsitesToGitHub(commitMessage = "Update data/websites.json via VPKBIET IKS Hub") {
+  const cfg = getGitHubSyncConfig();
+  if (!cfg.token) return { ok: false, skipped: true };
+
+  const repo = (cfg.repo || "virajp2709/iks-digital-heritage-hub").trim();
+  const branch = (cfg.branch || "main").trim();
+  const apiUrl = `https://api.github.com/repos/${repo}/contents/data/websites.json`;
+
+  try {
+    const headers = {
+      Authorization: `Bearer ${cfg.token}`,
+      Accept: "application/vnd.github+json",
+      "Content-Type": "application/json"
+    };
+
+    // Fetch current SHA of data/websites.json
+    let sha = undefined;
+    const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(branch)}&_=${Date.now()}`, {
+      method: "GET",
+      headers,
+      cache: "no-store"
+    });
+    if (getRes.ok) {
+      const meta = await getRes.json();
+      sha = meta.sha;
+    } else if (getRes.status !== 404) {
+      const errBody = await getRes.json().catch(() => ({}));
+      return { ok: false, error: errBody.message || `HTTP ${getRes.status}` };
+    }
+
+    const contentBase64 = utf8ToBase64(JSON.stringify(state.websites, null, 2));
+    const putBody = {
+      message: commitMessage,
+      content: contentBase64,
+      branch: branch
+    };
+    if (sha) putBody.sha = sha;
+
+    const putRes = await fetch(apiUrl, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify(putBody)
+    });
+
+    if (!putRes.ok) {
+      const errBody = await putRes.json().catch(() => ({}));
+      return { ok: false, error: errBody.message || `HTTP ${putRes.status}` };
+    }
+
+    return { ok: true, count: state.websites.length };
+  } catch (err) {
+    console.error("GitHub sync error:", err);
+    return { ok: false, error: err.message || "Network error" };
+  }
 }
 
 // Initialize ambient particle canvas
@@ -1192,6 +1338,118 @@ document.addEventListener("DOMContentLoaded", async () => {
       .then(() => showToast("Website link copied to clipboard"))
       .catch(() => showToast("Could not copy link"));
   });
+
+  // GitHub Auto-Sync Panel Controls for Websites
+  const ghToggleBtn = document.getElementById("gh-toggle-setup-btn");
+  const ghTokenBox = document.getElementById("gh-token-box");
+  const ghSaveBtn = document.getElementById("gh-save-token-btn");
+  const ghDisconnectBtn = document.getElementById("gh-disconnect-btn");
+  const ghSyncNowBtn = document.getElementById("gh-sync-now-btn");
+  const headerSyncBtn = document.getElementById("header-sync-websites-btn");
+
+  if (ghToggleBtn && ghTokenBox) {
+    ghToggleBtn.addEventListener("click", () => {
+      const isHidden = ghTokenBox.style.display === "none";
+      ghTokenBox.style.display = isHidden ? "block" : "none";
+    });
+  }
+
+  if (ghSaveBtn) {
+    ghSaveBtn.addEventListener("click", async () => {
+      const repo = document.getElementById("gh-repo-input")?.value.trim() || "virajp2709/iks-digital-heritage-hub";
+      const branch = document.getElementById("gh-branch-input")?.value.trim() || "main";
+      const token = document.getElementById("gh-token-input")?.value.trim() || getGitHubSyncConfig().token;
+
+      if (!token) {
+        showToast("⚠️ Please paste your GitHub Personal Access Token");
+        document.getElementById("gh-token-input")?.focus();
+        return;
+      }
+
+      saveGitHubSyncConfig({ repo, branch, token });
+      refreshGitHubSyncUI();
+      ghSaveBtn.disabled = true;
+      ghSaveBtn.innerHTML = '<span>⏳</span> <span>Publishing to GitHub...</span>';
+
+      const res = await syncWebsitesToGitHub(`Sync ${state.websites.length} websites via VPKBIET IKS Admin Hub`);
+      ghSaveBtn.disabled = false;
+      ghSaveBtn.innerHTML = '<span>✓</span> <span>Save & Publish All Now</span>';
+
+      if (res.ok) {
+        if (ghTokenBox) ghTokenBox.style.display = "none";
+        showToast(`☁️ Published all ${state.websites.length} website projects to GitHub! Live on mobile in ~60s.`);
+      } else {
+        showToast(`⚠️ GitHub Sync failed: ${res.error}`);
+      }
+    });
+  }
+
+  if (ghDisconnectBtn) {
+    ghDisconnectBtn.addEventListener("click", () => {
+      clearGitHubSyncConfig();
+      const tokenInp = document.getElementById("gh-token-input");
+      if (tokenInp) tokenInp.value = "";
+      refreshGitHubSyncUI();
+      showToast("GitHub token disconnected from this browser");
+    });
+  }
+
+  if (ghSyncNowBtn) {
+    ghSyncNowBtn.addEventListener("click", async () => {
+      const cfg = getGitHubSyncConfig();
+      if (!cfg.token) {
+        if (ghTokenBox) ghTokenBox.style.display = "block";
+        document.getElementById("gh-token-input")?.focus();
+        showToast("Enter your GitHub Token once to publish all website projects automatically!");
+        return;
+      }
+
+      ghSyncNowBtn.disabled = true;
+      const origHtml = ghSyncNowBtn.innerHTML;
+      ghSyncNowBtn.innerHTML = '<span>⏳</span> <span>Publishing...</span>';
+
+      const res = await syncWebsitesToGitHub(`Publish all ${state.websites.length} websites from IKS Hub`);
+      ghSyncNowBtn.disabled = false;
+      ghSyncNowBtn.innerHTML = origHtml;
+
+      if (res.ok) {
+        showToast(`☁️ Published all ${state.websites.length} website projects to GitHub! Live on mobile in ~60s.`);
+      } else {
+        showToast(`⚠️ GitHub Sync failed: ${res.error}`);
+      }
+    });
+  }
+
+  if (headerSyncBtn) {
+    headerSyncBtn.addEventListener("click", async () => {
+      const cfg = getGitHubSyncConfig();
+      if (!cfg.token) {
+        triggerWebsiteAddWorkflow();
+        setTimeout(() => {
+          if (ghTokenBox) ghTokenBox.style.display = "block";
+          document.getElementById("gh-token-input")?.focus();
+        }, 300);
+        showToast("Setup your GitHub Token to enable auto-sync!");
+        return;
+      }
+
+      headerSyncBtn.disabled = true;
+      const orig = headerSyncBtn.innerHTML;
+      headerSyncBtn.innerHTML = '<span>⏳</span> <span>Syncing...</span>';
+      const res = await syncWebsitesToGitHub(`Quick sync ${state.websites.length} websites from navigation`);
+      headerSyncBtn.disabled = false;
+      headerSyncBtn.innerHTML = orig;
+
+      if (res.ok) {
+        showToast(`☁️ Published all ${state.websites.length} website projects to GitHub! Live on mobile in ~60s.`);
+      } else {
+        showToast(`⚠️ GitHub Sync failed: ${res.error}`);
+      }
+    });
+  }
+
+  // Initial sync UI update on load
+  refreshGitHubSyncUI();
 
   // Global keydown (Escape to close modals)
   window.addEventListener("keydown", (e) => {
