@@ -478,10 +478,46 @@
     "isFlagship": false,
     "teamMembers": [
       {
-        "name": "VPKBIET Student Innovations",
-        "role": "Research & AI Prompt Engineering Team",
-        "department": "AIDS-5",
-        "email": "iks@vpkbiet.ac.in"
+        "name": "Chandrashekhar Jadhav",
+        "role": "Project Leader",
+        "department": "AIDS-1",
+        "email": ""
+      },
+      {
+        "name": "Parth Birhade",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": ""
+      },
+      {
+        "name": "Chaitali Bhosale",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": ""
+      },
+      {
+        "name": "Akshara Tupe",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": ""
+      },
+      {
+        "name": "Ayan Mahat",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": ""
+      },
+      {
+        "name": "Aditi Jadhav",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": ""
+      },
+      {
+        "name": "Afaroj Mulani",
+        "role": "Student Researcher",
+        "department": "AIDS-1",
+        "email": ""
       }
     ]
   }
