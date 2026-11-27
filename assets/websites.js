@@ -268,23 +268,59 @@ const DEFAULT_WEBSITES = [
     ]
   },
   {
-    id: "iks-interactive-ai-assistant",
-    title: "IKS Interactive AI Knowledge & Research Dialogues",
-    titleMr: "IKS संवादात्मक AI ज्ञान आणि संशोधन प्रणाली",
-    tagline: "AI-Powered Exploration & Computational Dialogues on Indian Knowledge Systems",
-    description: "An interactive digital knowledge retrieval and research dialogue session powered by Google Gemini AI. Allows students and visitors to explore nuanced engineering concepts, architectural principles, astronomical models, and historical texts of ancient India through guided AI synthesis.",
-    branch: "AIDS-5",
+    id: "cryptography-of-ancient-india",
+    title: "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
+    titleMr: "प्राचीन भारतातील कूटलेखनशास्त्र: गुप्त लेखन, सांकेतिक संदेशवहन आणि माहिती सुरक्षेचा ऐतिहासिक अभ्यास",
+    tagline: "Ancient Indian Secret Writing, Mnemonic Ciphers, Akṣaramuṣṭikā & Historical Information Security",
+    description: "An interactive digital research platform and AI synthesis exploring ancient Indian cryptography (Gūḍhalipi, Mlecchita Vikalpa, Akṣaramuṣṭikā) documented in Kautilya's Arthaśāstra, Vātsyāyana's Kāmasūtra, and historical treatises. Bridges classical cipher systems, Katapayadi substitution, and steganography with modern information security and AI research dialogues.",
+    branch: "AIDS-2",
     academicYear: "2026-2027",
-    techStack: ["Google Gemini AI", "Interactive Assistant", "Knowledge Retrieval"],
+    techStack: ["Google Gemini AI", "Interactive Portal", "Cryptography", "Coded Systems"],
     liveUrl: "https://gemini.google.com/share/13040c72f603?social_preview=true&skid=5dec912f-0452-4bf7-aa40-01784b871fad",
     thumbnail: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     isFlagship: false,
     teamMembers: [
       {
-        name: "VPKBIET Student Innovations",
-        role: "Research & AI Prompt Engineering Team",
-        department: "AIDS-5",
-        email: "iks@vpkbiet.ac.in"
+        name: "Harsh Lokhande",
+        role: "Project Leader",
+        department: "AIDS-2",
+        email: "harsh.lokhande@vpkbiet.ac.in"
+      },
+      {
+        name: "Shubham Holkar",
+        role: "Student Researcher",
+        department: "AIDS-2",
+        email: "shubham.holkar@vpkbiet.ac.in"
+      },
+      {
+        name: "Sanjyot Kadam",
+        role: "Student Researcher",
+        department: "AIDS-2",
+        email: "sanjyot.kadam@vpkbiet.ac.in"
+      },
+      {
+        name: "Jignesh Jagtap",
+        role: "Student Researcher",
+        department: "AIDS-2",
+        email: "jignesh.jagtap@vpkbiet.ac.in"
+      },
+      {
+        name: "Kartik pisal",
+        role: "Student Researcher",
+        department: "AIDS-2",
+        email: "kartik.pisal@vpkbiet.ac.in"
+      },
+      {
+        name: "Himanshu Patle",
+        role: "Student Researcher",
+        department: "AIDS-2",
+        email: "himanshu.patle@vpkbiet.ac.in"
+      },
+      {
+        name: "Harshvardhan Khamkar",
+        role: "Student Researcher",
+        department: "AIDS-2",
+        email: "harshvardhan.khamkar@vpkbiet.ac.in"
       }
     ]
   },
@@ -1176,20 +1212,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     catalogList = DEFAULT_WEBSITES;
   }
 
+  // Handle legacy ID migration: remove obsolete 'iks-interactive-ai-assistant'
+  if (Array.isArray(localList)) {
+    localList = localList.filter(item => item && item.id !== "iks-interactive-ai-assistant");
+  }
+
+  // Authoritative server-first sync:
+  // Use catalogList as the authoritative base so that updates from GitHub Pages are immediately
+  // reflected on all mobile phones, computers, and tablets.
+  const catalogIds = new Set(catalogList.map(item => item.id));
+  const mergedList = [...catalogList];
+
+  // Preserve any purely local custom projects added by an admin (with new IDs not in catalog)
   if (Array.isArray(localList) && localList.length > 0) {
-    // Preserve local edits, but seamlessly merge any new catalog entries
-    const localIds = new Set(localList.map(item => item.id));
-    catalogList.forEach(item => {
-      if (!localIds.has(item.id)) {
-        localList.push(item);
+    localList.forEach(item => {
+      if (item && item.id && !catalogIds.has(item.id)) {
+        mergedList.push(item);
       }
     });
-    state.websites = localList;
-    localStorage.setItem("vpkbiet_iks_websites", JSON.stringify(localList));
-  } else {
-    state.websites = catalogList;
-    localStorage.setItem("vpkbiet_iks_websites", JSON.stringify(catalogList));
   }
+
+  state.websites = mergedList;
+  try {
+    localStorage.setItem("vpkbiet_iks_websites", JSON.stringify(mergedList));
+  } catch (e) {}
 
   // Render Hub QR and website grid
   renderHubQR();
