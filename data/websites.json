@@ -285,20 +285,19 @@
     ]
   },
   {
-    "id": "cryptography-of-ancient-india",
-    "title": "Cryptography of Ancient India: Secret Writing, Coded Communication & Historical Information Security",
-    "titleMr": "प्राचीन भारतातील कूटलेखनशास्त्र: गुप्त लेखन, सांकेतिक संदेशवहन आणि माहिती सुरक्षेचा ऐतिहासिक अभ्यास",
-    "tagline": "Ancient Indian Secret Writing, Mnemonic Ciphers, Akṣaramuṣṭikā & Historical Information Security",
-    "description": "An interactive digital research platform and AI synthesis exploring ancient Indian cryptography (Gūḍhalipi, Mlecchita Vikalpa, Akṣaramuṣṭikā) documented in Kautilya's Arthaśāstra, Vātsyāyana's Kāmasūtra, and historical treatises. Bridges classical cipher systems, Katapayadi substitution, and steganography with modern information security and AI research dialogues.",
+    "id": "iks-interactive-ai-assistant",
+    "title": "Cryptography of Ancient India",
+    "titleMr": "IKS संवादात्मक AI ज्ञान आणि संशोधन प्रणाली",
+    "tagline": "AI-Powered Exploration & Computational Dialogues on Indian Knowledge Systems",
+    "description": "An interactive digital knowledge retrieval and research dialogue session powered by Google Gemini AI. Allows students and visitors to explore nuanced engineering concepts, architectural principles, astronomical models, and historical texts of ancient India through guided AI synthesis.",
     "branch": "AIDS-2",
     "academicYear": "2026-2027",
     "techStack": [
       "Google Gemini AI",
-      "Interactive Portal",
-      "Cryptography",
-      "Coded Systems"
+      "Interactive Assistant",
+      "Knowledge Retrieval"
     ],
-    "liveUrl": "https://gemini.google.com/share/13040c72f603?social_preview=true&skid=5dec912f-0452-4bf7-aa40-01784b871fad",
+    "liveUrl": "https://cryptography-of-ancient-india-6.tiiny.site/",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
     "teamMembers": [
@@ -306,43 +305,43 @@
         "name": "Harsh Lokhande",
         "role": "Project Leader",
         "department": "AIDS-2",
-        "email": "harsh.lokhande@vpkbiet.ac.in"
+        "email": ""
       },
       {
         "name": "Shubham Holkar",
         "role": "Student Researcher",
         "department": "AIDS-2",
-        "email": "shubham.holkar@vpkbiet.ac.in"
+        "email": ""
       },
       {
         "name": "Sanjyot Kadam",
         "role": "Student Researcher",
         "department": "AIDS-2",
-        "email": "sanjyot.kadam@vpkbiet.ac.in"
+        "email": ""
       },
       {
         "name": "Jignesh Jagtap",
         "role": "Student Researcher",
         "department": "AIDS-2",
-        "email": "jignesh.jagtap@vpkbiet.ac.in"
+        "email": ""
       },
       {
-        "name": "Kartik pisal",
+        "name": "Kartik Pisal",
         "role": "Student Researcher",
         "department": "AIDS-2",
-        "email": "kartik.pisal@vpkbiet.ac.in"
+        "email": ""
       },
       {
         "name": "Himanshu Patle",
         "role": "Student Researcher",
         "department": "AIDS-2",
-        "email": "himanshu.patle@vpkbiet.ac.in"
+        "email": ""
       },
       {
         "name": "Harshvardhan Khamkar",
         "role": "Student Researcher",
         "department": "AIDS-2",
-        "email": "harshvardhan.khamkar@vpkbiet.ac.in"
+        "email": ""
       }
     ]
   },
