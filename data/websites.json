@@ -7,7 +7,13 @@
     "description": "A comprehensive digital heritage repository and interactive platform developed to document, preserve, and showcase 70+ student multidisciplinary engineering research projects covering ancient Indian mathematics, metallurgy, temple acoustics, hydraulic architecture, and astronomy.",
     "branch": "AIDS-5",
     "academicYear": "2026-2027",
-    "techStack": ["HTML5", "CSS3", "JavaScript", "SVG Graphics", "QRCode.js"],
+    "techStack": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "SVG Graphics",
+      "QRCode.js"
+    ],
     "liveUrl": "index.html",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": true,
@@ -40,7 +46,14 @@
     "description": "An interactive digital platform exploring Acharya Pingala's ancient Chhandaśāstra (c. 3rd-2nd century BCE). Features real-time interactive tools including a 3D Gaṇa rotation cube with speech synthesis, Mātrā-Meru (Pascal's triangle) visualization, Fibonacci sequence mappings, moric binary converter, and a live Sanskrit Chandas verse scanner.",
     "branch": "AIDS-3",
     "academicYear": "2026-2027",
-    "techStack": ["HTML5", "CSS 3D", "Canvas 2D", "Web Speech API", "JavaScript", "Combinatorics"],
+    "techStack": [
+      "HTML5",
+      "CSS 3D",
+      "Canvas 2D",
+      "Web Speech API",
+      "JavaScript",
+      "Combinatorics"
+    ],
     "liveUrl": "websites/pingala-chandashastra/index.html",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
@@ -91,7 +104,13 @@
     "description": "An interactive 3D web platform exploring India's five-thousand-year archaeological heritage starting from 7000 BCE. Features real-time 3D monument models of ancient civil and sacred engineering including Mohenjo-daro, Sanchi Stupa, Ajanta and Ellora Caves, Konark Sun Temple, and Hampi.",
     "branch": "AIDS-1",
     "academicYear": "2026-2027",
-    "techStack": ["Lovable.app", "React", "Three.js 3D", "Tailwind CSS", "Vite"],
+    "techStack": [
+      "Lovable.app",
+      "React",
+      "Three.js 3D",
+      "Tailwind CSS",
+      "Vite"
+    ],
     "liveUrl": "https://thearchologyofindia.lovable.app/",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
@@ -154,7 +173,13 @@
     "description": "An interactive web platform investigating historical Indian ciphers and coded communication. Demonstrates the Katapayadi mnemonic number system, Kautilya's Gudhalekhya from Arthashastra, letter and sound substitution principles, and the evolution toward modern information security.",
     "branch": "AIDS-2",
     "academicYear": "2026-2027",
-    "techStack": ["HTML5", "CSS3", "JavaScript", "Netlify", "Ciphers"],
+    "techStack": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Netlify",
+      "Ciphers"
+    ],
     "liveUrl": "https://aids-2group-2iksproject2026.netlify.app/",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
@@ -211,7 +236,12 @@
     "description": "A comprehensive computational calculator platform developed for all 16 Vedic Mathematics Sutras. Enables rapid mental calculation simulations, algebraic shortcuts, division and squaring algorithms (Nikhilam, Urdhva Tiryagbhyam, Ekadhikena Purvena) with dynamic step-by-step visualizations.",
     "branch": "AIDS-4",
     "academicYear": "2026-2027",
-    "techStack": ["Vedic Maths", "JavaScript", "Netlify", "Math Engines"],
+    "techStack": [
+      "Vedic Maths",
+      "JavaScript",
+      "Netlify",
+      "Math Engines"
+    ],
     "liveUrl": "https://sarthcalc.netlify.app/",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
@@ -223,7 +253,7 @@
         "email": "sarthak.khomane@vpkbiet.ac.in"
       },
       {
-        "name": "Sangram Nadgude",
+        "name": "Sangram Nandgude",
         "role": "Student Researcher",
         "department": "AIDS-4",
         "email": "sangram.nadgude@vpkbiet.ac.in"
@@ -256,22 +286,62 @@
   },
   {
     "id": "iks-interactive-ai-assistant",
-    "title": "IKS Interactive AI Knowledge & Research Dialogues",
+    "title": "Cryptography of Ancient India",
     "titleMr": "IKS संवादात्मक AI ज्ञान आणि संशोधन प्रणाली",
     "tagline": "AI-Powered Exploration & Computational Dialogues on Indian Knowledge Systems",
     "description": "An interactive digital knowledge retrieval and research dialogue session powered by Google Gemini AI. Allows students and visitors to explore nuanced engineering concepts, architectural principles, astronomical models, and historical texts of ancient India through guided AI synthesis.",
-    "branch": "AIDS-5",
+    "branch": "AIDS-2",
     "academicYear": "2026-2027",
-    "techStack": ["Google Gemini AI", "Interactive Assistant", "Knowledge Retrieval"],
+    "techStack": [
+      "Google Gemini AI",
+      "Interactive Assistant",
+      "Knowledge Retrieval"
+    ],
     "liveUrl": "https://gemini.google.com/share/13040c72f603?social_preview=true&skid=5dec912f-0452-4bf7-aa40-01784b871fad",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
     "teamMembers": [
       {
-        "name": "VPKBIET Student Innovations",
-        "role": "Research & AI Prompt Engineering Team",
-        "department": "AIDS-5",
-        "email": "iks@vpkbiet.ac.in"
+        "name": "Harsh Lokhande",
+        "role": "Project Leader",
+        "department": "AIDS-2",
+        "email": ""
+      },
+      {
+        "name": "Shubham Holkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": ""
+      },
+      {
+        "name": "Sanjyot Kadam",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": ""
+      },
+      {
+        "name": "Jignesh Jagtap",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": ""
+      },
+      {
+        "name": "Kartik Pisal",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": ""
+      },
+      {
+        "name": "Himanshu Patle",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": ""
+      },
+      {
+        "name": "Harshvardhan Khamkar",
+        "role": "Student Researcher",
+        "department": "AIDS-2",
+        "email": ""
       }
     ]
   },
@@ -283,7 +353,13 @@
     "description": "An interactive digital platform exploring the traditional water harvesting systems of ancient India and their relevance to modern challenges such as climate change, groundwater depletion, and water scarcity. Features interactive studies of Baolis in Rajasthan, Ahar-Pyne systems in Bihar, Kuls in Himachal Pradesh, Harappan wedge-shaped well bricks, gravity-fed distribution, Kallanai Grand Anicut, and Dholavira's advanced reservoirs.",
     "branch": "AIDS-4",
     "academicYear": "2026-2027",
-    "techStack": ["Lovable.app", "React", "Hydraulic Architecture", "Tailwind CSS", "Vite"],
+    "techStack": [
+      "Lovable.app",
+      "React",
+      "Hydraulic Architecture",
+      "Tailwind CSS",
+      "Vite"
+    ],
     "liveUrl": "https://waterharvestinginancientindia.lovable.app/",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
@@ -334,7 +410,13 @@
     "description": "An interactive computational linguistics platform exploring Maharṣi Pāṇini’s Aṣṭādhyāyī (~3,959 algorithmic rules, c. 5th-4th century BCE). Features dual-theme Manuscript & Cosmic Logic modes, a live 14 Māheśvara Sūtras and Pratyāhāra phonetic set compression explorer, step-by-step word formation compiler trace (Yaṇ Sandhi, Dīrgha Sandhi, Samāsa, Tiṅanta), side-by-side Backus-Naur Form (Pāṇini-Backus Form) and AI/NLP semantic role labeling comparisons, and an interactive knowledge quiz.",
     "branch": "AIDS-3",
     "academicYear": "2026-2027",
-    "techStack": ["Tailwind CSS", "JavaScript", "Computational Linguistics", "Dual-Theme Engine", "Interactive Compilers"],
+    "techStack": [
+      "Tailwind CSS",
+      "JavaScript",
+      "Computational Linguistics",
+      "Dual-Theme Engine",
+      "Interactive Compilers"
+    ],
     "liveUrl": "websites/panini-grammar/index.html",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
@@ -385,7 +467,12 @@
     "description": "An advanced interactive AI knowledge exploration and research dialogue session powered by Google Gemini AI. Allows students, researchers, and exhibition visitors to engage in interactive discussions on Indian Knowledge Systems, ancient engineering methodologies, historical texts, and modern technological connections.",
     "branch": "AIDS-5",
     "academicYear": "2026-2027",
-    "techStack": ["Google Gemini AI", "Knowledge Synthesis", "Interactive Research", "IKS Prompting"],
+    "techStack": [
+      "Google Gemini AI",
+      "Knowledge Synthesis",
+      "Interactive Research",
+      "IKS Prompting"
+    ],
     "liveUrl": "https://gemini.google.com/share/2a5cce6561d4?social_preview=true&skid=63392ca3-ffd7-439a-a9a9-0935ac8ed0fa",
     "thumbnail": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=80",
     "isFlagship": false,
